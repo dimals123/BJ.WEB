@@ -1,12 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using ViewModels.AccountViews;
 
 namespace BJ.BLL.Interfaces
 {
     public interface IAccountService
     {
-        Task Create(CreateAccountView createAccountView);
-        Task Delete(Guid id);
-        Task Update(UpdateAccount updateAccount);
+        Task<LoginAccountResponseView> Login(LoginAccountView createAccountView);
+        Task<LoginAccountResponseView> Register(RegisterAccountView updateAccount);
     }
 }

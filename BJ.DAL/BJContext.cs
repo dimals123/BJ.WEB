@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BJ.DAL
 {
-    public class BJContext:IdentityDbContext<Account>
+    public class BJContext:IdentityDbContext<User>
     {
         public DbSet<Bot> Bots { get; set; }
         public DbSet<Card> Cards { get; set; }
@@ -14,7 +14,7 @@ namespace BJ.DAL
         public DbSet<StepAccount> StepsAccounts { get; set; }
         public DbSet<StepBot> StepsBots { get; set; }
 
-        public BJContext(DbContextOptions options):base(options)
+        public BJContext(DbContextOptions<BJContext> options):base(options)
         {
 
         }

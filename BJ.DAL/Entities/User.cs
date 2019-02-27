@@ -2,7 +2,7 @@
 
 namespace BJ.DAL.Entities
 {
-    public class Account:IdentityUser
+    public class User:IdentityUser
     {
 
     }

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BJ.BLL.Configurations
+namespace BJ.BLL.Extensions
 {
-    public static class ModelStateHelper
+    public static class ModelStateExtensions
     {
-        public static List<string> Errors(this ModelStateDictionary modelState)
+        public static List<string> GetAllErrorMessages(this ModelStateDictionary modelState)
         {
 
             var message = modelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();

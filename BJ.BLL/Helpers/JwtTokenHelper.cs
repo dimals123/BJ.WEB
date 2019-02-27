@@ -1,4 +1,5 @@
-﻿using BJ.DAL.Entities;
+﻿using BJ.BLL.Options;
+using BJ.DAL.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -7,10 +8,10 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace BJ.BLL.Tokens
+namespace BJ.BLL.Helpers
 {
     public class JwtTokenHelper
-    {
+    {       private readonly JwtTokenOptions _options;
         public JwtTokenHelper(IOptions<JwtTokenOptions> option)
 
         {
@@ -18,9 +19,9 @@ namespace BJ.BLL.Tokens
 
         }
 
-        private readonly JwtTokenOptions _options;
+ 
 
-        public string GenerateJwtToken(string email, Account user)
+        public string GenerateJwtToken(string email, User user)
 
         {
 

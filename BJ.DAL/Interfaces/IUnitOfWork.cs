@@ -9,10 +9,11 @@ namespace BJ.DAL.Interfaces
         IBotRepository Bots { get; }
         ICardRepository Cards { get; }
         IGameRepository Games { get; }
-        IPointAccountRepository PointsAccounts { get; }
+        IPointUserRepository PointsAccounts { get; }
         IPointBotRepository PointsBots { get; }
-        IStepAccountRepository StepsAccounts { get; }
+        IStepUserRepository StepsAccounts { get; }
         IStepBotRepository StepsBots { get; }
+        IUserRepository Users { get; }
         void Save();
     }
 }

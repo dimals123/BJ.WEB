@@ -6,9 +6,9 @@ using System.Text;
 
 namespace BJ.DAL.Repositories
 {
-    public class PointAccountRepository:GenericRepository<PointAccount>, IPointAccountRepository
+    public class PointUserRepository:GenericRepository<PointAccount>, IPointUserRepository
     {
-        public PointAccountRepository(BJContext context): base(context)
+        public PointUserRepository(BJContext context): base(context)
         {
 
         }

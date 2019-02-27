@@ -1,24 +1,35 @@
 ﻿using BJ.DAL.Interfaces;
+using BJ.DAL.Repositories;
 using System;
 
-namespace BJ.DAL.Repositories
+namespace BJ.DAL
 {
     public class UnitOfWork:IUnitOfWork
     {
-        private  BJContext db;
-        private  BotRepository botRepository;
-        private  CardRepository cardRepository;
-        private  GameRepository gameRepository;
-        private  PointAccountRepository pointAccountRepository;
-        private  PointBotRepository pointBotRepository;
-        private  StepAccountRepository stepAccountRepository;
-        private  StepBotRepository stepBotRepository;
+        private BJContext db;
+        private BotRepository botRepository;
+        private CardRepository cardRepository;
+        private GameRepository gameRepository;
+        private PointUserRepository pointAccountRepository;
+        private PointBotRepository pointBotRepository;
+        private StepUserRepository stepAccountRepository;
+        private StepBotRepository stepBotRepository;
+        private UserRepository userRepository;
 
         public UnitOfWork(BJContext context)
         {
             db = context;
         }
 
+        public IUserRepository Users
+        {
+            get
+            {
+                if (userRepository == null)
+                    userRepository = new UserRepository(db);
+                return userRepository;
+            }
+        }
 
 
         public IBotRepository Bots
@@ -51,12 +62,12 @@ namespace BJ.DAL.Repositories
             }
         }
 
-        public IPointAccountRepository PointsAccounts
+        public IPointUserRepository PointsAccounts
         {
             get
             {
                 if (pointAccountRepository == null)
-                    pointAccountRepository = new PointAccountRepository(db);
+                    pointAccountRepository = new PointUserRepository(db);
                 return pointAccountRepository;
             }
         }
@@ -71,12 +82,12 @@ namespace BJ.DAL.Repositories
             }
         }
 
-        public IStepAccountRepository StepsAccounts
+        public IStepUserRepository StepsAccounts
         {
             get
             {
                 if (stepAccountRepository == null)
-                    stepAccountRepository = new StepAccountRepository(db);
+                    stepAccountRepository = new StepUserRepository(db);
                 return stepAccountRepository;
             }
         }

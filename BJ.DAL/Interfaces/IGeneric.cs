@@ -9,7 +9,8 @@ namespace BJ.DAL.Interfaces
         Task<List<T>> GetAll();
         Task<T> Get(Guid id);
         Task Create(T item);
-        Task Update(T item);
-        Task Delete(T item);
+        void Update(T item);
+        void Delete(T item);
+        Task CreateRange(List<T> items);
     }
 }
