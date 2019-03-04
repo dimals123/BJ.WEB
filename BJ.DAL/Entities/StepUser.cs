@@ -1,12 +1,13 @@
-﻿using System;
+﻿using BJ.DAL.Entities.Enums;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BJ.DAL.Entities
 {
-    public class StepAccount:BaseEntity
+    public class StepUser:BaseEntity
     {
-        public Guid AccountId { get; set; }
-        [ForeignKey("AccountId")]
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
         public virtual User Account { get; set; }
         public Guid CardId { get; set; }
         [ForeignKey("CardId")]
@@ -16,8 +17,8 @@ namespace BJ.DAL.Entities
         public virtual Game Game { get; set; }
 
         public int CountStep { get; set; }
-        public Suit Suit { get; set; }
-        public Value Value { get; set; }
+        public SuitType Suit { get; set; }
+        public RankType Value { get; set; }
             
 
     }

@@ -5,13 +5,13 @@ using System.Text;
 
 namespace BJ.DAL.Entities
 {
-    public class PointAccount:BaseEntity
+    public class PointUser:BaseEntity
     {
         public int CountPoint { get; set; }
 
 
-        public Guid AccountId { get; set; }
-        [ForeignKey("AccountId")]
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
         public User Account { get; set; }
 
 

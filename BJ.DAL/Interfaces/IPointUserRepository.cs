@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BJ.DAL.Interfaces
 {
-    public interface IPointUserRepository:IGeneric<PointAccount>
+    public interface IPointUserRepository:IGeneric<PointUser>
     {
     }
 }

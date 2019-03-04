@@ -9,9 +9,9 @@ namespace BJ.DAL
         public DbSet<Bot> Bots { get; set; }
         public DbSet<Card> Cards { get; set; }
         public DbSet<Game> Games { get; set; }
-        public DbSet<PointAccount> PointsAccounts { get; set; }
+        public DbSet<PointUser> PointsAccounts { get; set; }
         public DbSet<PointBot> BotsAccounts { get; set; }
-        public DbSet<StepAccount> StepsAccounts { get; set; }
+        public DbSet<StepUser> StepsAccounts { get; set; }
         public DbSet<StepBot> StepsBots { get; set; }
 
         public BJContext(DbContextOptions<BJContext> options):base(options)

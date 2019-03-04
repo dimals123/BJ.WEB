@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BJ.DAL.Entities.Enums;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BJ.DAL.Entities
@@ -16,7 +17,7 @@ namespace BJ.DAL.Entities
         public virtual Game Game { get; set; }
 
         public int CountStep { get; set; }
-        public Suit Suit { get; set; }
-        public Value Value { get; set; }
+        public SuitType Suit { get; set; }
+        public RankType Value { get; set; }
     }
 }

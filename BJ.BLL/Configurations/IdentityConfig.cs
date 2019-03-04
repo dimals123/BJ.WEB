@@ -22,6 +22,7 @@ namespace BJ.BLL.Configurations
             .AddEntityFrameworkStores<BJContext>()
             .AddDefaultTokenProviders();
 
+
         }
     }
 }

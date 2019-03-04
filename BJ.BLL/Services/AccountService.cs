@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using BJ.BLL.Exceptions;
 using BJ.BLL.Helpers;
 using BJ.BLL.Interfaces;
 using BJ.DAL.Entities;
@@ -14,10 +15,10 @@ namespace BJ.BLL.Services
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly JwtTokenHelper _jwtTokentHelper;
+        private readonly JwtTokenProvider _jwtTokentHelper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public AccountService(UserManager<User> userManager, SignInManager<User> signInManager, JwtTokenHelper jwtTokentHelper, IUnitOfWork unitOfWork)
+        public AccountService(UserManager<User> userManager, SignInManager<User> signInManager, JwtTokenProvider jwtTokentHelper, IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -30,48 +31,54 @@ namespace BJ.BLL.Services
             var users = await _unitOfWork.Users.GetAll();
             var userNames = users.Select(x => x.UserName).ToList();
 
-            GetAllAccountView response = new GetAllAccountView();
-            foreach (var name in userNames)
+
+            var response = new GetAllAccountView();
+
+            response.AccountNames = userNames.Select(x => new AccountGetAllAccountViewItem()
             {
-                response.AccountNames.Add(new AccountGetAllAccountViewItem { Name = name });
-            }
+                Name = x
+            }).ToList();
+
             return response;
            
         }
 
         public async Task<LoginAccountResponseView> Login(LoginAccountView model)
         {
-            var result = await _userManager.FindByNameAsync(model.Name);
-            var ver = await _signInManager.UserManager.CheckPasswordAsync(result, model.Password);
-            if (!ver)
-            {
-                throw new ValidationException("Invalid login attempt");
-            }
+          
+                var result = await _userManager.FindByNameAsync(model.Name);
+                var identityResult = await _signInManager.UserManager.CheckPasswordAsync(result, model.Password);
+                if (!identityResult)
+                {
+                    throw new ValidationException("Invalid login attempt");
+                }
 
 
-            var token = _jwtTokentHelper.GenerateJwtToken(model.Name, result);
-            var response = new LoginAccountResponseView()
-            {
-                Token = token
-            };
+                var token = _jwtTokentHelper.GenerateJwtToken(model.Name, result);
+                var response = new LoginAccountResponseView()
+                {
+                    Token = token
+                };
 
-            return response;
+                return response;
+            
+           
         }
 
         public async Task<LoginAccountResponseView> Register(RegisterAccountView model)
 
         {
-            var Account = new User
+            var account = new User
             {
                 UserName = model.Name,
             };
-            var result = await _userManager.CreateAsync(Account, model.Password);
+            var result = await _userManager.CreateAsync(account, model.Password);
             if (!result.Succeeded)
             {
                 throw new ValidationException("Invalid user");
             }
 
-            var token = _jwtTokentHelper.GenerateJwtToken(model.Name, Account);
+            var token = _jwtTokentHelper.GenerateJwtToken(model.Name, account);
             var response = new LoginAccountResponseView()
             {
                 Token = token

@@ -7,5 +7,6 @@ namespace BJ.BLL.Interfaces
     {
         Task<LoginAccountResponseView> Login(LoginAccountView createAccountView);
         Task<LoginAccountResponseView> Register(RegisterAccountView updateAccount);
+        Task<GetAllAccountView> GetAll();
     }
 }
