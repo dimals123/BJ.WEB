@@ -70,10 +70,9 @@ namespace BJ.WEB.Controllers
         public async Task<IActionResult> GetAll()
         {
             var result = await _accountService.GetAll();
-            return Ok();
+            return Ok(result);
         }
 
-        [CustomExceptionFilter]
         [HttpPost]
         public async Task<IActionResult> Register([FromBody]RegisterAccountView registerAccountView)
         {
@@ -81,7 +80,7 @@ namespace BJ.WEB.Controllers
             return Ok(result);
         }
 
-        [CustomExceptionFilter]
+
         [HttpPost]
         public async Task<IActionResult> Login([FromBody]LoginAccountView loginAccountView)
         {

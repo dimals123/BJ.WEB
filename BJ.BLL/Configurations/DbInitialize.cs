@@ -13,7 +13,7 @@ namespace BJ.BLL.Configurations
         private static readonly string[] _botsName = new string[] { "Olivia","Amelia","Isla","Emily","Ava","Lily","Mia", "Sofia", "Isabella","Grace",
                                                              "Oliver","Harry","Jack","George","Noah","Charlie", "Jacob","Alfie","Freddie","Oscar"};
 
-        public async static Task<List<Bot>> Init(IUnitOfWork unitOfWork, int countBots)
+        public async static Task<List<Bot>> InitBots(IUnitOfWork unitOfWork, int countBots)
         {
             List<Bot> bots = new List<Bot>();
             for (int i = 0; i < countBots; i++)
@@ -34,7 +34,7 @@ namespace BJ.BLL.Configurations
         #region(Cards)
         private static List<Card> _cards = new List<Card>();
 
-        public async static Task<List<Card>> Init(IUnitOfWork unitOfWork)
+        public async static Task<List<Card>> InitCards(IUnitOfWork unitOfWork)
         {
             for (int i = 0; i < Enum.GetNames(typeof(SuitType)).Length; i++)
             {
@@ -45,6 +45,7 @@ namespace BJ.BLL.Configurations
             }
             Swap(_cards);
             await unitOfWork.Cards.CreateRange(_cards);
+            unitOfWork.Save();
             return _cards;
         }
 

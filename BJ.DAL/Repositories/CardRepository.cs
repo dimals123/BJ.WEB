@@ -1,8 +1,6 @@
 ﻿using BJ.DAL.Entities;
 using BJ.DAL.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BJ.DAL.Repositories
 {
@@ -11,6 +9,12 @@ namespace BJ.DAL.Repositories
         public CardRepository(BJContext context):base(context)
         {
 
+        }
+
+        public List<Card> GetRange(int count)
+
+        {
+           
         }
     }
 }
