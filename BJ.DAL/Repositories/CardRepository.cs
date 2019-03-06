@@ -11,10 +11,6 @@ namespace BJ.DAL.Repositories
 
         }
 
-        public List<Card> GetRange(int count)
-
-        {
-           
-        }
+        
     }
 }

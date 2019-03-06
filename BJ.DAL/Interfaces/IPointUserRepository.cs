@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BJ.DAL.Interfaces
 {
     public interface IPointUserRepository:IGeneric<PointUser>
     {
+        Task<PointUser> GetUserIdMax(string userId, Guid gameId);
     }
 }

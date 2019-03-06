@@ -12,5 +12,6 @@ namespace BJ.DAL.Repositories
         {
 
         }
+
     }
 }

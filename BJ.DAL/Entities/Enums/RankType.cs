@@ -11,9 +11,9 @@ namespace BJ.DAL.Entities.Enums
         eight,
         nine,
         ten,
-        jack,
+        jack = 2,
         lady,
         king,
-        ace
+        ace = 11 | 1
     }
 }

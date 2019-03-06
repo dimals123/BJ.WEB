@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Text;
@@ -33,8 +34,9 @@ namespace BJ.BLL.Configurations
         public static void ConfigureAutentification(this IServiceCollection services, IConfiguration configuration)
         {
             var option = configuration.GetSection("jwt").Get<JwtTokenOptions>();
-            //configuration.Bind(jwtTokenOptions);
-            //IOptions<JwtTokenOptions> option = Microsoft.Extensions.Options.Options.Create(new );
+            //var jwt = new JwtTokenOptions();
+            //configuration.Bind(jwt);
+            //IOptions<JwtTokenOptions> option = Microsoft.Extensions.Options.Options.Create(jwt);
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

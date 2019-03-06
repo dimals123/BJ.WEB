@@ -46,5 +46,15 @@ namespace BJ.DAL.Repositories
         {
             _context.Entry(item).State = EntityState.Modified;
         }
+
+        public void DeleteRange(List<T> items)
+        {
+            _dbSet.RemoveRange(items);
+        }
+
+        public async Task<T> GetFirst()
+        {
+           return await _dbSet.FirstOrDefaultAsync();
+        }
     }
 }

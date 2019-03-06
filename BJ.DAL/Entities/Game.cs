@@ -6,6 +6,7 @@ namespace BJ.DAL.Entities
     {
         public string WinnerId { get; set; }
         public PlayerType Player { get; set; }
+        public int CountBots { get; set; }
 
 
     }

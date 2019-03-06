@@ -16,17 +16,21 @@ namespace BJ.BLL.Configurations
         public async static Task<List<Bot>> InitBots(IUnitOfWork unitOfWork, int countBots)
         {
             List<Bot> bots = new List<Bot>();
-            for (int i = 0; i < countBots; i++)
+            if (await unitOfWork.Bots.GetFirst() == null)
             {
-                var bot = new Bot()
+                for (int i = 0; i < countBots; i++)
                 {
-                    Name = _botsName[i]
-                };
-                bots.Add(bot);
+                    var bot = new Bot()
+                    {
+                        Name = _botsName[i]
+                    };
+                    bots.Add(bot);
 
+                }
+                await unitOfWork.Bots.CreateRange(bots);
+                unitOfWork.Save();
             }
-            await unitOfWork.Bots.CreateRange(bots);
-            unitOfWork.Save();
+            else bots = await unitOfWork.Bots.GetAll();
             return bots;
         }
         #endregion
@@ -40,7 +44,7 @@ namespace BJ.BLL.Configurations
             {
                 for (int j = 0; j < Enum.GetNames(typeof(RankType)).Length; j++)
                 {
-                    _cards.Add(new Card { Suit = (SuitType)Enum.GetNames(typeof(SuitType)).GetValue(i), Value = (RankType)Enum.GetNames(typeof(RankType)).GetValue(j) });
+                    _cards.Add(new Card { Suit = (SuitType)Enum.GetNames(typeof(SuitType)).GetValue(i), Rank = (RankType)Enum.GetNames(typeof(RankType)).GetValue(j) });
                 }
             }
             Swap(_cards);

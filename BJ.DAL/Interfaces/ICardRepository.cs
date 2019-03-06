@@ -7,6 +7,6 @@ namespace BJ.DAL.Interfaces
 {
     public interface ICardRepository:IGeneric<Card>
     {
-        List<Card> GetRange(int count);
+        
     }
 }
