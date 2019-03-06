@@ -17,42 +17,42 @@ namespace BJ.DAL.Repositories
             _dbSet = context.Set<T>();
         }
 
-        public async Task CreateRange(List<T> items)
+        public virtual async Task CreateRange(List<T> items)
         {
             await _dbSet.AddRangeAsync(items);
         }
 
-        public async Task Create(T item)
+        public virtual async Task Create(T item)
         {
             await _dbSet.AddAsync(item);
         }
 
-        public void Delete(T item)
+        public virtual void Delete(T item)
         {
             _dbSet.Remove(item);
         }
 
-        public async Task<T> Get(Guid id)
+        public virtual async Task<T> Get(Guid id)
         {
             return await _dbSet.FindAsync(id);
         }
 
-        public async Task<List<T>> GetAll()
+        public virtual async Task<List<T>> GetAll()
         {
             return await _dbSet.AsNoTracking().ToListAsync();
         }
 
-        public void Update(T item)
+        public virtual void Update(T item)
         {
             _context.Entry(item).State = EntityState.Modified;
         }
 
-        public void DeleteRange(List<T> items)
+        public virtual void DeleteRange(List<T> items)
         {
             _dbSet.RemoveRange(items);
         }
 
-        public async Task<T> GetFirst()
+        public virtual async Task<T> GetFirst()
         {
            return await _dbSet.FirstOrDefaultAsync();
         }

@@ -15,7 +15,7 @@ namespace BJ.DAL.Repositories
         {
 
         }
-        public async Task<PointUser> GetUserIdMax(string userId, Guid gameId)
+        public async Task<PointUser> GetMax(string userId, Guid gameId)
         {
             var pointsUser = await _dbSet.Select(x => x).Where(s => s.UserId == userId && s.GameId == gameId).ToListAsync();
             var pointUser = pointsUser[0];

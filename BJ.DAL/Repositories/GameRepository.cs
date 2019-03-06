@@ -1,8 +1,6 @@
 ﻿using BJ.DAL.Entities;
 using BJ.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace BJ.DAL.Repositories
 {
@@ -13,5 +11,6 @@ namespace BJ.DAL.Repositories
 
         }
 
+        
     }
 }

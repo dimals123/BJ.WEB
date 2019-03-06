@@ -42,8 +42,8 @@ namespace BJ.BLL.Services
                 var stepUser = new StepUser { GameId = game.Id, UserId = userId, Suit = deck[0].Suit, Rank = deck[0].Rank};
                 stepUsers.Add(stepUser);
 
-                var countPointUser = await _unitOfWork.PointsAccounts.GetUserIdMax(userId, game.Id);
-                var pointUser = new PointUser { GameId = game.Id, UserId = userId, CountPoint = countPointUser.CountPoint };
+                var pointMaxUser = await _unitOfWork.PointsAccounts.GetMax(userId, game.Id);
+                var pointUser = new PointUser { GameId = game.Id, UserId = userId, CountPoint = pointMaxUser.CountPoint + (int)deck[0].Rank };
                 pointsUser.Add(pointUser);
 
                 cardsRemove.Add(deck[0]);
@@ -54,9 +54,9 @@ namespace BJ.BLL.Services
                     var stepBot = new StepBot { GameId = game.Id, BotId = bots[j].Id, Suit = deck[0].Suit, Rank = deck[0].Rank, };
                     stepBots.Add(stepBot);
 
-                    var countPointMax = await _unitOfWork.PointsBots.GetBotIdMax(bots[j].Id, game.Id);
-                    var PointBot = new PointBot { GameId = game.Id, BotId = bots[j].Id, CountPoint = countPointMax.CountPoint };
-                    pointsBots.Add(PointBot);
+                    var pointMaxBot = await _unitOfWork.PointsBots.GetMax(bots[j].Id, game.Id);
+                    var pointBot = new PointBot { GameId = game.Id, BotId = bots[j].Id, CountPoint = pointMaxBot.CountPoint + (int)deck[0].Rank };
+                    pointsBots.Add(pointBot);
 
                     cardsRemove.Add(deck[0]);
                     deck.Remove(deck[0]);
@@ -70,35 +70,115 @@ namespace BJ.BLL.Services
             _unitOfWork.Save();            
         }
 
-        public async Task GetCard(Guid gameId, string userId, int countBots)
+        public async Task GetCards(Guid gameId, string userId)
         {
             var ListRemoveCards = new List<Card>();
             var deck = await _unitOfWork.Cards.GetAll();
             var bots = await _unitOfWork.Bots.GetAll();
 
+            var game = await _unitOfWork.Games.Get(gameId);
 
             var stepUser = new StepUser { GameId = gameId, UserId = userId, Rank = deck[0].Rank, Suit = deck[0].Suit };
             await _unitOfWork.StepsAccounts.Create(stepUser);
 
-            var countPointUser = await _unitOfWork.PointsAccounts.GetUserIdMax(userId, gameId);
-            var pointUser = new PointUser { GameId = gameId, UserId = userId, CountPoint = countPointUser.CountPoint };
+            var pointMaxUser = await _unitOfWork.PointsAccounts.GetMax(userId, gameId);
+            var pointUser = new PointUser { GameId = gameId, UserId = userId, CountPoint = pointMaxUser.CountPoint };
             await _unitOfWork.PointsAccounts.Create(pointUser);
 
             ListRemoveCards.Add(deck[0]);
             deck.Remove(deck[0]);
 
+            var ListStepBots = new List<StepBot>();
+            var ListPointBots = new List<PointBot>();
 
-            for (int i = 0; i < countBots; i++)
+            for (int i = 0; i < game.CountBots; i++)
             {
-                var pointBot = new PointBot();
-                pointBot = await _unitOfWork.PointsBots.GetBotIdMax(bots[i].Id, gameId);
-                if (_unitOfWork.Bots.IsCard(pointBot))
+                var pointMaxBot = new PointBot();
+                pointMaxBot = await _unitOfWork.PointsBots.GetMax(bots[i].Id, gameId);
+                if (_unitOfWork.Bots.IsCard(pointMaxBot))
                 {
                     var stepBot = new StepBot { BotId = bots[i].Id, GameId = gameId, Rank = deck[0].Rank, Suit = deck[0].Suit };
+                    ListStepBots.Add(stepBot);
+                    
+                    var pointBot = new PointBot { GameId = gameId, BotId = bots[i].Id, CountPoint = pointMaxBot.CountPoint + (int)deck[0].Rank };
+                    ListPointBots.Add(pointBot);
 
+                    ListRemoveCards.Add(deck[0]);
+                    deck.Remove(deck[0]);
                 }
             }
+
+            await _unitOfWork.StepsBots.CreateRange(ListStepBots);
+            await _unitOfWork.PointsBots.CreateRange(ListPointBots);
+            _unitOfWork.Cards.DeleteRange(ListRemoveCards);
+            _unitOfWork.Save();
         }
+
+        public async Task StopCard(Guid gameId, string userId)
+        {
+            var deck = await _unitOfWork.Cards.GetAll();
+            var bots = await _unitOfWork.Bots.GetAll();
+
+            var ListRemoveCards = new List<Card>();         
+            var ListStepBots = new List<StepBot>();
+            var ListPointBots = new List<PointBot>();
+
+            var countStopBots = 0;
+
+            var game = await _unitOfWork.Games.Get(gameId);
+            while (countStopBots != game.CountBots)
+            {
+                for (int i = 0; i < game.CountBots; i++)
+                {
+
+                    var pointMaxBot = new PointBot();
+                    pointMaxBot = await _unitOfWork.PointsBots.GetMax(bots[i].Id, gameId);
+                    if (_unitOfWork.Bots.IsCard(pointMaxBot))
+                    {
+                        var stepBot = new StepBot { BotId = bots[i].Id, GameId = gameId, Rank = deck[0].Rank, Suit = deck[0].Suit };
+                        ListStepBots.Add(stepBot);
+
+                        var pointBot = new PointBot { GameId = gameId, BotId = bots[i].Id, CountPoint = pointMaxBot.CountPoint + (int)deck[0].Rank };
+                        ListPointBots.Add(pointBot);
+
+                        ListRemoveCards.Add(deck[0]);
+                        deck.Remove(deck[0]);
+                    }
+                    else
+                    {
+                        countStopBots++;
+                    }
+                }
+            }
+            await EndGame(gameId, userId);
+
+        }
+
+        public async Task EndGame(Guid gameId, string userId)
+        {
+            var listPointMaxBots = new List<PointBot>();
+            var game = await _unitOfWork.Games.Get(gameId);
+            var bots = await _unitOfWork.Bots.GetAll();
+
+            var pointMaxUser = await _unitOfWork.PointsAccounts.GetMax(userId, gameId);
+
+            for (int i = 0; i < game.CountBots; i++)
+            {
+                var pointMaxBot = await _unitOfWork.PointsBots.GetMax(bots[i].Id, gameId);
+                listPointMaxBots.Add(pointMaxBot);
+            }
+            var Winner = (await _unitOfWork.Users.Get(userId)).UserName;
+
+            for (int i = 0; i < game.CountBots; i++)
+            {
+                if (pointMaxUser.CountPoint < listPointMaxBots[0].CountPoint)
+                {
+                    Winner = bots[i].Name;
+                }
+            }
+            game.WinnerId = Winner;
+        }
+            
 
 
     }
