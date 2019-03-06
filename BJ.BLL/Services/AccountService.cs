@@ -30,12 +30,13 @@ namespace BJ.BLL.Services
         {
             var users = await _unitOfWork.Users.GetAll();
             var userNames = users.Select(x => x.UserName).ToList();
-
+            var userIds = users.Select(x => x.Id).ToList();
 
             var response = new GetAllAccountView();
 
             response.AccountNames = userNames.Select(x => new AccountGetAllAccountViewItem()
             {
+                
                 Name = x
             }).ToList();
 

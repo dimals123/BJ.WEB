@@ -16,6 +16,7 @@ namespace BJ.BLL.Configurations
         public async static Task<List<Bot>> InitBots(IUnitOfWork unitOfWork, int countBots)
         {
             List<Bot> bots = new List<Bot>();
+            var CountBots = (await unitOfWork.Bots.GetAll()).Count;
             if (await unitOfWork.Bots.GetFirst() == null)
             {
                 for (int i = 0; i < countBots; i++)
@@ -26,6 +27,19 @@ namespace BJ.BLL.Configurations
                     };
                     bots.Add(bot);
 
+                }
+                await unitOfWork.Bots.CreateRange(bots);
+                unitOfWork.Save();
+            }
+            else if(CountBots < countBots)
+            {
+                for(int i = 0; i< countBots - CountBots; i++)
+                {
+                    var bot = new Bot()
+                    {
+                        Name = _botsName[CountBots + i]
+                    };
+                    bots.Add(bot);
                 }
                 await unitOfWork.Bots.CreateRange(bots);
                 unitOfWork.Save();

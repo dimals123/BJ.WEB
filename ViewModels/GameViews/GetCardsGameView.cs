@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ViewModels.GameViews
 {
-    public class StartGameView
+    public class GetCardsGameView
     {
-        public int CountBots { get; set; }
+        public Guid GameId { get; set; }
         public string UserId { get; set; }
     }
 }

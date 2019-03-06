@@ -16,6 +16,7 @@ namespace ViewModels.AccountViews
 
     public class AccountGetAllAccountViewItem
     {
+        public string Id { get; set; }
         public string Name { get; set; }
     }
 }
