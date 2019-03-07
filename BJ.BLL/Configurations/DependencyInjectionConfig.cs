@@ -20,6 +20,7 @@ namespace BJ.BLL.Configurations
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IGameService, GameService>();
+            services.AddTransient<IHistoryService, HistoryService>();
             services.AddTransient<JwtTokenProvider>();
         }
     }

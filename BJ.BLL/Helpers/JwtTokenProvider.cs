@@ -18,11 +18,11 @@ namespace BJ.BLL.Helpers
             _options = option.Value;
         }
 
-        public string GenerateJwtToken(string email, User user)
+        public string GenerateJwtToken(string name, User user)
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, email),
+                new Claim(JwtRegisteredClaimNames.Sub, name),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             };

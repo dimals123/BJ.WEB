@@ -10,7 +10,7 @@ namespace BJ.DAL
         public DbSet<Card> Cards { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<PointUser> PointsAccounts { get; set; }
-        public DbSet<PointBot> BotsAccounts { get; set; }
+        public DbSet<PointBot> PointsBots { get; set; }
         public DbSet<StepUser> StepsAccounts { get; set; }
         public DbSet<StepBot> StepsBots { get; set; }
 

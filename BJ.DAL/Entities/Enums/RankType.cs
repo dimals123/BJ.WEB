@@ -6,14 +6,14 @@ namespace BJ.DAL.Entities.Enums
 {
     public enum RankType
     {
-        six = 6,
-        seven,
-        eight,
-        nine,
-        ten,
-        jack = 2,
-        lady,
-        king,
-        ace = 11 | 1
+        Six = 6,
+        Seven,
+        Eight,
+        Nine,
+        Ten,
+        Jack = 2,
+        Lady,
+        King,
+        Ace = 11 | 1
     }
 }

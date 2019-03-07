@@ -15,18 +15,23 @@ namespace BJ.DAL.Repositories
         {
 
         }
-        public async Task<PointUser> GetMax(string userId, Guid gameId)
+        public PointUser GetMax(string userId, Guid gameId, List<PointUser> pointsUser)
         {
-            var pointsUser = await _dbSet.Select(x => x).Where(s => s.UserId == userId && s.GameId == gameId).ToListAsync();
-            var pointUser = pointsUser[0];
-            for (int i = 0; i < pointsUser.Count - 1; i++)
-            {
-                if (pointUser.CountPoint < pointsUser[i + 1].CountPoint)
+            
+            var pointMaxUser = pointsUser.FirstOrDefault();
+            if (pointMaxUser != null)
+            {  
+                for (int i = 0; i < pointsUser.Count - 1; i++)
                 {
-                    pointUser = pointsUser[i + 1];
+                    if (pointMaxUser.CountPoint < pointsUser[i + 1].CountPoint)
+                    {
+                        pointMaxUser = pointsUser[i + 1];
+                    }
                 }
+                return pointMaxUser;
             }
-            return pointUser;
+            else
+                return null;
         }
 
        

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ViewModels.AccountViews
 {
@@ -16,7 +14,6 @@ namespace ViewModels.AccountViews
 
     public class AccountGetAllAccountViewItem
     {
-        public string Id { get; set; }
         public string Name { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BJ.DAL.Interfaces;
 using BJ.DAL.Repositories;
 using System;
+using System.Threading.Tasks;
 
 namespace BJ.DAL
 {
@@ -20,6 +21,8 @@ namespace BJ.DAL
         {
             db = context;
         }
+
+       
 
         public IUserRepository Users
         {
@@ -104,7 +107,7 @@ namespace BJ.DAL
 
 
 
-        public async void Save()
+        public async Task Save()
         {
 
             await db.SaveChangesAsync();

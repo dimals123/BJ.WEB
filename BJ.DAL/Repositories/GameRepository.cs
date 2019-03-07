@@ -11,6 +11,12 @@ namespace BJ.DAL.Repositories
 
         }
 
-        
+        public override async Task Update(Game item)
+        {
+            _dbSet.Remove(await _dbSet.FindAsync(item.Id));
+            await _dbSet.AddAsync(item);
+            await base.Update(item);
+
+        }
     }
 }

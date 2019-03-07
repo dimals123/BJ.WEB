@@ -3,6 +3,7 @@ using BJ.DAL.Entities.Enums;
 using BJ.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BJ.BLL.Configurations
@@ -29,7 +30,7 @@ namespace BJ.BLL.Configurations
 
                 }
                 await unitOfWork.Bots.CreateRange(bots);
-                unitOfWork.Save();
+                await unitOfWork.Save();
             }
             else if(CountBots < countBots)
             {
@@ -42,7 +43,7 @@ namespace BJ.BLL.Configurations
                     bots.Add(bot);
                 }
                 await unitOfWork.Bots.CreateRange(bots);
-                unitOfWork.Save();
+                await unitOfWork.Save();
             }
             else bots = await unitOfWork.Bots.GetAll();
             return bots;
@@ -54,16 +55,21 @@ namespace BJ.BLL.Configurations
 
         public async static Task<List<Card>> InitCards(IUnitOfWork unitOfWork)
         {
+            var cards = await unitOfWork.Cards.GetAll();
+            if (cards.FirstOrDefault() != null)
+                unitOfWork.Cards.DeleteRange(cards);
+                
+
             for (int i = 0; i < Enum.GetNames(typeof(SuitType)).Length; i++)
             {
                 for (int j = 0; j < Enum.GetNames(typeof(RankType)).Length; j++)
                 {
-                    _cards.Add(new Card { Suit = (SuitType)Enum.GetNames(typeof(SuitType)).GetValue(i), Rank = (RankType)Enum.GetNames(typeof(RankType)).GetValue(j) });
+                    _cards.Add(new Card { Suit = (SuitType)Enum.GetValues(typeof(SuitType)).GetValue(i), Rank = (RankType)Enum.GetValues(typeof(RankType)).GetValue(j) });
                 }
             }
             Swap(_cards);
             await unitOfWork.Cards.CreateRange(_cards);
-            unitOfWork.Save();
+            await unitOfWork.Save();
             return _cards;
         }
 

@@ -8,6 +8,6 @@ namespace BJ.DAL.Interfaces
 {
     public interface IPointBotRepository:IGeneric<PointBot>
     {
-        Task<PointBot> GetMax(Guid botId, Guid gameId);
+        PointBot GetMax(Guid botId, Guid gameId, List<PointBot> pointsBots);
     }
 }

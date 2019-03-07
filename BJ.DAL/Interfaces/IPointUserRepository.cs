@@ -8,6 +8,6 @@ namespace BJ.DAL.Interfaces
 {
     public interface IPointUserRepository:IGeneric<PointUser>
     {
-        Task<PointUser> GetMax(string userId, Guid gameId);
+        PointUser GetMax(string userId, Guid gameId, List<PointUser> pointsUser);
     }
 }

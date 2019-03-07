@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BJ.DAL.Entities;
@@ -14,18 +15,23 @@ namespace BJ.DAL.Repositories
 
         }
 
-        public async Task<PointBot> GetMax(Guid botId, Guid gameId)
+        public PointBot GetMax(Guid botId, Guid gameId, List<PointBot> pointsBot)
         {
-            var pointsBot = await _dbSet.Select(x=>x).Where(s=>s.BotId == botId && s.GameId == gameId).ToListAsync();
-            var pointBot = pointsBot[0];
-            for (int i = 0; i < pointsBot.Count - 1; i++) 
+            var points = pointsBot.Select(x => x).Where(u => u.BotId == botId && u.GameId == gameId).ToList();
+            var pointBot = points.FirstOrDefault();
+            if (pointBot != null)
             {
-                if (pointBot.CountPoint < pointsBot[i + 1].CountPoint) 
+                
+                for (int i = 0; i < points.Count - 1; i++)
                 {
-                    pointBot = pointsBot[i + 1];
+                    if (pointBot.CountPoint < points[i + 1].CountPoint)
+                    {
+                        pointBot = points[i + 1];
+                    }
                 }
+                return pointBot;
             }
-            return pointBot;
+            else return null;
         }
     }
 }
