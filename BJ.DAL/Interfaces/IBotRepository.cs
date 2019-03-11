@@ -5,7 +5,7 @@ namespace BJ.DAL.Interfaces
 {
     public interface IBotRepository:IGeneric<Bot>
     {
-        bool IsCard(PointBot pointBot);
+        bool IsCard(BotInGame pointBot);
        
     }
 }

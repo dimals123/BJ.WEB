@@ -10,7 +10,7 @@ namespace BJ.DAL.Interfaces
         Task<T> GetFirst();
         Task<T> Get(Guid id);
         Task Create(T item);
-        Task Update(T item);
+        void Update(T item);
         void Delete(T item);
         Task CreateRange(List<T> items);
         void DeleteRange(List<T> items);

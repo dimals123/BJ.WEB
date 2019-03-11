@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace BJ.DAL.Entities
 {
-    public class PointUser:BaseEntity
+    public class UserInGame:BaseEntity
     {
         public int CountPoint { get; set; }
 

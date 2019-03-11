@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace BJ.DAL.Interfaces
 {
-    public interface IPointBotRepository:IGeneric<PointBot>
+    public interface IUserInGameRepository:IGeneric<UserInGame>
     {
-        PointBot GetMax(Guid botId, Guid gameId, List<PointBot> pointsBots);
+        new void Update(UserInGame model);
+        Task<UserInGame> Get(Guid gameId, string userId);
     }
 }

@@ -4,14 +4,16 @@ using BJ.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BJ.DAL.Migrations
 {
     [DbContext(typeof(BJContext))]
-    partial class BJContextModelSnapshot : ModelSnapshot
+    [Migration("20190311112232_init BotInGame")]
+    partial class initBotInGame
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +54,7 @@ namespace BJ.DAL.Migrations
 
                     b.HasIndex("GameId");
 
-                    b.ToTable("BotInGames");
+                    b.ToTable("PointsBots");
                 });
 
             modelBuilder.Entity("BJ.DAL.Entities.Card", b =>
@@ -87,6 +89,28 @@ namespace BJ.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Games");
+                });
+
+            modelBuilder.Entity("BJ.DAL.Entities.PointUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CountPoint");
+
+                    b.Property<DateTime>("CreationAt");
+
+                    b.Property<Guid>("GameId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("PointsAccounts");
                 });
 
             modelBuilder.Entity("BJ.DAL.Entities.StepBot", b =>
@@ -190,28 +214,6 @@ namespace BJ.DAL.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("BJ.DAL.Entities.UserInGame", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CountPoint");
-
-                    b.Property<DateTime>("CreationAt");
-
-                    b.Property<Guid>("GameId");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserInGames");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -337,6 +339,18 @@ namespace BJ.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("BJ.DAL.Entities.PointUser", b =>
+                {
+                    b.HasOne("BJ.DAL.Entities.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BJ.DAL.Entities.User", "Account")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("BJ.DAL.Entities.StepBot", b =>
                 {
                     b.HasOne("BJ.DAL.Entities.Bot", "Bot")
@@ -351,18 +365,6 @@ namespace BJ.DAL.Migrations
                 });
 
             modelBuilder.Entity("BJ.DAL.Entities.StepUser", b =>
-                {
-                    b.HasOne("BJ.DAL.Entities.Game", "Game")
-                        .WithMany()
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BJ.DAL.Entities.User", "Account")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("BJ.DAL.Entities.UserInGame", b =>
                 {
                     b.HasOne("BJ.DAL.Entities.Game", "Game")
                         .WithMany()

@@ -3,14 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BJ.DAL.Entities
 {
-    public class PointBot:BaseEntity
+    public class BotInGame:BaseEntity
     {
         public int CountPoint { get; set; }
 
 
         public Guid BotId { get; set; }
         [ForeignKey("BotId")]
-        public Bot Bot { get; set; }
+        public virtual Bot Bot { get; set; }
 
 
         public Guid GameId { get; set; }

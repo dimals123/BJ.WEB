@@ -1,5 +1,10 @@
 ﻿using BJ.DAL.Entities;
 using BJ.DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BJ.DAL.Repositories
 {
@@ -8,6 +13,13 @@ namespace BJ.DAL.Repositories
         public StepUserRepository(BJContext context):base(context)
         {
 
+        }
+
+        public async Task<List<StepUser>> GetOfUser(string userId, Guid gameId)
+        {
+           var stepUsers = await _dbSet.Select(x=>x).Where(u=>u.GameId == gameId && u.UserId == userId).ToListAsync();
+           
+            return stepUsers;
         }
     }
 }

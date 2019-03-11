@@ -11,8 +11,8 @@ namespace BJ.DAL
         private BotRepository botRepository;
         private CardRepository cardRepository;
         private GameRepository gameRepository;
-        private PointUserRepository pointAccountRepository;
-        private PointBotRepository pointBotRepository;
+        private UserInGameRepository pointAccountRepository;
+        private BotInGameRepository pointBotRepository;
         private StepUserRepository stepAccountRepository;
         private StepBotRepository stepBotRepository;
         private UserRepository userRepository;
@@ -65,22 +65,22 @@ namespace BJ.DAL
             }
         }
 
-        public IPointUserRepository PointsAccounts
+        public IUserInGameRepository UserInGames
         {
             get
             {
                 if (pointAccountRepository == null)
-                    pointAccountRepository = new PointUserRepository(db);
+                    pointAccountRepository = new UserInGameRepository(db);
                 return pointAccountRepository;
             }
         }
 
-        public IPointBotRepository PointsBots
+        public IBotInGameRepository BotInGames
         {
             get
             {
                 if (pointBotRepository == null)
-                    pointBotRepository = new PointBotRepository(db);
+                    pointBotRepository = new BotInGameRepository(db);
                 return pointBotRepository;
             }
         }

@@ -42,7 +42,7 @@ namespace BJ.DAL.Repositories
             return await _dbSet.AsNoTracking().ToListAsync();
         }
 
-        public virtual async Task Update(T item)
+        public virtual void Update(T item)
         {
             _context.Entry(item).State = EntityState.Modified;
         }

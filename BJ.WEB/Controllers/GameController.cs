@@ -18,13 +18,13 @@ namespace BJ.WEB.Controllers
 
         public async Task<IActionResult> Start([FromBody]StartGameView startGameView)
         {
-            await _gameService.StartGame(startGameView);
-            return Ok();
+            var result = await _gameService.StartGame(startGameView);
+            return Ok(result);
         }
         public async Task<IActionResult> GetCards([FromBody] GetCardsGameView getCardsGameView)
         {
-            await _gameService.GetCards(getCardsGameView);
-            return Ok();
+            var result = await _gameService.GetCards(getCardsGameView);
+            return Ok(result);
         }
         public async Task<IActionResult> Stop([FromBody] GetCardsGameView getCardsGameView)
         {

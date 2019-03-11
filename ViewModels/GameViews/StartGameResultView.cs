@@ -8,15 +8,26 @@ namespace ViewModels.GameViews
     public class StartGameResultView
     {
         public UserStartGameResultView User { get; set; }
-        public List<BotStartGameViewItem> Bots { get; set; }
+        public List<BotStartGameResultViewItem> Bots { get; set; }
+        public Guid GameId { get; set; }
+
+        public StartGameResultView()
+        {
+            Bots = new List<BotStartGameResultViewItem>();
+        }
 
     }
 
     public class UserStartGameResultView
     {
         public string Name { get; set; }
+        public int Points { get; set; }
         public List<StepUserStartGameResultViewItem> Cards { get; set; }
-        public PointUserStartGameView Points { get; set; }
+
+        public UserStartGameResultView()
+        {
+            Cards = new List<StepUserStartGameResultViewItem>();
+        }
     }
 
     public class StepUserStartGameResultViewItem
@@ -26,27 +37,25 @@ namespace ViewModels.GameViews
 
     }
 
-    public class PointUserStartGameView
-    {
-        public int CountPoint { get; set; }
-    }
-
-    public class BotStartGameViewItem
+    public class BotStartGameResultViewItem
     {
         public string Name { get; set; }
-        public List<StepBotStartGameViewItem> Cards { get; set; }
-        public PointBotStartGameView Points { get; set; }
+        public int Points { get; set; }
+        public List<StepBotStartGameResultViewItem> Cards { get; set; }
+
+        public BotStartGameResultViewItem()
+        {
+            Cards = new List<StepBotStartGameResultViewItem>();
+        }
+
     }
 
-    public class StepBotStartGameViewItem
+    public class StepBotStartGameResultViewItem
     {
         public SuitType Suit { get; set; }
         public RankType Rank { get; set; }
     }
 
-    public class PointBotStartGameView
-    {
-        public int CountPoint { get; set; }
-    }
+   
 
 }
