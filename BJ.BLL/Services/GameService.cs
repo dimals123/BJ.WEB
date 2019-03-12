@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Transactions;
+using ViewModels.Enums;
 using ViewModels.GameViews;
 
 namespace BJ.BLL.Services
@@ -20,215 +22,155 @@ namespace BJ.BLL.Services
         {
             this._unitOfWork = _unitOfWork;
         }
-      
-        public async Task<StartGameResultView> StartGame(StartGameView startGameView)
+
+        public async Task<StartGameResponseView> StartGame(StartGameView startGameView)
         {
 
-            var game = new Game
+            using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted }, TransactionScopeAsyncFlowOption.Enabled))
             {
-                CountBots = startGameView.CountBots
-            };
-            await _unitOfWork.Games.Create(game);
-
-            var bots = await DbInitialize.InitBots(_unitOfWork, startGameView.CountBots);
-            var deck  = await DbInitialize.InitCards(_unitOfWork);
-
-            
-
-
-            var stepUsers = new List<StepUser>();
-            var stepBots = new List<StepBot>();
-            var userInGame = new UserInGame
-            {
-                GameId = game.Id,
-                UserId = startGameView.UserId,
-                CountPoint = 0
-            };
-            var botsInGame = new List<BotInGame>();
-            foreach (var bot in bots)
-            {
-                botsInGame.Add(new BotInGame
+                var game = new Game
                 {
-                    BotId = bot.Id,
+                    CountBots = startGameView.CountBots
+                };
+                
+
+                var bots = await DbInitialize.InitBots(_unitOfWork, startGameView.CountBots);
+                var deck = await DbInitialize.InitCards(_unitOfWork);
+
+                var stepUsers = new List<StepUser>();
+                var stepBots = new List<StepBot>();
+
+                var userInGame = new UserInGame
+                {
                     GameId = game.Id,
+                    UserId = startGameView.UserId,
                     CountPoint = 0
-                });
-            }
-          
-
-
-            var cardsRemove = new List<Card>();
-
-            for (int i = 0; i < 2; i++) 
-            {
-                var currentCard = deck.FirstOrDefault();
-                var stepUser = new StepUser
-                {
-                    GameId = game.Id,
-                    UserId = startGameView.UserId,
-                    Suit = currentCard.Suit,
-                    Rank = currentCard.Rank
-                };
-                stepUsers.Add(stepUser);
-
-                var pointUser = new UserInGame
-                {
-                    GameId = game.Id,
-                    UserId = startGameView.UserId,
-                    CountPoint =/* pointMaxUser.CountPoint +*/ (int)currentCard.Rank
                 };
 
-                userInGame.CountPoint += (int)currentCard.Rank;
-                           
-              
-                cardsRemove.Add(currentCard);
-                deck.Remove(currentCard);
+                var botsInGame = new List<BotInGame>();
 
-                for (int j = 0; j < startGameView.CountBots; j++)
+                foreach (var bot in bots)
                 {
-                    currentCard = deck.FirstOrDefault();
-                    var stepBot = new StepBot
+                    botsInGame.Add(new BotInGame
+                    {
+                        BotId = bot.Id,
+                        GameId = game.Id,
+                        CountPoint = 0
+                    });
+                }
+
+                var cardsRemove = new List<Card>();
+
+                for (int i = 0; i < 2; i++)
+                {
+                    var currentCard = deck.FirstOrDefault();
+                    var stepUser = new StepUser
                     {
                         GameId = game.Id,
-                        BotId = bots[j].Id,
+                        UserId = startGameView.UserId,
                         Suit = currentCard.Suit,
-                        Rank = currentCard.Rank,
+                        Rank = currentCard.Rank
                     };
-                    stepBots.Add(stepBot);
+                    stepUsers.Add(stepUser);
 
-                    foreach(var botInGame in botsInGame)
-                    {
-                        if(bots[j].Id == botInGame.Id)
-                        {
-                            botInGame.CountPoint += (int)currentCard.Rank;
-                            break;
-                        }
-                    }
+                    userInGame.CountPoint += (int)currentCard.Rank;
 
-                    
+
                     cardsRemove.Add(currentCard);
                     deck.Remove(currentCard);
+
+                    for (int j = 0; j < startGameView.CountBots; j++)
+                    {
+                        currentCard = deck.FirstOrDefault();
+                        var stepBot = new StepBot
+                        {
+                            GameId = game.Id,
+                            BotId = bots[j].Id,
+                            Suit = currentCard.Suit,
+                            Rank = currentCard.Rank,
+                        };
+                        stepBots.Add(stepBot);
+
+                        foreach (var botInGame in botsInGame)
+                        {
+                            if (bots[j].Id == botInGame.BotId)
+                            {
+                                botInGame.CountPoint += (int)currentCard.Rank;
+                                break;
+                            }
+                        }
+
+
+                        cardsRemove.Add(currentCard);
+                        deck.Remove(currentCard);
+                    }
                 }
-            }
-
-            await _unitOfWork.StepsAccounts.CreateRange(stepUsers);
-            await _unitOfWork.StepsBots.CreateRange(stepBots);
-            _unitOfWork.Cards.DeleteRange(cardsRemove);
-            await _unitOfWork.UserInGames.Create(userInGame);
-            await _unitOfWork.BotInGames.CreateRange(botsInGame);
-            await _unitOfWork.Save();
-
-            var result = await CreateStartGameResultView(game.Id, startGameView.UserId);
-            return result;
-        }
-
-        public async Task<StartGameResultView> GetCards(GetCardsGameView getCardsGameView)
-        {
-            var removeCards = new List<Card>();
-            var deck = await _unitOfWork.Cards.GetAll();
-            var bots = await _unitOfWork.Bots.GetAll();
-
-
-            var pointsUser = await _unitOfWork.UserInGames.GetFirst();
-            var pointsBot = await _unitOfWork.BotInGames.GetAll();
-
-            var currentCard = deck.FirstOrDefault();
-
-            var game = await _unitOfWork.Games.Get(getCardsGameView.GameId);
-
-            var stepUser = new StepUser
-            {
-                GameId = getCardsGameView.GameId,
-                UserId = getCardsGameView.UserId,
-                Rank = currentCard.Rank,
-                Suit = currentCard.Suit
-            };
-            await _unitOfWork.StepsAccounts.Create(stepUser);
-            await _unitOfWork.Save();
-
-            pointsUser.CountPoint += (int)currentCard.Rank;
-
-            _unitOfWork.UserInGames.Update(pointsUser);
-            await _unitOfWork.Save();
-
-            removeCards.Add(currentCard);
-            deck.Remove(currentCard);
-
-            var stepsBotAdd = new List<StepBot>();
-            var pointsBotAdd = new List<BotInGame>();
-
-            for (int i = 0; i < game.CountBots; i++)
-            {
-                currentCard = deck.FirstOrDefault();
-
-                var pointMaxBot = new BotInGame();
-                pointMaxBot = _unitOfWork.BotInGames.GetMaxCountPoints(bots[i].Id, getCardsGameView.GameId, pointsBot);
-
-                if (_unitOfWork.Bots.IsCard(pointMaxBot))
+                await _unitOfWork.Games.Create(game);
+                await _unitOfWork.StepsAccounts.CreateRange(stepUsers);
+                await _unitOfWork.StepsBots.CreateRange(stepBots);
+                _unitOfWork.Cards.DeleteRange(cardsRemove);
+                await _unitOfWork.UserInGames.Create(userInGame);
+               
+                await _unitOfWork.BotInGames.CreateRange(botsInGame);
+                await _unitOfWork.Save();
+                if (true)
                 {
-                    var stepBot = new StepBot
-                    {
-                        BotId = bots[i].Id,
-                        GameId = getCardsGameView.GameId,
-                        Rank = currentCard.Rank,
-                        Suit = currentCard.Suit };
-                    stepsBotAdd.Add(stepBot);
-                    
-                    var pointBot = new BotInGame
-                    {
-                        GameId = getCardsGameView.GameId,
-                        BotId = bots[i].Id,
-                        CountPoint = pointMaxBot.CountPoint + (int)deck[0].Rank
-                    };
-                    pointsBotAdd.Add(pointBot);
-
-                    removeCards.Add(deck[0]);
-                    deck.Remove(deck[0]);
+                    throw new ApplicationException("Ошибка базы данных! Транзакция завершена неудачно.");
                 }
+                var result = await CreateStartGameResultView(game.Id, startGameView.UserId);
+                transactionScope.Complete();
+              
+                return result;        
             }
 
 
-
-
-            await _unitOfWork.StepsBots.CreateRange(stepsBotAdd);
-            await _unitOfWork.BotInGames.CreateRange(pointsBotAdd);
-            
-            _unitOfWork.Cards.DeleteRange(removeCards);
-            await _unitOfWork.Save();
-            //if (pointUser.CountPoint >= 21)
-            //    await Stop(getCardsGameView);
-
-
-            var result = await CreateStartGameResultView(getCardsGameView.GameId, getCardsGameView.UserId);
-            return result;
-            
-
         }
 
-        public async Task Stop(GetCardsGameView getCardsGameView)
+        public async Task<StartGameResponseView> GetCards(GetCardsGameView getCardsGameView)
         {
-            var deck = await _unitOfWork.Cards.GetAll();
-            var bots = await _unitOfWork.Bots.GetAll();
-
-            var pointsBot = await _unitOfWork.BotInGames.GetAll();
-
-            var removeCards = new List<Card>();         
-            var stepsBotAdd = new List<StepBot>();
-            var pointsBotAdd = new List<BotInGame>();
-
-            var countStopBots = 0;
-
-            var game = await _unitOfWork.Games.Get(getCardsGameView.GameId);
-            while (countStopBots != game.CountBots)
+            using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted }, TransactionScopeAsyncFlowOption.Enabled))
             {
-                countStopBots = 0;
+
+                var game = await _unitOfWork.Games.GetById(getCardsGameView.GameId);
+
+                var removeCards = new List<Card>();
+
+                var pointsUser = await _unitOfWork.UserInGames.Get(game.Id, getCardsGameView.UserId);
+                var pointsBot = await _unitOfWork.BotInGames.GetAllBotsInGame(game.Id);
+
+                var deck = await _unitOfWork.Cards.GetAll();
+                var bots = await _unitOfWork.Bots.GetAllBots(pointsBot);
+
+                var currentCard = deck.FirstOrDefault();
+
+                var stepUser = new StepUser
+                {
+                    GameId = getCardsGameView.GameId,
+                    UserId = getCardsGameView.UserId,
+                    Rank = currentCard.Rank,
+                    Suit = currentCard.Suit
+                };
+                await _unitOfWork.StepsAccounts.Create(stepUser);
+                await _unitOfWork.Save();
+
+                pointsUser.CountPoint += (int)currentCard.Rank;
+
+                _unitOfWork.UserInGames.Update(pointsUser);
+                await _unitOfWork.Save();
+
+                removeCards.Add(currentCard);
+                deck.Remove(currentCard);
+
+                var stepsBotAdd = new List<StepBot>();
+
                 for (int i = 0; i < game.CountBots; i++)
                 {
+                    currentCard = deck.FirstOrDefault();
 
-                    var pointMaxBot = new BotInGame();
-                    if (_unitOfWork.Bots.IsCard(pointMaxBot))
+                    var pointBot = pointsBot.FirstOrDefault(x => x.BotId == bots[i].Id);
+
+                    if (_unitOfWork.Bots.IsCard(pointBot))
                     {
-                        var currentCard = deck.FirstOrDefault();
                         var stepBot = new StepBot
                         {
                             BotId = bots[i].Id,
@@ -238,123 +180,214 @@ namespace BJ.BLL.Services
                         };
                         stepsBotAdd.Add(stepBot);
 
-                        var pointBot = new BotInGame
-                        {
-                            GameId = getCardsGameView.GameId,
-                            BotId = bots[i].Id,
-                            CountPoint = pointMaxBot.CountPoint + (int)currentCard.Rank
-                        };
-                        pointsBotAdd.Add(pointBot);
-                        pointsBot.Add(pointBot);
-                        removeCards.Add(currentCard);
-                        deck.Remove(currentCard);
-                    }
-                    else
-                    {
-                        countStopBots++;
+                        pointBot.CountPoint += (int)currentCard.Rank;
+
+                        removeCards.Add(deck[0]);
+                        deck.Remove(deck[0]);
                     }
                 }
+
+
+
+
+                await _unitOfWork.StepsBots.CreateRange(stepsBotAdd);
+                _unitOfWork.BotInGames.UpdateRange(pointsBot);
+
+                _unitOfWork.Cards.DeleteRange(removeCards);
+                await _unitOfWork.Save();
+                //if (pointUser.CountPoint >= 21)
+                //    await Stop(getCardsGameView);
+                var result = await CreateStartGameResultView(getCardsGameView.GameId, getCardsGameView.UserId);
+                transactionScope.Complete();
+                
+                return result;
             }
-
-
-            await _unitOfWork.BotInGames.CreateRange(pointsBotAdd);
-            await _unitOfWork.StepsBots.CreateRange(stepsBotAdd);
-            await _unitOfWork.Save();
-            await EndGame(getCardsGameView);
 
         }
 
-        public async Task EndGame(GetCardsGameView getCardsGameView)
+        public async Task<StartGameResponseView> Stop(GetCardsGameView getCardsGameView)
         {
-            var pointsMaxBots = new List<BotInGame>();
-            var game = await _unitOfWork.Games.Get(getCardsGameView.GameId);
-            var bots = await _unitOfWork.Bots.GetAll();
+            using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted }, TransactionScopeAsyncFlowOption.Enabled))
+            {
+                var game = await _unitOfWork.Games.GetById(getCardsGameView.GameId);
+
+                var pointsBot = await _unitOfWork.BotInGames.GetAllBotsInGame(game.Id);
+
+                var deck = await _unitOfWork.Cards.GetAll();
+                var bots = await _unitOfWork.Bots.GetAllBots(pointsBot);
+
+                var removeCards = new List<Card>();
+                var stepsBotAdd = new List<StepBot>();
+
+                var countStopBots = 0;
+                while (countStopBots != game.CountBots)
+                {
+                    countStopBots = 0;
+                    for (int i = 0; i < game.CountBots; i++)
+                    {
+
+                        if (_unitOfWork.Bots.IsCard(pointsBot[i]))
+                        {
+                            var currentCard = deck.FirstOrDefault();
+                            var stepBot = new StepBot
+                            {
+                                BotId = bots.FirstOrDefault(x => x.Id == pointsBot[i].BotId).Id,
+                                GameId = getCardsGameView.GameId,
+                                Rank = currentCard.Rank,
+                                Suit = currentCard.Suit
+                            };
+                            stepsBotAdd.Add(stepBot);
+
+                            pointsBot[i].CountPoint += (int)currentCard.Rank;
+
+                            removeCards.Add(currentCard);
+                            deck.Remove(currentCard);
+                        }
+                        else
+                        {
+                            countStopBots++;
+                        }
+                    }
+                }
+
+
+                _unitOfWork.BotInGames.UpdateRange(pointsBot);
+                await _unitOfWork.StepsBots.CreateRange(stepsBotAdd);
+                await _unitOfWork.Save();
+               
+                var result = await EndGame(getCardsGameView);
+                transactionScope.Complete();
+                return result;
+
+            }
+           
+        }
+
+        private async Task<StartGameResponseView> EndGame(GetCardsGameView getCardsGameView)
+        {
+
+            var game = await _unitOfWork.Games.GetById(getCardsGameView.GameId);
+
+            var pointsBots = await _unitOfWork.BotInGames.GetAllBotsInGame(game.Id);
+            var pointUser = await _unitOfWork.UserInGames.Get(game.Id, getCardsGameView.UserId);
+
+            var bots = await _unitOfWork.Bots.GetAllBots(pointsBots);
             var deck = await _unitOfWork.Cards.GetAll();
 
             var pointsUser = await _unitOfWork.UserInGames.GetAll();
             var pointsBot = await _unitOfWork.BotInGames.GetAll();
 
 
-            for (int i = 0; i < game.CountBots; i++)
-            {
-                pointsMaxBots.Add();
-            }
-            var Winner = (await _unitOfWork.Users.Get(getCardsGameView.UserId)).UserName;
 
+            string winnerName = string.Empty;
+            int winnerPoints, newPoints;
+            if (pointUser.CountPoint <= 21)
+            {
+                winnerPoints = pointUser.CountPoint;
+                winnerName = (await _unitOfWork.Users.GetById(getCardsGameView.UserId)).UserName;
+            }
+            else
+            {
+                winnerPoints = 0;
+            }
             for (int i = 0; i < game.CountBots; i++)
             {
-                if (pointMaxUser.CountPoint < pointsMaxBots[i].CountPoint && pointsMaxBots[i].CountPoint <=21)
+                newPoints = pointsBot[i].CountPoint;
+                if (winnerPoints < newPoints && newPoints <= 21)
                 {
-                    Winner = (await _unitOfWork.Bots.Get(pointsMaxBots[i].BotId)).Name;
+                    winnerPoints = newPoints;
+                    winnerName = (await _unitOfWork.Bots.GetById(pointsBots[i].BotId)).Name;
                 }
             }
-            game.WinnerId = Winner;
+            game.WinnerId = winnerName;
 
             _unitOfWork.Cards.DeleteRange(deck);
             _unitOfWork.Games.Update(game);
             await _unitOfWork.Save();
+
+            var result = await CreateStartGameResultView(game.Id, getCardsGameView.UserId);
+
+            return result;
+
+
         }
-            
-        private async Task<StartGameResultView> CreateStartGameResultView(Guid gameId, string userId)
+
+        private async Task<StartGameResponseView> CreateStartGameResultView(Guid gameId, string userId)
         {
-            var game = await _unitOfWork.Games.Get(gameId);
 
-            var startGameResultView = new StartGameResultView();
+            var game = await _unitOfWork.Games.GetById(gameId);
 
-            var userStartGameResultView = new UserStartGameResultView();
-            var botStartGameResultViewItem = new List<BotStartGameResultViewItem>();
+            var startGameResultView = new StartGameResponseView();
 
-            userStartGameResultView.Name = (await _unitOfWork.Users.Get(userId)).UserName;
+            var userStartGameResultView = new UserStartGameResponseView();
+            var botStartGameResultViewItem = new List<BotStartGameResponseViewItem>();
+
+            userStartGameResultView.Name = (await _unitOfWork.Users.GetById(userId)).UserName;
             userStartGameResultView.Points = (await _unitOfWork.UserInGames.Get(gameId, userId)).CountPoint;
 
-            var cardsUser = await _unitOfWork.StepsAccounts.GetOfUser(userId, gameId);
+            var cardsUser = await _unitOfWork.StepsAccounts.GetCardsByUserIdAndGameId(userId, gameId);
 
-            foreach (var card in cardsUser)
+            userStartGameResultView.Cards = cardsUser.Select(x => new StepUserStartGameResponseViewItem()
             {
-                userStartGameResultView.Cards.Add(new StepUserStartGameResultViewItem
-                {
-                    Rank = card.Rank,
-                    Suit = card.Suit
-                });
-            }
+                Rank = (RankTypeView)x.Rank,
+                Suit = (SuitTypeView)x.Suit
+            }).ToList();
 
-            var botsInGames = await _unitOfWork.BotInGames.GetAllBots(game.Id);
-            
+            //foreach (var card in cardsUser)
+            //{
+            //    userStartGameResultView.Cards.Add(new StepUserStartGameResultViewItem
+            //    {
+            //        Rank = card.Rank,
+            //        Suit = card.Suit
+            //    });
+            //}
 
-            for (int i = 0; i < game.CountBots; i++) 
+            var botsInGames = await _unitOfWork.BotInGames.GetAllBotsInGame(game.Id);
+
+
+            for (int i = 0; i < game.CountBots; i++)
             {
-                var cardsBot = await _unitOfWork.StepsBots.GetOfBot(botsInGames[i].BotId, game.Id);
+                var cardsBot = await _unitOfWork.StepsBots.GetByBotIdAndGameId(botsInGames[i].BotId, game.Id);
 
-                var stepBotsStartGame = new List<StepBotStartGameResultViewItem>();
-                foreach (var card in cardsBot)
+                var stepBotsStartGame = new List<StepBotStartGameResponseViewItem>();
+                stepBotsStartGame = cardsBot.Select(x => new StepBotStartGameResponseViewItem()
                 {
-                    var stepBotStartGameResultViewItem = new StepBotStartGameResultViewItem
-                    {
-                        Rank = card.Rank,
-                        Suit = card.Suit
-                    };
-                    stepBotsStartGame.Add(stepBotStartGameResultViewItem);
-                }
+                    Rank = (RankTypeView)x.Rank,
+                    Suit = (SuitTypeView)x.Suit
+                }).ToList();
+
+                //foreach (var card in cardsBot)
+                //{
+                //    var stepBotStartGameResultViewItem = new StepBotStartGameResultViewItem
+                //    {
+                //        Rank = card.Rank,
+                //        Suit = card.Suit
+                //    };
+                //    stepBotsStartGame.Add(stepBotStartGameResultViewItem);
+                //}
 
 
 
-                botStartGameResultViewItem.Add(new BotStartGameResultViewItem
+                botStartGameResultViewItem.Add(new BotStartGameResponseViewItem
                 {
                     Name = botsInGames[i].Bot.Name,
                     Points = botsInGames[i].CountPoint,
                     Cards = stepBotsStartGame
                 });
 
-                
-                
-               
+
+
+
             }
 
             startGameResultView.Bots = botStartGameResultViewItem;
             startGameResultView.User = userStartGameResultView;
             startGameResultView.GameId = game.Id;
 
+            startGameResultView.Winner = game.WinnerId;
+
             return startGameResultView;
+
         }
 
     }

@@ -8,7 +8,7 @@ namespace BJ.DAL.Interfaces
 {
     public interface IUserRepository:IGeneric<User>
     {
-        Task<User> Get(string userId);
+        Task<User> GetById(string userId);
     }
 
 }

@@ -8,7 +8,6 @@ namespace BJ.DAL.Interfaces
 {
     public interface IUserInGameRepository:IGeneric<UserInGame>
     {
-        new void Update(UserInGame model);
         Task<UserInGame> Get(Guid gameId, string userId);
     }
 }

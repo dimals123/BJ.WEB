@@ -10,13 +10,5 @@ namespace BJ.DAL.Repositories
         {
 
         }
-
-        public new async Task Update(Game item)
-        {
-            _dbSet.Remove(await _dbSet.FindAsync(item.Id));
-            await _dbSet.AddAsync(item);
-            base.Update(item);
-
-        }
     }
 }

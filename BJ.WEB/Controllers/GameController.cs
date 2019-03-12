@@ -28,8 +28,8 @@ namespace BJ.WEB.Controllers
         }
         public async Task<IActionResult> Stop([FromBody] GetCardsGameView getCardsGameView)
         {
-            await _gameService.Stop(getCardsGameView);
-            return Ok();
+            var result = await _gameService.Stop(getCardsGameView);
+            return Ok(result);
         }
     }
 

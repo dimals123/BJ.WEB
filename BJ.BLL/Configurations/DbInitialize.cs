@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace BJ.BLL.Configurations
 {
@@ -16,37 +17,41 @@ namespace BJ.BLL.Configurations
 
         public async static Task<List<Bot>> InitBots(IUnitOfWork unitOfWork, int countBots)
         {
-            List<Bot> bots = new List<Bot>();
-            var CountBots = (await unitOfWork.Bots.GetAll()).Count;
-            if (await unitOfWork.Bots.GetFirst() == null)
+            using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted}, TransactionScopeAsyncFlowOption.Enabled))
             {
-                for (int i = 0; i < countBots; i++)
+                List<Bot> bots = new List<Bot>();
+                var CountBots = (await unitOfWork.Bots.GetAll()).Count;
+                if (await unitOfWork.Bots.GetFirst() == null)
                 {
-                    var bot = new Bot()
+                    for (int i = 0; i < countBots; i++)
                     {
-                        Name = _botsName[i]
-                    };
-                    bots.Add(bot);
+                        var bot = new Bot()
+                        {
+                            Name = _botsName[i]
+                        };
+                        bots.Add(bot);
 
+                    }
+                    await unitOfWork.Bots.CreateRange(bots);
+                    await unitOfWork.Save();
                 }
-                await unitOfWork.Bots.CreateRange(bots);
-                await unitOfWork.Save();
-            }
-            else if(CountBots < countBots)
-            {
-                for(int i = 0; i< countBots - CountBots; i++)
+                else if (CountBots < countBots)
                 {
-                    var bot = new Bot()
+                    for (int i = 0; i < countBots - CountBots; i++)
                     {
-                        Name = _botsName[CountBots + i]
-                    };
-                    bots.Add(bot);
+                        var bot = new Bot()
+                        {
+                            Name = _botsName[CountBots + i]
+                        };
+                        bots.Add(bot);
+                    }
+                    await unitOfWork.Bots.CreateRange(bots);
+                    await unitOfWork.Save();
                 }
-                await unitOfWork.Bots.CreateRange(bots);
-                await unitOfWork.Save();
+                else bots = await unitOfWork.Bots.GetAll();
+                transactionScope.Complete();
+                return bots;
             }
-            else bots = await unitOfWork.Bots.GetAll();
-            return bots;
         }
         #endregion
 
@@ -55,22 +60,26 @@ namespace BJ.BLL.Configurations
 
         public async static Task<List<Card>> InitCards(IUnitOfWork unitOfWork)
         {
-            var cards = await unitOfWork.Cards.GetAll();
-            if (cards.FirstOrDefault() != null)
-                unitOfWork.Cards.DeleteRange(cards);
-                
-
-            for (int i = 0; i < Enum.GetNames(typeof(SuitType)).Length; i++)
+            using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted }, TransactionScopeAsyncFlowOption.Enabled))
             {
-                for (int j = 0; j < Enum.GetNames(typeof(RankType)).Length; j++)
+                var cards = await unitOfWork.Cards.GetAll();
+                if (cards.FirstOrDefault() != null)
+                    unitOfWork.Cards.DeleteRange(cards);
+
+
+                for (int i = 0; i < Enum.GetNames(typeof(SuitType)).Length; i++)
                 {
-                    _cards.Add(new Card { Suit = (SuitType)Enum.GetValues(typeof(SuitType)).GetValue(i), Rank = (RankType)Enum.GetValues(typeof(RankType)).GetValue(j) });
+                    for (int j = 0; j < Enum.GetNames(typeof(RankType)).Length; j++)
+                    {
+                        _cards.Add(new Card { Suit = (SuitType)Enum.GetValues(typeof(SuitType)).GetValue(i), Rank = (RankType)Enum.GetValues(typeof(RankType)).GetValue(j) });
+                    }
                 }
+                Swap(_cards);
+                await unitOfWork.Cards.CreateRange(_cards);
+                await unitOfWork.Save();
+                transactionScope.Complete();
+                return _cards;
             }
-            Swap(_cards);
-            await unitOfWork.Cards.CreateRange(_cards);
-            await unitOfWork.Save();
-            return _cards;
         }
 
         private static void Swap(List<Card> cards)

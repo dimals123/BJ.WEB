@@ -13,9 +13,9 @@ namespace BJ.DAL.Repositories
         {
         }
 
-        public async Task<User> Get(string userId)
+        public async Task<User> GetById(string userId)
         {
-            var user = await _dbSet.FirstOrDefaultAsync(u=>u.Id == userId);
+            var user = await _dbSet.FirstOrDefaultAsync(u => u.Id == userId);
             return user;
         }
     }

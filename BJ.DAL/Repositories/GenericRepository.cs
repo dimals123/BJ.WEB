@@ -32,7 +32,7 @@ namespace BJ.DAL.Repositories
             _dbSet.Remove(item);
         }
 
-        public virtual async Task<T> Get(Guid id)
+        public virtual async Task<T> GetById(Guid id)
         {
             return await _dbSet.FindAsync(id);
         }
@@ -44,6 +44,7 @@ namespace BJ.DAL.Repositories
 
         public virtual void Update(T item)
         {
+            _dbSet.Update(item);
             _context.Entry(item).State = EntityState.Modified;
         }
 

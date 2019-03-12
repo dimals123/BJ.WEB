@@ -19,9 +19,6 @@ namespace BJ.DAL.Repositories
             return result;
         }
 
-        public new void Update(UserInGame model)
-        {
-            _dbSet.Update(model);
-        }
+       
     }
 }

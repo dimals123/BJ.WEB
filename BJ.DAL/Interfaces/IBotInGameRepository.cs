@@ -8,6 +8,8 @@ namespace BJ.DAL.Interfaces
 {
     public interface IBotInGameRepository:IGeneric<BotInGame>
     {
-        Task<List<BotInGame>> GetAllBots(Guid gameId);
+        Task<List<BotInGame>> GetAllBotsInGame(Guid gameId);
+        Task<BotInGame> GetByGameIdAndBotId(Guid gameId, Guid botId);
+        void UpdateRange(List<BotInGame> botInGames);
     }
 }
