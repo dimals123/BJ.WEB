@@ -113,10 +113,7 @@ namespace BJ.BLL.Services
                
                 await _unitOfWork.BotInGames.CreateRange(botsInGame);
                 await _unitOfWork.Save();
-                if (true)
-                {
-                    throw new ApplicationException("Ошибка базы данных! Транзакция завершена неудачно.");
-                }
+               
                 var result = await CreateStartGameResultView(game.Id, startGameView.UserId);
                 transactionScope.Complete();
               
@@ -153,11 +150,14 @@ namespace BJ.BLL.Services
                 await _unitOfWork.StepsAccounts.Create(stepUser);
                 await _unitOfWork.Save();
 
+                //throw new ApplicationException("Ошибка базы данных! Транзакция завершена неудачно.");
+  
                 pointsUser.CountPoint += (int)currentCard.Rank;
 
                 _unitOfWork.UserInGames.Update(pointsUser);
                 await _unitOfWork.Save();
-
+                if (true)
+             
                 removeCards.Add(currentCard);
                 deck.Remove(currentCard);
 
