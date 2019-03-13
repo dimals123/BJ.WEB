@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.IdentityModel.Tokens.Jwt;
@@ -20,23 +21,23 @@ namespace BJ.WEB
         {
             Configuration = configuration;
         }
-       
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.InitServices(Configuration);
             services
-                .AddMvc(options=>options.Filters.Add(typeof(ValidationActionFilterAttribute)))
+                .AddMvc(options => options.Filters.Add(typeof(ValidationActionFilterAttribute)))
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.ConfigureIdentity();
             services.AddRouting();
-           
+
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
             services.Configure<JwtTokenOptions>(Configuration.GetSection("jwt"));
             services.ConfigureAutentification(Configuration);
-            
+
 
         }
 
@@ -46,11 +47,18 @@ namespace BJ.WEB
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true
+                });
             }
             else
             {
                 app.UseHsts();
             }
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMiddleware(typeof(ExceptionsMiddleware));

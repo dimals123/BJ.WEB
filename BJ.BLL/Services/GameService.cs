@@ -327,20 +327,20 @@ namespace BJ.BLL.Services
 
             var cardsUser = await _unitOfWork.StepsAccounts.GetCardsByUserIdAndGameId(userId, gameId);
 
-            userStartGameResultView.Cards = cardsUser.Select(x => new StepUserStartGameResponseViewItem()
-            {
-                Rank = (RankTypeView)x.Rank,
-                Suit = (SuitTypeView)x.Suit
-            }).ToList();
-
-            //foreach (var card in cardsUser)
+            //userStartGameResultView.Cards = cardsUser.Select(x => new StepUserStartGameResponseViewItem()
             //{
-            //    userStartGameResultView.Cards.Add(new StepUserStartGameResultViewItem
-            //    {
-            //        Rank = card.Rank,
-            //        Suit = card.Suit
-            //    });
-            //}
+            //    Rank = (RankTypeView)x.Rank,
+            //    Suit = (SuitTypeView)x.Suit
+            //}).ToList();
+
+            foreach (var card in cardsUser)
+            {
+                userStartGameResultView.Cards.Add(new StepUserStartGameResponseViewItem
+                {
+                    Rank = (RankTypeView)card.Rank,
+                    Suit = (SuitTypeView)card.Suit
+                });
+            }
 
             var botsInGames = await _unitOfWork.BotInGames.GetAllBotsInGame(game.Id);
 
@@ -350,21 +350,21 @@ namespace BJ.BLL.Services
                 var cardsBot = await _unitOfWork.StepsBots.GetByBotIdAndGameId(botsInGames[i].BotId, game.Id);
 
                 var stepBotsStartGame = new List<StepBotStartGameResponseViewItem>();
-                stepBotsStartGame = cardsBot.Select(x => new StepBotStartGameResponseViewItem()
-                {
-                    Rank = (RankTypeView)x.Rank,
-                    Suit = (SuitTypeView)x.Suit
-                }).ToList();
-
-                //foreach (var card in cardsBot)
+                //stepBotsStartGame = cardsBot.Select(x => new StepBotStartGameResponseViewItem()
                 //{
-                //    var stepBotStartGameResultViewItem = new StepBotStartGameResultViewItem
-                //    {
-                //        Rank = card.Rank,
-                //        Suit = card.Suit
-                //    };
-                //    stepBotsStartGame.Add(stepBotStartGameResultViewItem);
-                //}
+                //    Rank = (RankTypeView)x.Rank,
+                //    Suit = (SuitTypeView)x.Suit
+                //}).ToList();
+
+                foreach (var card in cardsBot)
+                {
+                    var stepBotStartGameResultViewItem = new StepBotStartGameResponseViewItem
+                    {
+                        Rank = (RankTypeView)card.Rank,
+                        Suit = (SuitTypeView)card.Suit
+                    };
+                    stepBotsStartGame.Add(stepBotStartGameResultViewItem);
+                }
 
 
 
