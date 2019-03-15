@@ -1,12 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
-using BJ.BLL.Exceptions;
-using BJ.BLL.Extensions;
-using BJ.BLL.Filters;
+﻿using System.Threading.Tasks;
 using BJ.BLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using ViewModels;
 using ViewModels.AccountViews;
 
 namespace BJ.WEB.Controllers

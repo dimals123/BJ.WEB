@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace BJ.WEB
@@ -38,6 +40,17 @@ namespace BJ.WEB
             services.Configure<JwtTokenOptions>(Configuration.GetSection("jwt"));
             services.ConfigureAutentification(Configuration);
 
+            services.AddSpaStaticFiles(configuration =>
+            {
+                if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+                {
+                    configuration.RootPath = "ClientApp/dist/ClientApp";
+                }
+                else
+                {
+                    configuration.RootPath = "wwwroot";
+                }
+            });
 
         }
 
@@ -47,10 +60,10 @@ namespace BJ.WEB
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                {
-                    HotModuleReplacement = true
-                });
+                //app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                //{
+                //    HotModuleReplacement = true
+                //});
             }
             else
             {
@@ -63,6 +76,16 @@ namespace BJ.WEB
             app.UseAuthentication();
             app.UseMiddleware(typeof(ExceptionsMiddleware));
             app.UseMvc(routes => routes.MapRoute("default", "{controller}/{action}"));
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
+            });
         }
     }
 }
