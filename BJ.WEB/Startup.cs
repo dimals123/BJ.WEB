@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -39,6 +38,7 @@ namespace BJ.WEB
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
             services.Configure<JwtTokenOptions>(Configuration.GetSection("jwt"));
             services.ConfigureAutentification(Configuration);
+            services.AddCors(); 
 
             services.AddSpaStaticFiles(configuration =>
             {
@@ -72,6 +72,10 @@ namespace BJ.WEB
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
+            app.UseCors(builder=>
+            builder.WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseMiddleware(typeof(ExceptionsMiddleware));
