@@ -1,5 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using BJ.BLL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ViewModels.AccountViews;
 
@@ -81,8 +84,16 @@ namespace BJ.WEB.Controllers
             var result = await _accountService.Login(loginAccountView);
             return Ok(result);
         }
-      
-        
+
+        [Authorize]
+        public async Task<Object> GetUserProfile()
+        {
+            string userId = User.Claims.First(c => c.Type == "UserId").Value;
+            var user = await _accountService.FindById(userId);
+            return new { user };
+        }
+
+
 
     }
 }

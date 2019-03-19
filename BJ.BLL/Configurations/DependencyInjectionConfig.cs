@@ -6,7 +6,6 @@ using BJ.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Data.SqlClient;
 
 namespace BJ.BLL.Configurations
 {

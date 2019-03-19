@@ -4,16 +4,13 @@ namespace ViewModels.AccountViews
 {
     public class GetAllAccountView
     {
-        public List<AccountGetAllAccountViewItem> AccountNames { get; set; }
+        public List<string> AccountNames { get; set; }
 
         public GetAllAccountView()
         {
-            AccountNames = new List<AccountGetAllAccountViewItem>();
+            AccountNames = new List<string>();
         }
     }
 
-    public class AccountGetAllAccountViewItem
-    {
-        public string Name { get; set; }
-    }
+    
 }

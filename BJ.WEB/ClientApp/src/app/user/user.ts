@@ -1,4 +1,3 @@
-export class User{
-    name: string;
-    password: string;
+export class GetAllAccountResponseView{
+  name: Array<string>;
 }

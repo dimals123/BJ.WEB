@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { UserService } from './services/user.service';
+import { GameComponent } from './game/game.component';
 
 
 
@@ -15,7 +16,8 @@ import { UserService } from './services/user.service';
   declarations: [
     AppComponent,
     UserComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using BJ.BLL.Exceptions;
 using BJ.BLL.Helpers;
 using BJ.BLL.Interfaces;
 using BJ.DAL.Entities;
 using BJ.DAL.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using ViewModels.AccountViews;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace BJ.BLL.Services
 {
@@ -26,6 +28,13 @@ namespace BJ.BLL.Services
             _unitOfWork = unitOfWork;
         }
 
+        public async Task<string> FindById(string userId)
+        {
+            var result =await _userManager.FindByIdAsync(userId);
+            return result.UserName;
+
+        }
+
         public async Task<GetAllAccountView> GetAll()
         {
             var users = await _unitOfWork.Users.GetAll();
@@ -33,12 +42,8 @@ namespace BJ.BLL.Services
 
             var response = new GetAllAccountView();
 
-
-            response.AccountNames = userNames.Select(x => new AccountGetAllAccountViewItem()
-            {
-                
-                Name = x
-            }).ToList();
+            response.AccountNames = userNames;
+           
            
 
 
@@ -69,7 +74,6 @@ namespace BJ.BLL.Services
         }
 
         public async Task<LoginAccountResponseView> Register(RegisterAccountView model)
-
         {
             var account = new User
             {
@@ -90,5 +94,7 @@ namespace BJ.BLL.Services
             return response;
 
         }
+
+        
     }
 }

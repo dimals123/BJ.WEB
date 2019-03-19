@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import {User} from '../user/user';
+import { GetAllAccountResponseView } from '../user/user';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,46 +20,32 @@ export class UserService {
 
 
 
+
   formModel = this.fb.group({
     UserName:['', Validators.required],
-    Passwords:this.fb.group({
-      Password:['', [Validators.required, Validators.minLength(4)]],
-      ConfirmPassword:['', Validators.required],  
-    }, {validator: this.comparePasswords})
+    Password:['', Validators.required]
   });
 
-  comparePasswords(fb: FormGroup) {
-    let confirmPswrdCtrl = fb.get('ConfirmPassword');
-    //passwordMismatch
-    //confirmPswrdCtrl.errors={passwordMismatch:true}
-    if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
-      if (fb.get('Password').value != confirmPswrdCtrl.value)
-        confirmPswrdCtrl.setErrors({ passwordMismatch: true });
-      else
-        confirmPswrdCtrl.setErrors(null);
-    }
-  }
 
   register() {
     var body = {
       Name: this.formModel.value.UserName,
-      Password: this.formModel.value.Passwords.Password
+      Password: this.formModel.value.Password
     };
     return this.http.post(this.BaseURI + '/Account/Register', body);
   }
 
-  login() {
-    var body = {
-      Name: this.formModel.value.UserName,
-      Password: this.formModel.value.Passwords.Password,
-    };
-    return this.http.post(this.BaseURI + '/Account/Login', body);
+  login(formData) {
+    return this.http.post(this.BaseURI + '/Account/Login', formData);
   }
 
-  getAll()
-  {
-    var users = this.http.get(this.BaseURI + '/Account/GetAll');
-    return users;
+
+  getNames (): Observable<GetAllAccountResponseView> {
+    return this.http.get<GetAllAccountResponseView>(this.BaseURI + '/Account/GetAll')
+      .pipe(
+        tap(heroes => console.log('Names is succesful'))
+      );
   }
+  
 
 }

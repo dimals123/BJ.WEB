@@ -7,8 +7,8 @@ input.form-control,input.form-control:focus{
     background-color: #f7f7f7;
     color: black;
     border-color: black;
-    border-radius: 0px;
-    border-width: 2px;
+    border-radius: 10px;
+    border-width: 3px;
 }
 
 input.form-control:focus{
@@ -38,9 +38,20 @@ div.form-group.required>label:first-child:after{
 }
 
 form{
-    margin: 0px 16px;
+    margin: 250px 250px;
 }
 
 div.side-header{
     border:3px solid black;
+}
+
+center{
+    line-height: 200px;
+}
+
+img.center{
+    align-self: center;
+    align-items: center;
+    align-content: center;
+    vertical-align: middle;
 }
