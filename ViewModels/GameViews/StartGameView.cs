@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ViewModels.GameViews
+﻿namespace ViewModels.GameViews
 {
     public class StartGameView
     {

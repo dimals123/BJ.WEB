@@ -80,9 +80,11 @@ namespace BJ.DAL.Migrations
 
                     b.Property<DateTime>("CreationAt");
 
+                    b.Property<bool>("IsEnd");
+
                     b.Property<int>("Player");
 
-                    b.Property<string>("WinnerId");
+                    b.Property<string>("WinnerName");
 
                     b.HasKey("Id");
 

@@ -13,7 +13,7 @@ namespace BJ.BLL.Extensions
             return message;
         }
 
-        public static string GetFirstError(this ModelStateDictionary modelState)
+        public static string GetFirstErrorMessage(this ModelStateDictionary modelState)
         {
 
             var message = modelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).FirstOrDefault();

@@ -7,8 +7,12 @@ namespace BJ.BLL.Interfaces
     public interface IGameService
     {
         Task<StartGameResponseView> StartGame(StartGameView startGameView);
-        Task<StartGameResponseView> GetCards(GetCardsGameView getCardsGameView);
-        Task<StartGameResponseView> Stop(GetCardsGameView getCardsGameView);
-       
+        Task GetCards(GetCardsGameView getCardsGameView);
+        Task Stop(GetCardsGameView getCardsGameView);
+        Task<CreateStartGameResponseView> CreateStartGameResultView(GetCardsGameView getCardsGameView);
+        Task<CreateStartGameResponseView> CreateStartGameResultView(CreateStartGameView createStartGameView);
+        Task<ReturnLastGameIdView> ReturnLastGame(CreateStartGameView createStartGameView);
+
+
     }
 }

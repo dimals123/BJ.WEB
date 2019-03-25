@@ -27,6 +27,12 @@ namespace BJ.DAL.Repositories
             return botsInGame;
         }
 
+        public async Task<List<BotInGame>> GetAllByGameId(Guid gameId)
+        {
+            var botsInGames = await _dbSet.Select(x => x).Where(x=>x.GameId == gameId).ToListAsync();
+            return botsInGames;
+        }
+
         public void UpdateRange(List<BotInGame> botInGames)
         {
             _dbSet.UpdateRange(botInGames);

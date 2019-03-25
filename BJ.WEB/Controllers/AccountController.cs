@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BJ.BLL.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ViewModels.AccountViews;
+
 
 namespace BJ.WEB.Controllers
 {
@@ -85,14 +86,20 @@ namespace BJ.WEB.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
         [Authorize]
-        public async Task<Object> GetUserProfile()
+        public IActionResult GetUserProfile()
         {
-            string userId = User.Claims.First(c => c.Type == "UserId").Value;
-            var user = await _accountService.FindById(userId);
-            return new { user };
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return  Ok(userId);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Clear()
+        {
+            await _accountService.Clear();
+            return Ok();
+        }
 
 
     }

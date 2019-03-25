@@ -6,8 +6,8 @@ namespace BJ.DAL.Entities.Enums
 {
     public enum SuitType
     {
-        Pyke,
-        Tref,
+        Pyke = 0,
+        Tref = 1,
         Bub,
         Cherv
     }

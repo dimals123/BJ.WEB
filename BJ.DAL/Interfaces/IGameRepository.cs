@@ -2,10 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BJ.DAL.Interfaces
 {
     public interface IGameRepository:IGeneric<Game>
     {
+        Task<Game> GetLastGame(UserInGame userInGame);
+        Task<List<Game>> GetAllGamesByUserInGames(List<UserInGame> userInGames);
     }
 }

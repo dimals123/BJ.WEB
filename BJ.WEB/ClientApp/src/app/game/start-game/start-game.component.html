@@ -1,0 +1,14 @@
+<div>
+<p>Winner : {{startGameRespnosne.winner}}</p>
+<p>UserName : {{startGameRespnosne.user.name}}</p>
+<p>Points : {{startGameRespnosne.user.points}}</p>
+<p *ngFor="let card of startGameRespnosne.user.cards">Suit : {{card.suit}}, Rank : {{card.rank}}</p>
+<div *ngFor="let bot of startGameRespnosne.bots">
+    <p>BotName : {{bot.name}}</p>
+    <p>Points : {{bot.points}}</p>
+    <p *ngFor="let cardBot of bot.cards">Suit : {{cardBot.suit}}, Rank : {{cardBot.rank}}</p>
+</div>
+</div>
+<button (click)="getCards()" class="btn btn-danger my-2 my-sm-0">GetCard</button>
+<button (click)="StopGame()" class="btn btn-danger my-2 my-sm-0">Stop</button>
+<button (click)="ExitGame()" class="btn btn-danger my-2 my-sm-0">Exit</button>

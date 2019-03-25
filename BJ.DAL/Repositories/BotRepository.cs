@@ -31,6 +31,25 @@ namespace BJ.DAL.Repositories
             }
             return bots;
         }
+
+        public async Task<List<Bot>> GetRangeByCount(int count)
+        {
+            var bots = new List<Bot>();
+            var allBots = await _dbSet.Select(x => x).ToListAsync();
+            int countBots = 0;
+            foreach (var bot in allBots)
+            {
+                if (countBots >= count)
+                {
+                    break;
+                }
+                bots.Add(bot);
+                countBots++;
+
+
+            }
+            return bots;
+        }
        
     }
 }

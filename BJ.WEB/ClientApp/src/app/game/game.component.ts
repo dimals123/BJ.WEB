@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { AccountService } from '../shared/services/account.service';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { StartGameView } from '../shared/models/game-views/start-game-view';
+import { GameService } from '../shared/services/game.service';
 
 @Component({
   selector: 'app-game',
@@ -8,17 +11,31 @@ import { UserService } from '../services/user.service';
   styles: []
 })
 export class GameComponent implements OnInit {
-  userDetails;
 
-  constructor(private router: Router, private service: UserService) { }
+  startGame = new StartGameView();
+  
+
+  constructor(private serviceAccount: AccountService, private serviceGame: GameService, private router:Router, private formbuilder:FormBuilder) { }
+
+  formModel = this.formbuilder.group({
+    CountBots:[0, Validators.required],
+  });
+
+  
 
   ngOnInit() {
    
   }
 
-
-  onLogout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/user/registration']);
+  onLogout(): void {
+    this.serviceAccount.logout();
   }
+
+  onStartGame(form:NgForm) {
+    debugger;
+    this.startGame.countBots = this.formModel.value.CountBots;
+    this.startGame.userId = localStorage.getItem('userId');
+    this.serviceGame.startGame(this.startGame).subscribe(data=>{localStorage.setItem('gameId', data.gameId), this.router.navigateByUrl("/game/start-game")})
+  }
+
 }

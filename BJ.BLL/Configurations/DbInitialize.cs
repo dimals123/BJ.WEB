@@ -3,6 +3,7 @@ using BJ.DAL.Entities.Enums;
 using BJ.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -15,14 +16,14 @@ namespace BJ.BLL.Configurations
         private static readonly string[] _botsName = new string[] { "Olivia","Amelia","Isla","Emily","Ava","Lily","Mia", "Sofia", "Isabella","Grace",
                                                              "Oliver","Harry","Jack","George","Noah","Charlie", "Jacob","Alfie","Freddie","Oscar"};
 
-        public async static Task<List<Bot>> InitBots(IUnitOfWork unitOfWork, int countBots)
+        public async static Task<List<Bot>> InitBots(IUnitOfWork unitOfWork, int countBots, Guid gameId)
         {
 
-            List<Bot> bots = new List<Bot>();
+           var bots = new List<Bot>();
             var CountBots = (await unitOfWork.Bots.GetAll()).Count;
             if (await unitOfWork.Bots.GetFirst() == null)
             {
-                for (int i = 0; i < countBots; i++)
+                for (int i = 0; i < _botsName.Length; i++)
                 {
                     var bot = new Bot()
                     {
@@ -33,21 +34,21 @@ namespace BJ.BLL.Configurations
                 }
                 await unitOfWork.Bots.CreateRange(bots);
                 await unitOfWork.Save();
+                bots = await unitOfWork.Bots.GetRangeByCount(countBots);
             }
             else if (CountBots < countBots)
             {
-                for (int i = 0; i < countBots - CountBots; i++)
-                {
-                    var bot = new Bot()
-                    {
-                        Name = _botsName[CountBots + i]
-                    };
-                    bots.Add(bot);
-                }
-                await unitOfWork.Bots.CreateRange(bots);
-                await unitOfWork.Save();
+                throw new ValidationException("too many bots!");
             }
-            else bots = await unitOfWork.Bots.GetAll();
+            else
+            {
+                var botInGames = await unitOfWork.BotInGames.GetAllBotsInGame(gameId);
+                bots = await unitOfWork.Bots.GetAllBots(botInGames);
+                if(bots.FirstOrDefault() == null)
+                {
+                    bots = await unitOfWork.Bots.GetRangeByCount(countBots);
+                }
+            }
             //transactionScope.Complete();
             return bots;
 
@@ -55,7 +56,7 @@ namespace BJ.BLL.Configurations
         #endregion
 
         #region(Cards)
-        private static List<Card> _cards = new List<Card>();
+       
 
         public async static Task<List<Card>> InitCards(IUnitOfWork unitOfWork)
         {
@@ -64,6 +65,10 @@ namespace BJ.BLL.Configurations
             var cards = await unitOfWork.Cards.GetAll();
             if (cards.FirstOrDefault() != null)
                 unitOfWork.Cards.DeleteRange(cards);
+
+            var _cards = new List<Card>();
+            
+
 
 
             for (int i = 0; i < Enum.GetNames(typeof(SuitType)).Length; i++)

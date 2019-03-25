@@ -1,32 +1,48 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms"
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { RegistrationComponent } from './user/registration/registration.component';
-import { UserService } from './services/user.service';
-import { GameComponent } from './game/game.component';
+import { LogInGuard } from './guards/log-in.guard';
+import { LogOffGuard } from './guards/log-off.guard';
+import { LayoutModule } from '@progress/kendo-angular-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TokenInterceptor } from './shared/interseptors/token-interceptor';
+
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    UserComponent,
-    RegistrationComponent,
-    GameComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    LayoutModule,
+    BrowserAnimationsModule
   ],
-  providers: [UserService],
+  providers: [
+    LogInGuard, 
+    LogOffGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

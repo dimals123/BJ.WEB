@@ -8,5 +8,6 @@ namespace BJ.DAL.Interfaces
     {
         bool IsCard(BotInGame pointBot);
         Task<List<Bot>> GetAllBots(List<BotInGame> botInGames);
+        Task<List<Bot>> GetRangeByCount(int count);
     }
 }

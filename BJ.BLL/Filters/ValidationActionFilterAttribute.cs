@@ -23,7 +23,7 @@ namespace BJ.BLL.Filters
                 //var errorResult = new GenericResponseView<string>();
                 //errorResult.Error = context.ModelState.GetFirstError();
                 //context.Result =  new BadRequestObjectResult(errorResult);
-                context.Result = new BadRequestObjectResult(context.ModelState);
+                context.Result = new BadRequestObjectResult(context.ModelState.GetFirstErrorMessage());
             }
 
         }

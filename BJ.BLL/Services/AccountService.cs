@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using BJ.BLL.Helpers;
@@ -8,8 +7,6 @@ using BJ.DAL.Entities;
 using BJ.DAL.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using ViewModels.AccountViews;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 
 namespace BJ.BLL.Services
 {
@@ -26,13 +23,6 @@ namespace BJ.BLL.Services
             _signInManager = signInManager;
             _jwtTokentHelper = jwtTokentHelper;
             _unitOfWork = unitOfWork;
-        }
-
-        public async Task<string> FindById(string userId)
-        {
-            var result =await _userManager.FindByIdAsync(userId);
-            return result.UserName;
-
         }
 
         public async Task<GetAllAccountView> GetAll()
@@ -65,6 +55,7 @@ namespace BJ.BLL.Services
                 var token = _jwtTokentHelper.GenerateJwtToken(model.Name, result);
                 var response = new LoginAccountResponseView()
                 {
+                    UserId = result.Id,
                     Token = token
                 };
 
@@ -88,13 +79,13 @@ namespace BJ.BLL.Services
             var token = _jwtTokentHelper.GenerateJwtToken(model.Name, account);
             var response = new LoginAccountResponseView()
             {
+                UserId = account.Id,
                 Token = token
             };
 
             return response;
 
         }
-
         
     }
 }
