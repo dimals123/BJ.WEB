@@ -25,21 +25,14 @@ namespace BJ.BLL.Services
             var pointsBot = await _unitOfWork.BotInGames.GetAll();
             var stepsUser = await _unitOfWork.StepsAccounts.GetAll();
             var stepsBots = await _unitOfWork.StepsBots.GetAll();
-            _unitOfWork.Cards.DeleteRange(deck);
-            _unitOfWork.Bots.DeleteRange(bots);
-            _unitOfWork.Games.DeleteRange(games);
-            _unitOfWork.UserInGames.DeleteRange(pointsUser);
-            _unitOfWork.BotInGames.DeleteRange(pointsBot);
-            _unitOfWork.StepsAccounts.DeleteRange(stepsUser);
-            _unitOfWork.StepsBots.DeleteRange(stepsBots);
-            await _unitOfWork.Save();
+            await _unitOfWork.Cards.DeleteRange(deck);
+            await _unitOfWork.Bots.DeleteRange(bots);
+            await _unitOfWork.Games.DeleteRange(games);
+            await _unitOfWork.UserInGames.DeleteRange(pointsUser);
+            await _unitOfWork.BotInGames.DeleteRange(pointsBot);
+            await _unitOfWork.StepsAccounts.DeleteRange(stepsUser);
+            await _unitOfWork.StepsBots.DeleteRange(stepsBots);
 
-        }
-
-        public async Task<List<Card>> GetDeck()
-        {
-            var cards = await _unitOfWork.Cards.GetAll();
-            return cards;
         }
 
     }

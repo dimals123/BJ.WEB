@@ -86,21 +86,9 @@ namespace BJ.WEB.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
-        [Authorize]
-        public IActionResult GetUserProfile()
-        {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return  Ok(userId);
-        }
+     
 
-        [HttpGet]
-        public async Task<IActionResult> Clear()
-        {
-            await _accountService.Clear();
-            return Ok();
-        }
-
+    
 
     }
 }

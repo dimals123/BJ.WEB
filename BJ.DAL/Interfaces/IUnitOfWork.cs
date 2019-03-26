@@ -14,6 +14,5 @@ namespace BJ.DAL.Interfaces
         IStepUserRepository StepsAccounts { get; }
         IStepBotRepository StepsBots { get; }
         IUserRepository Users { get; }
-        Task Save();
     }
 }

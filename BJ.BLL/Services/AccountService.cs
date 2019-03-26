@@ -25,12 +25,12 @@ namespace BJ.BLL.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<GetAllAccountView> GetAll()
+        public async Task<GetAllAccountResponseView> GetAll()
         {
             var users = await _unitOfWork.Users.GetAll();
             var userNames = users.Select(x => x.UserName).ToList();
 
-            var response = new GetAllAccountView();
+            var response = new GetAllAccountResponseView();
 
             response.AccountNames = userNames;
            
@@ -64,7 +64,7 @@ namespace BJ.BLL.Services
            
         }
 
-        public async Task<LoginAccountResponseView> Register(RegisterAccountView model)
+        public async Task<RegistrationAccountResponseView> Register(RegisterAccountView model)
         {
             var account = new User
             {
@@ -77,7 +77,7 @@ namespace BJ.BLL.Services
             }
 
             var token = _jwtTokentHelper.GenerateJwtToken(model.Name, account);
-            var response = new LoginAccountResponseView()
+            var response = new RegistrationAccountResponseView()
             {
                 UserId = account.Id,
                 Token = token

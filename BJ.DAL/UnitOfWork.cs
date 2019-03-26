@@ -106,13 +106,6 @@ namespace BJ.DAL
         }
 
 
-
-        public async Task Save()
-        {
-
-            await db.SaveChangesAsync();
-        }
-
         private bool disposed = false;
 
        

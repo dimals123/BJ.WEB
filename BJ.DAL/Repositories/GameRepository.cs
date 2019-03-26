@@ -1,8 +1,6 @@
 ﻿using BJ.DAL.Entities;
 using BJ.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BJ.DAL.Repositories
@@ -14,20 +12,12 @@ namespace BJ.DAL.Repositories
 
         }
 
-        public async Task<Game> GetLastGame(UserInGame userInGame)
+        public async Task<Game> GetLastGame(string userId)
         {
-            var result = await _dbSet.FirstOrDefaultAsync(x => x.Id == userInGame.GameId);
+            var result = await _dbSet.FirstOrDefaultAsync(x => x.IsEnd == false);
             return result;
         }
 
-       public async Task<List<Game>> GetAllGamesByUserInGames(List<UserInGame> userInGames)
-        {
-            var games = new List<Game>();
-            foreach(var userInGame in userInGames)
-            {
-                games.Add(await _dbSet.FirstOrDefaultAsync(x => x.Id == userInGame.GameId));
-            }
-            return games;
-        }
+   
     }
 }

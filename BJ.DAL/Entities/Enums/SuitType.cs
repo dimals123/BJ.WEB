@@ -8,7 +8,7 @@ namespace BJ.DAL.Entities.Enums
     {
         Pyke = 0,
         Tref = 1,
-        Bub,
-        Cherv
+        Bub = 2,
+        Cherv = 3
     }
 }

@@ -15,12 +15,6 @@ namespace BJ.DAL.Repositories
 
         }  
 
-        public async Task<UserInGame> Get(Guid gameId, string userId)
-        {
-            var result = await _dbSet.FirstOrDefaultAsync(x => x.GameId == gameId && x.UserId == userId);
-            return result;
-        }
-
         public async Task<UserInGame> GetLastGame(string userId)
         {
             var result = await _dbSet
@@ -31,14 +25,25 @@ namespace BJ.DAL.Repositories
 
         public async Task<List<UserInGame>> GetAllByUserId(string userId)
         {
-            var games = await _dbSet.Select(x => x).Where(x => x.UserId == userId).ToListAsync();
+            var games = await _dbSet
+                .Include(x => x.Game)
+                .Where(x => x.UserId == userId)
+                .ToListAsync();
             return games;
         }
 
         public async Task<UserInGame> GetByUserIdAndGameId(string userId, Guid gameId)
         {
-            var userInGame = await _dbSet.FirstOrDefaultAsync(x=>x.GameId == gameId && x.UserId == userId);
+            var userInGame = await _dbSet
+                .FirstOrDefaultAsync(x=>x.GameId == gameId && x.UserId == userId);
             return userInGame;
+        }
+
+        public async Task<int> GetPointsByUserIdAndGameId(string userId, Guid gameId)
+        {
+            var userInGame = await GetByUserIdAndGameId(userId, gameId);
+            var points = userInGame.CountPoint;
+            return points;
         }
     }
 }

@@ -15,21 +15,11 @@ namespace BJ.DAL.Repositories
 
         }
 
-        public bool IsCard(BotInGame pointBot)
+        public async Task<string> GetNameById(Guid botId)
         {
-            if (pointBot.CountPoint <= 16)
-                return true;
-            else return false;
-        }
-
-        public async Task<List<Bot>> GetAllBots(List<BotInGame> botInGames)
-        {
-            var bots = new List<Bot>();
-            foreach(var bot in botInGames)
-            {
-               bots.Add(await _dbSet.FirstOrDefaultAsync(x=>x.Id == bot.BotId));
-            }
-            return bots;
+            var bot = await GetById(botId);
+            var name = bot.Name;
+            return name;
         }
 
         public async Task<List<Bot>> GetRangeByCount(int count)

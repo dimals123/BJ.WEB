@@ -8,6 +8,6 @@ namespace BJ.DAL.Interfaces
 {
     public interface IStepUserRepository:IGeneric<StepUser>
     {
-        Task<List<StepUser>> GetCardsByUserIdAndGameId(string userId, Guid gameId);
+        Task<List<StepUser>> GetAllByUserIdAndGameId(string userId, Guid gameId);
     }
 }

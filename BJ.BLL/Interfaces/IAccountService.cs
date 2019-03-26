@@ -6,7 +6,7 @@ namespace BJ.BLL.Interfaces
     public interface IAccountService
     {
         Task<LoginAccountResponseView> Login(LoginAccountView createAccountView);
-        Task<LoginAccountResponseView> Register(RegisterAccountView updateAccount);
-        Task<GetAllAccountView> GetAll();
+        Task<RegistrationAccountResponseView> Register(RegisterAccountView updateAccount);
+        Task<GetAllAccountResponseView> GetAll();
     }
 }

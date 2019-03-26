@@ -8,7 +8,6 @@ namespace BJ.DAL.Interfaces
 {
     public interface IGameRepository:IGeneric<Game>
     {
-        Task<Game> GetLastGame(UserInGame userInGame);
-        Task<List<Game>> GetAllGamesByUserInGames(List<UserInGame> userInGames);
+        Task<Game> GetLastGame(string userId);
     }
 }

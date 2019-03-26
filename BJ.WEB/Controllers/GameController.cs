@@ -1,8 +1,10 @@
 ﻿using BJ.BLL.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
-using ViewModels.GameViews;
 
 namespace BJ.WEB.Controllers
 {
@@ -17,45 +19,51 @@ namespace BJ.WEB.Controllers
             _gameService = gameService;
         }
         [HttpPost]
-        public async Task<IActionResult> Start([FromBody]StartGameView startGameView)
+        public async Task<IActionResult> Start([FromBody]int countBots)
         {
-            var response = await _gameService.StartGame(startGameView);
+            var userId = GetUserId();
+            var response = await _gameService.Start(countBots, userId);
             return Ok(response);
         }
         [HttpPost]
-        public async Task<IActionResult> GetCards([FromBody] GetCardsGameView getCardsGameView)
+        public async Task<IActionResult> GetCards([FromBody]Guid gameId)
         {
-            await _gameService.GetCards(getCardsGameView);
+            var userId = GetUserId();
+            await _gameService.GetCards(gameId, userId);
             return Ok();
         }
         [HttpPost]
-        public async Task<IActionResult> Stop([FromBody] GetCardsGameView getCardsGameView)
+        public async Task<IActionResult> Stop([FromBody]Guid gameId)
         {
-            await _gameService.Stop(getCardsGameView);
+            var userId = GetUserId();
+            await _gameService.Stop(gameId, userId);
             return Ok();
         }
         [HttpPost]
-        public async Task<IActionResult> GetLastGame([FromBody] CreateStartGameView createStartGameView)
-
+        public async Task<IActionResult> GetLastGame()
         {
-            var result = await _gameService.CreateStartGameResultView(createStartGameView);
+            var userId = GetUserId();
+            var result = await _gameService.CreateStartGameResultView(userId);
             return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetGameById([FromBody] GetCardsGameView getCardsGameView)
+        public async Task<IActionResult> GetGameById([FromBody]Guid gameId)
         {
-            var result = await _gameService.CreateStartGameResultView(getCardsGameView);
+            var userId = GetUserId();
+            var result = await _gameService.CreateStartGameResultView(gameId, userId);
             return Ok(result);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetGameId([FromBody] CreateStartGameView createStartGameView)
-
+        private string GetUserId()
         {
-            var result = await _gameService.ReturnLastGame(createStartGameView);
-            return Ok(result);
+            var userId = User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value;
+            return userId;
         }
+
+
+
+
     }
 
    

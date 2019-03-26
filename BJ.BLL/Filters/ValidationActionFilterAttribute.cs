@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
-using System.ComponentModel.DataAnnotations;
-using ViewModels;
 
 namespace BJ.BLL.Filters
 {

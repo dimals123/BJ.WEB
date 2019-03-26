@@ -7,6 +7,6 @@ namespace BJ.BLL.Interfaces
     public interface IHistoryService
     {
         Task Clear();
-        Task<List<Card>> GetDeck();
+
     }
 }

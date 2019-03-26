@@ -19,21 +19,25 @@ namespace BJ.BLL.Configurations
         public async static Task<List<Bot>> InitBots(IUnitOfWork unitOfWork, int countBots, Guid gameId)
         {
 
-           var bots = new List<Bot>();
-            var CountBots = (await unitOfWork.Bots.GetAll()).Count;
+            var bots = new List<Bot>();
+            var CountBots = _botsName.Length;
             if (await unitOfWork.Bots.GetFirst() == null)
             {
-                for (int i = 0; i < _botsName.Length; i++)
+                bots = _botsName.Select(x => new Bot
                 {
-                    var bot = new Bot()
-                    {
-                        Name = _botsName[i]
-                    };
-                    bots.Add(bot);
+                    Name = x
+                }).ToList();
 
-                }
+                //for (int i = 0; i < _botsName.Length; i++)
+                //{
+                //    var bot = new Bot()
+                //    {
+                //        Name = _botsName[i]
+                //    };
+                //    bots.Add(bot);
+
+                //}
                 await unitOfWork.Bots.CreateRange(bots);
-                await unitOfWork.Save();
                 bots = await unitOfWork.Bots.GetRangeByCount(countBots);
             }
             else if (CountBots < countBots)
@@ -42,8 +46,8 @@ namespace BJ.BLL.Configurations
             }
             else
             {
-                var botInGames = await unitOfWork.BotInGames.GetAllBotsInGame(gameId);
-                bots = await unitOfWork.Bots.GetAllBots(botInGames);
+                var botInGames = await unitOfWork.BotInGames.GetAllByGameId(gameId);
+                bots = botInGames.Select(x=>x.Bot).ToList();
                 if(bots.FirstOrDefault() == null)
                 {
                     bots = await unitOfWork.Bots.GetRangeByCount(countBots);
@@ -58,13 +62,13 @@ namespace BJ.BLL.Configurations
         #region(Cards)
        
 
-        public async static Task<List<Card>> InitCards(IUnitOfWork unitOfWork)
+        public async static Task<List<Card>> InitCards(IUnitOfWork unitOfWork, Guid gameId)
         {
             //using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted }, TransactionScopeAsyncFlowOption.Enabled))
             //{
             var cards = await unitOfWork.Cards.GetAll();
             if (cards.FirstOrDefault() != null)
-                unitOfWork.Cards.DeleteRange(cards);
+                await unitOfWork.Cards.DeleteRange(cards);
 
             var _cards = new List<Card>();
             
@@ -75,12 +79,16 @@ namespace BJ.BLL.Configurations
             {
                 for (int j = 0; j < Enum.GetNames(typeof(RankType)).Length; j++)
                 {
-                    _cards.Add(new Card { Suit = (SuitType)Enum.GetValues(typeof(SuitType)).GetValue(i), Rank = (RankType)Enum.GetValues(typeof(RankType)).GetValue(j) });
+                    _cards.Add(new Card
+                    {
+                        Suit = (SuitType)Enum.GetValues(typeof(SuitType)).GetValue(i),
+                        Rank = (RankType)Enum.GetValues(typeof(RankType)).GetValue(j)
+                        //GameId = gameId
+                    });
                 }
             }
             Swap(_cards);
             await unitOfWork.Cards.CreateRange(_cards);
-            await unitOfWork.Save();
             //transactionScope.Complete();
             return _cards;
 

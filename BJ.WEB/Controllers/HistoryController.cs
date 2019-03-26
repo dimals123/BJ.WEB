@@ -21,10 +21,5 @@ namespace BJ.WEB.Controllers
             return Ok();
         }
 
-        public async Task<IActionResult> GetDeck()
-        {
-            var result = await _historyService.GetDeck();
-            return Ok(result);
-        }
     }
 }
