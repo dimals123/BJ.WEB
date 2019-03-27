@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BJ.DAL", "BJ.DAL\BJ.DAL.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BJ.BLL", "BJ.BLL\BJ.BLL.csproj", "{EF581B60-3AC0-4E9C-B95F-C0BB8A3A6378}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{09E225B8-6687-431F-82FA-C85084F39425}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BJ.ViewModels", "ViewModels\BJ.ViewModels.csproj", "{09E225B8-6687-431F-82FA-C85084F39425}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

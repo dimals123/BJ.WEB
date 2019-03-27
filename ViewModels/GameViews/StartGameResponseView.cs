@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace ViewModels.GameViews
+namespace BJ.ViewModels.GameViews
 {
     public class StartGameResponseView
     {

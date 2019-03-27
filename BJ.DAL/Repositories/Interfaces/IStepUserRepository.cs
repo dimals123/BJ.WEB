@@ -1,10 +1,9 @@
 ﻿using BJ.DAL.Entities;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace BJ.DAL.Interfaces
+namespace BJ.DAL.Repositories.Interfaces
 {
     public interface IStepUserRepository:IGeneric<StepUser>
     {

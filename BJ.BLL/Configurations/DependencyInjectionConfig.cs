@@ -1,8 +1,8 @@
-﻿using BJ.BLL.Helpers;
-using BJ.BLL.Interfaces;
+﻿using BJ.BLL.Helpers.Providers;
 using BJ.BLL.Services;
+using BJ.BLL.Services.Interfaces;
 using BJ.DAL;
-using BJ.DAL.Interfaces;
+using BJ.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

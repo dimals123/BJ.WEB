@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BJ.BLL.Interfaces
+namespace BJ.BLL.Services.Interfaces
 {
     public interface IHistoryService
     {

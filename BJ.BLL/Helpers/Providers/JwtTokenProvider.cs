@@ -1,4 +1,5 @@
-﻿using BJ.BLL.Options;
+﻿using BJ.BLL.Helpers.Providers.Interfaces;
+using BJ.BLL.Options;
 using BJ.DAL.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -8,9 +9,9 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace BJ.BLL.Helpers
+namespace BJ.BLL.Helpers.Providers
 {
-    public class JwtTokenProvider
+    public class JwtTokenProvider:IJwtTokenProvider
     {   private readonly JwtTokenOptions _options;
 
         public JwtTokenProvider(IOptions<JwtTokenOptions> option)

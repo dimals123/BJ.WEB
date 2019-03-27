@@ -1,5 +1,5 @@
 ﻿using BJ.DAL.Entities;
-using BJ.DAL.Interfaces;
+using BJ.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace BJ.DAL.Repositories
 
         }  
 
-        public async Task<UserInGame> GetLastGame(string userId)
+        public async Task<UserInGame> GetNoEnd(string userId)
         {
             var result = await _dbSet
                 .Include(x=>x.Game)

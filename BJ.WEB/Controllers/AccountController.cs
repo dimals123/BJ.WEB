@@ -1,10 +1,7 @@
-﻿using System;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using BJ.BLL.Interfaces;
-using Microsoft.AspNetCore.Authorization;
+﻿using System.Threading.Tasks;
+using BJ.BLL.Services.Interfaces;
+using BJ.ViewModels.AccountViews;
 using Microsoft.AspNetCore.Mvc;
-using ViewModels.AccountViews;
 
 
 namespace BJ.WEB.Controllers

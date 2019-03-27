@@ -1,4 +1,4 @@
-﻿using BJ.DAL.Interfaces;
+﻿using BJ.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

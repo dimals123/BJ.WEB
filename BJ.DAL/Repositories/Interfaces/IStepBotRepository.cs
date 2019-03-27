@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BJ.DAL.Interfaces
+namespace BJ.DAL.Repositories.Interfaces
 {
     public interface IStepBotRepository:IGeneric<StepBot>
     {

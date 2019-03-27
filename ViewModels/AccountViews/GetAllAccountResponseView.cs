@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ViewModels.AccountViews
+namespace BJ.ViewModels.AccountViews
 {
     public class GetAllAccountResponseView
     {

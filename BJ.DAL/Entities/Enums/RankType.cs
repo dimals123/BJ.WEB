@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BJ.DAL.Entities.Enums
+﻿namespace BJ.DAL.Entities.Enums
 {
     public enum RankType
     {
-        Six = 6,
-        Seven,
-        Eight,
-        Nine,
-        Ten,
-        Jack = 2,
-        Lady,
-        King,
-        Ace = 11 | 1
+        Six = 0,
+        Seven = 1,
+        Eight = 2,
+        Nine = 3,
+        Ten = 4,
+        Jack = 5,
+        Lady = 6,
+        King = 7,
+        Ace = 8
     }
 }

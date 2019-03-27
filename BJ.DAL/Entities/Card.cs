@@ -8,10 +8,10 @@ namespace BJ.DAL.Entities
     {
         public SuitType Suit { get; set; }
         public RankType Rank { get; set; }
-        
-        //public Guid GameId { get; set; }
-        //[ForeignKey("GameId")]
-        //public virtual Game Game { get; set; }
+
+        public Guid GameId { get; set; }
+        [ForeignKey("GameId")]
+        public virtual Game Game { get; set; }
 
     }
 }

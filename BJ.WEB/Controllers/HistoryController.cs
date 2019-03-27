@@ -1,8 +1,5 @@
-﻿using BJ.BLL.Interfaces;
+﻿using BJ.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BJ.WEB.Controllers

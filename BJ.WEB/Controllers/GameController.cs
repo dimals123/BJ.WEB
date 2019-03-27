@@ -1,4 +1,4 @@
-﻿using BJ.BLL.Interfaces;
+﻿using BJ.BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -43,7 +43,7 @@ namespace BJ.WEB.Controllers
         public async Task<IActionResult> GetLastGame()
         {
             var userId = GetUserId();
-            var result = await _gameService.CreateStartGameResultView(userId);
+            var result = await _gameService.GetNoEndGame(userId);
             return Ok(result);
         }
 
@@ -51,7 +51,7 @@ namespace BJ.WEB.Controllers
         public async Task<IActionResult> GetGameById([FromBody]Guid gameId)
         {
             var userId = GetUserId();
-            var result = await _gameService.CreateStartGameResultView(gameId, userId);
+            var result = await _gameService.GetGameByGameIdAndUserId(gameId, userId);
             return Ok(result);
         }
 

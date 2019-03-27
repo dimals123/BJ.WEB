@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using BJ.BLL.Helpers;
-using BJ.BLL.Interfaces;
 using BJ.DAL.Entities;
-using BJ.DAL.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using ViewModels.AccountViews;
+using BJ.ViewModels.AccountViews;
+using BJ.DAL.Repositories.Interfaces;
+using BJ.BLL.Helpers.Providers;
+using BJ.BLL.Services.Interfaces;
 
 namespace BJ.BLL.Services
 {

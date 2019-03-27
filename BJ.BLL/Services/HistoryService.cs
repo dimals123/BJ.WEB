@@ -1,7 +1,5 @@
-﻿using BJ.BLL.Interfaces;
-using BJ.DAL.Entities;
-using BJ.DAL.Interfaces;
-using System.Collections.Generic;
+﻿using BJ.BLL.Services.Interfaces;
+using BJ.DAL.Repositories.Interfaces;
 using System.Threading.Tasks;
 
 namespace BJ.BLL.Services

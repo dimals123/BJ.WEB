@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BJ.DAL.Interfaces
+namespace BJ.DAL.Repositories.Interfaces
 {
     public interface IUserInGameRepository:IGeneric<UserInGame>
     {
-        Task<UserInGame> GetLastGame(string userId);
+        Task<UserInGame> GetNoEnd(string userId);
         Task<List<UserInGame>> GetAllByUserId(string userId);
         Task<UserInGame> GetByUserIdAndGameId(string userId, Guid gameId);
         Task<int> GetPointsByUserIdAndGameId(string userId, Guid gameId);

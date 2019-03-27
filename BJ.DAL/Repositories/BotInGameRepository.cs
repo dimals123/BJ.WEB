@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BJ.DAL.Entities;
-using BJ.DAL.Interfaces;
+using BJ.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace BJ.DAL.Repositories

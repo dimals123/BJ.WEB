@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using ViewModels.Enums;
+using BJ.ViewModels.Enums;
 
-namespace ViewModels.GameViews
+namespace BJ.ViewModels.GameViews
 {
     public class CreateStartGameResponseView
     {

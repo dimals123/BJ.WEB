@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ViewModels.AccountViews
+namespace BJ.ViewModels.AccountViews
 {
     public class LoginAccountView
     {

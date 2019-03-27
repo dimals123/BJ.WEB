@@ -1,12 +1,11 @@
 ﻿using BJ.DAL.Entities;
 using BJ.DAL.Entities.Enums;
-using BJ.DAL.Interfaces;
+using BJ.DAL.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Transactions;
 
 namespace BJ.BLL.Configurations
 {
@@ -28,15 +27,6 @@ namespace BJ.BLL.Configurations
                     Name = x
                 }).ToList();
 
-                //for (int i = 0; i < _botsName.Length; i++)
-                //{
-                //    var bot = new Bot()
-                //    {
-                //        Name = _botsName[i]
-                //    };
-                //    bots.Add(bot);
-
-                //}
                 await unitOfWork.Bots.CreateRange(bots);
                 bots = await unitOfWork.Bots.GetRangeByCount(countBots);
             }
@@ -57,18 +47,16 @@ namespace BJ.BLL.Configurations
             return bots;
 
         }
+
         #endregion
 
         #region(Cards)
-       
+
 
         public async static Task<List<Card>> InitCards(IUnitOfWork unitOfWork, Guid gameId)
         {
             //using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted }, TransactionScopeAsyncFlowOption.Enabled))
             //{
-            var cards = await unitOfWork.Cards.GetAll();
-            if (cards.FirstOrDefault() != null)
-                await unitOfWork.Cards.DeleteRange(cards);
 
             var _cards = new List<Card>();
             
@@ -82,8 +70,8 @@ namespace BJ.BLL.Configurations
                     _cards.Add(new Card
                     {
                         Suit = (SuitType)Enum.GetValues(typeof(SuitType)).GetValue(i),
-                        Rank = (RankType)Enum.GetValues(typeof(RankType)).GetValue(j)
-                        //GameId = gameId
+                        Rank = (RankType)Enum.GetValues(typeof(RankType)).GetValue(j),
+                        GameId = gameId
                     });
                 }
             }

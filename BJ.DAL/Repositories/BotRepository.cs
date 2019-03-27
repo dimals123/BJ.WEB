@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BJ.DAL.Entities;
-using BJ.DAL.Interfaces;
+using BJ.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace BJ.DAL.Repositories
@@ -24,21 +24,8 @@ namespace BJ.DAL.Repositories
 
         public async Task<List<Bot>> GetRangeByCount(int count)
         {
-            var bots = new List<Bot>();
-            var allBots = await _dbSet.Select(x => x).ToListAsync();
-            int countBots = 0;
-            foreach (var bot in allBots)
-            {
-                if (countBots >= count)
-                {
-                    break;
-                }
-                bots.Add(bot);
-                countBots++;
-
-
-            }
-            return bots;
+            var result = await _dbSet.Select(x => x).Take(count).ToListAsync();
+            return result;
         }
        
     }

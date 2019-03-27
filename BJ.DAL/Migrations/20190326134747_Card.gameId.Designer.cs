@@ -4,14 +4,16 @@ using BJ.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BJ.DAL.Migrations
 {
     [DbContext(typeof(BJContext))]
-    partial class BJContextModelSnapshot : ModelSnapshot
+    [Migration("20190326134747_Card.gameId")]
+    partial class CardgameId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,6 +87,8 @@ namespace BJ.DAL.Migrations
                     b.Property<DateTime>("CreationAt");
 
                     b.Property<bool>("IsEnd");
+
+                    b.Property<int>("Player");
 
                     b.Property<string>("WinnerName");
 

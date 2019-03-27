@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
 
-namespace BJ.DAL.Interfaces
+namespace BJ.DAL.Repositories.Interfaces
 {
     public interface IUnitOfWork:IDisposable
     {

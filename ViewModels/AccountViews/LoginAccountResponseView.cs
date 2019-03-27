@@ -1,4 +1,4 @@
-﻿namespace ViewModels.AccountViews
+﻿namespace BJ.ViewModels.AccountViews
 {
     public class LoginAccountResponseView
     {

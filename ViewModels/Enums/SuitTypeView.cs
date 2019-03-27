@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ViewModels.Enums
+namespace BJ.ViewModels.Enums
 {
     public enum SuitTypeView
     {

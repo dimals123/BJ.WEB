@@ -1,7 +1,6 @@
-﻿using BJ.DAL.Interfaces;
-using BJ.DAL.Repositories;
+﻿using BJ.DAL.Repositories;
+using BJ.DAL.Repositories.Interfaces;
 using System;
-using System.Threading.Tasks;
 
 namespace BJ.DAL
 {
