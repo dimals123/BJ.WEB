@@ -15,9 +15,12 @@ namespace BJ.DAL.Repositories
 
         }
 
-        public async Task<List<StepBot>> GetByBotIdAndGameId(Guid botId, Guid gameId)
+        public async Task<List<StepBot>> GetAllByBotIdAndGameId(Guid botId, Guid gameId)
         {
-            var stepBots = await _dbSet.Select(x => x).Where(u => u.BotId == botId && u.GameId == gameId).ToListAsync();
+            var stepBots = await _dbSet
+                .Select(x => x)
+                .Where(u => u.BotId == botId && u.GameId == gameId)
+                .ToListAsync();
             return stepBots;
         }
 

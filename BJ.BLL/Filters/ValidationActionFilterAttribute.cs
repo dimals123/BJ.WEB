@@ -1,4 +1,5 @@
 ﻿using BJ.BLL.Extensions;
+using BJ.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
@@ -18,10 +19,12 @@ namespace BJ.BLL.Filters
 
             if (!context.ModelState.IsValid)
             {
-                //var errorResult = new GenericResponseView<string>();
-                //errorResult.Error = context.ModelState.GetFirstError();
-                //context.Result =  new BadRequestObjectResult(errorResult);
-                context.Result = new BadRequestObjectResult(context.ModelState.GetFirstErrorMessage());
+                var errorResult = new GenericResponseView<string>()
+                {
+                    Error = context.ModelState.GetFirstErrorMessage()
+                };
+                context.Result = new BadRequestObjectResult(errorResult);
+                //context.Result = new BadRequestObjectResult(context.ModelState.GetFirstErrorMessage());
             }
 
         }

@@ -15,11 +15,11 @@ namespace BJ.DAL.Repositories
 
         }  
 
-        public async Task<UserInGame> GetNoEnd(string userId)
+        public async Task<UserInGame> GetUnfinished(string userId)
         {
             var result = await _dbSet
                 .Include(x=>x.Game)
-                .FirstOrDefaultAsync(x => x.UserId == userId && x.Game.IsEnd == false);
+                .FirstOrDefaultAsync(x => x.UserId == userId && x.Game.IsFinished == false);
             return result;
         }
 
@@ -39,11 +39,5 @@ namespace BJ.DAL.Repositories
             return userInGame;
         }
 
-        public async Task<int> GetPointsByUserIdAndGameId(string userId, Guid gameId)
-        {
-            var userInGame = await GetByUserIdAndGameId(userId, gameId);
-            var points = userInGame.CountPoint;
-            return points;
-        }
     }
 }

@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'/user/registration',
+    redirectTo:'/account/registration',
     pathMatch:'full'
   },
   {
@@ -27,6 +27,9 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: '**', redirectTo: '/account/registration' 
+  }
 ];
 
 @NgModule({

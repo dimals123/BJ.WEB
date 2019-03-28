@@ -10,7 +10,7 @@ namespace BJ.DAL.Entities
 
         public string UserId { get; set; }
         [ForeignKey("UserId")]
-        public User Account { get; set; }
+        public User User { get; set; }
 
 
         public Guid GameId { get; set; }

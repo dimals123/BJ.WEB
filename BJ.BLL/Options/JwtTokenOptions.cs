@@ -2,8 +2,8 @@
 {
     public class JwtTokenOptions
     {
-        public string JwtKey { get; set; }
-        public string JwtIssuer { get; set; }
-        public int JwtExpireDays { get; set; }
+        public string Key { get; set; }
+        public string Issuer { get; set; }
+        public int ExpireDays { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace BJ.DAL.Repositories.Interfaces
 {
     public interface IStepBotRepository:IGeneric<StepBot>
     {
-        Task<List<StepBot>> GetByBotIdAndGameId(Guid botId, Guid gameId);
+        Task<List<StepBot>> GetAllByBotIdAndGameId(Guid botId, Guid gameId);
     }
 }

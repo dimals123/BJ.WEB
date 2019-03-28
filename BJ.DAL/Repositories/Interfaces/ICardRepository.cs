@@ -8,6 +8,7 @@ namespace BJ.DAL.Repositories.Interfaces
 {
     public interface ICardRepository:IGeneric<Card>
     {
-        Task<List<Card>> GetByGameId(Guid gameId);
+        Task<List<Card>> GetAllByGameId(Guid gameId);
+        Task<List<Card>> CreateDeck(Guid gameId);
     }
 }

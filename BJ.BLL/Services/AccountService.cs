@@ -5,8 +5,8 @@ using BJ.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
 using BJ.ViewModels.AccountViews;
 using BJ.DAL.Repositories.Interfaces;
-using BJ.BLL.Helpers.Providers;
 using BJ.BLL.Services.Interfaces;
+using BJ.BLL.Providers.Interfaces;
 
 namespace BJ.BLL.Services
 {
@@ -14,10 +14,10 @@ namespace BJ.BLL.Services
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly JwtTokenProvider _jwtTokentHelper;
+        private readonly IJwtTokenProvider _jwtTokentHelper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public AccountService(UserManager<User> userManager, SignInManager<User> signInManager, JwtTokenProvider jwtTokentHelper, IUnitOfWork unitOfWork)
+        public AccountService(UserManager<User> userManager, SignInManager<User> signInManager, IJwtTokenProvider jwtTokentHelper, IUnitOfWork unitOfWork)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -30,13 +30,8 @@ namespace BJ.BLL.Services
             var users = await _unitOfWork.Users.GetAll();
             var userNames = users.Select(x => x.UserName).ToList();
 
-            var response = new GetAllAccountResponseView();
-
-            response.AccountNames = userNames;
+            var response = new GetAllAccountResponseView() { AccountNames = userNames };
            
-           
-
-
             return response;
            
         }
@@ -52,7 +47,7 @@ namespace BJ.BLL.Services
                 }
 
 
-                var token = _jwtTokentHelper.GenerateJwtToken(model.Name, result);
+                var token = _jwtTokentHelper.GenerateJwtToken(result);
                 var response = new LoginAccountResponseView()
                 {
                     UserId = result.Id,
@@ -76,7 +71,7 @@ namespace BJ.BLL.Services
                 throw new ValidationException("Invalid user");
             }
 
-            var token = _jwtTokentHelper.GenerateJwtToken(model.Name, account);
+            var token = _jwtTokentHelper.GenerateJwtToken(account);
             var response = new RegistrationAccountResponseView()
             {
                 UserId = account.Id,

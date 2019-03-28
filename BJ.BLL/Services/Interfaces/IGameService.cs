@@ -9,8 +9,8 @@ namespace BJ.BLL.Services.Interfaces
         Task<StartGameResponseView> Start(int countBots, string userId);
         Task GetCards(Guid gameId, string userId);
         Task Stop(Guid gameId, string userId);
-        Task<CreateStartGameResponseView> GetGameByGameIdAndUserId(Guid gameId, string userId);
-        Task<CreateStartGameResponseView> GetNoEndGame(string userId);
+        Task<GetDetailsGameResponseView> GetDetails(Guid gameId, string userId);
+        Task<GetUnfinishedGameResponseView> GetUnfinished(string userId);
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BJ.DAL.Entities;
+using BJ.DAL.Entities.Enums;
 using BJ.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,12 +16,52 @@ namespace BJ.DAL.Repositories
 
         }
 
-        public async Task<List<Card>> GetByGameId(Guid gameId)
+        public async Task<List<Card>> GetAllByGameId(Guid gameId)
         {
             var deck = await _dbSet.Select(x => x)
                 .Where(x => x.GameId == gameId)
                 .ToListAsync();
             return deck;
+        }
+
+
+        public async Task<List<Card>> CreateDeck(Guid gameId)
+        {
+            var cards = new List<Card>();
+
+         
+
+            foreach (var suit in Enum.GetValues(typeof(SuitType)))
+            {
+                foreach(var rank in Enum.GetValues(typeof(RankType)))
+                {
+                    cards.Add(new Card
+                    {
+                        Suit = (SuitType)suit,
+                        Rank = (RankType)rank,
+                        GameId = gameId
+                    });
+                }
+            }
+            Swap(cards);
+            await _dbSet.AddRangeAsync(cards);
+            return cards;
+
+        }
+
+        private static void Swap(List<Card> cards)
+        {
+            var random = new Random();
+            int swapTo, swapFrom;
+            for (int i = 0; i < 1000; i++)
+            {
+                swapFrom = random.Next(35);
+                swapTo = random.Next(35);
+
+                Card temp = cards[swapTo];
+                cards[swapTo] = cards[swapFrom];
+                cards[swapFrom] = temp;
+            }
         }
 
     }

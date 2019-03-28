@@ -17,9 +17,6 @@ export class GameComponent implements OnInit {
 
   constructor(private serviceAccount: AccountService, private serviceGame: GameService, private router:Router, private formbuilder:FormBuilder) { }
 
-  formModel = this.formbuilder.group({
-    CountBots:[0, Validators.required],
-  });
 
   
 
@@ -31,11 +28,11 @@ export class GameComponent implements OnInit {
     this.serviceAccount.logout();
   }
 
-  onStartGame(form:NgForm) {
-    debugger;
-    this.startGame.countBots = this.formModel.value.CountBots;
-    this.startGame.userId = localStorage.getItem('userId');
-    this.serviceGame.startGame(this.startGame).subscribe(data=>{localStorage.setItem('gameId', data.gameId), this.router.navigateByUrl("/game/start-game")})
-  }
+  onStart()
+{
+  this.router.navigateByUrl("/game/start-game");
+}
+
+ 
 
 }

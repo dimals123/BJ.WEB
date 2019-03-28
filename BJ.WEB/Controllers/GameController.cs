@@ -39,19 +39,19 @@ namespace BJ.WEB.Controllers
             await _gameService.Stop(gameId, userId);
             return Ok();
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> GetLastGame()
         {
             var userId = GetUserId();
-            var result = await _gameService.GetNoEndGame(userId);
+            var result = await _gameService.GetUnfinished(userId);
             return Ok(result);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetGameById([FromBody]Guid gameId)
-        {
+        [HttpGet]
+        public async Task<IActionResult> GetGameById([FromQuery]Guid gameId)
+        {      
             var userId = GetUserId();
-            var result = await _gameService.GetGameByGameIdAndUserId(gameId, userId);
+            var result = await _gameService.GetDetails(gameId, userId);
             return Ok(result);
         }
 

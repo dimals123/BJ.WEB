@@ -6,7 +6,7 @@ namespace BJ.DAL.Entities
     {
         public string WinnerName { get; set; }
         public int CountBots { get; set; }
-        public bool IsEnd { get; set; }
+        public bool IsFinished { get; set; }
 
 
     }

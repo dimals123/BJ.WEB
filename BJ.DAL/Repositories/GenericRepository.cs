@@ -29,7 +29,9 @@ namespace BJ.DAL.Repositories
 
         public virtual async Task<List<T>> GetAll()
         {
-            return await _dbSet.AsNoTracking().ToListAsync();
+            return await _dbSet
+                .AsNoTracking()
+                .ToListAsync();
         }
 
         public virtual async Task Create(T item)

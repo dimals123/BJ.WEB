@@ -13,7 +13,7 @@ namespace BJ.DAL.Entities
         [ForeignKey("GameId")]
         public virtual Game Game { get; set; }
 
-        public int CountStep { get; set; }
+        public int StepNumber { get; set; }
         public SuitType Suit { get; set; }
         public RankType Rank { get; set; }
     }

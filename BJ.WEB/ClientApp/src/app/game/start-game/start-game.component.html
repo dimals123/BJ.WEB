@@ -1,3 +1,11 @@
+<div class="form-group required">
+<form [formGroup]="formModel" #form='ngForm' autocomplete="off">
+<div class="">
+    <label>CountBots</label>
+    <input type="number" class="form-control" formControlName="CountBots">
+    <button (click)="onStartGame()" class="btn btn-danger my-2 my-sm-0">Start</button>
+</div>
+</form>
 <div>
 <p>Winner : {{startGameRespnosne.winner}}</p>
 <p>UserName : {{startGameRespnosne.user.name}}</p>
@@ -12,3 +20,4 @@
 <button (click)="getCards()" class="btn btn-danger my-2 my-sm-0">GetCard</button>
 <button (click)="StopGame()" class="btn btn-danger my-2 my-sm-0">Stop</button>
 <button (click)="ExitGame()" class="btn btn-danger my-2 my-sm-0">Exit</button>
+</div>

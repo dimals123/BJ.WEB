@@ -11,13 +11,6 @@ namespace BJ.DAL.Repositories
         {
 
         }
-
-        public async Task<Game> GetLastGame(string userId)
-        {
-            var result = await _dbSet.FirstOrDefaultAsync(x => x.IsEnd == false);
-            return result;
-        }
-
    
     }
 }

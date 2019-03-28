@@ -17,12 +17,6 @@ namespace BJ.DAL.Repositories
             return user;
         }
 
-        public async Task<string> GetNameById(string userId)
-        {
-            var user = await GetById(userId);
-            var name = user.UserName;
-            return name;
-        }
 
     }
 }

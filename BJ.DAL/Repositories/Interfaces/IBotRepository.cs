@@ -8,6 +8,7 @@ namespace BJ.DAL.Repositories.Interfaces
     public interface IBotRepository:IGeneric<Bot>
     {
         Task<List<Bot>> GetRangeByCount(int count);
-        Task<string> GetNameById(Guid botId);
+        void CreateAll(List<Bot> bots);
+        Task<int> GetCount();
     }
 }

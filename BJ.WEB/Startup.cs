@@ -27,17 +27,21 @@ namespace BJ.WEB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.InitServices(Configuration);
+
+            services.DbConnection(Configuration);
+            services.InitServices();
             services
                 .AddMvc(options => options.Filters.Add(typeof(ValidationActionFilterAttribute)))
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            services.ConfigureIdentity();
+        
+            services.IdentityConfiguration();
             services.AddRouting();
+
+            services.InitializeDb();
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
             services.Configure<JwtTokenOptions>(Configuration.GetSection("jwt"));
-            services.ConfigureAutentification(Configuration);
+            services.AutentificationConfig(Configuration);
             services.AddCors(); 
 
             services.AddSpaStaticFiles(configuration =>
@@ -51,12 +55,15 @@ namespace BJ.WEB
                     configuration.RootPath = "wwwroot";
                 }
             });
+        
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
+        {  
+          
+      
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

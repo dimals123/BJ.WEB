@@ -14,7 +14,7 @@ namespace BJ.BLL.Configurations
 {
     public static class IdentityConfig
     {
-        public static void ConfigureIdentity(this IServiceCollection services)
+        public static void IdentityConfiguration(this IServiceCollection services)
         {
             services.AddIdentity<User, IdentityRole>(options =>
             {
@@ -31,7 +31,7 @@ namespace BJ.BLL.Configurations
 
 
         }
-        public static void ConfigureAutentification(this IServiceCollection services, IConfiguration configuration)
+        public static void AutentificationConfig(this IServiceCollection services, IConfiguration configuration)
         {
             var option = configuration.GetSection("jwt").Get<JwtTokenOptions>();
             //var jwt = new JwtTokenOptions();
@@ -49,9 +49,9 @@ namespace BJ.BLL.Configurations
                 cfg.SaveToken = true;
                 cfg.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidIssuer = option.JwtIssuer,
-                    ValidAudience = option.JwtIssuer,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(option.JwtKey)),
+                    ValidIssuer = option.Issuer,
+                    ValidAudience = option.Issuer,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(option.Key)),
                     ClockSkew = TimeSpan.Zero // remove delay of token when expire
                 };
             });

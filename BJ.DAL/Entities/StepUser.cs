@@ -8,12 +8,12 @@ namespace BJ.DAL.Entities
     {
         public string UserId { get; set; }
         [ForeignKey("UserId")]
-        public virtual User Account { get; set; }
+        public virtual User User { get; set; }
         public Guid GameId { get; set; }
         [ForeignKey("GameId")]
         public virtual Game Game { get; set; }
 
-        public int CountStep { get; set; }
+        public int StepNumber { get; set; }
         public SuitType Suit { get; set; }
         public RankType Rank { get; set; }
             

@@ -23,22 +23,28 @@ namespace BJ.BLL.Middleware
             {
                 await _next(context);
             }
+            catch(ValidationException ex)
+            {
+                var code = (int)HttpStatusCode.BadRequest;
+                await HandleExceptionAsync(context, ex, code);
+            }
             catch (Exception ex)
             {
-                await HandleExceptionAsync(context, ex);
+                var code = (int)HttpStatusCode.InternalServerError;
+                await HandleExceptionAsync(context, ex, code);
             }
 
         }
 
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception)
+        private static Task HandleExceptionAsync(HttpContext context, Exception exception, int code)
         {
-            var code = HttpStatusCode.InternalServerError; // 500 if unexpected
 
-            if (exception is ValidationException) code = HttpStatusCode.BadRequest;
-
-            var result = JsonConvert.SerializeObject(new { error = exception.Message });
+            var result = JsonConvert.SerializeObject(new
+            {
+                error = exception.Message
+            });
+            context.Response.StatusCode = code;
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)code;
             return context.Response.WriteAsync(result);
         }
     }

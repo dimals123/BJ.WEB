@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BJ.DAL.Entities;
@@ -15,17 +14,25 @@ namespace BJ.DAL.Repositories
 
         }
 
-        public async Task<string> GetNameById(Guid botId)
-        {
-            var bot = await GetById(botId);
-            var name = bot.Name;
-            return name;
-        }
-
         public async Task<List<Bot>> GetRangeByCount(int count)
         {
-            var result = await _dbSet.Select(x => x).Take(count).ToListAsync();
+            var result = await _dbSet
+                .Select(x => x)
+                .Take(count)
+                .ToListAsync();
             return result;
+        }
+
+        public async Task<int> GetCount()
+        {
+            var result = await _dbSet.CountAsync();
+            return result;
+        }
+
+        public void CreateAll(List<Bot> bots)
+        {
+            _dbSet.AddRange(bots);
+            _context.SaveChanges();
         }
        
     }

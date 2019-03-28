@@ -17,7 +17,10 @@ namespace BJ.DAL.Repositories
 
         public async Task<List<BotInGame>> GetAllByGameId(Guid gameId)
         {
-            var botsInGame = await _dbSet.Include(x=>x.Bot).Where(u => u.GameId == gameId).ToListAsync();
+            var botsInGame = await _dbSet
+                .Include(x=>x.Bot)
+                .Where(u => u.GameId == gameId)
+                .ToListAsync();
             return botsInGame;
         }
 
