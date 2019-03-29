@@ -1,9 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../shared/services/account.service';
-import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { StartGameView } from '../shared/models/game-views/start-game-view';
-import { GameService } from '../shared/services/game.service';
 
 @Component({
   selector: 'app-game',
@@ -11,11 +8,9 @@ import { GameService } from '../shared/services/game.service';
   styles: []
 })
 export class GameComponent implements OnInit {
-
-  startGame = new StartGameView();
   
 
-  constructor(private serviceAccount: AccountService, private serviceGame: GameService, private router:Router, private formbuilder:FormBuilder) { }
+  constructor(private serviceAccount: AccountService, private router:Router) { }
 
 
   

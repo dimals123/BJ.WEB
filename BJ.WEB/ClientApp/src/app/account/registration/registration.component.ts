@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnInit
 
 
   ngOnInit(): void {
-   this.service.getNames().subscribe(data=>this.users.accountNames = data["accountNames"]);
+   this.service.getNames().subscribe(data=>this.users.names = data["accountNames"]);
   }
 
   authorize(res:LoginAccountResponseView): void{
@@ -40,7 +40,7 @@ export class RegistrationComponent implements OnInit
   {
     var register = new RegisterAccountView();
     register = this.formModel.value; 
-      if(this.users.accountNames.indexOf(this.formModel.value.Name) != -1)
+      if(this.users.names.indexOf(this.formModel.value.Name) != -1)
       {
         this.service.login(register).subscribe(
           res => {

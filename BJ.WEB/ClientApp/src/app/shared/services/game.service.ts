@@ -27,7 +27,7 @@ export class GameService {
   {
     debugger;
     let params1 = new HttpParams().set("gameId", model);
-    this.http.post<void>(environment.BaseUrl + '/Game/Stop', {params:params1}).subscribe(x=>{
+    this.http.get<void>(environment.BaseUrl + '/Game/Stop', {params:params1}).subscribe(x=>{
       console.log(x);
       window.location.reload();
     });
