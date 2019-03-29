@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using BJ.DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
 using BJ.ViewModels.AccountViews;
-using BJ.DataAccess.Repositories.Interfaces;
 using BJ.BusinessLogic.Services.Interfaces;
 using BJ.BusinessLogic.Providers.Interfaces;
+using BJ.DataAccess.UnitOfWork;
 
 namespace BJ.BusinessLogic.Services
 {

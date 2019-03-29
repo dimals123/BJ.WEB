@@ -2,14 +2,12 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BJ.WEB.Controllers
 {
     [Authorize]
-    public class GameController:BaseController
+    public class GameController : BaseController
     {
         private readonly IGameService _gameService;
 
@@ -18,19 +16,19 @@ namespace BJ.WEB.Controllers
             _gameService = gameService;
         }
         [HttpGet]
-        public async Task<IActionResult> Start([FromBody]int countBots)
+        public async Task<IActionResult> Start([FromQuery]int countBots)
         {
             var response = await _gameService.Start(countBots, UserId);
             return Ok(response);
         }
         [HttpGet]
-        public async Task<IActionResult> GetCards([FromBody]Guid gameId)
+        public async Task<IActionResult> GetCards([FromQuery]Guid gameId)
         {
             await _gameService.GetCards(gameId, UserId);
             return Ok();
         }
         [HttpGet]
-        public async Task<IActionResult> Stop([FromBody]Guid gameId)
+        public async Task<IActionResult> Stop([FromQuery]Guid gameId)
         {
             await _gameService.Stop(gameId, UserId);
             return Ok();

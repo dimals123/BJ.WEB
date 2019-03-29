@@ -5,7 +5,7 @@ using BJ.BusinessLogic.Providers.Interfaces;
 using BJ.BusinessLogic.Services;
 using BJ.BusinessLogic.Services.Interfaces;
 using BJ.DataAccess;
-using BJ.DataAccess.Repositories.Interfaces;
+using BJ.DataAccess.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,7 +29,8 @@ namespace BJ.BusinessLogic.Configurations
             services.AddTransient<IGameService, GameService>();
             services.AddTransient<IHistoryService, HistoryService>();
             services.AddTransient<IJwtTokenProvider, JwtTokenProvider>();
-            services.AddTransient<IScoreHelper, ScoreHelper>();        
+            services.AddTransient<IScoreHelper, ScoreHelper>();
+            services.AddTransient<ICardsHelper, CardsHelper>();
         }
 
    

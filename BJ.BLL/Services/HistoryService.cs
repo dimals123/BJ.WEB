@@ -1,5 +1,6 @@
 ﻿using BJ.BusinessLogic.Services.Interfaces;
 using BJ.DataAccess.Repositories.Interfaces;
+using BJ.DataAccess.UnitOfWork;
 using BJ.ViewModels.EnumsViews;
 using BJ.ViewModels.HistoryViews;
 using System;

@@ -11,6 +11,7 @@ using System.Transactions;
 using MoreLinq;
 using BJ.BusinessLogic.Helpers.Interfaces;
 using BJ.DataAccess.Entities.Enums;
+using BJ.DataAccess.UnitOfWork;
 
 namespace BJ.BusinessLogic.Services
 {
@@ -423,7 +424,7 @@ namespace BJ.BusinessLogic.Services
 
             var bot = bots.FirstOrDefault(x => x.Id == winner.BotId);
 
-            var winnerName = (userInGame.CountPoint > winner.CountPoint) ? user.UserName : bot.Name;
+            var winnerName = (userInGame.CountPoint > winner.CountPoint && userInGame.CountPoint <= 21) ? user.UserName : bot.Name;
             
             return winnerName;
         }

@@ -2,7 +2,7 @@
 using BJ.DataAccess.Repositories.Interfaces;
 using System;
 
-namespace BJ.DataAccess
+namespace BJ.DataAccess.UnitOfWork
 {
     public class UnitOfWork:IUnitOfWork
     {

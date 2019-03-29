@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using BJ.DataAccess.UnitOfWork;
 
 namespace BJ.BusinessLogic.Configurations
 {
