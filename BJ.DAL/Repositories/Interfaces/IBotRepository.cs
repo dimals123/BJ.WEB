@@ -7,7 +7,7 @@ namespace BJ.DataAccess.Repositories.Interfaces
 {
     public interface IBotRepository:IGeneric<Bot>
     {
-        Task<List<Bot>> GetRangeByCount(int count);
+        Task<List<Bot>> GetCount(int count);
         void CreateAll(List<Bot> bots);
         Task<int> GetCount();
     }

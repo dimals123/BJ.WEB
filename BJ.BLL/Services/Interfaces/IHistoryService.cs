@@ -8,6 +8,6 @@ namespace BJ.BusinessLogic.Services.Interfaces
     {
         Task Clear();
         Task<GetDetailsGameHistoryView> GetDetailsGame(string userId, Guid gameId);
-        Task<GetAllGamesByUserIdView> GetAllGamesByUserId(string userId);
+        Task<GetAllGamesByUserIdView> GetUserGames(string userId);
     }
 }

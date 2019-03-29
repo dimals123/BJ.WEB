@@ -36,14 +36,14 @@ namespace BJ.WEB.Controllers
             return Ok();
         }
         [HttpGet]
-        public async Task<IActionResult> GetLastGame()
+        public async Task<IActionResult> GetUnfinished()
         {
             var result = await _gameService.GetUnfinished(UserId);
             return Ok(result);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetGameById([FromQuery]Guid gameId)
+        public async Task<IActionResult> GetDetails([FromQuery]Guid gameId)
         {      
             var result = await _gameService.GetDetails(gameId, UserId);
             return Ok(result);

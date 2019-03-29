@@ -1,8 +1,6 @@
 ﻿using BJ.BusinessLogic.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BJ.WEB.Controllers
@@ -25,7 +23,7 @@ namespace BJ.WEB.Controllers
         [HttpGet]
         public async Task<IActionResult> GetUserGames()
         {
-            var result = await _historyService.GetAllGamesByUserId(UserId);
+            var result = await _historyService.GetUserGames(UserId);
             return Ok(result);
         }
 

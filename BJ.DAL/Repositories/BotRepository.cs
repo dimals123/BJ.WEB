@@ -14,7 +14,7 @@ namespace BJ.DataAccess.Repositories
 
         }
 
-        public async Task<List<Bot>> GetRangeByCount(int count)
+        public async Task<List<Bot>> GetCount(int count)
         {
             var result = await _dbSet
                 .Select(x => x)

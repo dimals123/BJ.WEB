@@ -14,7 +14,7 @@ namespace BJ.BusinessLogic.Configurations
 {
     public static class IdentityConfig
     {
-        public static void IdentityConfiguration(this IServiceCollection services)
+        public static void IdentityConfigure(this IServiceCollection services)
         {
             services.AddIdentity<User, IdentityRole>(options =>
             {
@@ -31,7 +31,7 @@ namespace BJ.BusinessLogic.Configurations
 
 
         }
-        public static void AutentificationConfig(this IServiceCollection services, IConfiguration configuration)
+        public static void AutentificationConfigure(this IServiceCollection services, IConfiguration configuration)
         {
             var option = configuration.GetSection("jwt").Get<JwtTokenOptions>();
             //var jwt = new JwtTokenOptions();

@@ -37,7 +37,7 @@ namespace BJ.BusinessLogic.Services
 
         } 
 
-        public async Task<GetAllGamesByUserIdView> GetAllGamesByUserId(string userId)
+        public async Task<GetAllGamesByUserIdView> GetUserGames(string userId)
         {
             var userInGames = await _unitOfWork
                 .UserInGames

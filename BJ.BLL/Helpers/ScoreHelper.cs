@@ -5,7 +5,7 @@ namespace BJ.BusinessLogic.Helpers
 {
     public class ScoreHelper:IScoreHelper
     {
-        public int ValueCard(RankType rank, int points)
+        public int ValueCard(RankType rank, int currentPoints)
         {
             var result = 0;
             switch (rank)
@@ -35,7 +35,7 @@ namespace BJ.BusinessLogic.Helpers
                     result = 4;
                     break;
                 case RankType.Ace:
-                    result = (points <= 10) ? 11 : 1;
+                    result = (currentPoints <= 10) ? 11 : 1;
                     break;
             }
             return result;

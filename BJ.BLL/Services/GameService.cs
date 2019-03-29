@@ -51,7 +51,7 @@ namespace BJ.BusinessLogic.Services
 
                 await _unitOfWork.Games.Create(game);
 
-                var bots = await _unitOfWork.Bots.GetRangeByCount(countBots);
+                var bots = await _unitOfWork.Bots.GetCount(countBots);
                 var deck = await _unitOfWork.Cards.CreateDeck(game.Id);
 
                 var stepUsers = new List<StepUser>();

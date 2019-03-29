@@ -34,14 +34,14 @@ namespace BJ.WEB
                 .AddMvc(options => options.Filters.Add(typeof(ValidationActionFilterAttribute)))
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         
-            services.IdentityConfiguration();
+            services.IdentityConfigure();
             services.AddRouting();
 
             services.InitializeDb();
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
             services.Configure<JwtTokenOptions>(Configuration.GetSection("jwt"));
-            services.AutentificationConfig(Configuration);
+            services.AutentificationConfigure(Configuration);
             services.AddCors(); 
 
             services.AddSpaStaticFiles(configuration =>

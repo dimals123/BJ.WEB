@@ -25,23 +25,25 @@ namespace BJ.BusinessLogic.Middleware
             }
             catch(ValidationException ex)
             {
+                var message = ex.Message;
                 var code = (int)HttpStatusCode.BadRequest;
-                await HandleExceptionAsync(context, ex, code);
+                await HandleExceptionAsync(context, ex, code, message);
             }
             catch (Exception ex)
             {
+                var message = "Internal Server Error.";
                 var code = (int)HttpStatusCode.InternalServerError;
-                await HandleExceptionAsync(context, ex, code);
+                await HandleExceptionAsync(context, ex, code, message);
             }
 
         }
 
-        private static Task HandleExceptionAsync(HttpContext context, Exception exception, int code)
+        private static Task HandleExceptionAsync(HttpContext context, Exception exception, int code, string message)
         {
 
             var result = JsonConvert.SerializeObject(new
             {
-                error = exception.Message
+                error = message
             });
             context.Response.StatusCode = code;
             context.Response.ContentType = "application/json";
