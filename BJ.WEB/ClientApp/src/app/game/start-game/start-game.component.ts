@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameService } from 'src/app/shared/services/game.service';
-import { StartGameResponseView } from 'src/app/shared/models/game-views/start-game-response-view';
 import { FormBuilder, Validators } from '@angular/forms';
+import { GetDetailsGameResponseView } from 'src/app/shared/models/game-views/get-details-game-response-view';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class StartGameComponent implements OnInit {
 
   constructor(private service:GameService, private router: Router, private formbuilder:FormBuilder) { }
 
-  startGameRespnosne = new StartGameResponseView();
+  startGameRespnosne = new GetDetailsGameResponseView();
   gameId : string;
   countBots : number;
   
@@ -27,11 +27,9 @@ export class StartGameComponent implements OnInit {
 
   ngOnInit() {
     this.gameId = localStorage.getItem("gameId");
-    this.service.getGameById(this.gameId).subscribe(data=>this.startGameRespnosne = data);
+    this.service.getDetails(this.gameId).subscribe(data=>this.startGameRespnosne = data);
   }
-
- 
-
+  
   getCards():void
   {
     this.service.getCard(this.gameId);

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { StartGameResponseView } from '../models/game-views/start-game-response-view';
-import { GetGameIdView } from '../models/game-views/get-game-id-view';
 import { environment } from 'src/environments/environment';
+import { StartGameResponseView } from '../models/game-views/start-game-response-view';
+import { GetDetailsGameResponseView } from '../models/game-views/get-details-game-response-view';
 
 
 @Injectable({
@@ -26,8 +26,8 @@ export class GameService {
   Stop(model:string):void
   {
     debugger;
-    let body = JSON.stringify(model);
-    this.http.post<void>(environment.BaseUrl + '/Game/Stop', body, this.headers).subscribe(x=>{
+    let params1 = new HttpParams().set("gameId", model);
+    this.http.post<void>(environment.BaseUrl + '/Game/Stop', {params:params1}).subscribe(x=>{
       console.log(x);
       window.location.reload();
     });
@@ -36,27 +36,24 @@ export class GameService {
   getCard(model:string):void
   {
     debugger;
-    let body = JSON.stringify(model);
-    this.http.post<void>(environment.BaseUrl + '/Game/GetCards', body, this.headers).subscribe(x=>{
+    let params1 = new HttpParams().set("gameId", model);
+    this.http.get<void>(environment.BaseUrl + '/Game/GetCards', {params:params1}).subscribe(x=>{
       console.log(x);
       window.location.reload();
     });
   }
 
-  getLastGameId():Observable<GetGameIdView>
-  {
-    return this.http.get<GetGameIdView>(environment.BaseUrl + '/Game/GetLastGame');
-  }
 
-  getGameById(model:string):Observable<StartGameResponseView>
+  getDetails(model:string):Observable<GetDetailsGameResponseView>
   {
     let params1 = new HttpParams().set("gameId", model);
-    return this.http.get<StartGameResponseView>(environment.BaseUrl + '/Game/GetGameById', {params: params1});
+    return this.http.get<GetDetailsGameResponseView>(environment.BaseUrl + '/Game/GetDetails', {params: params1});
   }
 
-  startGame(model:number):Observable<GetGameIdView>
+  startGame(model:number):Observable<StartGameResponseView>
   {
-    return this.http.post<GetGameIdView>(environment.BaseUrl + '/Game/Start', model);
+    let params1 = new HttpParams().set("countBots", model.toString());
+    return this.http.get<StartGameResponseView>(environment.BaseUrl + '/Game/Start', {params:params1});
   }
 
 }
