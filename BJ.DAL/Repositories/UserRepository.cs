@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories
 {
-    public class UserRepository : GenericRepository<User>, IUserRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         public UserRepository(BJContext context) : base(context)
         {

@@ -15,5 +15,6 @@ namespace BJ.DataAccess.Repositories.Interfaces
         Task UpdateRange(List<T> item);
         Task Delete(T item);     
         Task DeleteRange(List<T> items);
+        Task<int> GetCount();
     }
 }

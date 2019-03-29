@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BJ.DataAccess.Repositories
 {
-    public class BotInGameRepository:GenericRepository<BotInGame>, IBotInGameRepository
+    public class BotInGameRepository:BaseRepository<BotInGame>, IBotInGameRepository
     {
         public BotInGameRepository(BJContext context):base(context)
         {

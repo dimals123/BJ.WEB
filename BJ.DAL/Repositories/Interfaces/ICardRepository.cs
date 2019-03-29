@@ -9,6 +9,5 @@ namespace BJ.DataAccess.Repositories.Interfaces
     public interface ICardRepository:IBaseRepository<Card>
     {
         Task<List<Card>> GetAllByGameId(Guid gameId);
-        Task<List<Card>> CreateDeck(Guid gameId);
     }
 }

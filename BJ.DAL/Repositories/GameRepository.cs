@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories
 {
-    public class GameRepository:GenericRepository<Game>, IGameRepository
+    public class GameRepository:BaseRepository<Game>, IGameRepository
     {
         public GameRepository(BJContext context): base(context)
         {

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories
 {
-    public class GenericRepository<T> : IBaseRepository<T> where T : class
+    public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         protected DbContext _context;
         protected DbSet<T> _dbSet;
 
-        public GenericRepository(DbContext context)
+        public BaseRepository(DbContext context)
         {
             _context = context;
             _dbSet = context.Set<T>();
@@ -70,5 +70,12 @@ namespace BJ.DataAccess.Repositories
             _dbSet.UpdateRange(items);
             await _context.SaveChangesAsync();
         }
+
+        public virtual async Task<int> GetCount()
+        {
+            var result = await _dbSet.CountAsync();
+            return result;
+        }
+
     }
 }

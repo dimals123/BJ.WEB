@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories
 {
-    public class StepUserRepository:GenericRepository<StepUser>, IStepUserRepository
+    public class StepUserRepository:BaseRepository<StepUser>, IStepUserRepository
     {
         public StepUserRepository(BJContext context):base(context)
         {

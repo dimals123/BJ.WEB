@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories
 {
-    public class UserInGameRepository:GenericRepository<UserInGame>, IUserInGameRepository
+    public class UserInGameRepository:BaseRepository<UserInGame>, IUserInGameRepository
     {
         public UserInGameRepository(BJContext context): base(context)
         {

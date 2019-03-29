@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using MoreLinq;
 using BJ.BusinessLogic.Helpers.Interfaces;
+using BJ.DataAccess.Entities.Enums;
 
 namespace BJ.BusinessLogic.Services
 {
@@ -18,12 +19,14 @@ namespace BJ.BusinessLogic.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IScoreHelper _scoreHelper;
+        private readonly ICardsHelper _cardsHelper;
 
 
-        public GameService(IUnitOfWork _unitOfWork, IScoreHelper scoreHelper)
+        public GameService(IUnitOfWork _unitOfWork, IScoreHelper scoreHelper, ICardsHelper cardsHelper)
         {
             this._unitOfWork = _unitOfWork;
             _scoreHelper = scoreHelper;
+            _cardsHelper = cardsHelper;
         }
 
 
@@ -52,7 +55,7 @@ namespace BJ.BusinessLogic.Services
                 await _unitOfWork.Games.Create(game);
 
                 var bots = await _unitOfWork.Bots.GetCount(countBots);
-                var deck = await _unitOfWork.Cards.CreateDeck(game.Id);
+                var deck = await CreateDeck(game.Id);
 
                 var stepUsers = new List<StepUser>();
                 var stepBots = new List<StepBot>();
@@ -423,6 +426,31 @@ namespace BJ.BusinessLogic.Services
             var winnerName = (userInGame.CountPoint > winner.CountPoint) ? user.UserName : bot.Name;
             
             return winnerName;
+        }
+
+
+        public async Task<List<Card>> CreateDeck(Guid gameId)
+        {
+            var cards = new List<Card>();
+
+
+
+            foreach (var suit in Enum.GetValues(typeof(SuitType)))
+            {
+                foreach (var rank in Enum.GetValues(typeof(RankType)))
+                {
+                    cards.Add(new Card
+                    {
+                        Suit = (SuitType)suit,
+                        Rank = (RankType)rank,
+                        GameId = gameId
+                    });
+                }
+            }
+            _cardsHelper.Swap(cards);
+            await _unitOfWork.Cards.CreateRange(cards);
+            return cards;
+
         }
     }
 }
