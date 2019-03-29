@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories.Interfaces
 {
-    public interface IUserRepository:IGeneric<User>
+    public interface IUserRepository:IBaseRepository<User>
     {
         Task<User> GetById(string userId);
     }

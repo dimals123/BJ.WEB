@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories.Interfaces
 {
-    public interface IBotInGameRepository:IGeneric<BotInGame>
+    public interface IBotInGameRepository:IBaseRepository<BotInGame>
     {
         Task<BotInGame> GetByGameIdAndBotId(Guid gameId, Guid botId);
         Task<List<BotInGame>> GetAllByGameId(Guid gameId);

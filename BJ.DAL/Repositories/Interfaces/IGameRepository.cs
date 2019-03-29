@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories.Interfaces
 {
-    public interface IGameRepository:IGeneric<Game>
+    public interface IGameRepository:IBaseRepository<Game>
     {
     }
 }

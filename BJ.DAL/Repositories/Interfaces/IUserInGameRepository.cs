@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories.Interfaces
 {
-    public interface IUserInGameRepository:IGeneric<UserInGame>
+    public interface IUserInGameRepository:IBaseRepository<UserInGame>
     {
         Task<UserInGame> GetUnfinished(string userId);
         Task<List<UserInGame>> GetAllByUserId(string userId);

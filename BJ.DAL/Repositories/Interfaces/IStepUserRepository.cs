@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories.Interfaces
 {
-    public interface IStepUserRepository:IGeneric<StepUser>
+    public interface IStepUserRepository:IBaseRepository<StepUser>
     {
         Task<List<StepUser>> GetAllByUserIdAndGameId(string userId, Guid gameId);
     }

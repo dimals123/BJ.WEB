@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories
 {
-    public class GenericRepository<T> : IGeneric<T> where T : class
+    public class GenericRepository<T> : IBaseRepository<T> where T : class
     {
         protected DbContext _context;
         protected DbSet<T> _dbSet;

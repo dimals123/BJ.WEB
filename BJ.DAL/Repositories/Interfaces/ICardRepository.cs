@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories.Interfaces
 {
-    public interface ICardRepository:IGeneric<Card>
+    public interface ICardRepository:IBaseRepository<Card>
     {
         Task<List<Card>> GetAllByGameId(Guid gameId);
         Task<List<Card>> CreateDeck(Guid gameId);
