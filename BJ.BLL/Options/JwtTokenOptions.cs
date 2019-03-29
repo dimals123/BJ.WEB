@@ -1,4 +1,4 @@
-﻿namespace BJ.BLL.Options
+﻿namespace BJ.BusinessLogic.Options
 {
     public class JwtTokenOptions
     {

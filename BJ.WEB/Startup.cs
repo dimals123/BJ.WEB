@@ -1,7 +1,7 @@
-﻿using BJ.BLL.Configurations;
-using BJ.BLL.Filters;
-using BJ.BLL.Middleware;
-using BJ.BLL.Options;
+﻿using BJ.BusinessLogic.Configurations;
+using BJ.BusinessLogic.Filters;
+using BJ.BusinessLogic.Middleware;
+using BJ.BusinessLogic.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

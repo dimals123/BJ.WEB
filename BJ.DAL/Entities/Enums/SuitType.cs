@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BJ.DAL.Entities.Enums
+namespace BJ.DataAccess.Entities.Enums
 {
     public enum SuitType
     {

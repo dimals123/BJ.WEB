@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BJ.DAL\BJ.DAL.csproj" />
+    <ProjectReference Include="..\BJ.DAL\BJ.DataAccess.csproj" />
     <ProjectReference Include="..\ViewModels\BJ.ViewModels.csproj" />
   </ItemGroup>
 

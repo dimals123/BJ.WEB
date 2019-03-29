@@ -1,10 +1,11 @@
-﻿using BJ.DAL.Entities.Enums;
+﻿using BJ.BusinessLogic.Helpers.Interfaces;
+using BJ.DataAccess.Entities.Enums;
 
-namespace BJ.BLL.Helpers
+namespace BJ.BusinessLogic.Helpers
 {
-    public static class ScoreHelper
+    public class ScoreHelper:IScoreHelper
     {
-        public static int ValueCard(RankType rank, int points)
+        public int ValueCard(RankType rank, int points)
         {
             var result = 0;
             switch (rank)

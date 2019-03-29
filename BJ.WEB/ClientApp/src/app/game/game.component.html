@@ -1,6 +1,12 @@
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand text-white"></a>
-    <button (click)='onStart()' class="btn btn-danger my-2 my-sm-0">StartGame</button>
-  <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+  <div class="container-fluid text-white">
+    <div class="navbar-header">
+      <a class="navbar-brand btn-danger" (click) = "onStart()">StartGame</a>
+    </div>
+    <ul class="nav navbar-nav btn-danger">
+      <li><a (click)="onLogout()">LogOut</a></li>
+    </ul>
+  </div>
 </nav>
+
 <router-outlet></router-outlet>

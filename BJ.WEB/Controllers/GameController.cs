@@ -1,4 +1,4 @@
-﻿using BJ.BLL.Services.Interfaces;
+﻿using BJ.BusinessLogic.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 namespace BJ.WEB.Controllers
 {
     [Authorize]
-    
-    public class GameController:Controller
+    public class GameController:BaseController
     {
         private readonly IGameService _gameService;
 
@@ -18,52 +17,39 @@ namespace BJ.WEB.Controllers
         {
             _gameService = gameService;
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Start([FromBody]int countBots)
         {
-            var userId = GetUserId();
-            var response = await _gameService.Start(countBots, userId);
+            var response = await _gameService.Start(countBots, UserId);
             return Ok(response);
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> GetCards([FromBody]Guid gameId)
         {
-            var userId = GetUserId();
-            await _gameService.GetCards(gameId, userId);
+            await _gameService.GetCards(gameId, UserId);
             return Ok();
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Stop([FromBody]Guid gameId)
         {
-            var userId = GetUserId();
-            await _gameService.Stop(gameId, userId);
+            await _gameService.Stop(gameId, UserId);
             return Ok();
         }
         [HttpGet]
         public async Task<IActionResult> GetLastGame()
         {
-            var userId = GetUserId();
-            var result = await _gameService.GetUnfinished(userId);
+            var result = await _gameService.GetUnfinished(UserId);
             return Ok(result);
         }
 
         [HttpGet]
         public async Task<IActionResult> GetGameById([FromQuery]Guid gameId)
         {      
-            var userId = GetUserId();
-            var result = await _gameService.GetDetails(gameId, userId);
+            var result = await _gameService.GetDetails(gameId, UserId);
             return Ok(result);
         }
 
-        private string GetUserId()
-        {
-            var userId = User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value;
-            return userId;
-        }
-
-
-
-
+    
     }
 
    

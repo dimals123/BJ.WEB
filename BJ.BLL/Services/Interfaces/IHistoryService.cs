@@ -1,12 +1,13 @@
-﻿using BJ.DAL.Entities;
-using System.Collections.Generic;
+﻿using BJ.ViewModels.HistoryViews;
+using System;
 using System.Threading.Tasks;
 
-namespace BJ.BLL.Services.Interfaces
+namespace BJ.BusinessLogic.Services.Interfaces
 {
     public interface IHistoryService
     {
         Task Clear();
-
+        Task<GetDetailsGameHistoryView> GetDetailsGame(string userId, Guid gameId);
+        Task<GetAllGamesByUserIdView> GetAllGamesByUserId(string userId);
     }
 }

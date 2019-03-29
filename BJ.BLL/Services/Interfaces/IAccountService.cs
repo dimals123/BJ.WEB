@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BJ.ViewModels.AccountViews;
 
-namespace BJ.BLL.Services.Interfaces
+namespace BJ.BusinessLogic.Services.Interfaces
 {
     public interface IAccountService
     {

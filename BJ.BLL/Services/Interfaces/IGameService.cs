@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using BJ.ViewModels.GameViews;
 
-namespace BJ.BLL.Services.Interfaces
+namespace BJ.BusinessLogic.Services.Interfaces
 {
     public interface IGameService
     {

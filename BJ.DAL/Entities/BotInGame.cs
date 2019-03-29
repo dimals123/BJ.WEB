@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BJ.DAL.Entities
+namespace BJ.DataAccess.Entities
 {
     public class BotInGame:BaseEntity
     {

@@ -1,12 +1,13 @@
-﻿using BJ.DAL.Entities;
+﻿using BJ.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BJ.DAL.Repositories.Interfaces
+namespace BJ.DataAccess.Repositories.Interfaces
 {
     public interface IStepBotRepository:IGeneric<StepBot>
     {
         Task<List<StepBot>> GetAllByBotIdAndGameId(Guid botId, Guid gameId);
+        Task<List<StepBot>> GetAllByGameId(Guid gameId);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BJ.DAL.Migrations
+namespace BJ.DataAccess.Migrations
 {
     public partial class initBotInGames : Migration
     {

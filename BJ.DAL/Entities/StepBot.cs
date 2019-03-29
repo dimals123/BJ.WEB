@@ -1,8 +1,8 @@
-﻿using BJ.DAL.Entities.Enums;
+﻿using BJ.DataAccess.Entities.Enums;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BJ.DAL.Entities
+namespace BJ.DataAccess.Entities
 {
     public class StepBot:BaseEntity
     {

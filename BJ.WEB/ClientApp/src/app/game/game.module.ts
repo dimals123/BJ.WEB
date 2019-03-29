@@ -12,6 +12,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { StartGameComponent } from './start-game/start-game.component';
 import { GameService } from '../shared/services/game.service';
 
+
 @NgModule({
   declarations: [
     GameComponent,

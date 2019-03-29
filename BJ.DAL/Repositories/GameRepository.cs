@@ -1,9 +1,9 @@
-﻿using BJ.DAL.Entities;
-using BJ.DAL.Repositories.Interfaces;
+﻿using BJ.DataAccess.Entities;
+using BJ.DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
-namespace BJ.DAL.Repositories
+namespace BJ.DataAccess.Repositories
 {
     public class GameRepository:GenericRepository<Game>, IGameRepository
     {

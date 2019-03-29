@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BJ.DAL.Repositories.Interfaces
+namespace BJ.DataAccess.Repositories.Interfaces
 {
     public interface IUnitOfWork:IDisposable
     {

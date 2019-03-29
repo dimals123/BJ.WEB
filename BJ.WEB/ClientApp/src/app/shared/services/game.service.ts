@@ -50,7 +50,6 @@ export class GameService {
 
   getGameById(model:string):Observable<StartGameResponseView>
   {
-    debugger;
     let params1 = new HttpParams().set("gameId", model);
     return this.http.get<StartGameResponseView>(environment.BaseUrl + '/Game/GetGameById', {params: params1});
   }

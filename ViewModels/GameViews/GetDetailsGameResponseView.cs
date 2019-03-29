@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using BJ.ViewModels.Enums;
+using BJ.ViewModels.EnumsViews;
 
 namespace BJ.ViewModels.GameViews
 {

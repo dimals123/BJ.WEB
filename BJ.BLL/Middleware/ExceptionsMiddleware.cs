@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace BJ.BLL.Middleware
+namespace BJ.BusinessLogic.Middleware
 {
     public class ExceptionsMiddleware
     {

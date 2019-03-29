@@ -1,8 +1,8 @@
-﻿using BJ.DAL.Entities;
+﻿using BJ.DataAccess.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BJ.DAL
+namespace BJ.DataAccess
 {
     public class BJContext:IdentityDbContext<User>
     {

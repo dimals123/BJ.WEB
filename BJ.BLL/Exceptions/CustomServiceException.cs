@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BJ.BLL.Exceptions
+namespace BJ.BusinessLogic.Exceptions
 {
     public class CustomServiceException:ApplicationException
     {

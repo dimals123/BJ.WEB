@@ -4,11 +4,11 @@ namespace BJ.ViewModels.AccountViews
 {
     public class GetAllAccountResponseView
     {
-        public List<string> AccountNames { get; set; }
+        public List<string> Names { get; set; }
 
         public GetAllAccountResponseView()
         {
-            AccountNames = new List<string>();
+            Names = new List<string>();
         }
     }
 

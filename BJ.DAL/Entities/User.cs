@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace BJ.DAL.Entities
+namespace BJ.DataAccess.Entities
 {
     public class User : IdentityUser
     {

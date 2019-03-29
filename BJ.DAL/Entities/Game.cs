@@ -1,6 +1,6 @@
-﻿using BJ.DAL.Entities.Enums;
+﻿using BJ.DataAccess.Entities.Enums;
 
-namespace BJ.DAL.Entities
+namespace BJ.DataAccess.Entities
 {
     public class Game:BaseEntity
     {

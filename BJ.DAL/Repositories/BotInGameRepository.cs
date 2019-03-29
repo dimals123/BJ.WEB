@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BJ.DAL.Entities;
-using BJ.DAL.Repositories.Interfaces;
+using BJ.DataAccess.Entities;
+using BJ.DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace BJ.DAL.Repositories
+namespace BJ.DataAccess.Repositories
 {
     public class BotInGameRepository:GenericRepository<BotInGame>, IBotInGameRepository
     {

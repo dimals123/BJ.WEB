@@ -1,8 +1,12 @@
-﻿using BJ.BLL.Services.Interfaces;
-using BJ.DAL.Repositories.Interfaces;
+﻿using BJ.BusinessLogic.Services.Interfaces;
+using BJ.DataAccess.Repositories.Interfaces;
+using BJ.ViewModels.EnumsViews;
+using BJ.ViewModels.HistoryViews;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace BJ.BLL.Services
+namespace BJ.BusinessLogic.Services
 {
     public class HistoryService:IHistoryService
     {
@@ -31,6 +35,72 @@ namespace BJ.BLL.Services
             await _unitOfWork.StepsAccounts.DeleteRange(stepsUser);
             await _unitOfWork.StepsBots.DeleteRange(stepsBots);
 
+        } 
+
+        public async Task<GetAllGamesByUserIdView> GetAllGamesByUserId(string userId)
+        {
+            var userInGames = await _unitOfWork
+                .UserInGames
+                .GetAllByUserId(userId);
+            var games = userInGames
+                .Select(x => x.Game)
+                .ToList();
+
+            var response = new GetAllGamesByUserIdView();
+
+            response.Games = games.Select(x => new GameGetAllGamesByUserIdViewItem()
+            {
+                DateTime = x.CreationAt,
+                CountBots = x.CountBots,
+                Winner = x.WinnerName
+            }).ToList();
+
+            return response;
+
+        }
+
+        public async Task<GetDetailsGameHistoryView> GetDetailsGame(string userId, Guid gameId)
+        {
+            var game = await _unitOfWork.Games.GetById(gameId);
+
+            var userInGame = await _unitOfWork.UserInGames.GetByUserIdAndGameId(userId, gameId);
+            var botInGames = await _unitOfWork.BotInGames.GetAllByGameId(gameId);
+
+            var bots = botInGames
+                .Select(x => x.Bot)
+                .ToList();
+            var user = await _unitOfWork.Users.GetById(userId);
+
+            var stepUsers = await _unitOfWork.StepsAccounts.GetAllByUserIdAndGameId(userId, gameId);
+            var stepBots = await _unitOfWork.StepsBots.GetAllByGameId(gameId);
+
+            var response = new GetDetailsGameHistoryView()
+            {
+                DateTime = game.CreationAt,
+                CountBots = game.CountBots,
+                Winner = game.WinnerName,
+                
+                User = new UserGetDetailsGameHistoryView()
+                {
+                    Name = user.UserName,
+                    Cards = stepUsers.Select(x => new StepUserGetDetailsGameHistoryViewItem()
+                    {
+                        Rank = (RankTypeView)x.Rank,
+                        Suit = (SuitTypeView)x.Suit
+                    }).ToList()
+                },
+                Bots = bots.Select(x => new BotGetDetailsGameHistoryViewItem()
+                {
+                    Name = x.Name,
+                    Cards = stepBots.Where(c => c.BotId == x.Id).Select(c => new StepBotGetDetailsGameHistoryViewItem()
+                    {
+                        Suit = (SuitTypeView)c.Suit,
+                        Rank = (RankTypeView)c.Rank
+                    }).ToList()
+                }).ToList()
+        };
+
+            return response;
         }
 
     }

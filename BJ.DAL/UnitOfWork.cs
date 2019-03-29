@@ -1,8 +1,8 @@
-﻿using BJ.DAL.Repositories;
-using BJ.DAL.Repositories.Interfaces;
+﻿using BJ.DataAccess.Repositories;
+using BJ.DataAccess.Repositories.Interfaces;
 using System;
 
-namespace BJ.DAL
+namespace BJ.DataAccess
 {
     public class UnitOfWork:IUnitOfWork
     {

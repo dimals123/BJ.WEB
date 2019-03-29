@@ -1,4 +1,4 @@
-﻿namespace BJ.DAL.Entities.Enums
+﻿namespace BJ.DataAccess.Entities.Enums
 {
     public enum RankType
     {

@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using BJ.DAL.Entities;
+using BJ.DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
 using BJ.ViewModels.AccountViews;
-using BJ.DAL.Repositories.Interfaces;
-using BJ.BLL.Services.Interfaces;
-using BJ.BLL.Providers.Interfaces;
+using BJ.DataAccess.Repositories.Interfaces;
+using BJ.BusinessLogic.Services.Interfaces;
+using BJ.BusinessLogic.Providers.Interfaces;
 
-namespace BJ.BLL.Services
+namespace BJ.BusinessLogic.Services
 {
     public class AccountService : IAccountService
     {
@@ -30,7 +30,7 @@ namespace BJ.BLL.Services
             var users = await _unitOfWork.Users.GetAll();
             var userNames = users.Select(x => x.UserName).ToList();
 
-            var response = new GetAllAccountResponseView() { AccountNames = userNames };
+            var response = new GetAllAccountResponseView() { Names = userNames };
            
             return response;
            

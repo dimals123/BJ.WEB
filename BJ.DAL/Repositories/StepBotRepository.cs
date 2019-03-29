@@ -1,12 +1,12 @@
-﻿using BJ.DAL.Entities;
-using BJ.DAL.Repositories.Interfaces;
+﻿using BJ.DataAccess.Entities;
+using BJ.DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BJ.DAL.Repositories
+namespace BJ.DataAccess.Repositories
 {
     public class StepBotRepository : GenericRepository<StepBot>, IStepBotRepository
     {
@@ -24,7 +24,15 @@ namespace BJ.DAL.Repositories
             return stepBots;
         }
 
+        public async Task<List<StepBot>> GetAllByGameId(Guid gameId)
+        {
+            var response = await _dbSet
+                .Include(x => x.Bot)
+                .Where(x => x.GameId == gameId)
+                .ToListAsync();
 
+            return response;
+        }
 
         
     }

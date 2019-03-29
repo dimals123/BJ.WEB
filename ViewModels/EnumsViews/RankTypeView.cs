@@ -1,4 +1,4 @@
-﻿namespace BJ.ViewModels.Enums
+﻿namespace BJ.ViewModels.EnumsViews
 {
     public enum RankTypeView
     {

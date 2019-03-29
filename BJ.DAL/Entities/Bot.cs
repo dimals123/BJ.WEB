@@ -1,4 +1,4 @@
-﻿namespace BJ.DAL.Entities
+﻿namespace BJ.DataAccess.Entities
 {
     public class Bot:BaseEntity
     {

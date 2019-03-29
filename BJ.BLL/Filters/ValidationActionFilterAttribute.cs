@@ -1,10 +1,10 @@
-﻿using BJ.BLL.Extensions;
+﻿using BJ.BusinessLogic.Extensions;
 using BJ.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 
-namespace BJ.BLL.Filters
+namespace BJ.BusinessLogic.Filters
 {
     public class ValidationActionFilterAttribute : Attribute, IActionFilter
     {

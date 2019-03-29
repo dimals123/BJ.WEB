@@ -1,11 +1,11 @@
-﻿using BJ.DAL.Entities;
-using BJ.DAL.Repositories.Interfaces;
+﻿using BJ.DataAccess.Entities;
+using BJ.DataAccess.Repositories.Interfaces;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace BJ.BLL.Configurations
+namespace BJ.BusinessLogic.Configurations
 {
     public static class DbInitialize
     {

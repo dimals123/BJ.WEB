@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BJ.DAL.Entities
+namespace BJ.DataAccess.Entities
 {
     public class BaseEntity
     {

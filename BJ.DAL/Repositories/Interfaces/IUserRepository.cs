@@ -1,7 +1,7 @@
-﻿using BJ.DAL.Entities;
+﻿using BJ.DataAccess.Entities;
 using System.Threading.Tasks;
 
-namespace BJ.DAL.Repositories.Interfaces
+namespace BJ.DataAccess.Repositories.Interfaces
 {
     public interface IUserRepository:IGeneric<User>
     {

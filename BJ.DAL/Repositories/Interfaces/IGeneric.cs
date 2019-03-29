@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BJ.DAL.Repositories.Interfaces
+namespace BJ.DataAccess.Repositories.Interfaces
 {
     public interface IGeneric<T> where T:class
     {

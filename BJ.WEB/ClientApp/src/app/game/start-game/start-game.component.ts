@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameService } from 'src/app/shared/services/game.service';
 import { StartGameResponseView } from 'src/app/shared/models/game-views/start-game-response-view';
-import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { map } from 'rxjs/operators';
+import { FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -27,7 +26,6 @@ export class StartGameComponent implements OnInit {
 
 
   ngOnInit() {
-    debugger;
     this.gameId = localStorage.getItem("gameId");
     this.service.getGameById(this.gameId).subscribe(data=>this.startGameRespnosne = data);
   }

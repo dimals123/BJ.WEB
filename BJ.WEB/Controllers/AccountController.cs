@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using BJ.BLL.Services.Interfaces;
+using BJ.BusinessLogic.Services.Interfaces;
 using BJ.ViewModels.AccountViews;
 using Microsoft.AspNetCore.Mvc;
 
@@ -69,17 +69,17 @@ namespace BJ.WEB.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody]RegisterAccountView registerAccountView)
+        public async Task<IActionResult> Register([FromBody]RegisterAccountView model)
         {
-            var result = await _accountService.Register(registerAccountView);
+            var result = await _accountService.Register(model);
             return Ok(result);
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody]LoginAccountView loginAccountView)
+        public async Task<IActionResult> Login([FromBody]LoginAccountView model)
         {
-            var result = await _accountService.Login(loginAccountView);
+            var result = await _accountService.Login(model);
             return Ok(result);
         }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BJ.BLL.Extensions
+namespace BJ.BusinessLogic.Extensions
 {
     public static class ModelStateExtensions
     {

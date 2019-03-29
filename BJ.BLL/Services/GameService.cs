@@ -1,10 +1,7 @@
-﻿using BJ.BLL.Configurations;
-using BJ.BLL.Helpers;
-using BJ.BLL.Services.Interfaces;
-using BJ.DAL.Entities;
-using BJ.DAL.Entities.Enums;
-using BJ.DAL.Repositories.Interfaces;
-using BJ.ViewModels.Enums;
+﻿using BJ.BusinessLogic.Services.Interfaces;
+using BJ.DataAccess.Entities;
+using BJ.DataAccess.Repositories.Interfaces;
+using BJ.ViewModels.EnumsViews;
 using BJ.ViewModels.GameViews;
 using System;
 using System.Collections.Generic;
@@ -12,18 +9,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
 using MoreLinq;
+using BJ.BusinessLogic.Helpers.Interfaces;
 
-namespace BJ.BLL.Services
+namespace BJ.BusinessLogic.Services
 {
 
     public class GameService : IGameService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IScoreHelper _scoreHelper;
 
 
-        public GameService(IUnitOfWork _unitOfWork)
+        public GameService(IUnitOfWork _unitOfWork, IScoreHelper scoreHelper)
         {
             this._unitOfWork = _unitOfWork;
+            _scoreHelper = scoreHelper;
         }
 
 
@@ -70,14 +70,14 @@ namespace BJ.BLL.Services
                     GameId = game.Id,
                     CountPoint = 0
                 }).ToList();
-                var cardsRemove = new List<Card>();
+                var cardsForRemove = new List<Card>();
 
 
-                DealTwoCards(game, deck, cardsRemove, userId, stepUsers, userInGame, bots, stepBots, botInGames);
+                DealTwoCards(game, deck, cardsForRemove, userId, stepUsers, userInGame, bots, stepBots, botInGames);
 
                 await _unitOfWork.StepsAccounts.CreateRange(stepUsers);
                 await _unitOfWork.StepsBots.CreateRange(stepBots);
-                await _unitOfWork.Cards.DeleteRange(cardsRemove);
+                await _unitOfWork.Cards.DeleteRange(cardsForRemove);
                 await _unitOfWork.UserInGames.Create(userInGame);
                 await _unitOfWork.BotInGames.CreateRange(botInGames);
 
@@ -139,10 +139,10 @@ namespace BJ.BLL.Services
                 var deck = await _unitOfWork.Cards.GetAllByGameId(game.Id);
                 var bots = botInGames.Select(x => x.Bot).ToList();
 
-                var removeCards = new List<Card>();
+                var cardsForRemove = new List<Card>();
                 var stepBots = new List<StepBot>();
 
-                DealLast(game, deck, removeCards, bots, stepBots, botInGames);
+                DealLast(game, deck, cardsForRemove, bots, stepBots, botInGames);
 
                 await EndGame(gameId, userId);
                 await _unitOfWork.BotInGames.UpdateRange(botInGames);
@@ -154,7 +154,7 @@ namespace BJ.BLL.Services
 
         }
 
-        public async Task EndGame(Guid gameId, string userId)
+        private async Task EndGame(Guid gameId, string userId)
         {
             var game = await _unitOfWork.Games.GetById(gameId);
 
@@ -299,7 +299,7 @@ namespace BJ.BLL.Services
             return result;
         }
 
-        private void DealTwoCards(Game game, List<Card> deck, List<Card> cardsRemove, string userId, List<StepUser> stepUsers, UserInGame userInGame, List<Bot> bots, List<StepBot> stepBots, List<BotInGame> botInGames)
+        private void DealTwoCards(Game game, List<Card> deck, List<Card> cardsForRemove, string userId, List<StepUser> stepUsers, UserInGame userInGame, List<Bot> bots, List<StepBot> stepBots, List<BotInGame> botInGames)
         {
             var startCards = 2;
             for (int i = 0; i < startCards; i++)
@@ -314,10 +314,10 @@ namespace BJ.BLL.Services
                 };
                 stepUsers.Add(stepUser);
 
-                userInGame.CountPoint += ScoreHelper.ValueCard(currentCard.Rank, userInGame.CountPoint);
+                userInGame.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, userInGame.CountPoint);
 
 
-                cardsRemove.Add(currentCard);
+                cardsForRemove.Add(currentCard);
                 deck.Remove(currentCard);
 
                 foreach (var bot in bots)
@@ -333,9 +333,9 @@ namespace BJ.BLL.Services
                     stepBots.Add(stepBot);
                     
                     var botInGame =  botInGames.FirstOrDefault(x => x.BotId == bot.Id);
-                    botInGame.CountPoint += ScoreHelper.ValueCard(currentCard.Rank, botInGame.CountPoint);
+                    botInGame.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, botInGame.CountPoint);
                     
-                    cardsRemove.Add(currentCard);
+                    cardsForRemove.Add(currentCard);
                     deck.Remove(currentCard);
                 }
 
@@ -343,7 +343,7 @@ namespace BJ.BLL.Services
             }
         }
 
-        private void DealCard(Game game, List<Card> deck, List<Card> cardsRemove, string userId, ref StepUser stepUser, UserInGame userInGame, List<Bot> bots, List<StepBot> stepBots, List<BotInGame> botInGames)
+        private void DealCard(Game game, List<Card> deck, List<Card> cardsForRemove, string userId, ref StepUser stepUser, UserInGame userInGame, List<Bot> bots, List<StepBot> stepBots, List<BotInGame> botInGames)
         {
             var currentCard = deck.FirstOrDefault();
 
@@ -355,9 +355,9 @@ namespace BJ.BLL.Services
                 Suit = currentCard.Suit
             };
         
-            userInGame.CountPoint += ScoreHelper.ValueCard(currentCard.Rank, userInGame.CountPoint);
+            userInGame.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, userInGame.CountPoint);
 
-            cardsRemove.Add(currentCard);
+            cardsForRemove.Add(currentCard);
             deck.Remove(currentCard);
             
             foreach (var bot in bots)
@@ -377,15 +377,15 @@ namespace BJ.BLL.Services
                     };
                     stepBots.Add(stepBot);
 
-                    pointBot.CountPoint += ScoreHelper.ValueCard(currentCard.Rank, pointBot.CountPoint);
+                    pointBot.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, pointBot.CountPoint);
 
-                    cardsRemove.Add(currentCard);
+                    cardsForRemove.Add(currentCard);
                     deck.Remove(currentCard);
                 }
             }
         }
 
-        private void DealLast(Game game, List<Card> deck, List<Card> cardsRemove, List<Bot> bots, List<StepBot> stepBots, List<BotInGame> botInGames)
+        private void DealLast(Game game, List<Card> deck, List<Card> cardsForRemove, List<Bot> bots, List<StepBot> stepBots, List<BotInGame> botInGames)
         {
             foreach (var botInGame in botInGames)
             {
@@ -401,9 +401,9 @@ namespace BJ.BLL.Services
                     };
                     stepBots.Add(stepBot);
 
-                    botInGame.CountPoint += ScoreHelper.ValueCard(currentCard.Rank, botInGame.CountPoint);
+                    botInGame.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, botInGame.CountPoint);
 
-                    cardsRemove.Add(currentCard);
+                    cardsForRemove.Add(currentCard);
                     deck.Remove(currentCard);
                 }
             }
@@ -418,7 +418,7 @@ namespace BJ.BLL.Services
                 .MaxBy(x => x.CountPoint)
                 .FirstOrDefault();
 
-            var bot = bots.FirstOrDefault(x => x.Id == winner.Id);
+            var bot = bots.FirstOrDefault(x => x.Id == winner.BotId);
 
             var winnerName = (userInGame.CountPoint > winner.CountPoint) ? user.UserName : bot.Name;
             

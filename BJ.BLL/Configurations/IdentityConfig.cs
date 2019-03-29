@@ -1,6 +1,6 @@
-﻿using BJ.BLL.Options;
-using BJ.DAL;
-using BJ.DAL.Entities;
+﻿using BJ.BusinessLogic.Options;
+using BJ.DataAccess;
+using BJ.DataAccess.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -10,7 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Text;
 
-namespace BJ.BLL.Configurations
+namespace BJ.BusinessLogic.Configurations
 {
     public static class IdentityConfig
     {

@@ -1,6 +1,6 @@
-﻿using BJ.DAL.Entities;
+﻿using BJ.DataAccess.Entities;
 
-namespace BJ.BLL.Providers.Interfaces
+namespace BJ.BusinessLogic.Providers.Interfaces
 {
     public interface IJwtTokenProvider
     {

@@ -1,6 +1,6 @@
-﻿using BJ.BLL.Options;
-using BJ.BLL.Providers.Interfaces;
-using BJ.DAL.Entities;
+﻿using BJ.BusinessLogic.Options;
+using BJ.BusinessLogic.Providers.Interfaces;
+using BJ.DataAccess.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -9,7 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace BJ.BLL.Providers
+namespace BJ.BusinessLogic.Providers
 {
     public class JwtTokenProvider:IJwtTokenProvider
     {   private readonly JwtTokenOptions _options;
