@@ -1,5 +1,5 @@
 export class LoginAccountView{
-    name: string;
-    password:string;
+  public name: string;
+  public password:string;
   }
   

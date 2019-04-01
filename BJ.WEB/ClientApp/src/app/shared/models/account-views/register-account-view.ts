@@ -1,6 +1,6 @@
 export class RegisterAccountView{
-    name: string;
-    password:string;
-    confirmPassword:string;
+  public name: string;
+  public password:string;
+  public confirmPassword:string;
   }
   

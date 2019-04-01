@@ -1,4 +1,4 @@
 export class LoginAccountResponseView{
-    userId:string;
-    token: string;
+  public userId:string;
+  public token: string;
   }

@@ -7,12 +7,12 @@ import { AccountService } from '../shared/services/account.service';
 })
 export class LogOffGuard implements CanActivate  {
   
-  constructor(private router: Router, private service:AccountService) {
+  constructor(private router: Router, private accountService:AccountService) {
   }
-  canActivate(
+  public canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    if (this.service.isAuthenticated() == false)
+    if (!this.accountService.isAuthenticated())
       return true;
     else {
       this.router.navigate(['/game']);

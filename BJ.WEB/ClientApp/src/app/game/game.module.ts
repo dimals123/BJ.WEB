@@ -3,23 +3,25 @@ import { CommonModule } from '@angular/common';
 
 import { GameRoutingModule } from './game-routing.module';
 import { GameComponent } from './game.component';
-import { AccountService } from '../shared/services/account.service';
 
 import { StartGameComponent } from './start-game/start-game.component';
-import { GameService } from '../shared/services/game.service';
+import { SharedModule } from '../shared/shared.module';
+import { MenuComponent } from '../shared/menu/menu.component';
 
 
 @NgModule({
   declarations: [
     GameComponent,
-    StartGameComponent
+    StartGameComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
-    GameRoutingModule
-   
+    GameRoutingModule,
+    SharedModule
+    
   ],
-  providers: [AccountService, GameService],
+  providers: [],
   bootstrap: [GameComponent]
 })
 export class GameModule { }

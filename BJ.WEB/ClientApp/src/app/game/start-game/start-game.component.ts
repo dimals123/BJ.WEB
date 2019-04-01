@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { GameService } from 'src/app/shared/services/game.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { GetDetailsGameResponseView } from 'src/app/shared/models/game-views/get-details-game-response-view';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 
 @Component({
@@ -11,47 +12,44 @@ import { GetDetailsGameResponseView } from 'src/app/shared/models/game-views/get
   styleUrls: ['./start-game.component.scss']
 })
 export class StartGameComponent implements OnInit {
-  serviceGame: any;
 
-  constructor(private service:GameService, private router: Router, private formbuilder:FormBuilder) { }
+  constructor(private gameService:GameService, private router: Router, private formBuilder:FormBuilder, private LocaleStorageService:LocalStorageService) { }
 
-  startGameRespnosne = new GetDetailsGameResponseView();
-  gameId : string;
-  countBots : number;
-  
+  private startGameRespnosne = new GetDetailsGameResponseView();
 
-  formModel = this.formbuilder.group({
-    CountBots:[0, Validators.required],
+  private formModel = this.formBuilder.group({
+    countBots:[0, Validators.required],
   });
 
 
-  ngOnInit() {
-    this.gameId = localStorage.getItem("gameId");
-    this.service.getDetails(this.gameId).subscribe(data=>this.startGameRespnosne = data);
+  public ngOnInit() {
+    this.gameService.getDetails().subscribe(data=>this.startGameRespnosne = data);
   }
   
-  getCards():void
+  public getCards():void
   {
-    this.service.getCard(this.gameId);
     debugger;
+    this.gameService.getCards();
+    window.location.reload();
   }
 
-  StopGame()
+  public StopGame():void
   {
-    this.service.Stop(this.gameId);
+    this.gameService.stop();
+    window.location.reload();
     debugger;
   }
   
-  ExitGame()
+  public exitGame():void
   {
     this.router.navigateByUrl("/game");
-    localStorage.removeItem("gameId");
+    this.LocaleStorageService.removeItem("gameId");
   }
  
-  onStartGame() {
+  public onStartGame():void {
     debugger;
-    this.countBots = this.formModel.value.CountBots;
-    this.service.startGame(this.countBots).subscribe(data=>{localStorage.setItem('gameId', data.gameId), window.location.reload();});
+    this.gameService.start(this.formModel.value.countBots);
+    window.location.reload();
   }
 
 }

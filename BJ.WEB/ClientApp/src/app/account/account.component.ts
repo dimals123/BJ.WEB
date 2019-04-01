@@ -6,13 +6,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './account.component.html',
   styles: []
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent {
 
   constructor() { }
 
 
-  ngOnInit() {
-
-  }
 
 }

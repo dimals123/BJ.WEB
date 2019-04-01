@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { RegisterAccountView } from 'src/app/shared/models/account-views/register-account-view';
 import { LoginAccountResponseView } from 'src/app/shared/models/account-views/login-account-response-veiw';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-registration',
@@ -16,33 +17,32 @@ export class RegistrationComponent implements OnInit
 
 
   
-  constructor(private service:AccountService, private router: Router, private formbuilder:FormBuilder) { }
-  users = new GetAllAccountResponseView();
+  constructor(private accountService:AccountService, private router: Router, private formBuilder:FormBuilder, private LocalStorageService:LocalStorageService) { }
+  private users = new GetAllAccountResponseView();
 
-  formModel = this.formbuilder.group({
-    Name:['', Validators.required],
-    Password:['', Validators.required]
+  private formModel = this.formBuilder.group({
+    name:['', Validators.required],
+    password:['', Validators.required]
   });
 
 
-  ngOnInit(): void {
-   this.service.getNames().subscribe(data=>this.users.names = data["accountNames"]);
+  public ngOnInit(): void {
+   this.accountService.getAll().subscribe(data=>this.users = data);
   }
 
-  authorize(res:LoginAccountResponseView): void{
-    localStorage.setItem('token', res.token);
-    localStorage.setItem('userId', res.userId)
+  private authorize(res:LoginAccountResponseView): void{
+    this.LocalStorageService.setItem('token', res.token);
     this.router.navigateByUrl('/game');
   }
 
 
-  onSubmit() :void
+  public onSubmit() :void
   {
     var register = new RegisterAccountView();
     register = this.formModel.value; 
-      if(this.users.names.indexOf(this.formModel.value.Name) != -1)
+      if(this.users.names.indexOf(this.formModel.value.name) != -1)
       {
-        this.service.login(register).subscribe(
+        this.accountService.login(register).subscribe(
           res => {
             this.authorize(res);
           },
@@ -52,7 +52,7 @@ export class RegistrationComponent implements OnInit
         }
   else
   {
-    this.service.register(register).subscribe(
+    this.accountService.register(register).subscribe(
       res => {
         this.authorize(res);
       },

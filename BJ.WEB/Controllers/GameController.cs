@@ -22,14 +22,16 @@ namespace BJ.WEB.Controllers
             return Ok(response);
         }
         [HttpGet]
-        public async Task<IActionResult> GetCards([FromQuery]Guid gameId)
+        public async Task<IActionResult> GetCards()
         {
+            var gameId = await _gameService.GetUnfinishedId(UserId);
             await _gameService.GetCards(gameId, UserId);
             return Ok();
         }
         [HttpGet]
-        public async Task<IActionResult> Stop([FromQuery]Guid gameId)
+        public async Task<IActionResult> Stop()
         {
+            var gameId = await _gameService.GetUnfinishedId(UserId);
             await _gameService.Stop(gameId, UserId);
             return Ok();
         }
@@ -41,8 +43,9 @@ namespace BJ.WEB.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetDetails([FromQuery]Guid gameId)
-        {      
+        public async Task<IActionResult> GetDetails()
+        {
+            var gameId = await _gameService.GetLastGameId(UserId);
             var result = await _gameService.GetDetails(gameId, UserId);
             return Ok(result);
         }

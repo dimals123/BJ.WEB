@@ -1,3 +1,3 @@
 export class GetAllAccountResponseView{
-  names: Array<string>;
+  public names: Array<string>;
 }

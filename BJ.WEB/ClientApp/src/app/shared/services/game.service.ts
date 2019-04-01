@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { StartGameResponseView } from '../models/game-views/start-game-response-view';
@@ -12,48 +12,32 @@ import { GetDetailsGameResponseView } from '../models/game-views/get-details-gam
 export class GameService {
 
   constructor(private http:HttpClient) { }
-  headers={
-    headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-    })
-}
 
-  ngOnInit()
+  
+
+  public stop():void
   {
-
+    this.http.get<void>(environment.BaseUrl + '/Game/Stop').subscribe();
   }
 
-  Stop(model:string):void
+  public getCards():void
   {
     debugger;
-    let params1 = new HttpParams().set("gameId", model);
-    this.http.get<void>(environment.BaseUrl + '/Game/Stop', {params:params1}).subscribe(x=>{
-      console.log(x);
-      window.location.reload();
-    });
-  }
-
-  getCard(model:string):void
-  {
-    debugger;
-    let params1 = new HttpParams().set("gameId", model);
-    this.http.get<void>(environment.BaseUrl + '/Game/GetCards', {params:params1}).subscribe(x=>{
-      console.log(x);
-      window.location.reload();
-    });
+    this.http.get<void>(environment.BaseUrl + '/Game/GetCards').subscribe();
   }
 
 
-  getDetails(model:string):Observable<GetDetailsGameResponseView>
+  public getDetails():Observable<GetDetailsGameResponseView>
   {
-    let params1 = new HttpParams().set("gameId", model);
-    return this.http.get<GetDetailsGameResponseView>(environment.BaseUrl + '/Game/GetDetails', {params: params1});
+    return this.http.get<GetDetailsGameResponseView>(environment.BaseUrl + '/Game/GetDetails');
   }
 
-  startGame(model:number):Observable<StartGameResponseView>
+  public start(countBots:number):Observable<StartGameResponseView>
   {
-    let params1 = new HttpParams().set("countBots", model.toString());
-    return this.http.get<StartGameResponseView>(environment.BaseUrl + '/Game/Start', {params:params1});
+    const params = {
+      countBots:countBots.toString()
+    };
+    return this.http.get<StartGameResponseView>(environment.BaseUrl + '/Game/Start', {params:params});
   }
 
 }

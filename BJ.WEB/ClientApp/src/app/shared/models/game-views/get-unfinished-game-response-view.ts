@@ -1,33 +1,36 @@
+import { SuitTypeView } from '../enums-views/suit-type-view';
+import { RankTypeView } from '../enums-views/rank-type-view';
+
 export class GetUnfinishedGameResponseView
 {
-    user: UserGetUnfinishedGameResponseView;
-    bots: Array<BotGetUnfinishedGameResponseViewItem>;
-    winner: string;
+    public user: UserGetUnfinishedGameResponseView;
+    public bots: Array<BotGetUnfinishedGameResponseViewItem>;
+    public winner: string;
   }
   
   export class UserGetUnfinishedGameResponseView
   {
-      name:string;
-      points: number;
-      cards: Array<StepUserGetUnfinishedGameResponseViewItem>;
+    public name:string;
+    public points: number;
+    public cards: Array<StepUserGetUnfinishedGameResponseViewItem>;
 
   }
 
   export class StepUserGetUnfinishedGameResponseViewItem
   {
-      suit: number;
-      rank: number;
+    public suit: SuitTypeView;
+    public rank: RankTypeView;
   }
 
   export class BotGetUnfinishedGameResponseViewItem
   {
-    name:string;
-    points: number;
-    cards: Array<StepBotGetUnfinishedGameResponseViewItem>;
+    public name:string;
+    public points: number;
+    public cards: Array<StepBotGetUnfinishedGameResponseViewItem>;
   }
 
   export class StepBotGetUnfinishedGameResponseViewItem
   {
-      suit: number;
-      rank: number;
+    public suit: SuitTypeView;
+    public rank: RankTypeView;
   }

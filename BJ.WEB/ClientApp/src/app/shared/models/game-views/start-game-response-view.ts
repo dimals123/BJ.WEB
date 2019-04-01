@@ -1,4 +1,4 @@
 export class StartGameResponseView{
-    gameId: string;
+  public gameId: string;
   }
   

@@ -12,12 +12,12 @@ export class LogInGuard implements CanActivate {
   path: ActivatedRouteSnapshot[];
   route: ActivatedRouteSnapshot;
 
-  constructor(private router: Router, private service:AccountService) {
+  constructor(private router: Router, private accountService:AccountService) {
   }
-  canActivate(
+  public canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    if (this.service.isAuthenticated() == true)
+    if (this.accountService.isAuthenticated())
       return true;
     else {
       this.router.navigate(['/user/registration']);

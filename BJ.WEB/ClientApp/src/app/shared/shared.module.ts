@@ -1,35 +1,39 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap/modal/public_api';
-import { TooltipModule } from 'ngx-bootstrap/tooltip/public_api';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown/public_api';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { TokenInterceptor } from './interseptors/token-interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AccountService } from './services/account.service';
+import { GameService } from './services/game.service';
+import { LogOffGuard } from '../guards/log-off.guard';
+import { LogInGuard } from '../guards/log-in.guard';
+import { LocalStorageService } from './services/local-storage.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
+  declarations: [
+],
+
+ exports:[
     FormsModule,
     ReactiveFormsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    ModalModule.forRoot(),
     LayoutModule,
-    BrowserAnimationsModule,
-    
-  ],
-  providers:[
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
+    HttpClientModule,
+    RouterModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: SharedModule,
+      providers: [ AccountService, GameService, LocalStorageService,
+        {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptor,
+        multi: true
+      },
+      LogInGuard, 
+      LogOffGuard ]
+    };
+  }
+ }

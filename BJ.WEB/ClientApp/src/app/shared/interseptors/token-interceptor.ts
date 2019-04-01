@@ -6,15 +6,15 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { AccountService } from '../services/account.service';
+import { LocalStorageService } from '../services/local-storage.service';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(public auth: AccountService) {}
+  constructor(public localStorageService: LocalStorageService) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
     request = request.clone({
       setHeaders: {
-        Authorization: `Bearer ${this.auth.getToken()}`
+        Authorization: `Bearer ${this.localStorageService.getItem('token')}`
       }
     });
     return next.handle(request);

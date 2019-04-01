@@ -7,14 +7,14 @@
     <form [formGroup]="formModel" #form='ngForm' autocomplete="off" (submit)="onSubmit()">
       <div class="form-group required">
         <label>Username</label>
-        <input type="text" formControlName="Name" list="user_list" class="form-control">
+        <input type="text" formControlName="name" list="user_list" class="form-control">
           <datalist id="user_list"> 
-           <option  *ngFor="let user of users.accountNames">{{user}}</option>
+           <option  *ngFor="let user of users.names">{{user}}</option>
           </datalist>
       </div>
       <div class="form-group required">
         <label>Password</label>
-        <input type="password" class="form-control" formControlName="Password">
+        <input type="password" class="form-control" formControlName="password">
       </div>
     <div class="form-row">
       <div class="form-group col-md-8 offset-md-2">

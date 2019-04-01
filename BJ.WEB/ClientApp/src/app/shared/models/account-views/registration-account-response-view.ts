@@ -1,4 +1,4 @@
 export class RegistrationAccountResponseView{
-    userId:string;
-    token: string;
+  public userId:string;
+  public token: string;
   }

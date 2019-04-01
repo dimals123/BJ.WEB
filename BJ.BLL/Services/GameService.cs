@@ -430,7 +430,7 @@ namespace BJ.BusinessLogic.Services
         }
 
 
-        public async Task<List<Card>> CreateDeck(Guid gameId)
+        private async Task<List<Card>> CreateDeck(Guid gameId)
         {
             var cards = new List<Card>();
 
@@ -452,6 +452,20 @@ namespace BJ.BusinessLogic.Services
             await _unitOfWork.Cards.CreateRange(cards);
             return cards;
 
+        }
+
+        public async Task<Guid> GetUnfinishedId(string userId)
+        {
+            var userInGames = await _unitOfWork.UserInGames.GetUnfinished(userId);
+            var response = userInGames.Game.Id;
+            return response;
+        }
+
+        public async Task<Guid> GetLastGameId(string userId)
+        {
+            var userInGame = await _unitOfWork.UserInGames.GetLastGame(userId);
+            var response = userInGame.Game.Id;
+            return response;
         }
     }
 }

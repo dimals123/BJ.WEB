@@ -6,56 +6,44 @@ import { environment } from '../../../environments/environment'
 import { RegisterAccountView } from '../models/account-views/register-account-view';
 import { Router } from '@angular/router';
 import { LoginAccountResponseView } from '../models/account-views/login-account-response-veiw';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  constructor(private http:HttpClient, private router: Router) { }
+  constructor(private http:HttpClient, private router: Router, private LocalStorageService:LocalStorageService) { }
 
-  ngOnInit()
+
+
+  public register(model:RegisterAccountView) : Observable<LoginAccountResponseView> 
   {
-
+    return this.http.post<LoginAccountResponseView>(environment.BaseUrl + '/Account/Register', model);
   }
 
-
-  register(data:RegisterAccountView) : Observable<LoginAccountResponseView> 
+  public login(model:RegisterAccountView) : Observable<LoginAccountResponseView>
   {
-    return this.http.post<LoginAccountResponseView>(environment.BaseUrl + '/Account/Register', data);
+    return this.http.post<LoginAccountResponseView>(environment.BaseUrl + '/Account/Login', model);
   }
 
-  login(data:RegisterAccountView) : Observable<LoginAccountResponseView>
-  {
-    return this.http.post<LoginAccountResponseView>(environment.BaseUrl + '/Account/Login', data);
+  public logout() :void {
+    this.LocalStorageService.clear();
   }
 
-  getUserId(): Observable<string>
-  {
-  return this.http.get<string>(environment.BaseUrl + '/Account/GetUserProfile');
-  }
-
-  logout() :void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('gameId');
-    this.router.navigate(['/account/registration']);
-  }
-
-  getNames (): Observable<GetAllAccountResponseView> {
+  public getAll (): Observable<GetAllAccountResponseView> {
     var result = this.http.get<GetAllAccountResponseView>(environment.BaseUrl + '/Account/GetAll');
     return result;
   }
   
 
   public getToken(): string {
-    return localStorage.getItem('token');
+    return <string>this.LocalStorageService.getItem('token');
   }
   public isAuthenticated(): boolean {
     // get the token
     const token = this.getToken();
-    if(token == null)return false;
-    else return true;
+    return token == null ? false : true
   }
 
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MoreLinq;
 
 namespace BJ.DataAccess.Repositories
 {
@@ -37,6 +38,12 @@ namespace BJ.DataAccess.Repositories
             var userInGame = await _dbSet
                 .FirstOrDefaultAsync(x=>x.GameId == gameId && x.UserId == userId);
             return userInGame;
+        }
+
+        public async Task<UserInGame> GetLastGame(string userId)
+        {
+            var response = await _dbSet.Include(x=>x.Game).OrderBy(x=>x.CreationAt).FirstOrDefaultAsync() ;
+            return response;
         }
 
     }
