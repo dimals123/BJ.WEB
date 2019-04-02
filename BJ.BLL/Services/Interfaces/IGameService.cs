@@ -12,6 +12,5 @@ namespace BJ.BusinessLogic.Services.Interfaces
         Task<GetDetailsGameResponseView> GetDetails(Guid gameId, string userId);
         Task<GetUnfinishedGameResponseView> GetUnfinished(string userId);
         Task<Guid> GetUnfinishedId(string userId);
-        Task<Guid> GetLastGameId(string userId);
     }
 }

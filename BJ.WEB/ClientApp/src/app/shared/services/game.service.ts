@@ -15,15 +15,14 @@ export class GameService {
 
   
 
-  public stop():void
+  public stop():Observable<void>
   {
-    this.http.get<void>(environment.BaseUrl + '/Game/Stop').subscribe();
+    return this.http.get<void>(environment.BaseUrl + '/Game/Stop');
   }
 
-  public getCards():void
+  public getCards():Observable<void>
   {
-    debugger;
-    this.http.get<void>(environment.BaseUrl + '/Game/GetCards').subscribe();
+     return this.http.get<void>(environment.BaseUrl + '/Game/GetCards');
   }
 
 
@@ -32,12 +31,12 @@ export class GameService {
     return this.http.get<GetDetailsGameResponseView>(environment.BaseUrl + '/Game/GetDetails');
   }
 
-  public start(countBots:number):Observable<StartGameResponseView>
+  public start(countBots:number) : Observable<void>
   {
     const params = {
       countBots:countBots.toString()
     };
-    return this.http.get<StartGameResponseView>(environment.BaseUrl + '/Game/Start', {params:params});
+    return this.http.get<void>(environment.BaseUrl + '/Game/Start', {params:params});
   }
 
 }

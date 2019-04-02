@@ -19,7 +19,7 @@ namespace BJ.WEB.Controllers
         public async Task<IActionResult> Start([FromQuery]int countBots)
         {
             var response = await _gameService.Start(countBots, UserId);
-            return Ok(response);
+            return Ok();
         }
         [HttpGet]
         public async Task<IActionResult> GetCards()
@@ -45,7 +45,8 @@ namespace BJ.WEB.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDetails()
         {
-            var gameId = await _gameService.GetLastGameId(UserId);
+            
+            var gameId = await _gameService.GetUnfinishedId(UserId);
             var result = await _gameService.GetDetails(gameId, UserId);
             return Ok(result);
         }

@@ -457,11 +457,11 @@ namespace BJ.BusinessLogic.Services
         public async Task<Guid> GetUnfinishedId(string userId)
         {
             var userInGames = await _unitOfWork.UserInGames.GetUnfinished(userId);
-            var response = userInGames.Game.Id;
+            var response = userInGames != null ? userInGames.Game.Id : await GetLastGameId(userId);
             return response;
         }
 
-        public async Task<Guid> GetLastGameId(string userId)
+        private async Task<Guid> GetLastGameId(string userId)
         {
             var userInGame = await _unitOfWork.UserInGames.GetLastGame(userId);
             var response = userInGame.Game.Id;

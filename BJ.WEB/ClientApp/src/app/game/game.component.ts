@@ -12,13 +12,6 @@ export class GameComponent {
 
   constructor(private accountService: AccountService, private router:Router) { }
 
-
-
-  public onLogout(): void {
-    this.accountService.logout();
-    this.router.navigate(['/account/registration']);
-  }
-
   
  
 
