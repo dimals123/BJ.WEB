@@ -7,6 +7,7 @@ import { RegisterAccountView } from '../models/account-views/register-account-vi
 import { Router } from '@angular/router';
 import { LoginAccountResponseView } from '../models/account-views/login-account-response-veiw';
 import { LocalStorageService } from './local-storage.service';
+import { LoginAccountView } from '../models/account-views/login-account-view';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class AccountService {
     return this.http.post<LoginAccountResponseView>(environment.BaseUrl + '/Account/Register', model);
   }
 
-  public login(model:RegisterAccountView) : Observable<LoginAccountResponseView>
+  public login(model:LoginAccountView) : Observable<LoginAccountResponseView>
   {
     return this.http.post<LoginAccountResponseView>(environment.BaseUrl + '/Account/Login', model);
   }

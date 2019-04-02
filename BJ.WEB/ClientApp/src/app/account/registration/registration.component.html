@@ -12,10 +12,16 @@
            <option  *ngFor="let user of users.names">{{user}}</option>
           </datalist>
       </div>
+      <div formGroupName='passwords'>
       <div class="form-group required">
         <label>Password</label>
         <input type="password" class="form-control" formControlName="password">
       </div>
+      <div class="form-group required" [style.visibility]="this.users.names.indexOf(this.formModel.value.name) != -1 ? 'hidden':'visible'">
+        <label>ConfirmPassword</label>
+        <input type="password" class="form-control" formControlName="confirmPassword">
+      </div>
+    </div>
     <div class="form-row">
       <div class="form-group col-md-8 offset-md-2">
         <button type="submit" class="btn btn-lg btn-block">Sign Up</button>
