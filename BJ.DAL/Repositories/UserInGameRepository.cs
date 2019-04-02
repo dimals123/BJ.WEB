@@ -42,7 +42,7 @@ namespace BJ.DataAccess.Repositories
 
         public async Task<UserInGame> GetLastGame(string userId)
         {
-            var response = await _dbSet.Include(x=>x.Game).OrderBy(x=>x.CreationAt).FirstOrDefaultAsync() ;
+            var response = await _dbSet.Include(x=>x.Game).OrderByDescending(x=>x.CreationAt).FirstOrDefaultAsync() ;
             return response;
         }
 

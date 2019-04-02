@@ -38,7 +38,7 @@ export class AccountService {
   
 
   public getToken(): string {
-    return <string>this.LocalStorageService.getItem('token');
+    return this.LocalStorageService.getItem<string>('token');
   }
   public isAuthenticated(): boolean {
     // get the token

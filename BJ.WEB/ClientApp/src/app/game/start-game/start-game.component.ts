@@ -48,7 +48,7 @@ export class StartGameComponent implements OnInit {
  
   public onStartGame():void {
     debugger;
-    this.gameService.start(this.formModel.value.countBots);
+    this.gameService.start(this.formModel.value.countBots).subscribe();
     window.location.reload();
   }
 
