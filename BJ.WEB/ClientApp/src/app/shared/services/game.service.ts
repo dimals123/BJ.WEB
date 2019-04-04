@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { StartGameResponseView } from '../models/game-views/start-game-response-view';
 import { GetDetailsGameResponseView } from '../models/game-views/get-details-game-response-view';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -11,9 +11,10 @@ import { GetDetailsGameResponseView } from '../models/game-views/get-details-gam
 })
 export class GameService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private readonly http:HttpClient) { }
 
-  
+
+
 
   public stop():Observable<void>
   {
@@ -24,7 +25,6 @@ export class GameService {
   {
      return this.http.get<void>(environment.BaseUrl + '/Game/GetCards');
   }
-
 
   public getDetails():Observable<GetDetailsGameResponseView>
   {
@@ -37,6 +37,11 @@ export class GameService {
       countBots:countBots.toString()
     };
     return this.http.get<void>(environment.BaseUrl + '/Game/Start', {params:params});
+  }
+
+  public isUnfinished() : Observable<boolean>
+  {
+    return this.http.get<boolean>(environment.BaseUrl + '/Game/IsUnfinished');
   }
 
 }

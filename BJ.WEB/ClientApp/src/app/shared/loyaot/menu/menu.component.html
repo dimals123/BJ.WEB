@@ -1,0 +1,18 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid text-white">
+    <div class="navbar-header">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="../../../../assets/img/header.jpg">
+        </a>
+      </div>
+    </div>
+    <ng-container *ngIf="isAuth">
+    <ul class="nav navbar-nav btn-danger">
+      <li><a (click)="this.accountService.logout()">LogOut</a></li>
+      <li><a [routerLink]="['/history']">History</a></li>
+      <li><a [routerLink]="['/game/start-game']">Game</a></li>
+    </ul>
+  </ng-container>
+  </div>
+</nav>

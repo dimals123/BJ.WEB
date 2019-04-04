@@ -417,14 +417,14 @@ namespace BJ.BusinessLogic.Services
         {
 
 
-            var winner = botInGames
-                .Where(x => x.CountPoint <= 21)
-                .MaxBy(x => x.CountPoint)
+            var winner = botInGames?
+                .Where(x => x.CountPoint <= 21)?
+                .MaxBy(x => x.CountPoint)?
                 .FirstOrDefault();
 
-            var bot = bots.FirstOrDefault(x => x.Id == winner.BotId);
+            var bot = bots?.FirstOrDefault(x => x.Id == winner?.BotId);
 
-            var winnerName = (userInGame.CountPoint > winner.CountPoint && userInGame.CountPoint <= 21) ? user.UserName : bot.Name;
+            var winnerName = (userInGame.CountPoint > winner?.CountPoint && userInGame.CountPoint <= 21) ? user.UserName : bot?.Name;
             
             return winnerName;
         }
@@ -454,10 +454,17 @@ namespace BJ.BusinessLogic.Services
 
         }
 
+        public async Task<bool> IsUnfinished(string userId)
+        {
+            var userInGames = await _unitOfWork.UserInGames.GetUnfinished(userId);
+            var response = userInGames == null ? false : true;
+            return response;
+        }
+
         public async Task<Guid> GetUnfinishedId(string userId)
         {
             var userInGames = await _unitOfWork.UserInGames.GetUnfinished(userId);
-            var response = userInGames != null ? userInGames.Game.Id : await GetLastGameId(userId);
+            var response = userInGames == null ? await GetLastGameId(userId) : userInGames.GameId;
             return response;
         }
 

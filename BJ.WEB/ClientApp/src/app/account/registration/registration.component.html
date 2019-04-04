@@ -1,31 +1,45 @@
-  <div class="">  
-     <div class="">
-       <img src="/assets/img/images.png" class="mx-auto d-block">
+<div class="col-md-10 offset-md-1">
+  <form [formGroup]="registerForm" autocomplete="off" (submit)="onSubmit()">
+    <div class="form-group required">
+      <label>Username</label>
+      <input type="text" formControlName="name" list="user_list" class="form-control">
+      <datalist id="user_list">
+        <option *ngFor="let user of this.modelNames">{{user}}</option>
+      </datalist>
+      <label class="text-danger"
+        *ngIf="this.registerForm.get('name').touched && this.registerForm.get('name').errors?.required">Name is
+        empty!</label>
+        <label class="text-danger"
+        *ngIf="!this.validPassword && !this.registerForm.get('password').touched">Password is empty.</label>
     </div>
-  </div>
-  <div class="col-md-10 offset-md-1">
-    <form [formGroup]="formModel" #form='ngForm' autocomplete="off" (submit)="onSubmit()">
-      <div class="form-group required">
-        <label>Username</label>
-        <input type="text" formControlName="name" list="user_list" class="form-control">
-          <datalist id="user_list"> 
-           <option  *ngFor="let user of users.names">{{user}}</option>
-          </datalist>
-      </div>
-      <div formGroupName='passwords'>
-      <div class="form-group required">
-        <label>Password</label>
-        <input type="password" class="form-control" formControlName="password">
-      </div>
-      <div class="form-group required" [style.visibility]="this.users.names.indexOf(this.formModel.value.name) != -1 ? 'hidden':'visible'">
-        <label>ConfirmPassword</label>
-        <input type="password" class="form-control" formControlName="confirmPassword">
-      </div>
+
+    <div class="form-group required">
+      <label>Password</label>
+      <input type="password" class="form-control" formControlName="password">
+      <label class="text-danger"
+        *ngIf="this.registerForm.get('password').touched && this.registerForm.get('password').errors?.required">Password
+        is failed.</label>
+      <label class="text-danger"
+        *ngIf="this.registerForm.get('password').touched && this.registerForm.get('password').errors?.minlength">Minimum
+        8 characters required.</label>
+        
     </div>
+    <div class="form-group required"
+      [style.visibility]="this.modelNames.includes(this.registerForm.value.name) ? 'hidden':'visible'">
+      <label>ConfirmPassword</label>
+      <input type="password" class="form-control" formControlName="confirmPassword">
+      <label class="text-danger"
+        *ngIf="this.registerForm.get('confirmPassword').touched && this.registerForm.get('confirmPassword').errors?.required">Password
+        is failed.</label>
+      <label class="text-danger"
+        *ngIf="this.registerForm.get('confirmPassword').touched && this.registerForm.get('confirmPassword').errors?.passwordMismatch">Confirm
+        Password does not match.</label>
+    </div>
+
     <div class="form-row">
       <div class="form-group col-md-8 offset-md-2">
         <button type="submit" class="btn btn-lg btn-block">Sign Up</button>
       </div>
     </div>
-    </form>
-  </div>
+  </form>
+</div>

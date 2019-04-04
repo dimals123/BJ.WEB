@@ -7,38 +7,23 @@ import { Injectable } from "@angular/core";
 export class LocalStorageService {
   constructor() { }
 
-  clear() {
+  public clear() : void {
     localStorage.clear();
   }
 
-  removeItem(key: string) {
+  public removeItem(key: string) : void {
     localStorage.removeItem(key);
   }
 
-  setItem<T>(key: string, data: T): boolean {
-    try {
-      if (typeof data == "string") {
-        localStorage.setItem(key, data)
-      }
-      else if (typeof data == "number" || typeof data == "boolean") {
-        localStorage.setItem(key, data.toString())
-      }
-      else {
-        //its my custom object
-        localStorage.setItem(key, JSON.stringify(data));
-      }
-      return true;
-    }
-    catch (e) {
-      return false;
-    }
+  public setItem<T>(key: string, data: T): void {
+    localStorage.setItem(key, JSON.stringify(data));
   }
 
-  getItem<T>(key: string) : T {
+  public getItem<T>(key: string) : T {
     try {
       let response: T
-     response = <T><unknown>(localStorage.getItem(key));
-     return response;
+     response = <T>JSON.parse(localStorage.getItem(key));
+     return <T>response;
     } catch (e) {
       console.log('Error getting data from localStorage', e);
       return null;

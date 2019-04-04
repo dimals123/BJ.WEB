@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { GameService } from 'src/app/shared/services/game.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { GetDetailsGameResponseView } from 'src/app/shared/models/game-views/get-details-game-response-view';
-import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
-import { delay } from 'q';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 
@@ -15,42 +12,32 @@ import { Observable } from 'rxjs';
 })
 export class StartGameComponent implements OnInit {
 
-  constructor(private gameService: GameService, private router: Router, private formBuilder: FormBuilder, private LocaleStorageService: LocalStorageService) { }
+  constructor(private readonly formBuilder: FormBuilder, private readonly gameService: GameService, private readonly router: Router) {
+    
+  }
+  
+  private continue: boolean = undefined;
+  private countBots: number = 0;
 
-  private startGameRespnosne = new GetDetailsGameResponseView();
 
-  private formModel = this.formBuilder.group({
-    countBots: [0, Validators.required],
+  public startGameForm = this.formBuilder.group({
+    countBots: [1, [Validators.required, Validators.min(1)]],
   });
 
 
-  public ngOnInit() {
-    this.gameService.getDetails().subscribe(data => this.startGameRespnosne = data);
+
+  public ngOnInit(): void {
+    this.gameService.isUnfinished().subscribe(response => this.continue = response);
   }
 
-  public getCards() : void{
-    this.gameService.getCards().subscribe(reg => {
-      console.log(reg);
-      window.location.reload();
-    })
-  
-  }
 
-  public StopGame(): void {
-    this.gameService.stop().subscribe(reg => {
-      console.log(reg);
-      window.location.reload();
+  public startGame(): void {
+    this.countBots = this.startGameForm.value.countBots;
+    this.gameService.start(this.countBots).subscribe(response => {
+      console.log(response);
+      this.router.navigateByUrl("/game/game-play");
     });
-    
-  }
 
-
-  public onStartGame(): void {
-    this.gameService.start(this.formModel.value.countBots).subscribe(x => {
-      console.log(x);
-      window.location.reload();
-    });
-    
   }
 
 }

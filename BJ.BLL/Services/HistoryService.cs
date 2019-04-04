@@ -45,6 +45,7 @@ namespace BJ.BusinessLogic.Services
                 .GetAllByUserId(userId);
             var games = userInGames
                 .Select(x => x.Game)
+                .Where(x=>x.IsFinished == true)
                 .ToList();
 
             var response = new GetAllGamesByUserIdView();

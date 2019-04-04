@@ -4,7 +4,6 @@ import { GetAllAccountResponseView } from '../models/account-views/get-all-accou
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment'
 import { RegisterAccountView } from '../models/account-views/register-account-view';
-import { Router } from '@angular/router';
 import { LoginAccountResponseView } from '../models/account-views/login-account-response-veiw';
 import { LocalStorageService } from './local-storage.service';
 import { LoginAccountView } from '../models/account-views/login-account-view';
@@ -14,7 +13,7 @@ import { LoginAccountView } from '../models/account-views/login-account-view';
 })
 export class AccountService {
 
-  constructor(private http:HttpClient, private router: Router, private LocalStorageService:LocalStorageService) { }
+  constructor(private readonly http:HttpClient, private readonly localStorageService:LocalStorageService) { }
 
 
 
@@ -28,8 +27,9 @@ export class AccountService {
     return this.http.post<LoginAccountResponseView>(environment.BaseUrl + '/Account/Login', model);
   }
 
-  public logout() :void {
-    this.LocalStorageService.clear();
+  public logout() : void {
+    this.localStorageService.clear();
+    window.location.reload();
   }
 
   public getAll (): Observable<GetAllAccountResponseView> {
@@ -39,12 +39,12 @@ export class AccountService {
   
 
   public getToken(): string {
-    return this.LocalStorageService.getItem<string>('token');
+    return this.localStorageService.getItem<string>('token');
   }
   public isAuthenticated(): boolean {
     // get the token
     const token = this.getToken();
-    return token == null ? false : true
+    return !!token
   }
 
 }

@@ -43,6 +43,15 @@ namespace BJ.WEB.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> IsUnfinished()
+        {
+            var response = await _gameService.IsUnfinished(UserId);
+            return Ok(response);
+        }
+
+
+
+        [HttpGet]
         public async Task<IActionResult> GetDetails()
         {
             

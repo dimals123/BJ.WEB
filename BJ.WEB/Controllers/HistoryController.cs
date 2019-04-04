@@ -1,6 +1,7 @@
 ﻿using BJ.BusinessLogic.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace BJ.WEB.Controllers
@@ -27,5 +28,12 @@ namespace BJ.WEB.Controllers
             return Ok(result);
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> GetDetailsGame(Guid gameId)
+        {
+            var response = await _historyService.GetDetailsGame(UserId, gameId);
+            return Ok(response);
+        }
     }
 }

@@ -6,6 +6,12 @@ export class GetUnfinishedGameResponseView
     public user: UserGetUnfinishedGameResponseView;
     public bots: Array<BotGetUnfinishedGameResponseViewItem>;
     public winner: string;
+/**
+ *
+ */
+    constructor() {
+      this.bots = []; 
+    } 
   }
   
   export class UserGetUnfinishedGameResponseView
@@ -13,6 +19,10 @@ export class GetUnfinishedGameResponseView
     public name:string;
     public points: number;
     public cards: Array<StepUserGetUnfinishedGameResponseViewItem>;
+
+    constructor() {
+      this.cards = []; 
+    } 
 
   }
 
@@ -27,6 +37,10 @@ export class GetUnfinishedGameResponseView
     public name:string;
     public points: number;
     public cards: Array<StepBotGetUnfinishedGameResponseViewItem>;
+    
+    constructor() {
+      this.cards = []; 
+    } 
   }
 
   export class StepBotGetUnfinishedGameResponseViewItem
