@@ -13,15 +13,28 @@ import { MenuComponent } from './loyaot/menu/menu.component';
 import { MatSnackBarModule } from '@angular/material';
 import { ErrorHandler } from './interseptors/error-handler';
 import { RequestInterceptor } from './interseptors/request-interceptor';
-
+import { HistoryService } from './services/history.service';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {LayoutModule} from '@angular/cdk/layout';
+import { UserGamesExpensinPanelComponent } from './loyaot/user-games-expensin-panel/user-games-expensin-panel.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
-    MenuComponent
+    MenuComponent,
+    UserGamesExpensinPanelComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    MatExpansionModule,
+    LayoutModule,
+    MatPaginatorModule,
+    NgxPaginationModule
   ],
   exports: [
     MatSnackBarModule,
@@ -29,14 +42,24 @@ import { RequestInterceptor } from './interseptors/request-interceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MenuComponent
+    MenuComponent,
+    MatExpansionModule,
+    LayoutModule,
+    UserGamesExpensinPanelComponent,
+    MatPaginatorModule,
+    NgxPaginationModule
   ]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [AccountService, GameService, LocalStorageService, ErrorHandler,
+      providers: [
+        AccountService,
+        GameService,
+        LocalStorageService,
+        ErrorHandler,
+        HistoryService,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: RequestInterceptor,

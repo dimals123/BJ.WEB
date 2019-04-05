@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace BJ.ViewModels.HistoryViews
 {
+
     public class GetDetailsGameHistoryView
     {
         public GetDetailsGameHistoryView()
@@ -26,8 +27,9 @@ namespace BJ.ViewModels.HistoryViews
         {
             Cards = new List<StepUserGetDetailsGameHistoryViewItem>();
         }
-
+        
         public string Name { get; set; }
+        public int Points { get; set; }
         public List<StepUserGetDetailsGameHistoryViewItem> Cards { get; set; }
 
     }
@@ -38,8 +40,9 @@ namespace BJ.ViewModels.HistoryViews
         {
             Cards = new List<StepBotGetDetailsGameHistoryViewItem>();
         }
-
+        
         public string Name { get; set; }
+        public int Points { get; set; }
         public List<StepBotGetDetailsGameHistoryViewItem> Cards { get; set; }
       
     }

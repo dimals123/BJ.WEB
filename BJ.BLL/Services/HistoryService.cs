@@ -1,5 +1,4 @@
 ﻿using BJ.BusinessLogic.Services.Interfaces;
-using BJ.DataAccess.Repositories.Interfaces;
 using BJ.DataAccess.UnitOfWork;
 using BJ.ViewModels.EnumsViews;
 using BJ.ViewModels.HistoryViews;
@@ -38,20 +37,21 @@ namespace BJ.BusinessLogic.Services
 
         } 
 
-        public async Task<GetAllGamesByUserIdView> GetUserGames(string userId)
+        public async Task<GetUserGamesHistoryView> GetUserGames(string userId)
         {
             var userInGames = await _unitOfWork
                 .UserInGames
-                .GetAllByUserId(userId);
+                .GetAllFinishedByUserId(userId);
             var games = userInGames
                 .Select(x => x.Game)
                 .Where(x=>x.IsFinished == true)
                 .ToList();
 
-            var response = new GetAllGamesByUserIdView();
+            var response = new GetUserGamesHistoryView();
 
-            response.Games = games.Select(x => new GameGetAllGamesByUserIdViewItem()
+            response.Games = games.Select(x => new GameGetUserGamesHistoryViewItem()
             {
+                GameId = x.Id,
                 DateTime = x.CreationAt,
                 CountBots = x.CountBots,
                 Winner = x.WinnerName
@@ -81,10 +81,11 @@ namespace BJ.BusinessLogic.Services
                 DateTime = game.CreationAt,
                 CountBots = game.CountBots,
                 Winner = game.WinnerName,
-                
+
                 User = new UserGetDetailsGameHistoryView()
                 {
                     Name = user.UserName,
+                    Points = userInGame.CountPoint,
                     Cards = stepUsers.Select(x => new StepUserGetDetailsGameHistoryViewItem()
                     {
                         Rank = (RankTypeView)x.Rank,
@@ -94,6 +95,7 @@ namespace BJ.BusinessLogic.Services
                 Bots = bots.Select(x => new BotGetDetailsGameHistoryViewItem()
                 {
                     Name = x.Name,
+                    Points = botInGames.Where(c => c.BotId == x.Id).Select(c => c.CountPoint).FirstOrDefault(),
                     Cards = stepBots.Where(c => c.BotId == x.Id).Select(c => new StepBotGetDetailsGameHistoryViewItem()
                     {
                         Suit = (SuitTypeView)c.Suit,

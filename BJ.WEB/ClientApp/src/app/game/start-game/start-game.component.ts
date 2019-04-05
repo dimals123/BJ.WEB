@@ -16,7 +16,7 @@ export class StartGameComponent implements OnInit {
     
   }
   
-  private continue: boolean = undefined;
+  private continue: boolean;
   private countBots: number = 0;
 
 

@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { HistoryRoutingModule } from './history-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { HistoryComponent } from './history.component';
+
 
 @NgModule({
-  declarations: [],
+  declarations: [HistoryComponent],
   imports: [
-    CommonModule,
+    SharedModule,
     HistoryRoutingModule
   ]
 })

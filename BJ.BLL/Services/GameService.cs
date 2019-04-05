@@ -425,7 +425,7 @@ namespace BJ.BusinessLogic.Services
             var bot = bots?.FirstOrDefault(x => x.Id == winner?.BotId);
 
             var winnerName = (userInGame.CountPoint > winner?.CountPoint && userInGame.CountPoint <= 21) ? user.UserName : bot?.Name;
-            
+
             return winnerName;
         }
 

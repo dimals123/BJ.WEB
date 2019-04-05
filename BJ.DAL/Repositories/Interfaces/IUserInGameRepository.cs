@@ -11,5 +11,6 @@ namespace BJ.DataAccess.Repositories.Interfaces
         Task<List<UserInGame>> GetAllByUserId(string userId);
         Task<UserInGame> GetByUserIdAndGameId(string userId, Guid gameId);
         Task<UserInGame> GetLastGame(string userId);
+        Task<List<UserInGame>> GetAllFinishedByUserId(string userId);
     }
 }

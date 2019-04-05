@@ -1,0 +1,29 @@
+<div class="form-group">
+
+  <form action="">
+ 
+    <mat-accordion multi="false">
+
+      <mat-expansion-panel *ngFor="let game of this.model?.games | paginate: { itemsPerPage: 10, currentPage: id}"
+        (opened)="getDetailsGame(game.gameId)">
+        <mat-expansion-panel-header class=" form-control">
+          <label>PointsBots:{{game?.countBots}}--->Winner:{{game?.winner}}--->{{game?.dateTime | date: 'dd.MM.yyyy'}}</label>
+        </mat-expansion-panel-header>
+
+        <label>UserName : {{modelGame?.user?.name}}---></label>
+        <label>Points : {{modelGame?.user?.points}}---></label>
+        <img *ngFor="let card of modelGame?.user?.cards" src="../../../../assets/img/{{card?.rank}}_{{card?.suit}}.png"
+          width="140" height="200">
+        <div *ngFor="let bot of modelGame?.bots">
+          <label>BotName : {{bot?.name}}---></label>
+          <label>Points : {{bot?.points}}---></label>
+          <img *ngFor="let cardBot of bot?.cards" src="../../../../assets/img/{{cardBot?.rank}}_{{cardBot?.suit}}.png"
+            width="140" height="200">
+        </div>
+
+      </mat-expansion-panel>
+
+    </mat-accordion>
+    <pagination-controls (pageChange)="p[id] = changeCurrentPage($event)" class="text-center"></pagination-controls>
+  </form>
+</div>

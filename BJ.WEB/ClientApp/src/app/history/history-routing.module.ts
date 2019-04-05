@@ -1,7 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HistoryComponent } from './history.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/history/1',
+    pathMatch: 'full'
+  },
+  {
+    path: ':id',
+    component: HistoryComponent
+  }
+  
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
