@@ -1,4 +1,5 @@
 ﻿using BJ.DataAccess.Entities.Enums;
+using Dapper.Contrib.Extensions;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,6 +12,7 @@ namespace BJ.DataAccess.Entities
 
         public Guid GameId { get; set; }
         [ForeignKey("GameId")]
+        [Write(false)]
         public virtual Game Game { get; set; }
 
     }

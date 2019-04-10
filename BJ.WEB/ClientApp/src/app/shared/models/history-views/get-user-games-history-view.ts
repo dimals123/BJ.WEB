@@ -17,4 +17,5 @@ export class GamesGetUserGamesHistoryViewItem {
     public dateTime: Date;
     public countBots: number;
     public winner: string;
+    public isWinner: boolean;
 }

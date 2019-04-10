@@ -17,7 +17,7 @@ export class UserGamesExpensinPanelComponent implements OnInit {
   private countGames: number;
   private id: number;
 
-  constructor(private readonly historyService: HistoryService, private readonly route: ActivatedRoute, private readonly router:Router) {
+  constructor(private readonly historyService: HistoryService, private readonly route: ActivatedRoute, private readonly router: Router) {
 
   }
 
@@ -33,7 +33,7 @@ export class UserGamesExpensinPanelComponent implements OnInit {
   }
 
   public getDetailsGame(gameId: string): void {
-    debugger;
+
     this.historyService.getDetailsGame(gameId).subscribe(response => {
       this.modelGame = response;
     },
@@ -43,7 +43,7 @@ export class UserGamesExpensinPanelComponent implements OnInit {
   }
 
 
-  changeCurrentPage(page):void {
+  changeCurrentPage(page): void {
     this.historyService.getUserGames().subscribe(response => {
       this.model = response;
       this.countGames = this.model.games.length;

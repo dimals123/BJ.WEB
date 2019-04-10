@@ -1,7 +1,26 @@
-<form>
-  <div>
-    <ng-container *ngIf="this.isStop">
+<div>
+  <ng-container *ngIf="this.isStop">
 
+    <div>
+      <label>Winner : {{model?.winner}}</label>
+    </div>
+
+    <label>UserName : {{model?.user?.name}}---></label>
+    <label>Points : {{model?.user?.points}}---></label>
+    <img *ngFor="let card of model?.user?.cards" src="../../../../assets/img/{{card?.rank}}_{{card?.suit}}.png"
+      width="140" height="200">
+    <div *ngFor="let bot of model?.bots">
+      <label>BotName : {{bot?.name}}---></label>
+      <label>Points : {{bot?.points}}---></label>>
+      <img *ngFor="let cardBot of bot?.cards" src="../../../../assets/img/{{cardBot?.rank}}_{{cardBot?.suit}}.png"
+        width="140" height="200">
+    </div>
+
+
+  </ng-container>
+
+  <ng-container *ngIf="!this.isStop">
+    <div>
       <div>
         <label>Winner : {{model?.winner}}</label>
       </div>
@@ -9,33 +28,13 @@
       <label>Points : {{model?.user?.points}}---></label>
       <img *ngFor="let card of model?.user?.cards" src="../../../../assets/img/{{card?.rank}}_{{card?.suit}}.png"
         width="140" height="200">
-      <div *ngFor="let bot of model?.bots" >
+      <div *ngFor="let bot of model?.bots">
         <label>BotName : {{bot?.name}}---></label>
-        <label>Points : {{bot?.points}}---></label>>
-        <img *ngFor="let cardBot of bot?.cards" src="../../../../assets/img/{{cardBot?.rank}}_{{cardBot?.suit}}.png"
-          width="140" height="200">
+        <img *ngFor="let cardBot of bot?.cards" src="../../../../assets/img/card.png" width="140" height="200">
       </div>
-
-
-    </ng-container>
-
-    <ng-container *ngIf="!this.isStop">
-      <div>
-        <div>
-          <label>Winner : {{model?.winner}}</label>
-        </div>
-        <label>UserName : {{model?.user?.name}}---></label>
-        <label>Points : {{model?.user?.points}}---></label>
-        <img *ngFor="let card of model?.user?.cards" src="../../../../assets/img/{{card?.rank}}_{{card?.suit}}.png"
-          width="140" height="200">
-        <div *ngFor="let bot of model?.bots">
-          <label>BotName : {{bot?.name}}---></label>
-          <img *ngFor="let cardBot of bot?.cards" src="../../../../assets/img/card.png" width="140" height="200">
-        </div>
-      </div>
-    </ng-container>
-    <button (click)="getCards($event)" class="btn btn-danger my-2 my-sm-0">GetCard</button>
-    <button (click)="stopGame($event)" class="btn btn-danger my-2 my-sm-0">Stop</button>
-    <button [routerLink]="['/game']" class="btn btn-danger my-2 my-sm-0">Exit</button>
-  </div>
-</form>
+    </div>
+  </ng-container>
+  <button (click)="getCards($event)" class="btn btn-danger my-2 my-sm-0">GetCard</button>
+  <button (click)="stopGame($event)" class="btn btn-danger my-2 my-sm-0">Stop</button>
+  <button [routerLink]="['/game']" class="btn btn-danger my-2 my-sm-0">Exit</button>
+</div>

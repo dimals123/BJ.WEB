@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories.Interfaces
 {
-    public interface IStepBotRepository:IBaseRepository<StepBot>
+    public interface IStepBotRepository:IBaseRepository<BotStep>
     {
-        Task<List<StepBot>> GetAllByBotIdAndGameId(Guid botId, Guid gameId);
-        Task<List<StepBot>> GetAllByGameId(Guid gameId);
+        Task<List<BotStep>> GetAllByBotIdAndGameId(Guid botId, Guid gameId);
+        Task<List<BotStep>> GetAllByGameId(Guid gameId);
     }
 }

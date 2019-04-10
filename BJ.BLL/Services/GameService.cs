@@ -1,6 +1,5 @@
 ﻿using BJ.BusinessLogic.Services.Interfaces;
 using BJ.DataAccess.Entities;
-using BJ.DataAccess.Repositories.Interfaces;
 using BJ.ViewModels.EnumsViews;
 using BJ.ViewModels.GameViews;
 using System;
@@ -12,6 +11,8 @@ using MoreLinq;
 using BJ.BusinessLogic.Helpers.Interfaces;
 using BJ.DataAccess.Entities.Enums;
 using BJ.DataAccess.UnitOfWork;
+using System.ComponentModel.DataAnnotations;
+using System.Data;
 
 namespace BJ.BusinessLogic.Services
 {
@@ -21,13 +22,15 @@ namespace BJ.BusinessLogic.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IScoreHelper _scoreHelper;
         private readonly ICardsHelper _cardsHelper;
+        //private readonly IDbConnection _connection;
 
 
-        public GameService(IUnitOfWork _unitOfWork, IScoreHelper scoreHelper, ICardsHelper cardsHelper)
+        public GameService(IUnitOfWork _unitOfWork, IScoreHelper scoreHelper, ICardsHelper cardsHelper/*, IDbConnection connection*/)
         {
             this._unitOfWork = _unitOfWork;
             _scoreHelper = scoreHelper;
             _cardsHelper = cardsHelper;
+            //_connection = connection;
         }
 
 
@@ -35,7 +38,8 @@ namespace BJ.BusinessLogic.Services
         {
 
 
-            using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted }, TransactionScopeAsyncFlowOption.Enabled))
+            //using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted }, TransactionScopeAsyncFlowOption.Enabled))
+            using (var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
 
                 var userInGames = await _unitOfWork.UserInGames.GetUnfinished(userId);
@@ -50,16 +54,18 @@ namespace BJ.BusinessLogic.Services
 
                 var game = new Game
                 {
-                    CountBots = countBots
+                    CountBots = countBots,
+                    WinnerName = String.Empty
                 };
 
+
+
                 await _unitOfWork.Games.Create(game);
-
                 var bots = await _unitOfWork.Bots.GetCount(countBots);
-                var deck = await CreateDeck(game.Id);
+                var deck = await CreateDeck(game);
 
-                var stepUsers = new List<StepUser>();
-                var stepBots = new List<StepBot>();
+                var userSteps = new List<UserStep>();
+                var botSteps = new List<BotStep>();
 
                 var userInGame = new UserInGame
                 {
@@ -77,10 +83,10 @@ namespace BJ.BusinessLogic.Services
                 var cardsForRemove = new List<Card>();
 
 
-                DealTwoCards(game, deck, cardsForRemove, userId, stepUsers, userInGame, bots, stepBots, botInGames);
+                DealTwoCards(game, deck, cardsForRemove, userId, userSteps, userInGame, bots, botSteps, botInGames);
 
-                await _unitOfWork.StepsAccounts.CreateRange(stepUsers);
-                await _unitOfWork.StepsBots.CreateRange(stepBots);
+                await _unitOfWork.UserSteps.CreateRange(userSteps);
+                await _unitOfWork.BotSteps.CreateRange(botSteps);
                 await _unitOfWork.Cards.DeleteRange(cardsForRemove);
                 await _unitOfWork.UserInGames.Create(userInGame);
                 await _unitOfWork.BotInGames.CreateRange(botInGames);
@@ -96,7 +102,7 @@ namespace BJ.BusinessLogic.Services
 
         public async Task GetCards(Guid gameId, string userId)
         {
-            using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted }, TransactionScopeAsyncFlowOption.Enabled))
+            using (var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
 
                 var game = await _unitOfWork.Games.GetById(gameId);
@@ -110,14 +116,14 @@ namespace BJ.BusinessLogic.Services
                 var deck = await _unitOfWork.Cards.GetAllByGameId(game.Id);
                 var bots = botInGames.Select(x => x.Bot).ToList();
 
-                var stepUser = new StepUser();
-                var stepBots = new List<StepBot>();
+                var stepUser = new UserStep();
+                var stepBots = new List<BotStep>();
 
                 DealCard(game,deck, cardsForRemove, userId, ref stepUser, userInGame, bots, stepBots, botInGames);
 
-                await _unitOfWork.StepsAccounts.Create(stepUser);
+                await _unitOfWork.UserSteps.Create(stepUser);
                 await _unitOfWork.UserInGames.Update(userInGame);
-                await _unitOfWork.StepsBots.CreateRange(stepBots);
+                await _unitOfWork.BotSteps.CreateRange(stepBots);
                 await _unitOfWork.BotInGames.UpdateRange(botInGames);
 
                 await _unitOfWork.Cards.DeleteRange(cardsForRemove);
@@ -132,7 +138,7 @@ namespace BJ.BusinessLogic.Services
 
         public async Task Stop(Guid gameId, string userId)
         {
-            using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted }, TransactionScopeAsyncFlowOption.Enabled))
+            using (var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
 
                 var game = await _unitOfWork.Games.GetById(gameId);
@@ -144,13 +150,13 @@ namespace BJ.BusinessLogic.Services
                 var bots = botInGames.Select(x => x.Bot).ToList();
 
                 var cardsForRemove = new List<Card>();
-                var stepBots = new List<StepBot>();
+                var stepBots = new List<BotStep>();
 
                 DealLast(game, deck, cardsForRemove, bots, stepBots, botInGames);
 
                 await EndGame(gameId, userId);
                 await _unitOfWork.BotInGames.UpdateRange(botInGames);
-                await _unitOfWork.StepsBots.CreateRange(stepBots);
+                await _unitOfWork.BotSteps.CreateRange(stepBots);
 
                 transactionScope.Complete();
 
@@ -197,7 +203,7 @@ namespace BJ.BusinessLogic.Services
             userResult.Name = user.UserName;
             userResult.Points = pointsUser.CountPoint;
 
-            var cardsUser = await _unitOfWork.StepsAccounts.GetAllByUserIdAndGameId(userId, gameId);
+            var cardsUser = await _unitOfWork.UserSteps.GetAllByUserIdAndGameId(userId, gameId);
 
             userResult.Cards = cardsUser.Select(x => new StepUserGetDetailsGameResponseViewItem()
             {
@@ -210,7 +216,7 @@ namespace BJ.BusinessLogic.Services
 
             foreach (var bot in botsInGames)
             {
-                var cardsBot = await _unitOfWork.StepsBots.GetAllByBotIdAndGameId(bot.BotId, game.Id);
+                var cardsBot = await _unitOfWork.BotSteps.GetAllByBotIdAndGameId(bot.BotId, game.Id);
 
                 var botCardsResults = new List<StepBotGetDetailsGameResponseViewItem>();
                 botCardsResults = cardsBot.Select(x => new StepBotGetDetailsGameResponseViewItem()
@@ -256,7 +262,7 @@ namespace BJ.BusinessLogic.Services
             userResult.Name = user.UserName;
             userResult.Points = pointsUser.CountPoint;
 
-            var cardsUser = await _unitOfWork.StepsAccounts.GetAllByUserIdAndGameId(userId, game.Id);
+            var cardsUser = await _unitOfWork.UserSteps.GetAllByUserIdAndGameId(userId, game.Id);
 
             userResult.Cards = cardsUser.Select(x => new StepUserGetUnfinishedGameResponseViewItem()
             {
@@ -269,7 +275,7 @@ namespace BJ.BusinessLogic.Services
 
             foreach (var bot in botsInGames)
             {
-                var cardsBot = await _unitOfWork.StepsBots.GetAllByBotIdAndGameId(bot.BotId, game.Id);
+                var cardsBot = await _unitOfWork.BotSteps.GetAllByBotIdAndGameId(bot.BotId, game.Id);
 
                 var botCardsResults = new List<StepBotGetUnfinishedGameResponseViewItem>();
                 botCardsResults = cardsBot.Select(x => new StepBotGetUnfinishedGameResponseViewItem()
@@ -303,13 +309,13 @@ namespace BJ.BusinessLogic.Services
             return result;
         }
 
-        private void DealTwoCards(Game game, List<Card> deck, List<Card> cardsForRemove, string userId, List<StepUser> stepUsers, UserInGame userInGame, List<Bot> bots, List<StepBot> stepBots, List<BotInGame> botInGames)
+        private void DealTwoCards(Game game, List<Card> deck, List<Card> cardsForRemove, string userId, List<UserStep> stepUsers, UserInGame userInGame, List<Bot> bots, List<BotStep> stepBots, List<BotInGame> botInGames)
         {
             var startCards = 2;
             for (int i = 0; i < startCards; i++)
             {
                 var currentCard = deck.FirstOrDefault();
-                var stepUser = new StepUser
+                var stepUser = new UserStep
                 {
                     GameId = game.Id,
                     UserId = userId,
@@ -327,7 +333,7 @@ namespace BJ.BusinessLogic.Services
                 foreach (var bot in bots)
                 {
                     currentCard = deck.FirstOrDefault();
-                    var stepBot = new StepBot
+                    var stepBot = new BotStep
                     {
                         GameId = game.Id,
                         BotId = bot.Id,
@@ -347,11 +353,11 @@ namespace BJ.BusinessLogic.Services
             }
         }
 
-        private void DealCard(Game game, List<Card> deck, List<Card> cardsForRemove, string userId, ref StepUser stepUser, UserInGame userInGame, List<Bot> bots, List<StepBot> stepBots, List<BotInGame> botInGames)
+        private void DealCard(Game game, List<Card> deck, List<Card> cardsForRemove, string userId, ref UserStep stepUser, UserInGame userInGame, List<Bot> bots, List<BotStep> stepBots, List<BotInGame> botInGames)
         {
             var currentCard = deck.FirstOrDefault();
 
-            stepUser = new StepUser
+            stepUser = new UserStep
             {
                 GameId = game.Id,
                 UserId = userId,
@@ -372,7 +378,7 @@ namespace BJ.BusinessLogic.Services
 
                 if (IsNeedCard(pointBot))
                 {
-                    var stepBot = new StepBot
+                    var stepBot = new BotStep
                     {
                         BotId = bot.Id,
                         GameId = game.Id,
@@ -389,14 +395,14 @@ namespace BJ.BusinessLogic.Services
             }
         }
 
-        private void DealLast(Game game, List<Card> deck, List<Card> cardsForRemove, List<Bot> bots, List<StepBot> stepBots, List<BotInGame> botInGames)
+        private void DealLast(Game game, List<Card> deck, List<Card> cardsForRemove, List<Bot> bots, List<BotStep> stepBots, List<BotInGame> botInGames)
         {
             foreach (var botInGame in botInGames)
             {
                 while (IsNeedCard(botInGame))
                 {
                     var currentCard = deck.FirstOrDefault();
-                    var stepBot = new StepBot
+                    var stepBot = new BotStep
                     {
                         BotId = bots.FirstOrDefault(x => x.Id == botInGame.BotId).Id,
                         GameId = game.Id,
@@ -430,7 +436,7 @@ namespace BJ.BusinessLogic.Services
         }
 
 
-        private async Task<List<Card>> CreateDeck(Guid gameId)
+        private async Task<List<Card>> CreateDeck(Game game)
         {
             var cards = new List<Card>();
 
@@ -444,8 +450,8 @@ namespace BJ.BusinessLogic.Services
                     {
                         Suit = (SuitType)suit,
                         Rank = (RankType)rank,
-                        GameId = gameId
-                    });
+                        GameId = game.Id
+                    });                    
                 }
             }
             _cardsHelper.Swap(cards);

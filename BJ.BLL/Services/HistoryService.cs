@@ -21,19 +21,17 @@ namespace BJ.BusinessLogic.Services
         public async Task Clear()
         {
             var deck = await _unitOfWork.Cards.GetAll();
-            var bots = await _unitOfWork.Bots.GetAll();
             var games = await _unitOfWork.Games.GetAll();
             var pointsUser = await _unitOfWork.UserInGames.GetAll();
             var pointsBot = await _unitOfWork.BotInGames.GetAll();
-            var stepsUser = await _unitOfWork.StepsAccounts.GetAll();
-            var stepsBots = await _unitOfWork.StepsBots.GetAll();
+            var stepsUser = await _unitOfWork.UserSteps.GetAll();
+            var stepsBots = await _unitOfWork.BotSteps.GetAll();
             await _unitOfWork.Cards.DeleteRange(deck);
-            await _unitOfWork.Bots.DeleteRange(bots);
             await _unitOfWork.Games.DeleteRange(games);
             await _unitOfWork.UserInGames.DeleteRange(pointsUser);
             await _unitOfWork.BotInGames.DeleteRange(pointsBot);
-            await _unitOfWork.StepsAccounts.DeleteRange(stepsUser);
-            await _unitOfWork.StepsBots.DeleteRange(stepsBots);
+            await _unitOfWork.UserSteps.DeleteRange(stepsUser);
+            await _unitOfWork.BotSteps.DeleteRange(stepsBots);
 
         } 
 
@@ -47,14 +45,19 @@ namespace BJ.BusinessLogic.Services
                 .Where(x=>x.IsFinished == true)
                 .ToList();
 
+            var user = await _unitOfWork.Users.GetById(userId);
+
             var response = new GetUserGamesHistoryView();
+
+
 
             response.Games = games.Select(x => new GameGetUserGamesHistoryViewItem()
             {
                 GameId = x.Id,
                 DateTime = x.CreationAt,
                 CountBots = x.CountBots,
-                Winner = x.WinnerName
+                Winner = x.WinnerName,
+                IsWinner = x.WinnerName == user.UserName ? true : false
             }).ToList();
 
             return response;
@@ -73,8 +76,8 @@ namespace BJ.BusinessLogic.Services
                 .ToList();
             var user = await _unitOfWork.Users.GetById(userId);
 
-            var stepUsers = await _unitOfWork.StepsAccounts.GetAllByUserIdAndGameId(userId, gameId);
-            var stepBots = await _unitOfWork.StepsBots.GetAllByGameId(gameId);
+            var stepUsers = await _unitOfWork.UserSteps.GetAllByUserIdAndGameId(userId, gameId);
+            var stepBots = await _unitOfWork.BotSteps.GetAllByGameId(gameId);
 
             var response = new GetDetailsGameHistoryView()
             {

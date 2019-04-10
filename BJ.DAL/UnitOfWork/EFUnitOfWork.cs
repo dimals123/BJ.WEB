@@ -1,22 +1,23 @@
-﻿using BJ.DataAccess.Repositories;
+﻿using BJ.DataAccess.Repositories.EF;
 using BJ.DataAccess.Repositories.Interfaces;
 using System;
 
 namespace BJ.DataAccess.UnitOfWork
 {
-    public class UnitOfWork:IUnitOfWork
+    public class EFUnitOfWork:IUnitOfWork
     {
         private BJContext db;
         private BotRepository botRepository;
         private CardRepository cardRepository;
         private GameRepository gameRepository;
-        private UserInGameRepository pointAccountRepository;
-        private BotInGameRepository pointBotRepository;
-        private StepUserRepository stepAccountRepository;
+        private UserInGameRepository userInGameRepository;
+        private BotInGameRepository botInGameRepository;
+        private StepUserRepository stepUserRepository;
         private StepBotRepository stepBotRepository;
         private UserRepository userRepository;
 
-        public UnitOfWork(BJContext context)
+
+        public EFUnitOfWork(BJContext context)
         {
             db = context;
         }
@@ -27,8 +28,7 @@ namespace BJ.DataAccess.UnitOfWork
         {
             get
             {
-                if (userRepository == null)
-                    userRepository = new UserRepository(db);
+                userRepository = userRepository ?? new UserRepository(db);
                 return userRepository;
             }
         }
@@ -38,8 +38,7 @@ namespace BJ.DataAccess.UnitOfWork
         {
             get
             {
-                if (botRepository == null)
-                    botRepository = new BotRepository(db);
+                botRepository = botRepository ?? new BotRepository(db);
                 return botRepository;
             }
         }
@@ -48,8 +47,7 @@ namespace BJ.DataAccess.UnitOfWork
         {
             get
             {
-                if (cardRepository == null)
-                    cardRepository = new CardRepository(db);
+                cardRepository = cardRepository ?? new CardRepository(db);
                 return cardRepository;
             }
         }
@@ -58,8 +56,7 @@ namespace BJ.DataAccess.UnitOfWork
         {
             get
             {
-                if (gameRepository == null)
-                    gameRepository = new GameRepository(db);
+                gameRepository = gameRepository ?? new GameRepository(db);
                 return gameRepository;
             }
         }
@@ -68,9 +65,8 @@ namespace BJ.DataAccess.UnitOfWork
         {
             get
             {
-                if (pointAccountRepository == null)
-                    pointAccountRepository = new UserInGameRepository(db);
-                return pointAccountRepository;
+                userInGameRepository = userInGameRepository ?? new UserInGameRepository(db);
+                return userInGameRepository;
             }
         }
 
@@ -78,31 +74,29 @@ namespace BJ.DataAccess.UnitOfWork
         {
             get
             {
-                if (pointBotRepository == null)
-                    pointBotRepository = new BotInGameRepository(db);
-                return pointBotRepository;
+                botInGameRepository = botInGameRepository ?? new BotInGameRepository(db);
+                return botInGameRepository;
             }
         }
 
-        public IStepUserRepository StepsAccounts
+        public IStepUserRepository UserSteps
         {
             get
             {
-                if (stepAccountRepository == null)
-                    stepAccountRepository = new StepUserRepository(db);
-                return stepAccountRepository;
+                stepUserRepository = stepUserRepository ?? new StepUserRepository(db);
+                return stepUserRepository;
             }
         }
 
-        public IStepBotRepository StepsBots
+        public IStepBotRepository BotSteps
         {
             get
             {
-                if (stepBotRepository == null)
-                    stepBotRepository = new StepBotRepository(db);
+                stepBotRepository = stepBotRepository ?? new StepBotRepository(db);
                 return stepBotRepository;
             }
         }
+
 
 
         private bool disposed = false;
@@ -126,5 +120,7 @@ namespace BJ.DataAccess.UnitOfWork
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        
     }
 }

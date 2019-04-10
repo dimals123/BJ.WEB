@@ -7,7 +7,6 @@ namespace BJ.DataAccess.Repositories.Interfaces
     public interface IBaseRepository<T> where T:class
     {
         Task<List<T>> GetAll();
-        Task<T> GetFirst();
         Task<T> GetById(Guid id);
         Task Create(T item);
         Task CreateRange(List<T> items);

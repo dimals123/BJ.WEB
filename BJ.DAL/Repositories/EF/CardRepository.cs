@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BJ.DataAccess.Repositories
+namespace BJ.DataAccess.Repositories.EF
 {
     public class CardRepository:BaseRepository<Card>, ICardRepository
     {

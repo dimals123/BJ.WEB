@@ -14,11 +14,14 @@ import { MatSnackBarModule } from '@angular/material';
 import { ErrorHandler } from './interseptors/error-handler';
 import { RequestInterceptor } from './interseptors/request-interceptor';
 import { HistoryService } from './services/history.service';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {LayoutModule} from '@angular/cdk/layout';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { LayoutModule } from '@angular/cdk/layout';
 import { UserGamesExpensinPanelComponent } from './loyaot/user-games-expensin-panel/user-games-expensin-panel.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgxPaginationModule } from 'ngx-pagination';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatExpansionModule,
     LayoutModule,
     MatPaginatorModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatIconModule,
+    MatMenuModule,
+    MatSidenavModule
   ],
   exports: [
     MatSnackBarModule,
@@ -47,7 +53,11 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LayoutModule,
     UserGamesExpensinPanelComponent,
     MatPaginatorModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatIconModule,
+    MatMenuModule,
+    MatSidenavModule
+
   ]
 })
 export class SharedModule {

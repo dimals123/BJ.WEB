@@ -3,7 +3,7 @@ using BJ.DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
-namespace BJ.DataAccess.Repositories
+namespace BJ.DataAccess.Repositories.EF
 {
     public class UserRepository : BaseRepository<User>, IUserRepository
     {

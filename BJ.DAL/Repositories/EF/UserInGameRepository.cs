@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BJ.DataAccess.Repositories
+namespace BJ.DataAccess.Repositories.EF
 {
     public class UserInGameRepository:BaseRepository<UserInGame>, IUserInGameRepository
     {
@@ -34,7 +34,8 @@ namespace BJ.DataAccess.Repositories
 
         public async Task<List<UserInGame>> GetAllFinishedByUserId(string userId)
         {
-            var response = await _dbSet.Include(x => x.Game)
+            var response = await _dbSet
+                .Include(x => x.Game)
                 .Select(x => x)
                 .Where(x => x.UserId == userId && x.Game.IsFinished == true)
                 .ToListAsync();
@@ -50,7 +51,8 @@ namespace BJ.DataAccess.Repositories
 
         public async Task<UserInGame> GetLastGame(string userId)
         {
-            var response = await _dbSet.Include(x => x.Game)
+            var response = await _dbSet
+                .Include(x => x.Game)
                 .OrderByDescending(x => x.CreationAt)
                 .FirstOrDefaultAsync(x => x.UserId == userId);
             return response;

@@ -1,22 +1,25 @@
 <div class="form-group required">
-    <form action="">
-        <ng-container *ngIf="!continue">
-            <form [formGroup]="startGameForm" autocomplete="off">
-                <div class="">
-                    <label>CountBots</label>
-                    <input type="number" class="form-control" formControlName="countBots">
-                    <label class="text-danger"
-                        *ngIf="this.startGameForm.get('countBots').touched && this.startGameForm.get('countBots').errors?.min">Minimum
-                        value 1.</label>
-                    <button (click)="startGame()" class="btn btn-danger my-2 my-sm-0">Start</button>
-                </div>
-            </form>
-        </ng-container>
 
-        <ng-container *ngIf="continue">
-            <div>
-                <button [routerLink]="['/game/game-play']" class="btn btn-danger my-2 my-sm-0">Continue</button>
+    <ng-container *ngIf="!continue">
+        <form [formGroup]="startGameForm" autocomplete="off" class="text-center">
+            <div class="">
+                <label>CountBots</label>
+                <input type="number" class="form-control" formControlName="countBots">
+                <label class="text-danger"
+                    *ngIf="this.startGameForm.get('countBots').touched && this.startGameForm.get('countBots').errors?.min">Minimum
+                    value 1.</label>
+                <button (click)="startGame()" class="btn btn-danger my-2 my-sm-0">
+                    <mat-icon>videogame_asset</mat-icon>
+                    <span> Start</span>
+                </button>
             </div>
-        </ng-container>
-    </form>
+        </form>
+    </ng-container>
+
+    <ng-container *ngIf="continue">
+        <div>
+            <button [routerLink]="['/game/game-play']" class="btn btn-danger my-2 my-sm-0">Continue</button>
+        </div>
+    </ng-container>
+
 </div>

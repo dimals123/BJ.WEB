@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BJ.DataAccess.Entities
@@ -10,11 +11,13 @@ namespace BJ.DataAccess.Entities
 
         public string UserId { get; set; }
         [ForeignKey("UserId")]
-        public User User { get; set; }
+        [Write(false)]
+        public virtual User User { get; set; }
 
 
         public Guid GameId { get; set; }
         [ForeignKey("GameId")]
+        [Write(false)]
         public virtual Game Game { get; set; }
     }
 }

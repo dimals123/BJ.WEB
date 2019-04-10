@@ -19,6 +19,7 @@ namespace BJ.ViewModels.HistoryViews
         public DateTime DateTime { get; set; }
         public int CountBots { get; set; }
         public string Winner { get; set; }
+        public bool IsWinner { get; set; }
 
     }
 }

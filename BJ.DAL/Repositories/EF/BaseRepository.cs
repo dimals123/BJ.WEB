@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BJ.DataAccess.Repositories
+namespace BJ.DataAccess.Repositories.EF
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
@@ -15,11 +15,6 @@ namespace BJ.DataAccess.Repositories
         {
             _context = context;
             _dbSet = context.Set<T>();
-        }
-
-        public virtual async Task<T> GetFirst()
-        {
-            return await _dbSet.FirstOrDefaultAsync();
         }
 
         public virtual async Task<T> GetById(Guid id)

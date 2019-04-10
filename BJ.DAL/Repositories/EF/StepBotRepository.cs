@@ -6,16 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BJ.DataAccess.Repositories
+namespace BJ.DataAccess.Repositories.EF
 {
-    public class StepBotRepository : BaseRepository<StepBot>, IStepBotRepository
+    public class StepBotRepository : BaseRepository<BotStep>, IStepBotRepository
     {
         public StepBotRepository(BJContext context) : base(context)
         {
 
         }
 
-        public async Task<List<StepBot>> GetAllByBotIdAndGameId(Guid botId, Guid gameId)
+        public async Task<List<BotStep>> GetAllByBotIdAndGameId(Guid botId, Guid gameId)
         {
             var stepBots = await _dbSet
                 .Select(x => x)
@@ -24,7 +24,7 @@ namespace BJ.DataAccess.Repositories
             return stepBots;
         }
 
-        public async Task<List<StepBot>> GetAllByGameId(Guid gameId)
+        public async Task<List<BotStep>> GetAllByGameId(Guid gameId)
         {
             var response = await _dbSet
                 .Include(x => x.Bot)

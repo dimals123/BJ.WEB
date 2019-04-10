@@ -11,8 +11,8 @@ namespace BJ.DataAccess
         public DbSet<Game> Games { get; set; }
         public DbSet<UserInGame> UserInGames { get; set; }
         public DbSet<BotInGame> BotInGames { get; set; }
-        public DbSet<StepUser> StepsAccounts { get; set; }
-        public DbSet<StepBot> StepsBots { get; set; }
+        public DbSet<UserStep> UserSteps { get; set; }
+        public DbSet<BotStep> BotSteps { get; set; }
 
         public BJContext(DbContextOptions<BJContext> options):base(options)
         {

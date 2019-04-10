@@ -6,7 +6,7 @@ using BJ.DataAccess.Entities;
 using BJ.DataAccess.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace BJ.DataAccess.Repositories
+namespace BJ.DataAccess.Repositories.EF
 {
     public class BotInGameRepository:BaseRepository<BotInGame>, IBotInGameRepository
     {

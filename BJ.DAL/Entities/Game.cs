@@ -1,6 +1,4 @@
-﻿using BJ.DataAccess.Entities.Enums;
-
-namespace BJ.DataAccess.Entities
+﻿namespace BJ.DataAccess.Entities
 {
     public class Game:BaseEntity
     {

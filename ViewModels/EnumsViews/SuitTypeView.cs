@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BJ.ViewModels.EnumsViews
+﻿namespace BJ.ViewModels.EnumsViews
 {
     public enum SuitTypeView
     {

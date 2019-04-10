@@ -4,14 +4,16 @@ using BJ.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BJ.DataAccess.Migrations
 {
     [DbContext(typeof(BJContext))]
-    partial class BJContextModelSnapshot : ModelSnapshot
+    [Migration("20190408131628_renme")]
+    partial class renme
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,32 +57,6 @@ namespace BJ.DataAccess.Migrations
                     b.ToTable("BotInGames");
                 });
 
-            modelBuilder.Entity("BJ.DataAccess.Entities.BotStep", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("BotId");
-
-                    b.Property<DateTime>("CreationAt");
-
-                    b.Property<Guid>("GameId");
-
-                    b.Property<int>("Rank");
-
-                    b.Property<int>("StepNumber");
-
-                    b.Property<int>("Suit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BotId");
-
-                    b.HasIndex("GameId");
-
-                    b.ToTable("BotSteps");
-                });
-
             modelBuilder.Entity("BJ.DataAccess.Entities.Card", b =>
                 {
                     b.Property<Guid>("Id")
@@ -117,6 +93,58 @@ namespace BJ.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Games");
+                });
+
+            modelBuilder.Entity("BJ.DataAccess.Entities.StepBot", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("BotId");
+
+                    b.Property<DateTime>("CreationAt");
+
+                    b.Property<Guid>("GameId");
+
+                    b.Property<int>("Rank");
+
+                    b.Property<int>("StepNumber");
+
+                    b.Property<int>("Suit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BotId");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("BotSteps");
+                });
+
+            modelBuilder.Entity("BJ.DataAccess.Entities.StepUser", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreationAt");
+
+                    b.Property<Guid>("GameId");
+
+                    b.Property<int>("Rank");
+
+                    b.Property<int>("StepNumber");
+
+                    b.Property<int>("Suit");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserSteps");
                 });
 
             modelBuilder.Entity("BJ.DataAccess.Entities.User", b =>
@@ -190,32 +218,6 @@ namespace BJ.DataAccess.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserInGames");
-                });
-
-            modelBuilder.Entity("BJ.DataAccess.Entities.UserStep", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreationAt");
-
-                    b.Property<Guid>("GameId");
-
-                    b.Property<int>("Rank");
-
-                    b.Property<int>("StepNumber");
-
-                    b.Property<int>("Suit");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserSteps");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -341,7 +343,15 @@ namespace BJ.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("BJ.DataAccess.Entities.BotStep", b =>
+            modelBuilder.Entity("BJ.DataAccess.Entities.Card", b =>
+                {
+                    b.HasOne("BJ.DataAccess.Entities.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BJ.DataAccess.Entities.StepBot", b =>
                 {
                     b.HasOne("BJ.DataAccess.Entities.Bot", "Bot")
                         .WithMany()
@@ -354,15 +364,7 @@ namespace BJ.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("BJ.DataAccess.Entities.Card", b =>
-                {
-                    b.HasOne("BJ.DataAccess.Entities.Game", "Game")
-                        .WithMany()
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BJ.DataAccess.Entities.UserInGame", b =>
+            modelBuilder.Entity("BJ.DataAccess.Entities.StepUser", b =>
                 {
                     b.HasOne("BJ.DataAccess.Entities.Game", "Game")
                         .WithMany()
@@ -374,7 +376,7 @@ namespace BJ.DataAccess.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("BJ.DataAccess.Entities.UserStep", b =>
+            modelBuilder.Entity("BJ.DataAccess.Entities.UserInGame", b =>
                 {
                     b.HasOne("BJ.DataAccess.Entities.Game", "Game")
                         .WithMany()
