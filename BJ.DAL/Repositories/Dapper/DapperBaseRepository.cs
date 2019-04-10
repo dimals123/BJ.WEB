@@ -65,7 +65,6 @@ namespace BJ.DataAccess.Repositories.Dapper
 
         public async Task<int> GetCount()
         {
-
             var result = _connection.GetAll<T>().Count();
             return result;
 

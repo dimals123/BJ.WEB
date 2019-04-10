@@ -25,7 +25,10 @@ export class RequestInterceptor implements HttpInterceptor {
 
     return next.handle(request).do((event: HttpEvent<any>) => {}, (err: any) => {
       if (err instanceof HttpErrorResponse) {
-        this.errorHandler.handleError(err);
+        if(err.status == 400)
+        this.errorHandler.handleError("Bad Request.");
+        else 
+        this.errorHandler.handleError("Internal Server Error.");
       }
     });
   }

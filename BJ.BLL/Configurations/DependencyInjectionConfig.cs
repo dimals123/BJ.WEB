@@ -22,14 +22,14 @@ namespace BJ.BusinessLogic.Configurations
 
             var initializeConnectionString = configuration.GetSection("DbOptions").Get<DbOptions>().InitializeConnectionString;
             var connectionString = configuration.GetConnectionString(initializeConnectionString);
-           
+            services.AddDbContext<BJContext>(options => options.UseSqlServer(connectionString));
 
 
             var dbOptions = configuration.GetSection("DbOptions").Get<DbOptions>();
 
             if(dbOptions.ORM == "EF")
             {
-                services.AddDbContext<BJContext>(options => options.UseSqlServer(connectionString));
+                
                 services.AddTransient<IUnitOfWork, EFUnitOfWork>();
             }
             else if(dbOptions.ORM == "Dapper")

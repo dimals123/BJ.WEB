@@ -7,6 +7,7 @@ import { RegisterAccountView } from 'src/app/shared/models/account-views/registe
 import { LoginAccountResponseView } from 'src/app/shared/models/account-views/login-account-response-veiw';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { LoginAccountView } from 'src/app/shared/models/account-views/login-account-view';
+import { MenuComponent } from 'src/app/shared/loyaot/menu/menu.component';
 
 @Component({
   selector: 'app-registration',
@@ -55,7 +56,8 @@ export class RegistrationComponent implements OnInit {
 
   private authorize(res: LoginAccountResponseView): void {
     this.localStorageService.setItem('token', res.token);
-    this.router.navigateByUrl('/game');
+    this.router.navigate(["game/start-game"]);
+    window.location.reload();
   }
 
 

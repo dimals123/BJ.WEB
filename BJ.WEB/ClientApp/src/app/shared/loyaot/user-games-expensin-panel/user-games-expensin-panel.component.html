@@ -1,13 +1,13 @@
-<div class="form-group">
+<form action="" class="form">
   <mat-accordion multi="false" class="example-headers-align">
     <mat-expansion-panel *ngFor="let game of this.model?.games | paginate: { itemsPerPage: 10, currentPage: id}"
       (opened)="getDetailsGame(game.gameId)">
-      <mat-expansion-panel-header class=" form-control">
+      <mat-expansion-panel-header class="">
         <mat-panel-title>
-          <label>PointsBots:{{game?.countBots}}</label>
+          <h5>PointsBots:{{game?.countBots}}</h5>
         </mat-panel-title>
         <mat-panel-description>
-          <label for="">{{game?.dateTime | date: 'dd.MM.yyyy'}}</label>
+          <h5>{{game?.dateTime | date: 'dd.MM.yyyy'}}</h5>
           <ng-container *ngIf="!game.isWinner">
             <mat-icon class="lose">mood_bad</mat-icon>
           </ng-container>
@@ -16,19 +16,16 @@
           </ng-container>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <label>UserName : {{modelGame?.user?.name}}---></label>
-      <label>Points : {{modelGame?.user?.points}}---></label>
-      <img *ngFor="let card of modelGame?.user?.cards" src="../../../../assets/img/{{card?.rank}}_{{card?.suit}}.png"
-        width="140" height="200">
+      <h1>UserName : {{modelGame?.user?.name}}</h1>
+      <h3>Points : {{modelGame?.user?.points}}</h3>
+      <img *ngFor="let card of modelGame?.user?.cards" src="../../../../assets/img/{{card?.rank}}_{{card?.suit}}.png">
       <div *ngFor="let bot of modelGame?.bots">
-        <label>BotName : {{bot?.name}}---></label>
-        <label>Points : {{bot?.points}}---></label>
-        <img *ngFor="let cardBot of bot?.cards" src="../../../../assets/img/{{cardBot?.rank}}_{{cardBot?.suit}}.png"
-          width="140" height="200">
+        <h1>BotName : {{bot?.name}}</h1>
+        <h3>Points : {{bot?.points}}</h3>
+        <img *ngFor="let cardBot of bot?.cards" src="../../../../assets/img/{{cardBot?.rank}}_{{cardBot?.suit}}.png">
       </div>
     </mat-expansion-panel>
   </mat-accordion>
-  <div>
-    <pagination-controls (pageChange)="p[id] = changeCurrentPage($event)" class="text-center"></pagination-controls>
-  </div>
-</div>
+</form>
+
+<pagination-controls (pageChange)="p[id] = changeCurrentPage($event)" class="padding"></pagination-controls>

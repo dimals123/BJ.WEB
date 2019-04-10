@@ -1,22 +1,5 @@
-<nav class="navbar navbar-dark bg-dark">
-
-  <img src="../../../../assets/img/header.jpg">
-
-  <ng-container *ngIf="isAuth">
-    <mat-drawer-container class="example-container">
-      <button [routerLink]="['/game/start-game']" mat-icon-button>
-        <mat-icon>videogame_asset</mat-icon>
-        <span>Game</span>
-      </button>
-      <button [routerLink]="['/history']" mat-icon-button>
-        <mat-icon>history</mat-icon>
-        <span>History</span>
-      </button>
-      <button (click)="this.accountService.logout()" mat-icon-button>
-        <mat-icon>cancel</mat-icon>
-        <span>Logout</span>
-      </button>
-    </mat-drawer-container>
-  </ng-container>
-
-</nav>
+<ul class="menu-main" *ngIf="isAuth">
+  <li><a href="../../../game/start-game" class="">Game</a></li>
+  <li><a href="/history/">History</a></li>
+  <li><a href="" (click) = this.accountService.logout()>Logout</a></li>
+</ul>

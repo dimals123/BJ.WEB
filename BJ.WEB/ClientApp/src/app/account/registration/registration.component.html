@@ -1,6 +1,6 @@
-<div class="col-md-10 offset-md-1">
+<div class="form">
   <form [formGroup]="registerForm" autocomplete="off" (submit)="onSubmit()">
-    <div class="form-group required">
+    <div class="">
       <label>Username</label>
       <input type="text" formControlName="name" list="user_list" class="form-control">
       <datalist id="user_list">
@@ -9,8 +9,8 @@
       <label class="text-danger"
         *ngIf="this.registerForm.get('name').touched && this.registerForm.get('name').errors?.required">Name is
         empty!</label>
-        <label class="text-danger"
-        *ngIf="!this.validPassword && !this.registerForm.get('password').touched">Password is empty.</label>
+      <label class="text-danger" *ngIf="!this.validPassword && !this.registerForm.get('password').touched">Password is
+        empty.</label>
     </div>
 
     <div class="form-group required">
@@ -22,7 +22,7 @@
       <label class="text-danger"
         *ngIf="this.registerForm.get('password').touched && this.registerForm.get('password').errors?.minlength">Minimum
         8 characters required.</label>
-        
+
     </div>
     <div class="form-group required"
       [style.visibility]="this.modelNames.includes(this.registerForm.value.name) ? 'hidden':'visible'">
