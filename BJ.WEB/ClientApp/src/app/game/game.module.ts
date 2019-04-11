@@ -6,6 +6,7 @@ import { GameComponent } from './game.component';
 import { StartGameComponent } from './start-game/start-game.component';
 import { SharedModule } from '../shared/shared.module';
 import { GamePlayComponent } from './game-play/game-play.component';
+import { RestrictInputDirective } from '../shared/derectives/restrict-input-directive';
 
 
 @NgModule({

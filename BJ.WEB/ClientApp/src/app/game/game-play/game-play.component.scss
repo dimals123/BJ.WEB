@@ -54,11 +54,12 @@ img{
 }
 
 @media (max-width: 550px) {
-.form {padding-top: 0;}
+.form {padding-top: 10px;
+}
 .form button {
   display: block;
   width: 90%;
-  margin: 5px auto;
+  margin: 5px auto 0px;
 }
 .form img {
   max-width: 100px;

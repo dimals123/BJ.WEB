@@ -22,11 +22,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { RestrictInputDirective } from './derectives/restrict-input-directive';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
     MenuComponent,
-    UserGamesExpensinPanelComponent
+    UserGamesExpensinPanelComponent,
+    RestrictInputDirective
   ],
   imports: [
     CommonModule,
@@ -40,7 +43,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     NgxPaginationModule,
     MatIconModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatSnackBarModule,
@@ -56,7 +60,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     NgxPaginationModule,
     MatIconModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    RestrictInputDirective,
+    MatProgressSpinnerModule
 
   ]
 })

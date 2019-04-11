@@ -4,7 +4,7 @@
         
             <div class="">
                 <label>Count Bots</label>
-                <input type="number" class="" formControlName="countBots">
+                <input appInputMask="integer" formControlName="countBots">
                 <label class=""
                     *ngIf="this.startGameForm.get('countBots').touched && this.startGameForm.get('countBots').errors?.min">Minimum
                     value 1.</label>

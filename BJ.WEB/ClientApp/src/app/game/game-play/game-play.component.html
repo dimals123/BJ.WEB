@@ -19,6 +19,9 @@
 
   <ng-container *ngIf="!this.isStop">
     <div>
+        <button (click)="getCards($event)" class="">Deal</button>
+        <button (click)="stopGame($event)" class="">Stop</button>
+        <button [routerLink]="['/game']" class="">Exit</button>
       <label>UserName : {{model?.user?.name}}</label>
       <label>Points : {{model?.user?.points}}</label>
       <img *ngFor="let card of model?.user?.cards" src="../../../../assets/img/{{card?.rank}}_{{card?.suit}}.png">
@@ -27,9 +30,7 @@
         <img *ngFor="let cardBot of bot?.cards" src="../../../../assets/img/card.png">
       </div>
     </div>
-    <button (click)="getCards($event)" class="">Deal</button>
-  <button (click)="stopGame($event)" class="">Stop</button>
-  <button [routerLink]="['/game']" class="">Exit</button>
+    
   </ng-container>
 
 </div>

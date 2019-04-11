@@ -31,6 +31,8 @@ export class StartGameComponent implements OnInit {
   }
 
 
+
+
   public startGame(): void {
     this.countBots = this.startGameForm.value.countBots;
     this.gameService.start(this.countBots).subscribe(response => {
