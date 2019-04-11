@@ -1,5 +1,5 @@
 <ul class="menu-main" *ngIf="isAuth">
-  <li><a href="../../../game/start-game" class="">Game</a></li>
-  <li><a href="/history/">History</a></li>
+  <li><a [routerLink]="['/game']" class="">Game</a></li>
+  <li><a [routerLink]="['/history']">History</a></li>
   <li><a href="" (click) = this.accountService.logout()>Logout</a></li>
 </ul>

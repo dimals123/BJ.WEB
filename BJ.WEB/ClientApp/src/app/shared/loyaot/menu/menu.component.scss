@@ -20,12 +20,13 @@
   padding-bottom: 20px;
   margin: 0 34px 0 30px;
   font-size: 17px;
+  font-weight: 600;
   text-transform: uppercase;
   display: inline-block;
   transition: color .2s;
 }
 .menu-main a, .menu-main a:visited {color: #110e11;}
-.menu-main a.current, .menu-main a:hover{color: #feb386;}
+.menu-main a.current, .menu-main a:hover{color: #d81616;}
 .menu-main a:before,
 .menu-main a:after {
   content: "";
@@ -35,7 +36,7 @@
   right: 50%;
   bottom: -5px;
   left: 50%;
-  background: #feb386;
+  background: #e93a0e;
   transition: .8s;
 }
 .menu-main a:hover:before, .menu-main .current:before {left: 0;}
@@ -45,7 +46,7 @@
 .menu-main li {display: block;}
 .menu-main li:after {content: none;}
 .menu-main a {
-  padding: 25px 0 20px; 
+  padding: 10px 0 20px; 
   margin: 0 30px;
 }
 }

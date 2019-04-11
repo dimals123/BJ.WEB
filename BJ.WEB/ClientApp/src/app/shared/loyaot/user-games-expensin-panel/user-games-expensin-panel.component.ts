@@ -16,6 +16,8 @@ export class UserGamesExpensinPanelComponent implements OnInit {
   private modelGame: GetDetailsGameHistoryView;
   private countGames: number;
   private id: number;
+  private imgBot:string;
+  private imgHref:any;
 
   constructor(private readonly historyService: HistoryService, private readonly route: ActivatedRoute, private readonly router: Router) {
 
@@ -29,13 +31,14 @@ export class UserGamesExpensinPanelComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-
+    this.imgHref = "../../../../assets/img/"
   }
 
   public getDetailsGame(gameId: string): void {
 
     this.historyService.getDetailsGame(gameId).subscribe(response => {
       this.modelGame = response;
+
     },
       error => {
         console.log(error);

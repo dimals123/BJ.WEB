@@ -9,6 +9,7 @@ export class ErrorHandler {
   ) {}
 
   public handleError(err: any) {
-    this.snackbar.open(err.message, 'close');
+    debugger;
+    this.snackbar.open(err, 'close');
   }
 }

@@ -7,13 +7,14 @@ import { RegisterAccountView } from '../models/account-views/register-account-vi
 import { LoginAccountResponseView } from '../models/account-views/login-account-response-veiw';
 import { LocalStorageService } from './local-storage.service';
 import { LoginAccountView } from '../models/account-views/login-account-view';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
 
-  constructor(private readonly http:HttpClient, private readonly localStorageService:LocalStorageService) { }
+  constructor(private readonly http:HttpClient, private readonly localStorageService:LocalStorageService, private readonly router:Router) { }
 
 
 
@@ -29,7 +30,7 @@ export class AccountService {
 
   public logout() : void {
     this.localStorageService.clear();
-    window.location.reload();
+    this.router.navigate(['registration']);
   }
 
   public getAll (): Observable<GetAllAccountResponseView> {
