@@ -1,16 +1,21 @@
 ﻿using BJ.BusinessLogic.Configurations;
+using BJ.BusinessLogic.Extensions;
 using BJ.BusinessLogic.Filters;
 using BJ.BusinessLogic.Middleware;
 using BJ.BusinessLogic.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 
 namespace BJ.WEB
 {
@@ -24,7 +29,6 @@ namespace BJ.WEB
         }
 
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
@@ -39,7 +43,7 @@ namespace BJ.WEB
 
             services.InitializeDbBots();
 
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); 
             services.Configure<JwtTokenOptions>(Configuration.GetSection("jwt"));
             services.AutentificationConfigure(Configuration);
             services.AddCors(); 
@@ -59,11 +63,11 @@ namespace BJ.WEB
 
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
-        {  
-          
-      
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider, ILoggerFactory loggerFactory)
+        {
+            loggerFactory.AddNLog();
+            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -85,10 +89,9 @@ namespace BJ.WEB
             app.UseMiddleware(typeof(ExceptionsMiddleware));
             app.UseMvc(routes => routes.MapRoute("default", "{controller}/{action}"));
 
-            app.UseSpa(spa =>
+            app.UseSpa((spa) =>
             {
                 spa.Options.SourcePath = "ClientApp";
-
                 if (env.IsDevelopment())
                 {
                     spa.UseAngularCliServer(npmScript: "start");

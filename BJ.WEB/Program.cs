@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 
 namespace BJ.WEB
 {
@@ -19,6 +20,6 @@ namespace BJ.WEB
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>().ConfigureLogging(logging=> logging.SetMinimumLevel(LogLevel.Trace)).UseNLog();
     }
 }

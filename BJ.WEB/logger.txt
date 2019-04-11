@@ -1,0 +1,1673 @@
+Starting @angular/cli on port 54701...
+Request starting HTTP/1.1 GET http://localhost:51296/  
+Request starting HTTP/1.1 DEBUG http://localhost:51296/  0
+Processing request /
+Request finished in 57.3104ms 200 
+Request finished in 65.359ms 200 
+> client-app@0.0.0 start C:\Users\Anuitex  - 2\source\repos\BJ.WEB\BJ.WEB\ClientApp
+> ng serve "--port" "54701"
+
+** Angular Live Development Server is listening on localhost:54701, open your browser on http://localhost:54701/ **
+
+Date: 2019-04-11T15:47:32.001Z
+Hash: 41371426373786147188
+Time: 15393ms
+chunk {account-account-module} account-account-module.js, account-account-module.js.map (account-account-module) 22 kB  [rendered]
+chunk {es2015-polyfills} es2015-polyfills.js, es2015-polyfills.js.map (es2015-polyfills) 284 kB [initial] [rendered]
+chunk {game-game-module} game-game-module.js, game-game-module.js.map (game-game-module) 27.2 kB  [rendered]
+chunk {history-history-module} history-history-module.js, history-history-module.js.map (history-history-module) 6.25 kB  [rendered]
+chunk {main} main.js, main.js.map (main) 65 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 236 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 8.87 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 181 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 7.11 MB [initial] [rendered]
+
+i ∩╜ówdm∩╜ú: Compiled successfully.
+
+Starting @angular/cli on port 55332...
+Request starting HTTP/1.1 DEBUG http://localhost:51296/  0
+Request starting HTTP/1.1 GET http://localhost:51296/  
+Processing request /
+Request finished in 22.6885ms 200 
+Request finished in 22.6832ms 200 
+> client-app@0.0.0 start C:\Users\Anuitex  - 2\source\repos\BJ.WEB\BJ.WEB\ClientApp
+> ng serve "--port" "55332"
+
+** Angular Live Development Server is listening on localhost:55332, open your browser on http://localhost:55332/ **
+
+Request starting HTTP/1.1 GET http://localhost:51296/game/  
+Processing request /game/
+Request finished in 20.8497ms 200 
+Date: 2019-04-11T15:58:27.395Z
+Hash: 41371426373786147188
+Time: 15344ms
+chunk {account-account-module} account-account-module.js, account-account-module.js.map (account-account-module) 22 kB  [rendered]
+chunk {es2015-polyfills} es2015-polyfills.js, es2015-polyfills.js.map (es2015-polyfills) 284 kB [initial] [rendered]
+chunk {game-game-module} game-game-module.js, game-game-module.js.map (game-game-module) 27.2 kB  [rendered]
+chunk {history-history-module} history-history-module.js, history-history-module.js.map (history-history-module) 6.25 kB  [rendered]
+chunk {main} main.js, main.js.map (main) 65 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 236 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 8.87 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 181 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 7.11 MB [initial] [rendered]
+
+i ∩╜ówdm∩╜ú: Compiled successfully.
+
+Processing request ClientApp
+Starting @angular/cli on port 55452...
+Request starting HTTP/1.1 DEBUG http://localhost:51296/  0
+Request starting HTTP/1.1 GET http://localhost:51296/  
+Request finished in 27.4027ms 200 
+Failed to determine the https port for redirect.
+> client-app@0.0.0 start C:\Users\Anuitex  - 2\source\repos\BJ.WEB\BJ.WEB\ClientApp
+> ng serve "--port" "55452"
+
+** Angular Live Development Server is listening on localhost:55452, open your browser on http://localhost:55452/ **
+
+i ∩╜ówdm∩╜ú: wait until bundle finished: /
+
+Date: 2019-04-11T16:00:19.385Z
+Hash: 41371426373786147188
+Time: 13571ms
+chunk {account-account-module} account-account-module.js, account-account-module.js.map (account-account-module) 22 kB  [rendered]
+chunk {es2015-polyfills} es2015-polyfills.js, es2015-polyfills.js.map (es2015-polyfills) 284 kB [initial] [rendered]
+chunk {game-game-module} game-game-module.js, game-game-module.js.map (game-game-module) 27.2 kB  [rendered]
+chunk {history-history-module} history-history-module.js, history-history-module.js.map (history-history-module) 6.25 kB  [rendered]
+chunk {main} main.js, main.js.map (main) 65 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 236 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 8.87 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 181 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 7.11 MB [initial] [rendered]
+
+i ∩╜ówdm∩╜ú: Compiled successfully.
+
+Request finished in 18019.7025ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/main.js  
+Request starting HTTP/1.1 GET http://localhost:51296/styles.js  
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js  
+Request starting HTTP/1.1 GET http://localhost:51296/es2015-polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/runtime.js  
+Request finished in 180.3679ms 200 application/javascript; charset=UTF-8
+Request finished in 1186.1465ms 200 application/javascript; charset=UTF-8
+Request finished in 1118.4085ms 200 application/javascript; charset=UTF-8
+Request finished in 1117.9024ms 200 application/javascript; charset=UTF-8
+Request finished in 1191.186ms 200 application/javascript; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/fon.jpg  
+Request finished in 23.2002ms 200 image/jpeg; charset=UTF-8
+Request finished in 1361.2567ms 200 application/javascript; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/account-account-module.js  
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998422080  
+Request finished in 28.7286ms 200 application/javascript; charset=UTF-8
+Request finished in 74.7508ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/game-game-module.js  
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/703/tlyei3ln/websocket  
+Request finished in 42.5456ms 200 application/javascript; charset=UTF-8
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 75.7078ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 219.1403ms
+Request finished in 440.2417ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/Account/GetAll  
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Route matched with {action = "GetAll", controller = "Account"}. Executing action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB)
+Connection processing ended abnormally.
+Request starting HTTP/1.1 GET http://localhost:51296/  
+Executing action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 19.357ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.AccountViews.GetAllAccountResponseView'.
+Executed action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) in 281.3384ms
+Request finished in 13160.5217ms 200 application/json; charset=utf-8
+Request finished in 1039.1079ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/runtime.js  
+Request starting HTTP/1.1 GET http://localhost:51296/polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/es2015-polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/styles.js  
+Request starting HTTP/1.1 GET http://localhost:51296/main.js  
+Request finished in 66.8947ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js  
+Request finished in 74.9431ms 304 
+Request finished in 81.8896ms 304 
+Request finished in 33.1965ms 304 
+Request finished in 57875.8965ms 101 
+Request finished in 1040.7618ms 304 
+Request finished in 1092.6804ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/fon.jpg  
+Request finished in 8.6802ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/account-account-module.js  
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998482537  
+Request finished in 23.2026ms 200 application/json; charset=UTF-8
+Request finished in 45.6199ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/232/2xs1vdsn/websocket  
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/Account/GetAll  
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Route matched with {action = "GetAll", controller = "Account"}. Executing action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB)
+Executing action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.6384ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.AccountViews.GetAllAccountResponseView'.
+Executed action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) in 22.0472ms
+Request finished in 53.4666ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/232/uf03hi0w/xhr_streaming?t=1554998483314  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/232/lrwkrobi/htmlfile?c=_jp.a1hmk35  
+Request finished in 6.4163ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/iframe.html  
+Request finished in 5.5006ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/__webpack_dev_server__/sockjs.bundle.js  
+Request finished in 10.2891ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/232/zqeymzcy/htmlfile?c=_jp.acbxjrq  
+Request finished in 4.1313ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/232/zqeymzcy/htmlfile?c=_jp.a3a4bus  
+Request finished in 6.3528ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998485941  
+Request finished in 4.1065ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/490/bqtbfhfj/websocket  
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/490/intvfo3r/xhr_streaming?t=1554998486588  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/490/v0qtzrq5/htmlfile?c=_jp.anyocph  
+Request starting HTTP/1.1 GET http://localhost:51296/__webpack_dev_server__/sockjs.bundle.js  
+Request finished in 1007.8991ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 POST http://localhost:51296/Account/Login application/json 58
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Route matched with {action = "Login", controller = "Account"}. Executing action BJ.WEB.Controllers.AccountController.Login (BJ.WEB)
+Executing action method BJ.WEB.Controllers.AccountController.Login (BJ.WEB) with arguments (BJ.ViewModels.AccountViews.LoginAccountView) - Validation state: Valid
+Entity Framework Core 2.1.8-servicing-32085 initialized 'BJContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/490/y3vea5qi/xhr?t=1554998488769  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request finished in 14.8912ms 200 application/javascript; charset=UTF-8
+Executed action method BJ.WEB.Controllers.AccountController.Login (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 495.3713ms.
+Processing request ClientApp
+Starting @angular/cli on port 55597...
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998499548  
+Failed to determine the https port for redirect.
+> client-app@0.0.0 start C:\Users\Anuitex  - 2\source\repos\BJ.WEB\BJ.WEB\ClientApp
+> ng serve "--port" "55597"
+
+** Angular Live Development Server is listening on localhost:55597, open your browser on http://localhost:55597/ **
+
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998509669  
+Request finished in 3982.5443ms 200 application/json; charset=UTF-8
+Request finished in 12787.8764ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/998/hh5q3me4/websocket  
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Date: 2019-04-11T16:01:57.230Z
+Hash: 41371426373786147188
+Time: 12178ms
+chunk {account-account-module} account-account-module.js, account-account-module.js.map (account-account-module) 22 kB  [rendered]
+chunk {es2015-polyfills} es2015-polyfills.js, es2015-polyfills.js.map (es2015-polyfills) 284 kB [initial] [rendered]
+chunk {game-game-module} game-game-module.js, game-game-module.js.map (game-game-module) 27.2 kB  [rendered]
+chunk {history-history-module} history-history-module.js, history-history-module.js.map (history-history-module) 6.25 kB  [rendered]
+chunk {main} main.js, main.js.map (main) 65 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 236 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 8.87 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 181 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 7.11 MB [initial] [rendered]
+
+i ∩╜ówdm∩╜ú: Compiled successfully.
+
+Processing request ClientApp
+Starting @angular/cli on port 55639...
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998520091  
+Failed to determine the https port for redirect.
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998530181  
+Processing request ClientApp
+Starting @angular/cli on port 55658...
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998537574  
+Failed to determine the https port for redirect.
+Processing request ClientApp
+Starting @angular/cli on port 55670...
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998553600  
+Failed to determine the https port for redirect.
+Processing request ClientApp
+Starting @angular/cli on port 55689...
+Request starting HTTP/1.1 DEBUG http://localhost:51296/  0
+Request starting HTTP/1.1 GET http://localhost:51296/  
+Request finished in 26.2994ms 200 
+Failed to determine the https port for redirect.
+> client-app@0.0.0 start C:\Users\Anuitex  - 2\source\repos\BJ.WEB\BJ.WEB\ClientApp
+> ng serve "--port" "55689"
+
+** Angular Live Development Server is listening on localhost:55689, open your browser on http://localhost:55689/ **
+
+i ∩╜ówdm∩╜ú: wait until bundle finished: /
+
+Date: 2019-04-11T16:02:59.466Z
+Hash: 41371426373786147188
+Time: 13468ms
+chunk {account-account-module} account-account-module.js, account-account-module.js.map (account-account-module) 22 kB  [rendered]
+chunk {es2015-polyfills} es2015-polyfills.js, es2015-polyfills.js.map (es2015-polyfills) 284 kB [initial] [rendered]
+chunk {game-game-module} game-game-module.js, game-game-module.js.map (game-game-module) 27.2 kB  [rendered]
+chunk {history-history-module} history-history-module.js, history-history-module.js.map (history-history-module) 6.25 kB  [rendered]
+chunk {main} main.js, main.js.map (main) 65 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 236 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 8.87 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 181 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 7.11 MB [initial] [rendered]
+
+i ∩╜ówdm∩╜ú: Compiled successfully.
+
+Request finished in 18086.9835ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js  
+Request starting HTTP/1.1 GET http://localhost:51296/styles.js  
+Request starting HTTP/1.1 GET http://localhost:51296/main.js  
+Request starting HTTP/1.1 GET http://localhost:51296/es2015-polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/runtime.js  
+Request starting HTTP/1.1 GET http://localhost:51296/polyfills.js  
+Request finished in 66.2189ms 304 
+Request finished in 1066.9102ms 304 
+Request finished in 1053.2525ms 304 
+Request finished in 1069.6911ms 304 
+Request finished in 1046.1714ms 304 
+Request finished in 1095.5239ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/fon.jpg  
+Request finished in 4.0246ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/account-account-module.js  
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998582054  
+Request finished in 19.8895ms 304 
+Request finished in 25.5466ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/Account/GetAll  
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/584/upsmwvf0/websocket  
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Route matched with {action = "GetAll", controller = "Account"}. Executing action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB)
+Executing action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 49.7431ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.AccountViews.GetAllAccountResponseView'.
+Executed action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) in 274.9677ms
+Request finished in 414.1856ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:51296/Account/Login application/json 58
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Route matched with {action = "Login", controller = "Account"}. Executing action BJ.WEB.Controllers.AccountController.Login (BJ.WEB)
+Executing action method BJ.WEB.Controllers.AccountController.Login (BJ.WEB) with arguments (BJ.ViewModels.AccountViews.LoginAccountView) - Validation state: Valid
+Entity Framework Core 2.1.8-servicing-32085 initialized 'BJContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (6ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+Executed action method BJ.WEB.Controllers.AccountController.Login (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 438.2455ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.AccountViews.LoginAccountResponseView'.
+Executed action BJ.WEB.Controllers.AccountController.Login (BJ.WEB) in 479.1188ms
+Request finished in 507.5402ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/game-game-module.js  
+Request starting HTTP/1.1 GET http://localhost:51296/account/registration  
+Request finished in 6725.5094ms 101 
+Request finished in 1014.9017ms 304 
+Request finished in 1011.7595ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js  
+Request starting HTTP/1.1 GET http://localhost:51296/es2015-polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/styles.js  
+Request starting HTTP/1.1 GET http://localhost:51296/main.js  
+Request starting HTTP/1.1 GET http://localhost:51296/runtime.js  
+Request finished in 17.6973ms 304 
+Request finished in 33.5572ms 304 
+Request finished in 30.7392ms 304 
+Request finished in 57.9345ms 304 
+Request finished in 1052.5848ms 304 
+Request finished in 1075.807ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/fon.jpg  
+Request finished in 3.7492ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/account-account-module.js  
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998592173  
+Request finished in 24.1824ms 304 
+Request finished in 104.1995ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/007/gzy0xruy/websocket  
+Request starting HTTP/1.1 GET http://localhost:51296/game-game-module.js  
+Policy execution failed.
+Request finished in 25.4097ms 304 
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 66.0536ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 92.4078ms
+Request finished in 214.8626ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/history-history-module.js  
+Request finished in 7.8669ms 200 application/javascript; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetUserGames  
+Successfully validated the token.
+Route matched with {action = "GetUserGames", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 29.1678ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetUserGamesHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) in 46.9008ms
+Request finished in 72.97ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=4f225d99-ea29-4607-a745-4248f0620e5a  
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (4f225d99-ea29-4607-a745-4248f0620e5a) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 162.4301ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 288.5049ms
+Request finished in 344.3991ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/1_1.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/4_0.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/2_0.png  
+Request finished in 80.8287ms 200 image/png; charset=UTF-8
+Request finished in 91.497ms 200 image/png; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/7_0.png  
+Request finished in 36.1342ms 200 image/png; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/5_0.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/5_1.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/0_0.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/8_2.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/2_1.png  
+Request finished in 149.9748ms 200 image/png; charset=UTF-8
+Request finished in 165.5071ms 200 image/png; charset=UTF-8
+Request finished in 1060.7923ms 200 image/png; charset=UTF-8
+Request finished in 1030.5215ms 200 image/png; charset=UTF-8
+Request finished in 1051.9119ms 200 image/png; charset=UTF-8
+Request finished in 1187.5368ms 200 image/png; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/  
+Request starting HTTP/1.1 GET http://localhost:51296/account/registration  
+Request finished in 11.0928ms 200 text/html; charset=UTF-8
+Request finished in 127.7401ms 404 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/polyfills.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/styles.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/history-history-module.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/main.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/runtime.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/account-account-module.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/game-game-module.js.map  
+Request finished in 1288.1781ms 200 application/json; charset=UTF-8
+Request finished in 1624.579ms 200 application/json; charset=UTF-8
+Request finished in 1307.3169ms 200 application/json; charset=UTF-8
+Request finished in 1077.5382ms 200 application/json; charset=UTF-8
+Request finished in 1141.4408ms 200 application/json; charset=UTF-8
+Request finished in 1672.0617ms 200 application/json; charset=UTF-8
+Request finished in 1664.8654ms 200 application/json; charset=UTF-8
+Request finished in 1694.9252ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.6857ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 25.3143ms
+Request finished in 62.0331ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/Game/Start?countBots=2  
+Successfully validated the token.
+Route matched with {action = "Start", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.Start (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.Start (BJ.WEB) with arguments (2) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.Start (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 109.6571ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.Start (BJ.WEB) in 123.319ms
+Request finished in 137.8741ms 200 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/Start?countBots=2  
+Successfully validated the token.
+Route matched with {action = "Start", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.Start (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.Start (BJ.WEB) with arguments (2) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.Start (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 3.6673ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.Start (BJ.WEB) in 17.6779ms
+Request finished in 30.7927ms 200 
+Request starting HTTP/1.1 GET http://localhost:51296/  
+Request starting HTTP/1.1 GET http://localhost:51296/game/start-game  
+Request starting HTTP/1.1 GET http://localhost:51296/runtime.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/history-history-module.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/main.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/game-game-module.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/account-account-module.js.map  
+Request finished in 1023.1581ms 200 text/html; charset=UTF-8
+Request finished in 1011.8496ms 404 text/html; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/polyfills.js.map  
+Request starting HTTP/1.1 GET http://localhost:51296/styles.js.map  
+Request finished in 22.9387ms 200 application/json; charset=UTF-8
+Request finished in 43.6965ms 200 application/json; charset=UTF-8
+Request finished in 1031.1233ms 200 application/json; charset=UTF-8
+Request finished in 1019.6069ms 200 application/json; charset=UTF-8
+Request finished in 1018.3757ms 200 application/json; charset=UTF-8
+Request finished in 1038.5139ms 200 application/json; charset=UTF-8
+Request finished in 1028.7532ms 200 application/json; charset=UTF-8
+Request finished in 1589.7508ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/Game/Start?countBots=2  
+Successfully validated the token.
+Route matched with {action = "Start", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.Start (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.Start (BJ.WEB) with arguments (2) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.Start (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 2.6975ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.Start (BJ.WEB) in 16.5439ms
+Request finished in 34.1906ms 200 
+Request starting HTTP/1.1 GET http://localhost:51296/  
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js.map  
+Request finished in 1015.0401ms 200 text/html; charset=UTF-8
+Request finished in 1252.2584ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetUserGames  
+Successfully validated the token.
+Route matched with {action = "GetUserGames", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.0046ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetUserGamesHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) in 15.0802ms
+Request finished in 33.3828ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=4f225d99-ea29-4607-a745-4248f0620e5a  
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (4f225d99-ea29-4607-a745-4248f0620e5a) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 11.7844ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 38.7205ms
+Request finished in 68.6806ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5.4084ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 18.8588ms
+Request finished in 44.0415ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Request starting HTTP/1.1 GET http://localhost:51296/game/game-play  
+Successfully validated the token.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 26.5396ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 43.7401ms
+Request finished in 89.1597ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/card.png  
+Request finished in 1023.1104ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/styles.js  
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js  
+Request starting HTTP/1.1 GET http://localhost:51296/main.js  
+Request finished in 10.8549ms 304 
+Request finished in 22.9893ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/polyfills.js  
+Request finished in 20.7959ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/runtime.js  
+Request finished in 17.273ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/es2015-polyfills.js  
+Request finished in 16.0758ms 304 
+Request finished in 34.15ms 304 
+Request finished in 1046.6301ms 200 image/png; charset=UTF-8
+Request finished in 53701.9188ms 101 
+Request starting HTTP/1.1 GET http://localhost:51296/fon.jpg  
+Request finished in 3.8727ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998647572  
+Request starting HTTP/1.1 GET http://localhost:51296/game-game-module.js  
+Request finished in 49.5599ms 200 application/json; charset=UTF-8
+Request finished in 93.9476ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/944/imh4d4zq/websocket  
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Policy execution failed.
+Successfully validated the token.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 48.1278ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 77.456ms
+Request finished in 204.3739ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/2_1.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/5_0.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/card.png  
+Request finished in 22.0013ms 304 
+Request finished in 61.6346ms 304 
+Request finished in 56.9105ms 304 
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/944/se5ctkyq/xhr_streaming?t=1554998648831  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/944/2raxbw0y/htmlfile?c=_jp.a2tbdao  
+Request finished in 5.7533ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetCards  
+Successfully validated the token.
+Route matched with {action = "GetCards", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetCards (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetCards (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetCards (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 32.6655ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.GetCards (BJ.WEB) in 40.0672ms
+Request finished in 55.115ms 200 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Successfully validated the token.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.4201ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 11.1952ms
+Request finished in 21.2733ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/4_0.png  
+Request finished in 4.0877ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/Stop  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/1_3.png  
+Successfully validated the token.
+Request finished in 9.5442ms 200 image/png; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/7_1.png  
+Route matched with {action = "Stop", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.Stop (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.Stop (BJ.WEB) - Validation state: Valid
+Connection processing ended abnormally.
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/1_1.png  
+Request starting HTTP/1.1 GET http://localhost:51296/__webpack_dev_server__/sockjs.bundle.js  
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/944/n31qr11i/xhr?t=1554998652717  0
+Request starting HTTP/1.1 GET http://localhost:51296/__webpack_dev_server__/sockjs.bundle.js  
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1554998657116  
+Connection processing ended abnormally.
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/5_1.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/0_3.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/3_1.png  
+Request finished in 11672.9933ms 200 image/png; charset=UTF-8
+Executed action method BJ.WEB.Controllers.GameController.Stop (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 1182.9066ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.Stop (BJ.WEB) in 11737.6399ms
+Request finished in 11803.8413ms 200 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Successfully validated the token.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 7.1632ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 15.314ms
+Request finished in 24.8567ms 200 application/json; charset=utf-8
+Request finished in 1023.6745ms 200 application/json; charset=UTF-8
+Request finished in 2064.9652ms 200 application/javascript; charset=UTF-8
+Request finished in 2085.9703ms 200 application/javascript
+Request finished in 1030.8038ms 304 
+Request finished in 2081.2854ms 304 
+Request finished in 1032.0092ms 200 image/png; charset=UTF-8
+Request finished in 1025.9887ms 200 image/png; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/638/qkjxc3i1/websocket  
+Request finished in 2163.4696ms 200 application/javascript
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.2867ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 12.4491ms
+Request finished in 29.8345ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/history-history-module.js  
+Request finished in 1006.5728ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetUserGames  
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Successfully validated the token.
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.6893ms.
+Request finished in 2001.1802ms -2146233088 application/json
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetUserGames  
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 34.9335ms
+Request finished in 2006.8479ms 200 application/json; charset=utf-8
+An unhandled exception has occurred while executing the request.
+Request finished in 1355.5879ms 500 text/html; charset=utf-8
+Request finished in 25021.5235ms 200 application/javascript; charset=UTF-8
+Request finished in 23545.2376ms 101 
+Processing request ClientApp
+Starting @angular/cli on port 55973...
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/Start?countBots=2  
+Policy execution successful.
+Request finished in 20.85ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/Start?countBots=2  
+Policy execution successful.
+Failed to determine the https port for redirect.
+Successfully validated the token.
+Route matched with {action = "Start", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.Start (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.Start (BJ.WEB) with arguments (2) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.Start (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 267.6394ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.Start (BJ.WEB) in 310.6783ms
+Request finished in 485.0714ms 200 
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Request finished in 4.0167ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 89.8498ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 132.2322ms
+Request finished in 157.4541ms 200 application/json; charset=utf-8
+> client-app@0.0.0 start C:\Users\Anuitex  - 2\source\repos\BJ.WEB\BJ.WEB\ClientApp
+> ng serve "--port" "55973"
+
+** Angular Live Development Server is listening on localhost:55973, open your browser on http://localhost:55973/ **
+
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/GetCards  
+Policy execution successful.
+Request finished in 1.851ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetCards  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetCards", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetCards (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetCards (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetCards (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 36.1453ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.GetCards (BJ.WEB) in 38.4923ms
+Request finished in 48.0023ms 200 
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Request finished in 2.433ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4.411ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 7.6422ms
+Request finished in 11.1448ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/Stop  
+Policy execution successful.
+Request finished in 4.7431ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/Stop  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "Stop", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.Stop (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.Stop (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.Stop (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 82.595ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.Stop (BJ.WEB) in 86.4674ms
+Request finished in 113.7675ms 200 
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Request finished in 1.5476ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 6.5032ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 8.8724ms
+Request finished in 12.0954ms 200 application/json; charset=utf-8
+Date: 2019-04-11T16:05:37.262Z
+Hash: 41371426373786147188
+Time: 12719ms
+chunk {account-account-module} account-account-module.js, account-account-module.js.map (account-account-module) 22 kB  [rendered]
+chunk {es2015-polyfills} es2015-polyfills.js, es2015-polyfills.js.map (es2015-polyfills) 284 kB [initial] [rendered]
+chunk {game-game-module} game-game-module.js, game-game-module.js.map (game-game-module) 27.2 kB  [rendered]
+chunk {history-history-module} history-history-module.js, history-history-module.js.map (history-history-module) 6.25 kB  [rendered]
+chunk {main} main.js, main.js.map (main) 65 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 236 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 8.87 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 181 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 7.11 MB [initial] [rendered]
+
+i ∩╜ówdm∩╜ú: Compiled successfully.
+
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Request finished in 2.1202ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.3464ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 6.3285ms
+Request finished in 19.2262ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetUserGames  
+Policy execution successful.
+Request finished in 2.1597ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetUserGames  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetUserGames", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 12.139ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetUserGamesHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) in 25.8816ms
+Request finished in 36.9051ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=4f225d99-ea29-4607-a745-4248f0620e5a  
+Policy execution successful.
+Request finished in 1.9008ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=4f225d99-ea29-4607-a745-4248f0620e5a  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (4f225d99-ea29-4607-a745-4248f0620e5a) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 20.7344ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 32.6432ms
+Request finished in 40.7814ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=e9dd974c-b7f2-4bf3-a48e-69f66190277c  
+Policy execution successful.
+Request finished in 1.7715ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=e9dd974c-b7f2-4bf3-a48e-69f66190277c  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (e9dd974c-b7f2-4bf3-a48e-69f66190277c) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.1161ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 7.7191ms
+Request finished in 12.9632ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=014c48c2-852a-475b-8620-95e27f7cb109  
+Policy execution successful.
+Request finished in 1.9303ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=014c48c2-852a-475b-8620-95e27f7cb109  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (014c48c2-852a-475b-8620-95e27f7cb109) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.6205ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 8.7408ms
+Request finished in 20.4822ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetUserGames  
+Policy execution successful.
+Request finished in 2.2554ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetUserGames  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetUserGames", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.684ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetUserGamesHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) in 7.8122ms
+Request finished in 19.333ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=e9dd974c-b7f2-4bf3-a48e-69f66190277c  
+Policy execution successful.
+Request finished in 2.3651ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=e9dd974c-b7f2-4bf3-a48e-69f66190277c  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (e9dd974c-b7f2-4bf3-a48e-69f66190277c) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.7952ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 6.1463ms
+Request finished in 9.6147ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=14185fc4-6804-4e52-a397-84ecf05e4e65  
+Policy execution successful.
+Request finished in 2.6556ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=14185fc4-6804-4e52-a397-84ecf05e4e65  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (14185fc4-6804-4e52-a397-84ecf05e4e65) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5.9541ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 13.72ms
+Request finished in 22.9673ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=014c48c2-852a-475b-8620-95e27f7cb109  
+Policy execution successful.
+Request finished in 2.2203ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=014c48c2-852a-475b-8620-95e27f7cb109  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (014c48c2-852a-475b-8620-95e27f7cb109) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.9713ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 5.4219ms
+Request finished in 11.3318ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=0a6f34ea-d7a9-4031-801a-88008e7bd005  
+Policy execution successful.
+Request finished in 1.8224ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=0a6f34ea-d7a9-4031-801a-88008e7bd005  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (0a6f34ea-d7a9-4031-801a-88008e7bd005) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.2694ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 5.6202ms
+Request finished in 11.0998ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Account/GetAll  
+Policy execution successful.
+Request finished in 73.0712ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Account/GetAll  
+Policy execution successful.
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Route matched with {action = "GetAll", controller = "Account"}. Executing action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB)
+Executing action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.8789ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.AccountViews.GetAllAccountResponseView'.
+Executed action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) in 73.5727ms
+Request finished in 113.0633ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Account/Login  
+Policy execution successful.
+Request finished in 1.6781ms 204 
+Request starting HTTP/1.1 POST http://localhost:51296/Account/Login application/json 58
+Policy execution successful.
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Route matched with {action = "Login", controller = "Account"}. Executing action BJ.WEB.Controllers.AccountController.Login (BJ.WEB)
+Executing action method BJ.WEB.Controllers.AccountController.Login (BJ.WEB) with arguments (BJ.ViewModels.AccountViews.LoginAccountView) - Validation state: Valid
+Entity Framework Core 2.1.8-servicing-32085 initialized 'BJContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+Executed action method BJ.WEB.Controllers.AccountController.Login (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 303.2452ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.AccountViews.LoginAccountResponseView'.
+Executed action BJ.WEB.Controllers.AccountController.Login (BJ.WEB) in 325.5453ms
+Request finished in 332.4049ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Request finished in 1.7223ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.6726ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 11.4213ms
+Request finished in 20.2891ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/Start?countBots=3  
+Policy execution successful.
+Request finished in 1.787ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/Start?countBots=3  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "Start", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.Start (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.Start (BJ.WEB) with arguments (3) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.Start (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 10.9295ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.Start (BJ.WEB) in 15.278ms
+Request finished in 19.3058ms 200 
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Request finished in 3.1954ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.3499ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 5.8613ms
+Request finished in 11.0184ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/GetCards  
+Policy execution successful.
+Request finished in 1.9113ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetCards  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetCards", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetCards (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetCards (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetCards (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 6.6524ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.GetCards (BJ.WEB) in 8.7841ms
+Request finished in 11.7519ms 200 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 5.2326ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 11.0234ms
+Request finished in 16.998ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/Stop  
+Policy execution successful.
+Request finished in 4.6703ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/Stop  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "Stop", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.Stop (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.Stop (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.Stop (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 7.2095ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.Stop (BJ.WEB) in 9.8207ms
+Request finished in 16.4597ms 200 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4.3751ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 8.4365ms
+Request finished in 12.3912ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Request finished in 2.7451ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.7393ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 4.761ms
+Request finished in 8.4716ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetUserGames  
+Policy execution successful.
+Request finished in 4.4327ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetUserGames  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetUserGames", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 0.9847ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetUserGamesHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) in 3.8516ms
+Request finished in 13.5957ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=4f225d99-ea29-4607-a745-4248f0620e5a  
+Policy execution successful.
+Request finished in 1.957ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=4f225d99-ea29-4607-a745-4248f0620e5a  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (4f225d99-ea29-4607-a745-4248f0620e5a) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.3037ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 5.55ms
+Request finished in 10.3368ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=e9dd974c-b7f2-4bf3-a48e-69f66190277c  
+Policy execution successful.
+Request finished in 2.0321ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=e9dd974c-b7f2-4bf3-a48e-69f66190277c  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (e9dd974c-b7f2-4bf3-a48e-69f66190277c) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.1553ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 4.356ms
+Request finished in 7.6015ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=0a6f34ea-d7a9-4031-801a-88008e7bd005  
+Policy execution successful.
+Request finished in 1.8671ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=0a6f34ea-d7a9-4031-801a-88008e7bd005  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (0a6f34ea-d7a9-4031-801a-88008e7bd005) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.3203ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 8.1969ms
+Request finished in 15.7593ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=8310d26d-9fe1-46a9-a7a3-59ab1d2c7d96  
+Policy execution successful.
+Request finished in 2.2252ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=8310d26d-9fe1-46a9-a7a3-59ab1d2c7d96  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (8310d26d-9fe1-46a9-a7a3-59ab1d2c7d96) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.2068ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 5.9593ms
+Request finished in 9.2481ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=2b09c18c-3cfa-46cb-b5f0-4e92fb0cb643  
+Policy execution successful.
+Request finished in 1.7507ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=2b09c18c-3cfa-46cb-b5f0-4e92fb0cb643  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (2b09c18c-3cfa-46cb-b5f0-4e92fb0cb643) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.3282ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 6.024ms
+Request finished in 11.2566ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=014c48c2-852a-475b-8620-95e27f7cb109  
+Policy execution successful.
+Request finished in 2.3086ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=014c48c2-852a-475b-8620-95e27f7cb109  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (014c48c2-852a-475b-8620-95e27f7cb109) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.4055ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 4.9801ms
+Request finished in 9.05ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=9628723c-209b-425a-afdf-e1ce255601eb  
+Policy execution successful.
+Request finished in 1.6562ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=9628723c-209b-425a-afdf-e1ce255601eb  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (9628723c-209b-425a-afdf-e1ce255601eb) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 1.9891ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 5.5699ms
+Request finished in 10.4681ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Request finished in 6.2276ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.0058ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 10.5969ms
+Request finished in 14.8005ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/Start?countBots=2  
+Policy execution successful.
+Request finished in 1.5851ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/Start?countBots=2  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "Start", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.Start (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.Start (BJ.WEB) with arguments (2) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.Start (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 9.3353ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.Start (BJ.WEB) in 11.4886ms
+Request finished in 14.9123ms 200 
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Request finished in 3.002ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.1743ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 4.8209ms
+Request finished in 8.861ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/Stop  
+Policy execution successful.
+Request finished in 6.8347ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/Stop  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "Stop", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.Stop (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.Stop (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.Stop (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkResult in 9.4216ms.
+Executing HttpStatusCodeResult, setting HTTP status code 200
+Executed action BJ.WEB.Controllers.GameController.Stop (BJ.WEB) in 14.6024ms
+Request finished in 21.2268ms 200 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/GetDetails  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetails", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.5772ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.GameViews.GetDetailsGameResponseView'.
+Executed action BJ.WEB.Controllers.GameController.GetDetails (BJ.WEB) in 6.2393ms
+Request finished in 17.1083ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Request finished in 3.8323ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2.1752ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 9.024ms
+Request finished in 15.359ms 200 application/json; charset=utf-8
+Processing request ClientApp
+Starting @angular/cli on port 57401...
+Request starting HTTP/1.1 GET http://localhost:51296/  
+Request starting HTTP/1.1 DEBUG http://localhost:51296/  0
+Request finished in 25.3954ms 200 
+Failed to determine the https port for redirect.
+> client-app@0.0.0 start C:\Users\Anuitex  - 2\source\repos\BJ.WEB\BJ.WEB\ClientApp
+> ng serve "--port" "57401"
+
+** Angular Live Development Server is listening on localhost:57401, open your browser on http://localhost:57401/ **
+
+i ∩╜ówdm∩╜ú: wait until bundle finished: /
+
+Date: 2019-04-11T16:26:54.317Z
+Hash: 41371426373786147188
+Time: 14501ms
+chunk {account-account-module} account-account-module.js, account-account-module.js.map (account-account-module) 22 kB  [rendered]
+chunk {es2015-polyfills} es2015-polyfills.js, es2015-polyfills.js.map (es2015-polyfills) 284 kB [initial] [rendered]
+chunk {game-game-module} game-game-module.js, game-game-module.js.map (game-game-module) 27.2 kB  [rendered]
+chunk {history-history-module} history-history-module.js, history-history-module.js.map (history-history-module) 6.25 kB  [rendered]
+chunk {main} main.js, main.js.map (main) 65 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 236 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 8.87 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 181 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 7.11 MB [initial] [rendered]
+
+i ∩╜ówdm∩╜ú: Compiled successfully.
+
+Request finished in 19122.7274ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/runtime.js  
+Request starting HTTP/1.1 GET http://localhost:51296/polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/es2015-polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/main.js  
+Request starting HTTP/1.1 GET http://localhost:51296/styles.js  
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js  
+Request finished in 76.9156ms 304 
+Request finished in 1208.3023ms 304 
+Request finished in 1208.3026ms 304 
+Request finished in 1189.88ms 304 
+Request finished in 1185.5052ms 304 
+Request finished in 1169.3342ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/fon.jpg  
+Request finished in 5.7662ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1555000016962  
+Request starting HTTP/1.1 GET http://localhost:51296/account-account-module.js  
+Request finished in 22.3731ms 304 
+Request finished in 78.1213ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/game-game-module.js  
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/150/ixzovwyg/websocket  
+Request finished in 10.7791ms 304 
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 188.3422ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 248.4ms
+Request finished in 713.4692ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/history-history-module.js  
+Request finished in 9.6211ms 304 
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/150/lwtjkyfp/xhr_streaming?t=1555000018816  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetUserGames  
+Successfully validated the token.
+Route matched with {action = "GetUserGames", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 45.1535ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetUserGamesHistoryView'.
+Request finished in 1901.1488ms 101 
+Executed action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) in 91.4756ms
+Request finished in 215.7851ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=e9dd974c-b7f2-4bf3-a48e-69f66190277c  
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (e9dd974c-b7f2-4bf3-a48e-69f66190277c) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 100.196ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 182.5324ms
+Request finished in 375.7811ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/4_1.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/3_0.png  
+Request finished in 12.3344ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/8_1.png  
+Request finished in 12.8318ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/6_3.png  
+Request finished in 42.4543ms 304 
+Request finished in 45.5573ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/1_2.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/8_2.png  
+Request finished in 117.891ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/0_3.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/7_1.png  
+Request finished in 15.0621ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/150/k2jna4c2/htmlfile?c=_jp.a5fn0ud  
+Request finished in 10.067ms 304 
+Request finished in 16.7912ms 304 
+Request finished in 18.7458ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/__webpack_dev_server__/sockjs.bundle.js  
+Request finished in 7.3382ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/150/s523gblp/htmlfile?c=_jp.a1ds235  
+Request finished in 5.2425ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/150/s523gblp/htmlfile?c=_jp.avfz54c  
+Request finished in 19.3693ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1555000023231  
+Request finished in 3.1392ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/220/yr03yjho/websocket  
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/220/neg4wpvf/xhr_streaming?t=1555000023874  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/220/w5nmuo2f/htmlfile?c=_jp.apniu43  
+Request finished in 5.6559ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/__webpack_dev_server__/sockjs.bundle.js  
+Request finished in 15.4869ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/220/iitdemsm/htmlfile?c=_jp.agrv2r4  
+Request finished in 6.3762ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/220/iitdemsm/htmlfile?c=_jp.a4i0tpo  
+Request finished in 41.5318ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1555000026265  
+Request finished in 3.9514ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/277/twkrxcuf/websocket  
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/277/icz3omgc/xhr_streaming?t=1555000026909  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/277/55sn0qqs/htmlfile?c=_jp.adt0up5  
+Request starting HTTP/1.1 GET http://localhost:51296/__webpack_dev_server__/sockjs.bundle.js  
+Request finished in 1013.4503ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/277/5fmzcap1/xhr?t=1555000029094  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request finished in 7.3177ms 200 application/javascript; charset=UTF-8
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/277/5fmzcap1/xhr?t=1555000029113  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request finished in 13.0492ms 200 application/javascript; charset=UTF-8
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/277/5fmzcap1/xhr?t=1555000029155  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request finished in 1016.0039ms 200 application/javascript
+Request finished in 25108.7481ms 200 application/javascript; charset=UTF-8
+Request finished in 25042.4326ms 200 application/javascript; charset=UTF-8
+Request finished in 25008.632ms 200 application/javascript; charset=UTF-8
+Request finished in 25009.6132ms 200 application/javascript; charset=UTF-8
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/277/5fmzcap1/xhr?t=1555000054187  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=0a6f34ea-d7a9-4031-801a-88008e7bd005  
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (0a6f34ea-d7a9-4031-801a-88008e7bd005) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 17.2207ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 38.229ms
+Request finished in 67.7979ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/2_1.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/3_3.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/3_2.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/7_3.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/2_0.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/1_1.png  
+Request finished in 1251.4825ms 304 
+Request finished in 1368.056ms 304 
+Request finished in 1336.2598ms 200 image/png; charset=UTF-8
+Request finished in 1309.6593ms 200 image/png; charset=UTF-8
+Request finished in 1381.6375ms 200 image/png; charset=UTF-8
+Request finished in 1012.0846ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=014c48c2-852a-475b-8620-95e27f7cb109  
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (014c48c2-852a-475b-8620-95e27f7cb109) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 37.9978ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 84.59ms
+Request finished in 163.7915ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/1_0.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/4_2.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/8_0.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/7_0.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/6_1.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/7_2.png  
+Request finished in 23.1417ms 200 image/png; charset=UTF-8
+Request finished in 66.9793ms 200 image/png; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/5_1.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/0_0.png  
+Request finished in 221.4173ms 200 image/png; charset=UTF-8
+Request finished in 221.518ms 304 
+Request finished in 129.2035ms 304 
+Request finished in 281.3153ms 200 image/png; charset=UTF-8
+Request finished in 171.9717ms 304 
+Request finished in 418.281ms 200 image/png; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=4a6ef3b6-a938-40d4-b762-88f86e85b396  
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (4a6ef3b6-a938-40d4-b762-88f86e85b396) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 346.2396ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 438.3821ms
+Request finished in 896.9961ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/4_3.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/3_1.png  
+Request finished in 137.8586ms 200 image/png; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/5_2.png  
+Request finished in 263.1104ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/0_1.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/5_0.png  
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/8_3.png  
+Request finished in 31.0124ms 200 image/png; charset=UTF-8
+Request finished in 9.2323ms 304 
+Request finished in 8.1448ms 200 image/png; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/assets/img/1_3.png  
+Request finished in 21.0317ms 304 
+Request finished in 153.656ms 200 image/png; charset=UTF-8
+Request finished in 25036.1895ms 200 application/javascript; charset=UTF-8
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/277/5fmzcap1/xhr?t=1555000079249  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 3.7302ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 23.8512ms
+Request finished in 99.416ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/Account/GetAll  
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Request starting HTTP/1.1 GET http://localhost:51296/  
+Request finished in 8.632ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/es2015-polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js  
+Request starting HTTP/1.1 GET http://localhost:51296/runtime.js  
+Request starting HTTP/1.1 GET http://localhost:51296/styles.js  
+Request starting HTTP/1.1 GET http://localhost:51296/polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/main.js  
+Request finished in 5314.8205ms 304 
+Request finished in 5317.2243ms 304 
+Request finished in 5366.4296ms 304 
+Request finished in 5369.274ms 304 
+Request finished in 5433.8753ms -2146233088 application/json
+Request finished in 6320.1172ms 304 
+Request finished in 6389.5316ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/fon.jpg  
+Request finished in 8.4795ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/account-account-module.js  
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1555000089104  
+Request finished in 19.7256ms 304 
+Request finished in 101.7993ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/325/t5few14k/websocket  
+Request starting HTTP/1.1 GET http://localhost:51296/Account/GetAll  
+Policy execution failed.
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Request origin http://localhost:51296 does not have permission to access the resource.
+Route matched with {action = "GetAll", controller = "Account"}. Executing action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB)
+Executing action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 28.2269ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.AccountViews.GetAllAccountResponseView'.
+Executed action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) in 403.0402ms
+Request finished in 437.397ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetUserGames  
+Policy execution successful.
+Request finished in 19.5767ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetUserGames  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetUserGames", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 13.4117ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetUserGamesHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetUserGames (BJ.WEB) in 32.2597ms
+Request finished in 73.0566ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/History/GetDetailsGame?gameId=e9dd974c-b7f2-4bf3-a48e-69f66190277c  
+Policy execution successful.
+Request finished in 12.5635ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/History/GetDetailsGame?gameId=e9dd974c-b7f2-4bf3-a48e-69f66190277c  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "GetDetailsGame", controller = "History"}. Executing action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) with arguments (e9dd974c-b7f2-4bf3-a48e-69f66190277c) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 20.5682ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.HistoryViews.GetDetailsGameHistoryView'.
+Executed action BJ.WEB.Controllers.HistoryController.GetDetailsGame (BJ.WEB) in 109.6294ms
+Request finished in 209.2537ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Account/GetAll  
+Policy execution successful.
+Request finished in 9.8131ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Account/GetAll  
+Policy execution successful.
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Route matched with {action = "GetAll", controller = "Account"}. Executing action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB)
+Executing action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 24.7052ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.AccountViews.GetAllAccountResponseView'.
+Executed action BJ.WEB.Controllers.AccountController.GetAll (BJ.WEB) in 85.344ms
+Request finished in 117.0946ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Account/Login  
+Policy execution successful.
+Request finished in 6.8084ms 204 
+Request starting HTTP/1.1 POST http://localhost:51296/Account/Login application/json 58
+Policy execution successful.
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Route matched with {action = "Login", controller = "Account"}. Executing action BJ.WEB.Controllers.AccountController.Login (BJ.WEB)
+Executing action method BJ.WEB.Controllers.AccountController.Login (BJ.WEB) with arguments (BJ.ViewModels.AccountViews.LoginAccountView) - Validation state: Valid
+Entity Framework Core 2.1.8-servicing-32085 initialized 'BJContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+Executed action method BJ.WEB.Controllers.AccountController.Login (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 519.2ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.AccountViews.LoginAccountResponseView'.
+Executed action BJ.WEB.Controllers.AccountController.Login (BJ.WEB) in 546.3471ms
+Request finished in 578.4526ms 200 application/json; charset=utf-8
+Request finished in 25068.4044ms 200 application/javascript; charset=UTF-8
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Request finished in 12.1823ms 204 
+Request starting HTTP/1.1 OPTIONS http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Request finished in 8.1401ms 204 
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Policy execution successful.
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 11.5855ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 36.0189ms
+Request finished in 77.1891ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:51296/Account/Login application/json 58
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Bearer was not authenticated. Failure message: No SecurityTokenValidator available for token: null
+Route matched with {action = "Login", controller = "Account"}. Executing action BJ.WEB.Controllers.AccountController.Login (BJ.WEB)
+Executing action method BJ.WEB.Controllers.AccountController.Login (BJ.WEB) with arguments (BJ.ViewModels.AccountViews.LoginAccountView) - Validation state: Valid
+Entity Framework Core 2.1.8-servicing-32085 initialized 'BJContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AspNetUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+Executed action method BJ.WEB.Controllers.AccountController.Login (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 19.8111ms.
+Executing ObjectResult, writing value of type 'BJ.ViewModels.AccountViews.LoginAccountResponseView'.
+Executed action BJ.WEB.Controllers.AccountController.Login (BJ.WEB) in 29.7392ms
+Request finished in 50.4982ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 GET http://localhost:51296/game-game-module.js  
+Request starting HTTP/1.1 GET http://localhost:51296/account/registration  
+Request finished in 25272.6827ms 101 
+Request finished in 1009.0164ms 304 
+Request finished in 1007.3765ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/es2015-polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/runtime.js  
+Request finished in 15.1879ms 304 
+Request finished in 15.6753ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js  
+Request starting HTTP/1.1 GET http://localhost:51296/polyfills.js  
+Request finished in 40.7006ms 304 
+Request finished in 46.1676ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/main.js  
+Request starting HTTP/1.1 GET http://localhost:51296/styles.js  
+Request finished in 24.3564ms 304 
+Request finished in 44.4713ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/fon.jpg  
+Request finished in 4.7571ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/account-account-module.js  
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1555000117242  
+Request finished in 9.964ms 304 
+Request finished in 7.1296ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/game-game-module.js  
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/282/0pfcgwo1/websocket  
+Request finished in 25.6154ms 304 
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 13.3333ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 46.0977ms
+Request finished in 272.6163ms 200 application/json; charset=utf-8
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/282/1vzb5u2e/xhr_streaming?t=1555000118600  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/282/5eq2vx5q/htmlfile?c=_jp.akc5biu  
+Request finished in 8.0597ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/__webpack_dev_server__/sockjs.bundle.js  
+Request finished in 6.5263ms 200 application/javascript
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/282/2mldnx15/htmlfile?c=_jp.arun5gl  
+Request finished in 5.2162ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/282/2mldnx15/htmlfile?c=_jp.atx2mlu  
+Request finished in 10.9424ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1555000122168  
+Request finished in 4.1024ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/555/32dpswz0/websocket  
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/555/ktqvbtp4/xhr_streaming?t=1555000122806  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/555/byq0jzce/htmlfile?c=_jp.a3e1mwi  
+Request starting HTTP/1.1 GET http://localhost:51296/__webpack_dev_server__/sockjs.bundle.js  
+Request finished in 1025.5624ms 200 text/html; charset=UTF-8
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/555/mw0d0wxt/xhr?t=1555000125021  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request finished in 19.8479ms 200 application/javascript; charset=UTF-8
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/555/mw0d0wxt/xhr?t=1555000125065  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request finished in 3381.1828ms 200 application/javascript; charset=UTF-8
+Connection processing ended abnormally.
+Request starting HTTP/1.1 POST http://localhost:51296/sockjs-node/555/mw0d0wxt/xhr?t=1555000128464  0
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Request finished in 25070.3822ms 200 application/javascript; charset=UTF-8
+Processing request ClientApp
+Starting @angular/cli on port 57686...
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1555000148113  
+Failed to determine the https port for redirect.
+> client-app@0.0.0 start C:\Users\Anuitex  - 2\source\repos\BJ.WEB\BJ.WEB\ClientApp
+> ng serve "--port" "57686"
+
+** Angular Live Development Server is listening on localhost:57686, open your browser on http://localhost:57686/ **
+
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1555000158236  
+Request finished in 12914.211ms 200 application/json; charset=UTF-8
+Request finished in 4107.7745ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/780/5emsdtwx/websocket  
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Date: 2019-04-11T16:29:25.810Z
+Hash: 41371426373786147188
+Time: 12142ms
+chunk {account-account-module} account-account-module.js, account-account-module.js.map (account-account-module) 22 kB  [rendered]
+chunk {es2015-polyfills} es2015-polyfills.js, es2015-polyfills.js.map (es2015-polyfills) 284 kB [initial] [rendered]
+chunk {game-game-module} game-game-module.js, game-game-module.js.map (game-game-module) 27.2 kB  [rendered]
+chunk {history-history-module} history-history-module.js, history-history-module.js.map (history-history-module) 6.25 kB  [rendered]
+chunk {main} main.js, main.js.map (main) 65 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 236 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 8.87 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 181 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 7.11 MB [initial] [rendered]
+
+i ∩╜ówdm∩╜ú: Compiled successfully.
+
+Request starting HTTP/1.1 GET http://localhost:51296/game/start-game  
+Request finished in 159.1905ms 304 
+Request finished in 3729.4459ms 101 
+Request starting HTTP/1.1 GET http://localhost:51296/es2015-polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/polyfills.js  
+Request starting HTTP/1.1 GET http://localhost:51296/runtime.js  
+Request starting HTTP/1.1 GET http://localhost:51296/vendor.js  
+Request starting HTTP/1.1 GET http://localhost:51296/main.js  
+Request starting HTTP/1.1 GET http://localhost:51296/styles.js  
+Request finished in 33.2155ms 304 
+Request finished in 42.0295ms 304 
+Request finished in 1012.7619ms 304 
+Request finished in 1005.9464ms 304 
+Request finished in 1018.8032ms 304 
+Request finished in 1018.4474ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/fon.jpg  
+Request finished in 3.1764ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/game-game-module.js  
+Request finished in 25.8246ms 304 
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/info?t=1555000168847  
+Request finished in 18.6858ms 200 application/json; charset=UTF-8
+Request starting HTTP/1.1 GET http://localhost:51296/Game/IsUnfinished  
+Request starting HTTP/1.1 GET http://localhost:51296/sockjs-node/362/qcxl0y2z/websocket  
+Policy execution failed.
+Request origin http://localhost:51296 does not have permission to access the resource.
+Successfully validated the token.
+Route matched with {action = "IsUnfinished", controller = "Game"}. Executing action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB)
+Authorization was successful.
+Executing action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) - Validation state: Valid
+Executed action method BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 45.09ms.
+Executing ObjectResult, writing value of type 'System.Boolean'.
+Executed action BJ.WEB.Controllers.GameController.IsUnfinished (BJ.WEB) in 75.0013ms
+Request finished in 157.4857ms 200 application/json; charset=utf-8
