@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BJ.DAL\BJ.DataAccess.csproj" />
-    <ProjectReference Include="..\ViewModels\BJ.ViewModels.csproj" />
+    <ProjectReference Include="..\BJ.DataAccess\BJ.DataAccess.csproj" />
+    <ProjectReference Include="..\BJ.ViewModels\BJ.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>
