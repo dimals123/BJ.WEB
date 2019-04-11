@@ -24,7 +24,6 @@ namespace BJ.BusinessLogic.Filters
                     Error = context.ModelState.GetFirstErrorMessage()
                 };
                 context.Result = new BadRequestObjectResult(errorResult);
-                //context.Result = new BadRequestObjectResult(context.ModelState.GetFirstErrorMessage());
             }
 
         }

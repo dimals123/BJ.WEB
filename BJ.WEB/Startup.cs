@@ -28,8 +28,8 @@ namespace BJ.WEB
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.DbConnection(Configuration);
-            services.InitServices();
+            services.DependencyInjectionConnectionConfig(Configuration);
+            services.DependencyInjectionServicesConfig();
             services
                 .AddMvc(options => options.Filters.Add(typeof(ValidationActionFilterAttribute)))
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -37,7 +37,7 @@ namespace BJ.WEB
             services.IdentityConfigure();
             services.AddRouting();
 
-            services.InitializeDb();
+            services.InitializeDbBots();
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
             services.Configure<JwtTokenOptions>(Configuration.GetSection("jwt"));
@@ -67,10 +67,7 @@ namespace BJ.WEB
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                //{
-                //    HotModuleReplacement = true
-                //});
+
             }
             else
             {

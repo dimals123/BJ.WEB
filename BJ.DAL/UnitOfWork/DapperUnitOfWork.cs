@@ -97,19 +97,6 @@ namespace BJ.DataAccess.UnitOfWork
             }
         }
 
-        //private void resetRepositories()
-        //{
-        //    dapperBotRepository = null;
-        //    dapperCardRepository = null;
-        //    dapperGameRepository = null;
-        //    dapperUserInGameRepository = null;
-        //    dapperBotInGameRepository = null;
-        //    dapperStepUserRepository = null;
-        //    dapperStepBotRepository = null;
-        //    dapperUserRepository = null;
-        //}
-
-
         private bool disposed = false;
 
 

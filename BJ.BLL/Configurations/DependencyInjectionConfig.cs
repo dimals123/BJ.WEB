@@ -17,11 +17,11 @@ namespace BJ.BusinessLogic.Configurations
 {
     public static class DependencyInjectionConfig
     {
-        public static void DbConnection(this IServiceCollection services, IConfiguration configuration)
+        public static void DependencyInjectionConnectionConfig(this IServiceCollection services, IConfiguration configuration)
         {
 
-            var initializeConnectionString = configuration.GetSection("DbOptions").Get<DbOptions>().InitializeConnectionString;
-            var connectionString = configuration.GetConnectionString(initializeConnectionString);
+            var titleConnectionString = configuration.GetSection("DbOptions").Get<DbOptions>().ConnectionString;
+            var connectionString = configuration.GetConnectionString(titleConnectionString);
             services.AddDbContext<BJContext>(options => options.UseSqlServer(connectionString));
 
 
@@ -40,7 +40,7 @@ namespace BJ.BusinessLogic.Configurations
 
         }
 
-        public static void InitServices(this IServiceCollection services)
+        public static void DependencyInjectionServicesConfig(this IServiceCollection services)
         {
             
             

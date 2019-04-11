@@ -10,7 +10,7 @@ namespace BJ.BusinessLogic.Configurations
 {
     public static class DbInitialize
     {
-        public static async Task InitializeDb(this IServiceCollection services)
+        public static async Task InitializeDbBots(this IServiceCollection services)
         {
             var servicesProvider = services.BuildServiceProvider();
             var unitOfWork = servicesProvider.GetService<IUnitOfWork>();

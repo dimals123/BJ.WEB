@@ -22,23 +22,18 @@ namespace BJ.BusinessLogic.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly IScoreHelper _scoreHelper;
         private readonly ICardsHelper _cardsHelper;
-        //private readonly IDbConnection _connection;
 
 
-        public GameService(IUnitOfWork _unitOfWork, IScoreHelper scoreHelper, ICardsHelper cardsHelper/*, IDbConnection connection*/)
+        public GameService(IUnitOfWork _unitOfWork, IScoreHelper scoreHelper, ICardsHelper cardsHelper)
         {
             this._unitOfWork = _unitOfWork;
             _scoreHelper = scoreHelper;
             _cardsHelper = cardsHelper;
-            //_connection = connection;
         }
 
 
         public async Task<StartGameResponseView> Start(int countBots, string userId)
         {
-
-
-            //using (var transactionScope = new TransactionScope(TransactionScopeOption.RequiresNew, new TransactionOptions() { IsolationLevel = IsolationLevel.ReadCommitted }, TransactionScopeAsyncFlowOption.Enabled))
             using (var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
 
@@ -112,7 +107,6 @@ namespace BJ.BusinessLogic.Services
                 var userInGame = await _unitOfWork.UserInGames.GetByUserIdAndGameId(userId, gameId);
                 var botInGames = await _unitOfWork.BotInGames.GetAllByGameId(game.Id);
 
-                //var deck = await _unitOfWork.Cards.GetAll();
                 var deck = await _unitOfWork.Cards.GetAllByGameId(game.Id);
                 var bots = botInGames.Select(x => x.Bot).ToList();
 
@@ -127,8 +121,6 @@ namespace BJ.BusinessLogic.Services
                 await _unitOfWork.BotInGames.UpdateRange(botInGames);
 
                 await _unitOfWork.Cards.DeleteRange(cardsForRemove);
-                //if (pointUser.CountPoint >= 21)
-                //    await Stop(getCardsGameView);
                 transactionScope.Complete();
 
 
@@ -145,7 +137,6 @@ namespace BJ.BusinessLogic.Services
 
                 var botInGames = await _unitOfWork.BotInGames.GetAllByGameId(game.Id);
 
-                //var deck = await _unitOfWork.Cards.GetAll();
                 var deck = await _unitOfWork.Cards.GetAllByGameId(game.Id);
                 var bots = botInGames.Select(x => x.Bot).ToList();
 

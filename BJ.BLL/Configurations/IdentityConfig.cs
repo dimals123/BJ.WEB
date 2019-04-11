@@ -33,9 +33,6 @@ namespace BJ.BusinessLogic.Configurations
         public static void AutentificationConfigure(this IServiceCollection services, IConfiguration configuration)
         {
             var option = configuration.GetSection("jwt").Get<JwtTokenOptions>();
-            //var jwt = new JwtTokenOptions();
-            //configuration.Bind(jwt);
-            //IOptions<JwtTokenOptions> option = Microsoft.Extensions.Options.Options.Create(jwt);
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -51,7 +48,7 @@ namespace BJ.BusinessLogic.Configurations
                     ValidIssuer = option.Issuer,
                     ValidAudience = option.Issuer,
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(option.Key)),
-                    ClockSkew = TimeSpan.Zero // remove delay of token when expire
+                    ClockSkew = TimeSpan.Zero
                 };
             });
         }
