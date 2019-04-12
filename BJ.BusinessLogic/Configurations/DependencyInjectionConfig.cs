@@ -10,6 +10,7 @@ using BJ.DataAccess.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -20,8 +21,8 @@ namespace BJ.BusinessLogic.Configurations
         public static void DependencyInjectionConnectionConfig(this IServiceCollection services, IConfiguration configuration)
         {
 
-            var titleConnectionString = configuration.GetSection("DbOptions").Get<DbOptions>().ConnectionString;
-            var connectionString = configuration.GetConnectionString(titleConnectionString);
+            var connectionStringName = configuration.GetSection("DbOptions").Get<DbOptions>().ConnectionString;
+            var connectionString = configuration.GetConnectionString(connectionStringName);
             services.AddDbContext<BJContext>(options => options.UseSqlServer(connectionString));
 
 
@@ -36,6 +37,10 @@ namespace BJ.BusinessLogic.Configurations
             {
                 services.AddTransient<IDbConnection>(db => new SqlConnection(connectionString));
                 services.AddTransient<IUnitOfWork, DapperUnitOfWork>();
+            }
+            else
+            {
+                throw new ValidationException("Wrong value Orm! Dapper or EF");
             }
 
         }
