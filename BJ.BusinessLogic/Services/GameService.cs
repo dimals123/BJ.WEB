@@ -22,9 +22,9 @@ namespace BJ.BusinessLogic.Services
         private readonly ICardsHelper _cardsHelper;
 
 
-        public GameService(IUnitOfWork _unitOfWork, IScoreHelper scoreHelper, ICardsHelper cardsHelper)
+        public GameService(IUnitOfWork unitOfWork, IScoreHelper scoreHelper, ICardsHelper cardsHelper)
         {
-            this._unitOfWork = _unitOfWork;
+            this._unitOfWork = unitOfWork;
             _scoreHelper = scoreHelper;
             _cardsHelper = cardsHelper;
         }
@@ -35,13 +35,13 @@ namespace BJ.BusinessLogic.Services
             using (var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             {
 
-                var userInGames = await _unitOfWork.UserInGames.GetUnfinished(userId);
+                var userInGame = await _unitOfWork.UserInGames.GetUnfinished(userId);
 
                 var result = new StartGameResponseView();
 
-                if (userInGames != null)
+                if (userInGame != null)
                 {
-                    result.GameId = userInGames.GameId;
+                    result.GameId = userInGame.GameId;
                     return result;
                 }
 
@@ -60,7 +60,7 @@ namespace BJ.BusinessLogic.Services
                 var userSteps = new List<UserStep>();
                 var botSteps = new List<BotStep>();
 
-                var userInGame = new UserInGame
+                var newUserInGame = new UserInGame
                 {
                     GameId = game.Id,
                     UserId = userId,
@@ -76,12 +76,12 @@ namespace BJ.BusinessLogic.Services
                 var cardsForRemove = new List<Card>();
 
 
-                DealTwoCards(game, deck, cardsForRemove, userId, userSteps, userInGame, bots, botSteps, botInGames);
+                DealTwoCards(game, deck, cardsForRemove, userId, userSteps, newUserInGame, bots, botSteps, botInGames);
 
                 await _unitOfWork.UserSteps.CreateRange(userSteps);
                 await _unitOfWork.BotSteps.CreateRange(botSteps);
                 await _unitOfWork.Cards.DeleteRange(cardsForRemove);
-                await _unitOfWork.UserInGames.Create(userInGame);
+                await _unitOfWork.UserInGames.Create(newUserInGame);
                 await _unitOfWork.BotInGames.CreateRange(botInGames);
 
                 result.GameId = game.Id;
@@ -111,7 +111,7 @@ namespace BJ.BusinessLogic.Services
                 var stepUser = new UserStep();
                 var stepBots = new List<BotStep>();
 
-                DealCard(game,deck, cardsForRemove, userId, ref stepUser, userInGame, bots, stepBots, botInGames);
+                DealCard(game,deck, cardsForRemove, userId, stepUser, userInGame, bots, stepBots, botInGames);
 
                 await _unitOfWork.UserSteps.Create(stepUser);
                 await _unitOfWork.UserInGames.Update(userInGame);
@@ -336,17 +336,14 @@ namespace BJ.BusinessLogic.Services
             }
         }
 
-        private void DealCard(Game game, List<Card> deck, List<Card> cardsForRemove, string userId, ref UserStep stepUser, UserInGame userInGame, List<Bot> bots, List<BotStep> stepBots, List<BotInGame> botInGames)
+        private void DealCard(Game game, List<Card> deck, List<Card> cardsForRemove, string userId, UserStep stepUser, UserInGame userInGame, List<Bot> bots, List<BotStep> stepBots, List<BotInGame> botInGames)
         {
             var currentCard = deck.FirstOrDefault();
 
-            stepUser = new UserStep
-            {
-                GameId = game.Id,
-                UserId = userId,
-                Rank = currentCard.Rank,
-                Suit = currentCard.Suit
-            };
+            stepUser.GameId = game.Id;
+            stepUser.UserId = userId;
+            stepUser.Suit = currentCard.Suit;
+            stepUser.Rank = currentCard.Rank;
         
             userInGame.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, userInGame.CountPoint);
 
@@ -449,14 +446,15 @@ namespace BJ.BusinessLogic.Services
         public async Task<bool> IsUnfinished(string userId)
         {
             var userInGames = await _unitOfWork.UserInGames.GetUnfinished(userId);
-            var response = userInGames == null ? false : true;
+            var response = !(userInGames == null);
             return response;
         }
 
         public async Task<Guid> GetUnfinishedId(string userId)
         {
             var userInGames = await _unitOfWork.UserInGames.GetUnfinished(userId);
-            var response = userInGames == null ? await GetLastGameId(userId) : userInGames.GameId;
+            var lastGameId = await GetLastGameId(userId);
+            var response = userInGames == null ? lastGameId : userInGames.GameId;
             return response;
         }
 

@@ -1,12 +1,12 @@
 export enum RankTypeView{
-    six = 0, 
-    seven = 1,
-    eight = 2,
-    nine = 3, 
-    ten = 4, 
-    jack = 5,
-    lady = 6,
-    king = 7, 
-    ace = 8
+    Six = 0, 
+    Seven = 1,
+    Eight = 2,
+    Nine = 3, 
+    Ten = 4, 
+    Jack = 5,
+    Lady = 6,
+    King = 7, 
+    Ace = 8
   }
   

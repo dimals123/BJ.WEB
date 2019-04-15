@@ -11,4 +11,9 @@ export class MenuComponent {
   constructor(private readonly accountService: AccountService, private readonly router: Router) {
   }
 
+
+logout(): void{
+  this.accountService.logout();
+}
+
 }

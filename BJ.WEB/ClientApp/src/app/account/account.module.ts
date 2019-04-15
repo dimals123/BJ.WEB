@@ -4,7 +4,6 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { SharedModule } from '../shared/shared.module';
-import { ConfirmPasswordValidatorComponent } from '../shared/validators/confirm-password-validator/confirm-password-validator.component';
 
 
 @NgModule({
@@ -16,6 +15,6 @@ import { ConfirmPasswordValidatorComponent } from '../shared/validators/confirm-
     AccountRoutingModule,
     SharedModule
   ],
-  providers: [ConfirmPasswordValidatorComponent]
+  providers: []
 })
 export class UserModule { }

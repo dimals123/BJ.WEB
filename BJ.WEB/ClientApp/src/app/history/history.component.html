@@ -19,11 +19,11 @@
         </mat-expansion-panel-header>
         <label>UserName : {{modelGame?.user?.name}}</label>
         <label>Points : {{modelGame?.user?.points}}</label>
-        <img *ngFor="let card of modelGame?.user?.cards" src="{{imgHref}}{{card?.rank}}_{{card?.suit}}.png">
+        <img *ngFor="let card of modelGame?.user?.cards" src="assets/img/{{card?.rank}}_{{card?.suit}}.png">
         <div *ngFor="let bot of modelGame?.bots">
           <label>BotName : {{bot?.name}}</label>
           <label>Points : {{bot?.points}}</label>
-          <img *ngFor="let cardBot of bot?.cards" src="{{imgHref}}{{cardBot?.rank}}_{{cardBot?.suit}}.png">
+          <img *ngFor="let cardBot of bot?.cards" src="assets/img/{{cardBot?.rank}}_{{cardBot?.suit}}.png">
         </div>
       </mat-expansion-panel>
     </mat-accordion>

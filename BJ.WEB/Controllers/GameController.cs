@@ -17,7 +17,7 @@ namespace BJ.WEB.Controllers
         [HttpGet]
         public async Task<IActionResult> Start([FromQuery]int countBots)
         {
-            var response = await _gameService.Start(countBots, UserId);
+            await _gameService.Start(countBots, UserId);
             return Ok();
         }
         [HttpGet]

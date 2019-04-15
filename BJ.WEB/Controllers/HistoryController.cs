@@ -10,9 +10,9 @@ namespace BJ.WEB.Controllers
     public class HistoryController:BaseController
     {
         private readonly IHistoryService _historyService;
-        public HistoryController(IHistoryService _historyService)
+        public HistoryController(IHistoryService historyService)
         {
-            this._historyService = _historyService;
+            this._historyService = historyService;
         }
 
         [HttpGet]

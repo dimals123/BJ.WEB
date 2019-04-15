@@ -9,8 +9,6 @@
       <label class="text-danger"
         *ngIf="registerForm.get('name').touched && registerForm.get('name').errors?.required">Name is
         empty!</label>
-      <label class="text-danger" *ngIf="!validPassword && !registerForm.get('password').touched">Password is
-        empty.</label>
     </div>
 
     <div class="form-group required">

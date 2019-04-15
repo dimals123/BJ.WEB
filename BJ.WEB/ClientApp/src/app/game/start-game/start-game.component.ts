@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GameService } from 'src/app/shared/services/game.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -37,7 +36,7 @@ export class StartGameComponent implements OnInit {
     this.countBots = this.startGameForm.value.countBots;
     this.gameService.start(this.countBots).subscribe(response => {
       console.log(response);
-      this.router.navigateByUrl("/game/game-play");
+      this.router.navigate(["/game/game-play"]);
     });
 
   }

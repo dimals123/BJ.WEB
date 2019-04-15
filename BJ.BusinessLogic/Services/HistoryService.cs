@@ -13,17 +13,15 @@ namespace BJ.BusinessLogic.Services
         private readonly IUnitOfWork _unitOfWork;
 
 
-        public HistoryService(IUnitOfWork _unitOfWork)
+        public HistoryService(IUnitOfWork unitOfWork)
         {
-            this._unitOfWork = _unitOfWork;
+            this._unitOfWork = unitOfWork;
         }
 
 
         public async Task<GetUserGamesHistoryView> GetUserGames(string userId)
         {
-            var userInGames = await _unitOfWork
-                .UserInGames
-                .GetAllFinishedByUserId(userId);
+            var userInGames = await _unitOfWork.UserInGames.GetAllFinishedByUserId(userId);
             var games = userInGames
                 .Select(x => x.Game)
                 .ToList();

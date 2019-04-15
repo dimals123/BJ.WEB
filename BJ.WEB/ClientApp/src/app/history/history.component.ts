@@ -15,22 +15,14 @@ export class HistoryComponent implements OnInit {
   private modelGame: GetDetailsGameHistoryView;
   private countGames: number;
   private id: number;
-  private imgBot:string;
-  private imgHref:any;
 
   constructor(private readonly historyService: HistoryService, private readonly route: ActivatedRoute, private readonly router: Router) {
 
   }
 
   ngOnInit() {
-    this.historyService.getUserGames().subscribe(response => {
-      this.model = response;
-      this.countGames = this.model.games.length;
-      this.id = +this.route.snapshot.paramMap.get('id');
-    }, error => {
-      console.log(error);
-    });
-    this.imgHref = "assets/img/"
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.changeCurrentPage(this.id);
   }
 
   public getDetailsGame(gameId: string): void {

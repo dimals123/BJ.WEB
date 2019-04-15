@@ -30,7 +30,10 @@ namespace BJ.BusinessLogic.Services
             var users = await _unitOfWork.Users.GetAll();
             var userNames = users.Select(x => x.UserName).ToList();
 
-            var response = new GetAllAccountResponseView() { Names = userNames };
+            var response = new GetAllAccountResponseView()
+            {
+                Names = userNames
+            };
            
             return response;
            

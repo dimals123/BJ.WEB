@@ -9,7 +9,7 @@ import { LogInGuard } from './guards/log-in.guard';
 import { LocalStorageService } from './services/local-storage.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MenuComponent } from './loyaot/menu/menu.component';
+import { MenuComponent } from './layout/menu/menu.component';
 import { MatSnackBarModule } from '@angular/material';
 import { ErrorHandler } from './handlers/error.handler';
 import { RequestInterceptor } from './interseptors/request.interceptor';
@@ -23,13 +23,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { RestrictInputDirective } from './derectives/restrict-input-directive';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { ConfirmPasswordValidatorComponent } from './validators/confirm-password-validator/confirm-password-validator.component';
 
 @NgModule({
   declarations: [
     MenuComponent,
-    RestrictInputDirective,
-    ConfirmPasswordValidatorComponent
+    RestrictInputDirective
   ],
   imports: [
     CommonModule,
@@ -61,8 +59,7 @@ import { ConfirmPasswordValidatorComponent } from './validators/confirm-password
     MatMenuModule,
     MatSidenavModule,
     RestrictInputDirective,
-    MatProgressSpinnerModule,
-    ConfirmPasswordValidatorComponent
+    MatProgressSpinnerModule
 
   ]
 })
