@@ -10,7 +10,7 @@ import {
  
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
-import { ErrorHandler } from './error-handler';
+import { ErrorHandler } from '../handlers/error.handler';
  
 
  
@@ -27,7 +27,7 @@ export class RequestInterceptor implements HttpInterceptor {
       if (err instanceof HttpErrorResponse) {
         debugger;
         if(err.status == 400)
-        this.errorHandler.handleError("Bad Request.");
+        this.errorHandler.handleError(err.message);
         else 
         this.errorHandler.handleError("Internal Server Error.");
       }

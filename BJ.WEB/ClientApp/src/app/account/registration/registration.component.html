@@ -4,12 +4,12 @@
       <label>Username</label>
       <input type="text" formControlName="name" list="user_list" class="form-control">
       <datalist id="user_list">
-        <option *ngFor="let user of this.modelNames">{{user}}</option>
+        <option *ngFor="let user of names">{{user}}</option>
       </datalist>
       <label class="text-danger"
-        *ngIf="this.registerForm.get('name').touched && this.registerForm.get('name').errors?.required">Name is
+        *ngIf="registerForm.get('name').touched && registerForm.get('name').errors?.required">Name is
         empty!</label>
-      <label class="text-danger" *ngIf="!this.validPassword && !this.registerForm.get('password').touched">Password is
+      <label class="text-danger" *ngIf="!validPassword && !registerForm.get('password').touched">Password is
         empty.</label>
     </div>
 
@@ -17,21 +17,21 @@
       <label>Password</label>
       <input type="password" class="form-control" formControlName="password">
       <label class="text-danger"
-        *ngIf="this.registerForm.get('password').touched && this.registerForm.get('password').errors?.required">Password
+        *ngIf="registerForm.get('password').touched && registerForm.get('password').errors?.required">Password
         is min 8 value.</label>
       <label class="text-danger"
-        *ngIf="this.registerForm.get('password').touched && this.registerForm.get('password').errors?.minlength">Minimum
+        *ngIf="registerForm.get('password').touched && registerForm.get('password').errors?.minlength">Minimum
         8 characters required.</label>
 
     </div>
-    <div *ngIf="!this.modelNames.includes(this.registerForm.value.name) && this.registerForm.get('name').touched">
+    <div *ngIf="!names.includes(this.registerForm.value.name) && registerForm.get('name').touched">
       <label>ConfirmPassword</label>
       <input type="password" class="form-control" formControlName="confirmPassword">
       <label class="text-danger"
-        *ngIf="this.registerForm.get('confirmPassword').touched && this.registerForm.get('confirmPassword').errors?.required">Confirm Password
+        *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.required">Confirm Password
         is failed.</label>
       <label class="text-danger"
-        *ngIf="this.registerForm.get('confirmPassword').touched && this.registerForm.get('confirmPassword').errors?.passwordMismatch">Confirm
+        *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.passwordMismatch">Confirm
         Password does not match.</label>
     </div>
 

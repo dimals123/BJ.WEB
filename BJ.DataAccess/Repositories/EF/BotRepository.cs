@@ -14,14 +14,7 @@ namespace BJ.DataAccess.Repositories.EF
 
         }
 
-        public async Task<List<Bot>> GetCount(int count)
-        {
-            var result = await _dbSet
-                .Select(x => x)
-                .Take(count)
-                .ToListAsync();
-            return result;
-        }
-       
+      
+
     }
 }

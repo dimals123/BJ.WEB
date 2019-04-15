@@ -18,22 +18,6 @@ namespace BJ.BusinessLogic.Services
             this._unitOfWork = _unitOfWork;
         }
 
-        public async Task Clear()
-        {
-            var deck = await _unitOfWork.Cards.GetAll();
-            var games = await _unitOfWork.Games.GetAll();
-            var pointsUser = await _unitOfWork.UserInGames.GetAll();
-            var pointsBot = await _unitOfWork.BotInGames.GetAll();
-            var stepsUser = await _unitOfWork.UserSteps.GetAll();
-            var stepsBots = await _unitOfWork.BotSteps.GetAll();
-            await _unitOfWork.Cards.DeleteRange(deck);
-            await _unitOfWork.Games.DeleteRange(games);
-            await _unitOfWork.UserInGames.DeleteRange(pointsUser);
-            await _unitOfWork.BotInGames.DeleteRange(pointsBot);
-            await _unitOfWork.UserSteps.DeleteRange(stepsUser);
-            await _unitOfWork.BotSteps.DeleteRange(stepsBots);
-
-        } 
 
         public async Task<GetUserGamesHistoryView> GetUserGames(string userId)
         {
@@ -42,7 +26,6 @@ namespace BJ.BusinessLogic.Services
                 .GetAllFinishedByUserId(userId);
             var games = userInGames
                 .Select(x => x.Game)
-                .Where(x=>x.IsFinished == true)
                 .ToList();
 
             var user = await _unitOfWork.Users.GetById(userId);

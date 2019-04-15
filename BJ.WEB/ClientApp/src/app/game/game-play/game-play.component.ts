@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GetDetailsGameResponseView } from 'src/app/shared/models/game-views/get-details-game-response-view';
 import { GameService } from 'src/app/shared/services/game.service';
 
@@ -7,7 +7,7 @@ import { GameService } from 'src/app/shared/services/game.service';
   templateUrl: './game-play.component.html',
   styleUrls: ['./game-play.component.scss']
 })
-export class GamePlayComponent implements OnInit, OnChanges {
+export class GamePlayComponent implements OnInit {
 
   constructor(private readonly gameService: GameService) {
   }
@@ -16,15 +16,12 @@ export class GamePlayComponent implements OnInit, OnChanges {
   private model = new GetDetailsGameResponseView();
 
 
-  public ngOnChanges(): void {
-
-  }
 
   public ngOnInit(): void {
     this.gameService.getDetails().subscribe(response => this.model = response);
   }
 
-  public getCards($event): void {
+  public getCards(): void {
     this.gameService.getCards().subscribe(response => {
       console.log("getCards");
       this.gameService.getDetails().subscribe(response => {
@@ -35,7 +32,7 @@ export class GamePlayComponent implements OnInit, OnChanges {
 
   }
 
-  public stopGame($event): void {
+  public stopGame(): void {
     this.gameService.stop().subscribe(response => {
       console.log("stop");
       this.gameService.getDetails().subscribe(response => {

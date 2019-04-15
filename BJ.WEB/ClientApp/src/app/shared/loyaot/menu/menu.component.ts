@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { AccountService } from '../../services/account.service';
 import { Router } from '@angular/router';
 
@@ -8,11 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-
-  private isAuth: boolean;
   constructor(private readonly accountService: AccountService, private readonly router: Router) {
-    this.isAuth = this.accountService.isAuthenticated()
   }
-
 
 }

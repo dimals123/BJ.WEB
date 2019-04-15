@@ -1,5 +1,5 @@
 <div class="form">
-  <ng-container *ngIf="this.isStop">
+  <ng-container *ngIf="isStop">
 
     <div>
       <label>Winner : {{model?.winner}}</label>
@@ -7,27 +7,27 @@
 
     <label>UserName : {{model?.user?.name}}</label>
     <label>Points : {{model?.user?.points}}</label>
-    <img *ngFor="let card of model?.user?.cards" src="../../../../assets/img/{{card?.rank}}_{{card?.suit}}.png">
+    <img *ngFor="let card of model?.user?.cards" src="assets/img/{{card?.rank}}_{{card?.suit}}.png">
     <div *ngFor="let bot of model?.bots">
       <label>BotName : {{bot?.name}}</label>
       <label>Points : {{bot?.points}}</label>
-      <img *ngFor="let cardBot of bot?.cards" src="../../../../assets/img/{{cardBot?.rank}}_{{cardBot?.suit}}.png">
+      <img *ngFor="let cardBot of bot?.cards" src="assets/img/{{cardBot?.rank}}_{{cardBot?.suit}}.png">
     </div>
     <button [routerLink]="['/game']" class="">Exit</button>
 
   </ng-container>
 
-  <ng-container *ngIf="!this.isStop">
+  <ng-container *ngIf="!isStop">
     <div>
-        <button (click)="getCards($event)" class="">Deal</button>
-        <button (click)="stopGame($event)" class="">Stop</button>
+        <button (click)="getCards()" class="">Deal</button>
+        <button (click)="stopGame()" class="">Stop</button>
         <button [routerLink]="['/game']" class="">Exit</button>
       <label>UserName : {{model?.user?.name}}</label>
       <label>Points : {{model?.user?.points}}</label>
-      <img *ngFor="let card of model?.user?.cards" src="../../../../assets/img/{{card?.rank}}_{{card?.suit}}.png">
+      <img *ngFor="let card of model?.user?.cards" src="assets/img/{{card?.rank}}_{{card?.suit}}.png">
       <div *ngFor="let bot of model?.bots">
         <label>BotName : {{bot?.name}}</label>
-        <img *ngFor="let cardBot of bot?.cards" src="../../../../assets/img/card.png">
+        <img *ngFor="let cardBot of bot?.cards" src="assets/img/card.png">
       </div>
     </div>
     

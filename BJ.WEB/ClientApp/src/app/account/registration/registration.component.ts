@@ -7,6 +7,7 @@ import { RegisterAccountView } from 'src/app/shared/models/account-views/registe
 import { LoginAccountResponseView } from 'src/app/shared/models/account-views/login-account-response-veiw';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { LoginAccountView } from 'src/app/shared/models/account-views/login-account-view';
+import { ConfirmPasswordValidatorComponent } from 'src/app/shared/validators/confirm-password-validator/confirm-password-validator.component';
 
 @Component({
   selector: 'app-registration',
@@ -18,13 +19,13 @@ export class RegistrationComponent implements OnInit {
 
 
   constructor(private readonly accountService: AccountService, private readonly router: Router,
-    private readonly formBuilder: FormBuilder, private readonly localStorageService: LocalStorageService) { }
+    private readonly formBuilder: FormBuilder, private readonly localStorageService: LocalStorageService, private readonly passwordValidator:ConfirmPasswordValidatorComponent) { }
 
-  private _model = new GetAllAccountResponseView();
+  private model = new GetAllAccountResponseView();
   private validPassword: boolean = true;
-
-  public get modelNames(): Array<string> {
-    return this._model.names;
+  
+  public get names(): Array<string> {
+    return this.model.names;
   }
 
 
@@ -33,30 +34,18 @@ export class RegistrationComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(8)]],
     confirmPassword: ['', Validators.required]
   },
-    { validator: this.comparePasswords });
+    { validator: this.passwordValidator.comparePasswords });
 
 
-  private comparePasswords(formBuilder: FormGroup) {
-    let confirmPswrdCtrl = formBuilder.get('confirmPassword');
-    //passwordMismatch
-    //confirmPswrdCtrl.errors={passwordMismatch:true}
-    if (confirmPswrdCtrl.errors == null || 'passwordMismatch' in confirmPswrdCtrl.errors) {
-      if (formBuilder.get('password').value != confirmPswrdCtrl.value)
-        confirmPswrdCtrl.setErrors({ passwordMismatch: true });
-      else
-        confirmPswrdCtrl.setErrors(null);
-    }
-
-  }
-
+   
   public ngOnInit(): void {
-    this.accountService.getAll().subscribe(data => this._model = data);
+    this.accountService.getAll().subscribe(data => this.model = data);
   }
 
   private authorize(res: LoginAccountResponseView): void {
     this.localStorageService.setItem('token', res.token);
+
     this.router.navigate(["game/start-game"]);
-    window.location.reload();
   }
 
 
@@ -64,20 +53,20 @@ export class RegistrationComponent implements OnInit {
     if (this.registerForm.value.password == '') {
       this.validPassword = false;
     }
-    let SearchName = this.modelNames.includes(this.registerForm.value.name);
-    var register = new RegisterAccountView();
-    var login = new LoginAccountView();
-    if (SearchName) {
-      login = { ...this.registerForm.value };
-      this.accountService.login(login).subscribe(res => {
+    let isExistName = this.names.includes(this.registerForm.value.name);
+    var registerModel = new RegisterAccountView();
+    var loginModel = new LoginAccountView();
+    if (isExistName) {
+      loginModel = { ...this.registerForm.value };
+      this.accountService.login(loginModel).subscribe(res => {
         this.authorize(res);
       }, err => {
         console.log(err);
       });
     }
     else {
-      register = { ...this.registerForm.value }
-      this.accountService.register(register).subscribe(res => {
+      registerModel = { ...this.registerForm.value }
+      this.accountService.register(registerModel).subscribe(res => {
         this.authorize(res);
       }, err => {
         console.log(err);

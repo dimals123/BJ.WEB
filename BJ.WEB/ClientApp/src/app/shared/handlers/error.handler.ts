@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material';
 export class ErrorHandler {
 
   constructor(
-    public snackbar: MatSnackBar,
+    private readonly snackbar: MatSnackBar,
   ) {}
 
   public handleError(err: any) {

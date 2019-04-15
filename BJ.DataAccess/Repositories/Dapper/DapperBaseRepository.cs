@@ -1,4 +1,5 @@
 ﻿using BJ.DataAccess.Repositories.Interfaces;
+using Dapper;
 using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace BJ.DataAccess.Repositories.Dapper
         public async Task Create(T item)
         {
             var result = await _connection.InsertAsync(item);
+            
 
         }
 
@@ -81,6 +83,15 @@ namespace BJ.DataAccess.Repositories.Dapper
         {
 
             await _connection.UpdateAsync(items);
+
+        }
+
+        public async Task<List<T>> GetCount(int count)
+        {
+            var tableName = typeof(T).Name + 's';
+            string sql = "SELECT Top (@count) * FROM " + tableName + " ORDER BY newid();";
+            var result = await _connection.QueryAsync<T>(sql, new { count });
+            return result.AsList();
 
         }
     }

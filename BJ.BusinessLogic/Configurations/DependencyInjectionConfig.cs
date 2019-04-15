@@ -47,14 +47,18 @@ namespace BJ.BusinessLogic.Configurations
 
         public static void DependencyInjectionServicesConfig(this IServiceCollection services)
         {
+
+            services.Scan(scan => scan
+                .FromAssemblyOf<AccountService>()
+                   .AddClasses(classes => classes.Where(type => type.Name.EndsWith("Service") ||
+                                                                type.Name.EndsWith("Provider") ||
+                                                                type.Name.EndsWith("Helper")))
+                        .AsImplementedInterfaces()
+                        .WithTransientLifetime()
+
+            );
+
             
-            
-            services.AddTransient<IAccountService, AccountService>();
-            services.AddTransient<IGameService, GameService>();
-            services.AddTransient<IHistoryService, HistoryService>();
-            services.AddTransient<IJwtTokenProvider, JwtTokenProvider>();
-            services.AddTransient<IScoreHelper, ScoreHelper>();
-            services.AddTransient<ICardsHelper, CardsHelper>();
         }
 
    

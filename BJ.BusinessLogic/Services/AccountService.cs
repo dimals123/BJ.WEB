@@ -43,7 +43,7 @@ namespace BJ.BusinessLogic.Services
                 var identityResult = await _signInManager.UserManager.CheckPasswordAsync(result, model.Password);
                 if (!identityResult)
                 {
-                    throw new ValidationException("Invalid login attempt");
+                    throw new ValidationException("Wrong login or password!");
                 }
 
 
@@ -68,7 +68,7 @@ namespace BJ.BusinessLogic.Services
             var result = await _userManager.CreateAsync(account, model.Password);
             if (!result.Succeeded)
             {
-                throw new ValidationException("Invalid user");
+                throw new ValidationException(result.Errors.FirstOrDefault().ToString());
             }
 
             var token = _jwtTokentHelper.GenerateJwtToken(account);

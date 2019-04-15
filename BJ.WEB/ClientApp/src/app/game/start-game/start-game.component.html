@@ -6,10 +6,10 @@
                 <label>Count Bots</label>
                 <input appInputMask="integer" formControlName="countBots">
                 <label class=""
-                    *ngIf="this.startGameForm.get('countBots').touched && this.startGameForm.get('countBots').errors?.min">Minimum
+                    *ngIf="startGameForm.get('countBots').touched && startGameForm.get('countBots').errors?.min">Minimum
                     value 1.</label>
                     <label class=""
-                    *ngIf="this.startGameForm.get('countBots').touched && this.startGameForm.get('countBots').errors?.required">Inccorrect
+                    *ngIf="startGameForm.get('countBots').touched && startGameForm.get('countBots').errors?.required">Inccorrect
                     value.</label>
                 <button (click)="startGame()" class="" [disabled]="!startGameForm.valid">
                     <mat-icon class="icon">videogame_asset</mat-icon>

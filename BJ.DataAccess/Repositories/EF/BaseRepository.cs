@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BJ.DataAccess.Repositories.EF
@@ -72,5 +73,13 @@ namespace BJ.DataAccess.Repositories.EF
             return result;
         }
 
+        public async Task<List<T>> GetCount(int count)
+        {
+            var result = await _dbSet
+                .Select(x => x)
+                .Take(count)
+                .ToListAsync();
+            return result;
+        }
     }
 }

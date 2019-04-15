@@ -25,24 +25,8 @@ const inputChar = e.key;
 this.pattern.lastIndex = 0; // dont know why but had to add this
 
 if (this.pattern.test(inputChar)) {
-   // success
-  this.renderer.setStyle(this.el.nativeElement, 'color', 'green'); 
-  this.badBoyAlert('black');
 } else {
-
-  this.badBoyAlert('black');
-   //do something her to indicate invalid character
-  this.renderer.setStyle(this.el.nativeElement, 'color', 'red');
   e.preventDefault();
-
-}
-
-  }
-  badBoyAlert(color: string) {
-    setTimeout(() => {
-      this.showMsg = true;
-      this.renderer.setStyle(this.el.nativeElement, 'color', color);
-    }, 2000)
-  }
+}}
 
   }

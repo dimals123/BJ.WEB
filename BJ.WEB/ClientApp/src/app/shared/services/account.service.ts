@@ -30,7 +30,6 @@ export class AccountService {
 
   public logout() : void {
     this.localStorageService.clear();
-    this.router.navigate(['registration']);
   }
 
   public getAll (): Observable<GetAllAccountResponseView> {
@@ -43,7 +42,6 @@ export class AccountService {
     return this.localStorageService.getItem<string>('token');
   }
   public isAuthenticated(): boolean {
-    // get the token
     const token = this.getToken();
     return !!token
   }

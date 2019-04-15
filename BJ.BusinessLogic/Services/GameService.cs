@@ -11,8 +11,6 @@ using MoreLinq;
 using BJ.BusinessLogic.Helpers.Interfaces;
 using BJ.DataAccess.Entities.Enums;
 using BJ.DataAccess.UnitOfWork;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
 
 namespace BJ.BusinessLogic.Services
 {
@@ -203,26 +201,27 @@ namespace BJ.BusinessLogic.Services
             }).ToList();
 
             var botsInGames = await _unitOfWork.BotInGames.GetAllByGameId(game.Id);
+            var cardsAllBots = await _unitOfWork.BotSteps.GetAllByGameId(game.Id);
 
-
-            foreach (var bot in botsInGames)
+            botsInGames.ForEach(x =>
             {
-                var cardsBot = await _unitOfWork.BotSteps.GetAllByBotIdAndGameId(bot.BotId, game.Id);
+                var cardsBot = cardsAllBots.Select(c => c).Where(c => c.BotId == x.BotId).ToList();
 
                 var botCardsResults = new List<StepBotGetDetailsGameResponseViewItem>();
-                botCardsResults = cardsBot.Select(x => new StepBotGetDetailsGameResponseViewItem()
+                botCardsResults = cardsBot.Select(c => new StepBotGetDetailsGameResponseViewItem()
                 {
-                    Rank = (RankTypeView)x.Rank,
-                    Suit = (SuitTypeView)x.Suit
+                    Rank = (RankTypeView)c.Rank,
+                    Suit = (SuitTypeView)c.Suit
+
                 }).ToList();
 
                 botResults.Add(new BotGetDetailsGameResponseViewItem
                 {
-                    Name = bot.Bot.Name,
-                    Points = bot.CountPoint,
+                    Name = x.Bot.Name,
+                    Points = x.CountPoint,
                     Cards = botCardsResults
                 });
-            }
+            });
 
             result.Bots = botResults;
             result.User = userResult;
@@ -262,26 +261,19 @@ namespace BJ.BusinessLogic.Services
             }).ToList();
 
             var botsInGames = await _unitOfWork.BotInGames.GetAllByGameId(game.Id);
+            var cardsAllBots = await _unitOfWork.BotSteps.GetAllByGameId(game.Id);
 
-
-            foreach (var bot in botsInGames)
+            botResults = botsInGames.Select(x => new BotGetUnfinishedGameResponseViewItem
             {
-                var cardsBot = await _unitOfWork.BotSteps.GetAllByBotIdAndGameId(bot.BotId, game.Id);
-
-                var botCardsResults = new List<StepBotGetUnfinishedGameResponseViewItem>();
-                botCardsResults = cardsBot.Select(x => new StepBotGetUnfinishedGameResponseViewItem()
+                Name = x.Bot.Name,
+                Points = x.CountPoint,
+                Cards = cardsAllBots.Where(c => c.BotId == x.BotId).Select(c => new StepBotGetUnfinishedGameResponseViewItem
                 {
-                    Rank = (RankTypeView)x.Rank,
-                    Suit = (SuitTypeView)x.Suit
-                }).ToList();
+                    Rank = (RankTypeView)c.Rank,
+                    Suit = (SuitTypeView)c.Suit
+                }).ToList()
+            }).ToList();
 
-                botResults.Add(new BotGetUnfinishedGameResponseViewItem
-                {
-                    Name = bot.Bot.Name,
-                    Points = bot.CountPoint,
-                    Cards = botCardsResults
-                });
-            }
 
             result.Bots = botResults;
             result.User = userResult;
@@ -321,25 +313,25 @@ namespace BJ.BusinessLogic.Services
                 cardsForRemove.Add(currentCard);
                 deck.Remove(currentCard);
 
-                foreach (var bot in bots)
+
+                bots.ForEach(x =>
                 {
                     currentCard = deck.FirstOrDefault();
-                    var stepBot = new BotStep
+                    stepBots.Add(new BotStep
                     {
                         GameId = game.Id,
-                        BotId = bot.Id,
+                        BotId = x.Id,
                         Suit = currentCard.Suit,
-                        Rank = currentCard.Rank,
-                    };
-                    stepBots.Add(stepBot);
-                    
-                    var botInGame =  botInGames.FirstOrDefault(x => x.BotId == bot.Id);
+                        Rank = currentCard.Rank
+                    });
+                    var botInGame = botInGames.FirstOrDefault(b=>b.BotId == x.Id);
                     botInGame.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, botInGame.CountPoint);
-                    
+
                     cardsForRemove.Add(currentCard);
                     deck.Remove(currentCard);
-                }
+                });
 
+               
 
             }
         }
@@ -360,18 +352,19 @@ namespace BJ.BusinessLogic.Services
 
             cardsForRemove.Add(currentCard);
             deck.Remove(currentCard);
-            
-            foreach (var bot in bots)
+
+
+            bots.ForEach(x=> 
             {
                 currentCard = deck.FirstOrDefault();
 
-                var pointBot = botInGames.FirstOrDefault(x => x.BotId == bot.Id);
+                var pointBot = botInGames.FirstOrDefault(p => p.BotId == x.Id);
 
                 if (IsNeedCard(pointBot))
                 {
                     var stepBot = new BotStep
                     {
-                        BotId = bot.Id,
+                        BotId = x.Id,
                         GameId = game.Id,
                         Rank = currentCard.Rank,
                         Suit = currentCard.Suit
@@ -383,7 +376,8 @@ namespace BJ.BusinessLogic.Services
                     cardsForRemove.Add(currentCard);
                     deck.Remove(currentCard);
                 }
-            }
+            });
+            
         }
 
         private void DealLast(Game game, List<Card> deck, List<Card> cardsForRemove, List<Bot> bots, List<BotStep> stepBots, List<BotInGame> botInGames)
@@ -430,12 +424,12 @@ namespace BJ.BusinessLogic.Services
         private async Task<List<Card>> CreateDeck(Game game)
         {
             var cards = new List<Card>();
+            var suitType = Enum.GetValues(typeof(SuitType));
+            var rankType = Enum.GetValues(typeof(RankType));
 
-
-
-            foreach (var suit in Enum.GetValues(typeof(SuitType)))
+            foreach (var suit in suitType)
             {
-                foreach (var rank in Enum.GetValues(typeof(RankType)))
+                foreach (var rank in rankType)
                 {
                     cards.Add(new Card
                     {

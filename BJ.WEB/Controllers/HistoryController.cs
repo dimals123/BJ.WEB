@@ -14,12 +14,6 @@ namespace BJ.WEB.Controllers
         {
             this._historyService = _historyService;
         }
-        [HttpPost]
-        public async Task<IActionResult> Clear()
-        {
-            await _historyService.Clear();
-            return Ok();
-        }
 
         [HttpGet]
         public async Task<IActionResult> GetUserGames()

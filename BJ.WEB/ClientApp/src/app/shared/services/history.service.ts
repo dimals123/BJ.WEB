@@ -16,10 +16,7 @@ export class HistoryService {
 
 
   public getUserGames(): Observable<GetUserGamesHistoryView> {
-    return this.http.get<GetUserGamesHistoryView>(environment.BaseUrl + '/History/GetUserGames').pipe(response=>
-      {
-        return response;
-      });
+    return this.http.get<GetUserGamesHistoryView>(environment.BaseUrl + '/History/GetUserGames');
   }
 
   public getDetailsGame(gameId:string):Observable<GetDetailsGameHistoryView>{
