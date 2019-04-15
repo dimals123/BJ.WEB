@@ -424,21 +424,22 @@ namespace BJ.BusinessLogic.Services
         private async Task<List<Card>> CreateDeck(Game game)
         {
             var cards = new List<Card>();
-            var suitType = Enum.GetValues(typeof(SuitType));
-            var rankType = Enum.GetValues(typeof(RankType));
+            var suitType = (SuitType[])Enum.GetValues(typeof(SuitType));
+            var rankType = (RankType[])Enum.GetValues(typeof(RankType));
 
-            foreach (var suit in suitType)
+            suitType.ForEach(x =>
             {
-                foreach (var rank in rankType)
+                rankType.ForEach(r =>
                 {
                     cards.Add(new Card
                     {
-                        Suit = (SuitType)suit,
-                        Rank = (RankType)rank,
-                        GameId = game.Id
-                    });                    
-                }
-            }
+                        GameId = game.Id,
+                        Suit = x,
+                        Rank = r
+                    });
+                });
+            });
+
             _cardsHelper.Swap(cards);
             await _unitOfWork.Cards.CreateRange(cards);
             return cards;
