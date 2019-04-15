@@ -2,7 +2,7 @@
   <form [formGroup]="registerForm" autocomplete="off" (submit)="onSubmit()">
     <div class="">
       <label>Username</label>
-      <input type="text" formControlName="name" list="user_list" class="form-control">
+      <input appInputMask="words" formControlName="name" list="user_list" class="form-control">
       <datalist id="user_list">
         <option *ngFor="let user of names">{{user}}</option>
       </datalist>

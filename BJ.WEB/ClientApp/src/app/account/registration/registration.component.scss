@@ -3,7 +3,7 @@
     z-index: 1;
     background: #FFFFFF;
     max-width: 360px;
-    margin: 0 auto 100px;
+    margin: 0 auto 1000px;
     padding: 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -40,8 +40,14 @@
   }
   .form .message {
     margin: 15px 0 0;
-    color: #b3b3b3;
+    color: #e41313;
     font-size: 12px;
   }
 select.ng-invalid.ng-touched, input.ng-touched.ng-invalid {border:solid red 2px;}
   input.ng-touched.ng-valid {border:solid green 2px;}
+
+  @media (max-width: 550px) {
+    .form {padding-top: 10px;
+    }
+  }
+        

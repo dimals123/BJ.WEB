@@ -1,5 +1,6 @@
 <app-menu></app-menu>
 <form action="" class="form">
+    <label *ngIf="model?.games.length == 0">You have not played any games.</label>
     <mat-accordion multi="false" class="example-headers-align">
       <mat-expansion-panel *ngFor="let game of model?.games | paginate: { itemsPerPage: 10, currentPage: id}"
         (opened)="getDetailsGame(game.gameId)">

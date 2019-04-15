@@ -29,7 +29,6 @@ export class HistoryComponent implements OnInit {
 
     this.historyService.getDetailsGame(gameId).subscribe(response => {
       this.modelGame = response;
-
     },
       error => {
         console.log(error);

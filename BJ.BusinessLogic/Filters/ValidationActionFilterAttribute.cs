@@ -19,7 +19,7 @@ namespace BJ.BusinessLogic.Filters
 
             if (!context.ModelState.IsValid)
             {
-                var errorResult = context.ModelState.GetFirstErrorMessage();
+                var errorResult = new { Error = context.ModelState.GetFirstErrorMessage() };
                 context.Result = new BadRequestObjectResult(errorResult);
             }
 

@@ -20,7 +20,7 @@ export class StartGameComponent implements OnInit {
 
 
   public startGameForm = this.formBuilder.group({
-    countBots: [1, [Validators.required, Validators.min(1)]],
+    countBots: [1, [Validators.required, Validators.min(1), Validators.max(5)]],
   });
 
 

@@ -9,8 +9,10 @@ export class RestrictInputDirective {
 showMsg = false;
 pattern: RegExp;
 
+
 private regexMap = { 
-integer: /^[0-9 ]*$/g
+integer: /^[1-5]*$/g,
+words: /^([A-z0-9])*$/g
 };
 
 constructor(public el: ElementRef, public renderer: Renderer2) { };

@@ -27,7 +27,7 @@ export class RequestInterceptor implements HttpInterceptor {
       if (err instanceof HttpErrorResponse) {
         debugger;
         if (err.status == 400) {
-          this.errorHandler.handleError(err.message);
+          this.errorHandler.handleError(err.error.error);
         }
         else {
           this.errorHandler.handleError("Internal Server Error.");

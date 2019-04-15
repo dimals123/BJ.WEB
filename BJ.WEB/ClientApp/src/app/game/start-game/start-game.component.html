@@ -1,29 +1,29 @@
 <div class="">
-        <form [formGroup]="startGameForm" autocomplete="off" class="form">
-    <ng-container *ngIf="!continue">
-        
+    <form [formGroup]="startGameForm" autocomplete="off" class="form">
+        <ng-container *ngIf="!continue">
+
             <div class="">
                 <label>Count Bots</label>
-                <input appInputMask="integer" formControlName="countBots">
+                <input appInputMask="integer" maxlength="1" formControlName="countBots">
                 <label class=""
-                    *ngIf="startGameForm.get('countBots').touched && startGameForm.get('countBots').errors?.min">Minimum
-                    value 1.</label>
-                    <label class=""
-                    *ngIf="startGameForm.get('countBots').touched && startGameForm.get('countBots').errors?.required">Inccorrect
-                    value.</label>
+                    *ngIf="startGameForm.get('countBots').touched && startGameForm.get('countBots').errors?.min || startGameForm.get('countBots').touched && startGameForm.get('countBots').errors?.max">Correct
+                    value 1 - 5.</label>
+                <label class=""
+                    *ngIf="startGameForm.get('countBots').touched && startGameForm.get('countBots').errors?.required">Count
+                    Bots is empty!</label>
                 <button (click)="startGame()" class="" [disabled]="!startGameForm.valid">
                     <mat-icon class="icon">videogame_asset</mat-icon>
                     <h5> Start</h5>
                 </button>
             </div>
-        
-    </ng-container>
 
-    <ng-container *ngIf="continue">
-        <div>
-            <button [routerLink]="['/game/game-play']" class="">Continue</button>
-        </div>
-    
-    </ng-container>
-</form>
+        </ng-container>
+
+        <ng-container *ngIf="continue">
+            <div>
+                <button [routerLink]="['/game/game-play']" class="">Continue</button>
+            </div>
+
+        </ng-container>
+    </form>
 </div>
