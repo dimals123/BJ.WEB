@@ -30,7 +30,7 @@ namespace BJ.BusinessLogic.Configurations
 
 
         }
-        public static void AutentificationConfigure(this IServiceCollection services, IConfiguration configuration)
+        public static void AuthenticationConfigure(this IServiceCollection services, IConfiguration configuration)
         {
             var option = configuration.GetSection("jwt").Get<JwtTokenOptions>();
             services.AddAuthentication(options =>

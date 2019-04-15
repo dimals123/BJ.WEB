@@ -45,7 +45,7 @@ namespace BJ.WEB
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); 
             services.Configure<JwtTokenOptions>(Configuration.GetSection("jwt"));
-            services.AutentificationConfigure(Configuration);
+            services.AuthenticationConfigure(Configuration);
             services.AddCors(); 
 
             services.AddSpaStaticFiles(configuration =>
