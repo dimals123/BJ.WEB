@@ -307,7 +307,7 @@ namespace BJ.BusinessLogic.Services
                 };
                 stepUsers.Add(stepUser);
 
-                userInGame.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, userInGame.CountPoint);
+                userInGame.CountPoint += _scoreHelper.GetValueCard(currentCard.Rank, userInGame.CountPoint);
 
 
                 cardsForRemove.Add(currentCard);
@@ -325,7 +325,7 @@ namespace BJ.BusinessLogic.Services
                         Rank = currentCard.Rank
                     });
                     var botInGame = botInGames.FirstOrDefault(b=>b.BotId == x.Id);
-                    botInGame.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, botInGame.CountPoint);
+                    botInGame.CountPoint += _scoreHelper.GetValueCard(currentCard.Rank, botInGame.CountPoint);
 
                     cardsForRemove.Add(currentCard);
                     deck.Remove(currentCard);
@@ -345,7 +345,7 @@ namespace BJ.BusinessLogic.Services
             stepUser.Suit = currentCard.Suit;
             stepUser.Rank = currentCard.Rank;
         
-            userInGame.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, userInGame.CountPoint);
+            userInGame.CountPoint += _scoreHelper.GetValueCard(currentCard.Rank, userInGame.CountPoint);
 
             cardsForRemove.Add(currentCard);
             deck.Remove(currentCard);
@@ -368,7 +368,7 @@ namespace BJ.BusinessLogic.Services
                     };
                     stepBots.Add(stepBot);
 
-                    pointBot.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, pointBot.CountPoint);
+                    pointBot.CountPoint += _scoreHelper.GetValueCard(currentCard.Rank, pointBot.CountPoint);
 
                     cardsForRemove.Add(currentCard);
                     deck.Remove(currentCard);
@@ -393,7 +393,7 @@ namespace BJ.BusinessLogic.Services
                     };
                     stepBots.Add(stepBot);
 
-                    botInGame.CountPoint += _scoreHelper.ValueCard(currentCard.Rank, botInGame.CountPoint);
+                    botInGame.CountPoint += _scoreHelper.GetValueCard(currentCard.Rank, botInGame.CountPoint);
 
                     cardsForRemove.Add(currentCard);
                     deck.Remove(currentCard);

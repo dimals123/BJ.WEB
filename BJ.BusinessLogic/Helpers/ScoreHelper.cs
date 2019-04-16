@@ -1,44 +1,19 @@
-﻿using BJ.BusinessLogic.Helpers.Interfaces;
+﻿using BJ.BusinessLogic.Extensions;
+using BJ.BusinessLogic.Helpers.Interfaces;
 using BJ.DataAccess.Entities.Enums;
 
 namespace BJ.BusinessLogic.Helpers
 {
-    public class ScoreHelper:IScoreHelper
+    public class ScoreHelper : IScoreHelper
     {
-        public int ValueCard(RankType rank, int currentPoints)
+        public int GetValueCard(RankType rankType, int currentPoints)
         {
-            var result = 0;
-            switch (rank)
-            {
-                case RankType.Six:
-                    result = 6;
-                    break;
-                case RankType.Seven:
-                    result = 7;
-                    break;
-                case RankType.Eight:
-                    result = 8;
-                    break;
-                case RankType.Nine:
-                    result = 9;
-                    break;
-                case RankType.Ten:
-                    result = 10;
-                    break;
-                case RankType.Jack:
-                    result = 2;
-                    break;
-                case RankType.Lady:
-                    result = 3;
-                    break;
-                case RankType.King:
-                    result = 4;
-                    break;
-                case RankType.Ace:
-                    result = (currentPoints <= 10) ? 11 : 1;
-                    break;
-            }
+
+            var result = rankType.GetDescription();
+            var aceRank = RankType.Ace.GetDescription();
+            result = result == aceRank & currentPoints > 10 ? 1 : result;
             return result;
         }
     }
+
 }

@@ -4,6 +4,6 @@ namespace BJ.BusinessLogic.Helpers.Interfaces
 {
     public interface IScoreHelper
     {
-        int ValueCard(RankType rank, int currentPoints);
+        int GetValueCard(RankType rank, int currentPoints);
     }
 }

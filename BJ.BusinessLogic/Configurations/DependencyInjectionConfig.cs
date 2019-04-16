@@ -1,17 +1,11 @@
-﻿using BJ.BusinessLogic.Helpers;
-using BJ.BusinessLogic.Helpers.Interfaces;
-using BJ.BusinessLogic.Options;
-using BJ.BusinessLogic.Providers;
-using BJ.BusinessLogic.Providers.Interfaces;
+﻿using BJ.BusinessLogic.Options;
 using BJ.BusinessLogic.Services;
-using BJ.BusinessLogic.Services.Interfaces;
 using BJ.DataAccess;
 using BJ.DataAccess.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SqlClient;
 
