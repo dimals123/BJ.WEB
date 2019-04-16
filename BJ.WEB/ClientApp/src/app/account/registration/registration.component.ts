@@ -45,7 +45,6 @@ export class RegistrationComponent implements OnInit {
 
   private authorize(res: LoginAccountResponseView): void {
     this.localStorageService.setItem('token', res.token);
-
     this.router.navigate(["game/start-game"]);
   }
 

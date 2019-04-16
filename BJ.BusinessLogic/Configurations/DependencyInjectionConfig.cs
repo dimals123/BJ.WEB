@@ -10,6 +10,7 @@ using BJ.DataAccess.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SqlClient;
@@ -40,8 +41,9 @@ namespace BJ.BusinessLogic.Configurations
             }
             else
             {
-                throw new ValidationException("Wrong value Orm! Dapper or EF");
+                throw new ApplicationException("Choose Dapper or EF");
             }
+
 
         }
 

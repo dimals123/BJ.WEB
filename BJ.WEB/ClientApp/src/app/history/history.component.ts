@@ -21,7 +21,7 @@ export class HistoryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.id = +this.route.snapshot.paramMap.get('id');
+    this.id = this.getParamMap();
     this.changeCurrentPage(this.id);
   }
 
@@ -35,12 +35,15 @@ export class HistoryComponent implements OnInit {
       });
   }
 
+  private getParamMap(): number{
+    return +this.route.snapshot.paramMap.get('id');
+  }
 
   changeCurrentPage(page): void {
     this.historyService.getUserGames().subscribe(response => {
       this.model = response;
       this.countGames = this.model.games.length;
-      this.id = +this.route.snapshot.paramMap.get('id');
+      this.id = this.getParamMap();
     }, error => {
       console.log(error);
     });
