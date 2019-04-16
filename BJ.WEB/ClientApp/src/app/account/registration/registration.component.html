@@ -22,21 +22,31 @@
         8 characters required.</label>
 
     </div>
-    <div *ngIf="!names.includes(this.registerForm.value.name) && registerForm.get('name').touched">
+    <div *ngIf="!names.includes(this.registerForm.value.name) && registerForm.get('name').touched; else unset">
       <label>ConfirmPassword</label>
       <input type="password" class="form-control" formControlName="confirmPassword">
       <label class="text-danger"
-        *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.required">Confirm Password
+        *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.required">Confirm
+        Password
         is failed.</label>
       <label class="text-danger"
         *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').errors?.passwordMismatch">Confirm
         Password does not match.</label>
-    </div>
-
-    <div class="form-row">
-      <div class="form-group col-md-8 offset-md-2">
-        <button type="submit" class="btn btn-lg btn-block" [disabled]="!registerForm.get('name').valid || !registerForm.get('password').valid">Sign Up</button>
+      <div class="form-row">
+        <div class="form-group col-md-8 offset-md-2">
+          <button type="submit" class="btn btn-lg btn-block"
+            [disabled]="!registerForm.get('name').valid || !registerForm.get('password').valid || !registerForm.get('confirmPassword').valid">Sign
+            Up</button>
+        </div>
       </div>
     </div>
+    <ng-template #unset>
+      <div class="form-row">
+        <div class="form-group col-md-8 offset-md-2">
+          <button type="submit" class="btn btn-lg btn-block"
+            [disabled]="!registerForm.get('name').valid || !registerForm.get('password').valid">Sign Up</button>
+        </div>
+      </div>
+    </ng-template>
   </form>
 </div>
